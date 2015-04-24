@@ -80,6 +80,9 @@
 		845204871AEA4AD600E535FD /* UK Resident */ = {
 			isa = PBXGroup;
 			children = (
+				845204B31AEA4DA500E535FD /* MODEL */,
+				845204B21AEA4D9D00E535FD /* VIEW */,
+				845204B11AEA4D8600E535FD /* CONTROLLER */,
 				8452048C1AEA4AD600E535FD /* AppDelegate.h */,
 				8452048D1AEA4AD600E535FD /* AppDelegate.m */,
 				845204951AEA4AD600E535FD /* Main.storyboard */,
@@ -115,6 +118,27 @@
 				845204A61AEA4AD600E535FD /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		845204B11AEA4D8600E535FD /* CONTROLLER */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = CONTROLLER;
+			sourceTree = "<group>";
+		};
+		845204B21AEA4D9D00E535FD /* VIEW */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = VIEW;
+			sourceTree = "<group>";
+		};
+		845204B31AEA4DA500E535FD /* MODEL */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = MODEL;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
