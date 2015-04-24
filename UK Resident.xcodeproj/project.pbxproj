@@ -10,7 +10,6 @@
 		8452048B1AEA4AD600E535FD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8452048A1AEA4AD600E535FD /* main.m */; };
 		8452048E1AEA4AD600E535FD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8452048D1AEA4AD600E535FD /* AppDelegate.m */; };
 		845204911AEA4AD600E535FD /* UK_Resident.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8452048F1AEA4AD600E535FD /* UK_Resident.xcdatamodeld */; };
-		845204941AEA4AD600E535FD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845204931AEA4AD600E535FD /* ViewController.m */; };
 		845204971AEA4AD600E535FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 845204951AEA4AD600E535FD /* Main.storyboard */; };
 		845204991AEA4AD600E535FD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 845204981AEA4AD600E535FD /* Images.xcassets */; };
 		8452049C1AEA4AD600E535FD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8452049A1AEA4AD600E535FD /* LaunchScreen.xib */; };
@@ -34,8 +33,6 @@
 		8452048C1AEA4AD600E535FD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8452048D1AEA4AD600E535FD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		845204901AEA4AD600E535FD /* UK_Resident.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UK_Resident.xcdatamodel; sourceTree = "<group>"; };
-		845204921AEA4AD600E535FD /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		845204931AEA4AD600E535FD /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		845204961AEA4AD600E535FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		845204981AEA4AD600E535FD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		8452049B1AEA4AD600E535FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -85,8 +82,6 @@
 			children = (
 				8452048C1AEA4AD600E535FD /* AppDelegate.h */,
 				8452048D1AEA4AD600E535FD /* AppDelegate.m */,
-				845204921AEA4AD600E535FD /* ViewController.h */,
-				845204931AEA4AD600E535FD /* ViewController.m */,
 				845204951AEA4AD600E535FD /* Main.storyboard */,
 				845204981AEA4AD600E535FD /* Images.xcassets */,
 				8452049A1AEA4AD600E535FD /* LaunchScreen.xib */,
@@ -224,7 +219,6 @@
 			files = (
 				8452048E1AEA4AD600E535FD /* AppDelegate.m in Sources */,
 				8452048B1AEA4AD600E535FD /* main.m in Sources */,
-				845204941AEA4AD600E535FD /* ViewController.m in Sources */,
 				845204911AEA4AD600E535FD /* UK_Resident.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
