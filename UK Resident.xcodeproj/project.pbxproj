@@ -17,6 +17,12 @@
 		845204B61AECFD4900E535FD /* UKCalendarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845204B51AECFD4900E535FD /* UKCalendarTableViewController.m */; };
 		845204B91AEE270700E535FD /* UKCalendarWeekCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 845204B81AEE270700E535FD /* UKCalendarWeekCell.m */; };
 		845204BC1AEE63D500E535FD /* UKCalendarTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 845204BB1AEE63D500E535FD /* UKCalendarTableView.m */; };
+		845204BF1AEECE2C00E535FD /* UKCalendarUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 845204BE1AEECE2C00E535FD /* UKCalendarUnit.m */; };
+		845204C31AEEE70000E535FD /* NSDate+UKResident.m in Sources */ = {isa = PBXBuildFile; fileRef = 845204C21AEEE70000E535FD /* NSDate+UKResident.m */; };
+		845204C61AEF004900E535FD /* UKCalendarWeek.m in Sources */ = {isa = PBXBuildFile; fileRef = 845204C51AEF004900E535FD /* UKCalendarWeek.m */; };
+		845204C91AEFD3BB00E535FD /* UKCalendarMonthCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 845204C81AEFD3BB00E535FD /* UKCalendarMonthCell.m */; };
+		845204CC1AEFDA5E00E535FD /* NSDateFormatter+UKResident.m in Sources */ = {isa = PBXBuildFile; fileRef = 845204CB1AEFDA5E00E535FD /* NSDateFormatter+UKResident.m */; };
+		845204CF1AF03CA800E535FD /* UKMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845204CE1AF03CA800E535FD /* UKMasterViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +54,18 @@
 		845204B81AEE270700E535FD /* UKCalendarWeekCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKCalendarWeekCell.m; sourceTree = "<group>"; };
 		845204BA1AEE63D500E535FD /* UKCalendarTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UKCalendarTableView.h; sourceTree = "<group>"; };
 		845204BB1AEE63D500E535FD /* UKCalendarTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKCalendarTableView.m; sourceTree = "<group>"; };
+		845204BD1AEECE2C00E535FD /* UKCalendarUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UKCalendarUnit.h; sourceTree = "<group>"; };
+		845204BE1AEECE2C00E535FD /* UKCalendarUnit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKCalendarUnit.m; sourceTree = "<group>"; };
+		845204C11AEEE70000E535FD /* NSDate+UKResident.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+UKResident.h"; sourceTree = "<group>"; };
+		845204C21AEEE70000E535FD /* NSDate+UKResident.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+UKResident.m"; sourceTree = "<group>"; };
+		845204C41AEF004900E535FD /* UKCalendarWeek.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UKCalendarWeek.h; sourceTree = "<group>"; };
+		845204C51AEF004900E535FD /* UKCalendarWeek.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKCalendarWeek.m; sourceTree = "<group>"; };
+		845204C71AEFD3BB00E535FD /* UKCalendarMonthCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UKCalendarMonthCell.h; sourceTree = "<group>"; };
+		845204C81AEFD3BB00E535FD /* UKCalendarMonthCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKCalendarMonthCell.m; sourceTree = "<group>"; };
+		845204CA1AEFDA5E00E535FD /* NSDateFormatter+UKResident.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+UKResident.h"; sourceTree = "<group>"; };
+		845204CB1AEFDA5E00E535FD /* NSDateFormatter+UKResident.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+UKResident.m"; sourceTree = "<group>"; };
+		845204CD1AF03CA800E535FD /* UKMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UKMasterViewController.h; sourceTree = "<group>"; };
+		845204CE1AF03CA800E535FD /* UKMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKMasterViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +116,7 @@
 				845204981AEA4AD600E535FD /* Images.xcassets */,
 				8452049A1AEA4AD600E535FD /* LaunchScreen.xib */,
 				8452048F1AEA4AD600E535FD /* UK_Resident.xcdatamodeld */,
+				845204C01AEEE69B00E535FD /* Categories */,
 				845204881AEA4AD600E535FD /* Supporting Files */,
 			);
 			path = "UK Resident";
@@ -132,6 +151,8 @@
 		845204B11AEA4D8600E535FD /* CONTROLLER */ = {
 			isa = PBXGroup;
 			children = (
+				845204CD1AF03CA800E535FD /* UKMasterViewController.h */,
+				845204CE1AF03CA800E535FD /* UKMasterViewController.m */,
 				845204B41AECFD4900E535FD /* UKCalendarTableViewController.h */,
 				845204B51AECFD4900E535FD /* UKCalendarTableViewController.m */,
 			);
@@ -145,6 +166,8 @@
 				845204BB1AEE63D500E535FD /* UKCalendarTableView.m */,
 				845204B71AEE270700E535FD /* UKCalendarWeekCell.h */,
 				845204B81AEE270700E535FD /* UKCalendarWeekCell.m */,
+				845204C71AEFD3BB00E535FD /* UKCalendarMonthCell.h */,
+				845204C81AEFD3BB00E535FD /* UKCalendarMonthCell.m */,
 			);
 			name = VIEW;
 			sourceTree = "<group>";
@@ -152,8 +175,23 @@
 		845204B31AEA4DA500E535FD /* MODEL */ = {
 			isa = PBXGroup;
 			children = (
+				845204BD1AEECE2C00E535FD /* UKCalendarUnit.h */,
+				845204BE1AEECE2C00E535FD /* UKCalendarUnit.m */,
+				845204C41AEF004900E535FD /* UKCalendarWeek.h */,
+				845204C51AEF004900E535FD /* UKCalendarWeek.m */,
 			);
 			name = MODEL;
+			sourceTree = "<group>";
+		};
+		845204C01AEEE69B00E535FD /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				845204CA1AEFDA5E00E535FD /* NSDateFormatter+UKResident.h */,
+				845204CB1AEFDA5E00E535FD /* NSDateFormatter+UKResident.m */,
+				845204C11AEEE70000E535FD /* NSDate+UKResident.h */,
+				845204C21AEEE70000E535FD /* NSDate+UKResident.m */,
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,8 +297,14 @@
 				8452048E1AEA4AD600E535FD /* AppDelegate.m in Sources */,
 				8452048B1AEA4AD600E535FD /* main.m in Sources */,
 				845204911AEA4AD600E535FD /* UK_Resident.xcdatamodeld in Sources */,
+				845204BF1AEECE2C00E535FD /* UKCalendarUnit.m in Sources */,
 				845204BC1AEE63D500E535FD /* UKCalendarTableView.m in Sources */,
+				845204CC1AEFDA5E00E535FD /* NSDateFormatter+UKResident.m in Sources */,
 				845204B61AECFD4900E535FD /* UKCalendarTableViewController.m in Sources */,
+				845204C31AEEE70000E535FD /* NSDate+UKResident.m in Sources */,
+				845204C61AEF004900E535FD /* UKCalendarWeek.m in Sources */,
+				845204C91AEFD3BB00E535FD /* UKCalendarMonthCell.m in Sources */,
+				845204CF1AF03CA800E535FD /* UKMasterViewController.m in Sources */,
 				845204B91AEE270700E535FD /* UKCalendarWeekCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

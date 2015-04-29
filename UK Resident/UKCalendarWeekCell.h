@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class UKCalendarWeek;
+
 @interface UKCalendarWeekCell : UITableViewCell
 
 @property (nonatomic, assign) NSInteger mark;
+@property (nonatomic, strong) UKCalendarWeek *week;
 
 @end
