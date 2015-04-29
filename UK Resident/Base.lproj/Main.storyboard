@@ -98,7 +98,7 @@
         <!--Отчет дня-->
         <scene sceneID="9E4-gB-Nfo">
             <objects>
-                <viewController id="lTv-q6-6v1" sceneMemberID="viewController">
+                <viewController id="lTv-q6-6v1" customClass="UKReportViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Rnw-1Q-Lkw"/>
                         <viewControllerLayoutGuide type="bottom" id="YK2-lt-7P4"/>
@@ -123,13 +123,13 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <segue destination="fKY-RD-ojl" kind="embed" id="g87-6U-fZa"/>
+                                    <segue destination="fKY-RD-ojl" kind="embed" identifier="ReportTopCVC" id="g87-6U-fZa"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GME-OM-poG">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <connections>
-                                    <segue destination="lkC-3r-gRN" kind="embed" id="9On-jC-Rnv"/>
+                                    <segue destination="lkC-3r-gRN" kind="embed" identifier="ReportCenterCVC" id="9On-jC-Rnv"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HhV-z5-hKc">
@@ -151,7 +151,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <segue destination="8aN-ng-BEu" kind="embed" id="s9l-3f-bBE"/>
+                                    <segue destination="8aN-ng-BEu" kind="embed" identifier="ReportBottomCVC" id="s9l-3f-bBE"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -610,10 +610,10 @@
             </objects>
             <point key="canvasLocation" x="-526" y="199"/>
         </scene>
-        <!--View Controller-->
+        <!--Report TopCVC-->
         <scene sceneID="p4M-rX-OnU">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="fKY-RD-ojl" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="fKY-RD-ojl" customClass="UKReportTopCVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="17v-sy-jmr"/>
                         <viewControllerLayoutGuide type="bottom" id="5Hr-HV-XxS"/>
@@ -687,12 +687,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RQJ-cz-ZA4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2627.25" y="473.25"/>
+            <point key="canvasLocation" x="2627.25" y="456.75"/>
         </scene>
-        <!--View Controller-->
+        <!--Report CenterCVC-->
         <scene sceneID="PMx-vQ-Zca">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="lkC-3r-gRN" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="lkC-3r-gRN" customClass="UKReportCenterCVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ncP-CJ-ouw"/>
                         <viewControllerLayoutGuide type="bottom" id="uKz-lM-lkO"/>
@@ -826,10 +826,10 @@
             </objects>
             <point key="canvasLocation" x="2627.25" y="886.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Report BottomCVC-->
         <scene sceneID="8Mq-ji-Btf">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="8aN-ng-BEu" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="8aN-ng-BEu" customClass="UKReportBottomCVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Y8h-9S-R0X"/>
                         <viewControllerLayoutGuide type="bottom" id="1IO-Uz-3EO"/>

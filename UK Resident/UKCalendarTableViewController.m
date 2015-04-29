@@ -7,10 +7,12 @@
 //
 
 #import "UKCalendarTableViewController.h"
+#import "UKReportViewController.h"
 #import "UKCalendarWeekCell.h"
 #import "UKCalendarMonthCell.h"
 #import "UKCalendarTableView.h"
 #import "NSDate+UKResident.h"
+#import "UIButton+UKRecord.h"
 #import "UKCalendarWeek.h"
 
 @interface UKCalendarTableViewController () <UKCalendarTableViewAgent>
@@ -52,7 +54,27 @@
 {
 	if (YES == [sender isKindOfClass:[UIButton class]])
 	{
-		
+		UIButton *button = (UIButton *)sender;
+		if (nil != button.buttonDate)
+		{
+			NSLog(@"%@ = %li", button.buttonDate, (long)[button.buttonDate dayComponent]);
+			
+			id detailvc=[self.splitViewController.viewControllers lastObject];
+			if ([detailvc isKindOfClass:[UITabBarController class]])
+			{
+				UITabBarController * tabDetailVC=(UITabBarController *)detailvc;
+				if ([[tabDetailVC.viewControllers firstObject] isKindOfClass:[UINavigationController class]])
+				{
+					UINavigationController * navDetailvc=[tabDetailVC.viewControllers firstObject];
+					tabDetailVC.selectedViewController=navDetailvc;
+					if ([[navDetailvc.viewControllers firstObject] isKindOfClass:[UKReportViewController class]])
+					{
+						UKReportViewController *reportVC = (UKReportViewController *)[navDetailvc.viewControllers firstObject];
+						reportVC.date = button.buttonDate;
+					}
+				}
+			}
+		}
 	}
 }
 
