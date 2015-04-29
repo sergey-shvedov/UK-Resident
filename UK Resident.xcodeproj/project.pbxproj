@@ -23,6 +23,7 @@
 		845204C91AEFD3BB00E535FD /* UKCalendarMonthCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 845204C81AEFD3BB00E535FD /* UKCalendarMonthCell.m */; };
 		845204CC1AEFDA5E00E535FD /* NSDateFormatter+UKResident.m in Sources */ = {isa = PBXBuildFile; fileRef = 845204CB1AEFDA5E00E535FD /* NSDateFormatter+UKResident.m */; };
 		845204CF1AF03CA800E535FD /* UKMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845204CE1AF03CA800E535FD /* UKMasterViewController.m */; };
+		845204D21AF0F5E000E535FD /* UIButton+UKRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 845204D11AF0F5E000E535FD /* UIButton+UKRecord.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,8 @@
 		845204CB1AEFDA5E00E535FD /* NSDateFormatter+UKResident.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+UKResident.m"; sourceTree = "<group>"; };
 		845204CD1AF03CA800E535FD /* UKMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UKMasterViewController.h; sourceTree = "<group>"; };
 		845204CE1AF03CA800E535FD /* UKMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKMasterViewController.m; sourceTree = "<group>"; };
+		845204D01AF0F5E000E535FD /* UIButton+UKRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+UKRecord.h"; sourceTree = "<group>"; };
+		845204D11AF0F5E000E535FD /* UIButton+UKRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+UKRecord.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +189,8 @@
 		845204C01AEEE69B00E535FD /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				845204D01AF0F5E000E535FD /* UIButton+UKRecord.h */,
+				845204D11AF0F5E000E535FD /* UIButton+UKRecord.m */,
 				845204CA1AEFDA5E00E535FD /* NSDateFormatter+UKResident.h */,
 				845204CB1AEFDA5E00E535FD /* NSDateFormatter+UKResident.m */,
 				845204C11AEEE70000E535FD /* NSDate+UKResident.h */,
@@ -305,6 +310,7 @@
 				845204C61AEF004900E535FD /* UKCalendarWeek.m in Sources */,
 				845204C91AEFD3BB00E535FD /* UKCalendarMonthCell.m in Sources */,
 				845204CF1AF03CA800E535FD /* UKMasterViewController.m in Sources */,
+				845204D21AF0F5E000E535FD /* UIButton+UKRecord.m in Sources */,
 				845204B91AEE270700E535FD /* UKCalendarWeekCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

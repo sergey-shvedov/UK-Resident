@@ -9,6 +9,7 @@
 #import "UKCalendarWeekCell.h"
 #import "UKCalendarWeek.h"
 #import "NSDate+UKResident.h"
+#import "UIButton+UKRecord.h"
 
 @interface UKCalendarWeekCell()
 
@@ -30,16 +31,20 @@
 	//[self.day01 setTitle:[NSString stringWithFormat:@"%i", (int)self.mark] forState:UIControlStateNormal];
 	for (int i = 0 ; i < 7; i++)
 	{
+		UIButton *button = (UIButton *)[buttons objectAtIndex:i];
 		if ((nil != [self.week.days objectAtIndex:i]) && (YES == [[self.week.days objectAtIndex:i] isKindOfClass:[NSDate class]]))
 		{
+			[button setButtonDate:(NSDate *)[self.week.days objectAtIndex:i]];
 			NSInteger day = [(NSDate *)[self.week.days objectAtIndex:i] dayComponent];
-			[(UIButton *)[buttons objectAtIndex:i] setTitle:[NSString stringWithFormat:@"%li", (long)day] forState:UIControlStateNormal];
+			[button setTitle:[NSString stringWithFormat:@"%li", (long)day] forState:UIControlStateNormal];
+			[button setHidden:NO];
 		}
 		else
 		{
-			[(UIButton *)[buttons objectAtIndex:i] setTitle:@"" forState:UIControlStateNormal];
+			[button setButtonDate:nil];
+			[button setTitle:@"" forState:UIControlStateNormal];
+			[button setHidden:YES];
 		}
 	}
-	
 }
 @end

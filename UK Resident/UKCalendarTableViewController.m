@@ -50,7 +50,10 @@
 
 - (IBAction)tappedButton:(id)sender
 {
-	
+	if (YES == [sender isKindOfClass:[UIButton class]])
+	{
+		
+	}
 }
 
 
