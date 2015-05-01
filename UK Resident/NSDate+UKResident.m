@@ -92,6 +92,12 @@
 	return range.length;
 }
 
+- (NSInteger)numberOfDaysUntil:(NSDate *)aDate
+{
+	NSDateComponents *components = [[NSDate customCalendar] components:NSCalendarUnitDay fromDate:self toDate:aDate options:0];
+	return [components day];
+}
+
 - (NSDate *)normalization
 {
 	NSDate *date = nil;
@@ -118,11 +124,19 @@
 	return date;
 }
 
--(NSDate *)moveYear:(NSInteger)aYearDelta
+- (NSDate *)moveYear:(NSInteger)aYearDelta
 {
 	NSCalendar *calendar = [NSDate customCalendar];
 	NSDateComponents *components = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:self];
 	[components setYear:[components year] + aYearDelta];
+	NSDate *date = [calendar dateFromComponents:components];
+	return date;
+}
+- (NSDate *)moveDay:(NSInteger)aDayDelta
+{
+	NSCalendar *calendar = [NSDate customCalendar];
+	NSDateComponents *components = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:self];
+	[components setDay:[components day] + aDayDelta];
 	NSDate *date = [calendar dateFromComponents:components];
 	return date;
 }

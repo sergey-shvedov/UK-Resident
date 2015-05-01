@@ -10,6 +10,8 @@
 #import "UKReportTopCVC.h"
 #import "UKReportCenterCVC.h"
 #import "UKReportBottomCVC.h"
+#import "NSDate+UKResident.h"
+#import "NSString+UKResident.h"
 
 @interface UKReportViewController ()
 
@@ -19,6 +21,11 @@
 
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *leftBarButtonItem;
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *rightBarButtonItem;
+
+@property (nonatomic, weak) UIButton *leftBarButton;
+@property (nonatomic, weak) UIButton *rightBarButton;
+
+@property (nonatomic, strong) NSDate *todayDate;
 
 @end
 
@@ -30,11 +37,21 @@
 	[self updateUI];
 }
 
+- (NSDate *)todayDate
+{
+	if (nil == _todayDate)
+	{
+		_todayDate = [[NSDate date] normalization];
+	}
+	return _todayDate;
+}
+
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
 	self.navigationController.tabBarItem.selectedImage = [UIImage imageNamed:@"tabBarIconReportSelected"];
 	[self mountBarButtons];
+	[self updateUI];
 }
 
 - (void)mountBarButtons
@@ -52,6 +69,9 @@
 	UIBarButtonItem *leftBarButton = [[UIBarButtonItem alloc]initWithCustomView:leftButtonView];
 	self.navigationItem.leftBarButtonItem = leftBarButton;
 	
+	[leftButton addTarget:self action:@selector(tappedLeftBarButton) forControlEvents:UIControlEventTouchUpInside];
+	self.leftBarButton = leftButton;
+	
 	UIView *rightButtonView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 110, 30)];
 	UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeSystem];
 	rightButton.backgroundColor = [UIColor clearColor];
@@ -63,7 +83,7 @@
 	rightButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
 	//rightButton.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
 	rightButton.titleEdgeInsets = UIEdgeInsetsMake(0, -15, 0, 15);
-	rightButton.imageEdgeInsets = UIEdgeInsetsMake(0, 95, 0, -95);
+	rightButton.imageEdgeInsets = UIEdgeInsetsMake(0, 97, 0, -97);
 	
 	[rightButton sizeToFit];
 	[rightButtonView addSubview:rightButton];
@@ -72,6 +92,9 @@
 	
 	UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc]initWithCustomView:rightButtonView];
 	self.navigationItem.rightBarButtonItem = rightBarButton;
+	
+	[rightButton addTarget:self action:@selector(tappedRightBarButton) forControlEvents:UIControlEventTouchUpInside];
+	self.rightBarButton = rightButton;
 	
 	
 	
@@ -86,6 +109,42 @@
 	[self.topCVC setDate:self.date];
 	[self.centerCVC setDate:self.date];
 	[self.bottomCVC setDate:self.date];
+	
+	[self updateNavigationBar];
+}
+
+- (void)updateNavigationBar
+{
+	NSInteger difference = [[self.todayDate normalization] numberOfDaysUntil:[self.date normalization]];
+	NSString *title = @"Сегодня";
+	NSString *ruDays = [NSString russianStringFor1:@"день" for2to4:@"дня" for5up:@"дней" withValue:difference];
+	if (difference < 0)
+	{
+		title = [NSString stringWithFormat:@"%li %@ назад", labs(difference), ruDays];
+	}
+	else if (difference > 0)
+	{
+		title = [NSString stringWithFormat:@"%li %@ вперед", labs(difference), ruDays];
+	}
+	[self setTitle:title];
+	
+	NSDate *selectedDate = (nil != self.date) ? self.date : self.todayDate;
+	NSDate *yesterday = [NSDate dateWithTimeInterval:(-24*60*60) sinceDate:selectedDate];
+	NSDate *tomorrow = [NSDate dateWithTimeInterval:(+24*60*60) sinceDate:selectedDate];
+	[self.leftBarButton setTitle:[yesterday localizedStringWithDateFormat:@"dd.MM.yyyy"] forState:UIControlStateNormal];
+	[self.rightBarButton setTitle:[tomorrow localizedStringWithDateFormat:@"dd.MM.yyyy"] forState:UIControlStateNormal];
+}
+
+- (void)tappedLeftBarButton
+{
+	NSDate *selectedDate = (nil != self.date) ? self.date : self.todayDate;
+	self.date = [selectedDate moveDay:-1];
+}
+
+- (void)tappedRightBarButton
+{
+	NSDate *selectedDate = (nil != self.date) ? self.date : self.todayDate;
+	self.date = [selectedDate moveDay:+1];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

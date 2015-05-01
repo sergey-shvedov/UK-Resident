@@ -31,6 +31,7 @@
 		845204E11AF1743F00E535FD /* UKTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845204E01AF1743F00E535FD /* UKTripViewController.m */; };
 		845204E41AF1747300E535FD /* UKWarningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845204E31AF1747300E535FD /* UKWarningViewController.m */; };
 		845204EB1AF2AD5C00E535FD /* UKReportTopDiagramVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 845204EA1AF2AD5C00E535FD /* UKReportTopDiagramVC.m */; };
+		845204EE1AF3E83E00E535FD /* NSString+UKResident.m in Sources */ = {isa = PBXBuildFile; fileRef = 845204ED1AF3E83E00E535FD /* NSString+UKResident.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,8 @@
 		845204E31AF1747300E535FD /* UKWarningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKWarningViewController.m; sourceTree = "<group>"; };
 		845204E91AF2AD5C00E535FD /* UKReportTopDiagramVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UKReportTopDiagramVC.h; sourceTree = "<group>"; };
 		845204EA1AF2AD5C00E535FD /* UKReportTopDiagramVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKReportTopDiagramVC.m; sourceTree = "<group>"; };
+		845204EC1AF3E83E00E535FD /* NSString+UKResident.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+UKResident.h"; sourceTree = "<group>"; };
+		845204ED1AF3E83E00E535FD /* NSString+UKResident.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+UKResident.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +213,8 @@
 		845204C01AEEE69B00E535FD /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				845204EC1AF3E83E00E535FD /* NSString+UKResident.h */,
+				845204ED1AF3E83E00E535FD /* NSString+UKResident.m */,
 				845204D01AF0F5E000E535FD /* UIButton+UKRecord.h */,
 				845204D11AF0F5E000E535FD /* UIButton+UKRecord.m */,
 				845204CA1AEFDA5E00E535FD /* NSDateFormatter+UKResident.h */,
@@ -371,6 +376,7 @@
 				845204911AEA4AD600E535FD /* UK_Resident.xcdatamodeld in Sources */,
 				845204E11AF1743F00E535FD /* UKTripViewController.m in Sources */,
 				845204BF1AEECE2C00E535FD /* UKCalendarUnit.m in Sources */,
+				845204EE1AF3E83E00E535FD /* NSString+UKResident.m in Sources */,
 				845204BC1AEE63D500E535FD /* UKCalendarTableView.m in Sources */,
 				845204EB1AF2AD5C00E535FD /* UKReportTopDiagramVC.m in Sources */,
 				845204CC1AEFDA5E00E535FD /* NSDateFormatter+UKResident.m in Sources */,

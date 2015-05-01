@@ -24,11 +24,13 @@
 - (NSInteger)yearComponent;
 - (NSInteger)dayOfYear;
 - (NSInteger)daysInMonth;
+- (NSInteger)numberOfDaysUntil:(NSDate *)aDate;
 
 - (NSDate *)normalization;
 - (NSDate *)addWeekDelta:(NSInteger)aWeekDelta;
 - (NSDate *)moveMonth:(NSInteger)aMonthDelta;
 - (NSDate *)moveYear:(NSInteger)aYearDelta;
+- (NSDate *)moveDay:(NSInteger)aDayDelta;
 
 - (NSString *)localizedStringWithDateStyle:(NSDateFormatterStyle)dstyle timeStyle:(NSDateFormatterStyle)tstyle;
 - (NSString *)localizedStringWithDateFormat:(NSString *)aDateFormat;
