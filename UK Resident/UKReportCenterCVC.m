@@ -10,4 +10,15 @@
 
 @implementation UKReportCenterCVC
 
+- (void)setDate:(NSDate *)date
+{
+	_date = date;
+	[self updateUI];
+}
+
+- (void)updateUI
+{
+	
+}
+
 @end

@@ -23,7 +23,7 @@
 	if (nil != self)
 	{
 		NSDate *modifiedDate = [aDate addWeekDelta:aWeelDelta];
-		NSCalendar *gregorian = [modifiedDate customCalendar];
+		NSCalendar *gregorian = [NSDate customCalendar];
 		
 		NSRange range = [gregorian rangeOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitWeekOfMonth forDate:modifiedDate];
 		
@@ -101,7 +101,7 @@
 	{
 		NSLog(@"");
 		NSLog(@"       #month: %li, week%li", (long)aMonthDelta, (long)aWeekOfMonth);
-		NSCalendar *calendar = [aDate customCalendar];
+		NSCalendar *calendar = [NSDate customCalendar];
 		NSDateComponents* components = [calendar components:NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitWeekOfMonth | NSCalendarUnitWeekday fromDate:aDate];
 		
 		[components setMonth:[components month] + aMonthDelta];

@@ -28,6 +28,9 @@
 		845204D81AF1176C00E535FD /* UKReportBottomCVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 845204D71AF1176C00E535FD /* UKReportBottomCVC.m */; };
 		845204DB1AF1179200E535FD /* UKReportCenterCVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 845204DA1AF1179200E535FD /* UKReportCenterCVC.m */; };
 		845204DE1AF117BD00E535FD /* UKReportTopCVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 845204DD1AF117BD00E535FD /* UKReportTopCVC.m */; };
+		845204E11AF1743F00E535FD /* UKTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845204E01AF1743F00E535FD /* UKTripViewController.m */; };
+		845204E41AF1747300E535FD /* UKWarningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845204E31AF1747300E535FD /* UKWarningViewController.m */; };
+		845204EB1AF2AD5C00E535FD /* UKReportTopDiagramVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 845204EA1AF2AD5C00E535FD /* UKReportTopDiagramVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +84,12 @@
 		845204DA1AF1179200E535FD /* UKReportCenterCVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKReportCenterCVC.m; sourceTree = "<group>"; };
 		845204DC1AF117BD00E535FD /* UKReportTopCVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UKReportTopCVC.h; sourceTree = "<group>"; };
 		845204DD1AF117BD00E535FD /* UKReportTopCVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKReportTopCVC.m; sourceTree = "<group>"; };
+		845204DF1AF1743F00E535FD /* UKTripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UKTripViewController.h; sourceTree = "<group>"; };
+		845204E01AF1743F00E535FD /* UKTripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKTripViewController.m; sourceTree = "<group>"; };
+		845204E21AF1747300E535FD /* UKWarningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UKWarningViewController.h; sourceTree = "<group>"; };
+		845204E31AF1747300E535FD /* UKWarningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKWarningViewController.m; sourceTree = "<group>"; };
+		845204E91AF2AD5C00E535FD /* UKReportTopDiagramVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UKReportTopDiagramVC.h; sourceTree = "<group>"; };
+		845204EA1AF2AD5C00E535FD /* UKReportTopDiagramVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKReportTopDiagramVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,18 +175,10 @@
 		845204B11AEA4D8600E535FD /* CONTROLLER */ = {
 			isa = PBXGroup;
 			children = (
-				845204DC1AF117BD00E535FD /* UKReportTopCVC.h */,
-				845204DD1AF117BD00E535FD /* UKReportTopCVC.m */,
-				845204D91AF1179200E535FD /* UKReportCenterCVC.h */,
-				845204DA1AF1179200E535FD /* UKReportCenterCVC.m */,
-				845204D61AF1176C00E535FD /* UKReportBottomCVC.h */,
-				845204D71AF1176C00E535FD /* UKReportBottomCVC.m */,
-				845204D31AF0FFD500E535FD /* UKReportViewController.h */,
-				845204D41AF0FFD500E535FD /* UKReportViewController.m */,
-				845204CD1AF03CA800E535FD /* UKMasterViewController.h */,
-				845204CE1AF03CA800E535FD /* UKMasterViewController.m */,
-				845204B41AECFD4900E535FD /* UKCalendarTableViewController.h */,
-				845204B51AECFD4900E535FD /* UKCalendarTableViewController.m */,
+				845204E51AF1748200E535FD /* REPORT */,
+				845204E71AF174BF00E535FD /* TRIP */,
+				845204E81AF174CA00E535FD /* WARNING */,
+				845204E61AF174A500E535FD /* CALENDAR */,
 			);
 			name = CONTROLLER;
 			sourceTree = "<group>";
@@ -217,6 +218,52 @@
 				845204C21AEEE70000E535FD /* NSDate+UKResident.m */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		845204E51AF1748200E535FD /* REPORT */ = {
+			isa = PBXGroup;
+			children = (
+				845204E91AF2AD5C00E535FD /* UKReportTopDiagramVC.h */,
+				845204EA1AF2AD5C00E535FD /* UKReportTopDiagramVC.m */,
+				845204DC1AF117BD00E535FD /* UKReportTopCVC.h */,
+				845204DD1AF117BD00E535FD /* UKReportTopCVC.m */,
+				845204D91AF1179200E535FD /* UKReportCenterCVC.h */,
+				845204DA1AF1179200E535FD /* UKReportCenterCVC.m */,
+				845204D61AF1176C00E535FD /* UKReportBottomCVC.h */,
+				845204D71AF1176C00E535FD /* UKReportBottomCVC.m */,
+				845204D31AF0FFD500E535FD /* UKReportViewController.h */,
+				845204D41AF0FFD500E535FD /* UKReportViewController.m */,
+			);
+			name = REPORT;
+			sourceTree = "<group>";
+		};
+		845204E61AF174A500E535FD /* CALENDAR */ = {
+			isa = PBXGroup;
+			children = (
+				845204CD1AF03CA800E535FD /* UKMasterViewController.h */,
+				845204CE1AF03CA800E535FD /* UKMasterViewController.m */,
+				845204B41AECFD4900E535FD /* UKCalendarTableViewController.h */,
+				845204B51AECFD4900E535FD /* UKCalendarTableViewController.m */,
+			);
+			name = CALENDAR;
+			sourceTree = "<group>";
+		};
+		845204E71AF174BF00E535FD /* TRIP */ = {
+			isa = PBXGroup;
+			children = (
+				845204DF1AF1743F00E535FD /* UKTripViewController.h */,
+				845204E01AF1743F00E535FD /* UKTripViewController.m */,
+			);
+			name = TRIP;
+			sourceTree = "<group>";
+		};
+		845204E81AF174CA00E535FD /* WARNING */ = {
+			isa = PBXGroup;
+			children = (
+				845204E21AF1747300E535FD /* UKWarningViewController.h */,
+				845204E31AF1747300E535FD /* UKWarningViewController.m */,
+			);
+			name = WARNING;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -322,12 +369,15 @@
 				8452048E1AEA4AD600E535FD /* AppDelegate.m in Sources */,
 				8452048B1AEA4AD600E535FD /* main.m in Sources */,
 				845204911AEA4AD600E535FD /* UK_Resident.xcdatamodeld in Sources */,
+				845204E11AF1743F00E535FD /* UKTripViewController.m in Sources */,
 				845204BF1AEECE2C00E535FD /* UKCalendarUnit.m in Sources */,
 				845204BC1AEE63D500E535FD /* UKCalendarTableView.m in Sources */,
+				845204EB1AF2AD5C00E535FD /* UKReportTopDiagramVC.m in Sources */,
 				845204CC1AEFDA5E00E535FD /* NSDateFormatter+UKResident.m in Sources */,
 				845204B61AECFD4900E535FD /* UKCalendarTableViewController.m in Sources */,
 				845204DB1AF1179200E535FD /* UKReportCenterCVC.m in Sources */,
 				845204C31AEEE70000E535FD /* NSDate+UKResident.m in Sources */,
+				845204E41AF1747300E535FD /* UKWarningViewController.m in Sources */,
 				845204D81AF1176C00E535FD /* UKReportBottomCVC.m in Sources */,
 				845204D51AF0FFD500E535FD /* UKReportViewController.m in Sources */,
 				845204C61AEF004900E535FD /* UKCalendarWeek.m in Sources */,

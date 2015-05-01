@@ -10,4 +10,6 @@
 
 @interface UKReportCenterCVC : UIViewController
 
+@property (nonatomic, strong) NSDate *date;
+
 @end

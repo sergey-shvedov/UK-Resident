@@ -1,5 +1,5 @@
 //
-//  UKReportTopCVC.h
+//  UKTripViewController.h
 //  UK Resident
 //
 //  Created by Sergey Shvedov on 29.04.15.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UKReportTopCVC : UIViewController
-
-@property (nonatomic, strong) NSDate *date;
+@interface UKTripViewController : UIViewController
 
 @end

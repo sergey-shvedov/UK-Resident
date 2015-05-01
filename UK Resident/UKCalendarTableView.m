@@ -26,7 +26,6 @@
 {
 	[super setContentOffset:aContentOffset];
 	[self recenterIfNecessary];
-	
 }
 
 - (void)recenterIfNecessary
@@ -35,8 +34,6 @@
 	CGFloat const contentHeight = [self contentSize].height;
 	CGFloat centerOffsetY = (contentHeight - [self bounds].size.height) / 2.f;
 	CGFloat const distanceFromCenter = fabs(currentOffset.y - centerOffsetY);
-	
-
 	
 	if ((contentHeight > 0) && (distanceFromCenter > (contentHeight / 4.0)))
 	{
@@ -57,7 +54,6 @@
 		{
 			[self.agent calendarTableViewDidRecenterTo:rows];
 		}
-
 	}
 }
 

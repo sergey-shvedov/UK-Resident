@@ -34,7 +34,7 @@
 	self.calendarTableView.agent = self;
 	self.todayDate = [[NSDate date] normalization];
 	self.topYear = [self.todayDate yearComponent];
-	self.currentCenter = -45;
+	self.currentCenter = -50;
 }
 
 - (void)setTopYear:(NSInteger)topYear

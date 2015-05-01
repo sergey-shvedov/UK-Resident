@@ -10,59 +10,92 @@
 
 @implementation NSDate (UKResident)
 
-- (NSCalendar *)customCalendar
++ (NSCalendar *)customCalendar
 {
 	NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
 	[gregorian setFirstWeekday:2];
 	return gregorian;
 }
 
++ (NSDate *)dateFromMyString:(NSString *)aDateString
+{
+	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+	[dateFormatter setDateFormat:@"dd-MM-yyyy"];
+	return [dateFormatter dateFromString:aDateString];
+}
+
++ (NSDate *)dateWithDay:(NSInteger)aDay month:(NSInteger)aMonth andYear:(NSInteger)aYear
+{
+	NSDateComponents *components = [[NSDateComponents alloc] init];
+	[components setYear:aYear];
+	[components setMonth:aMonth];
+	[components setDay:aDay];
+	return [[NSDate customCalendar] dateFromComponents:components];
+}
+
 - (NSInteger)dayOfWeek
 {
-	NSDateComponents *component = [[self customCalendar] components:NSCalendarUnitWeekday fromDate:self];
+	NSDateComponents *component = [[NSDate customCalendar] components:NSCalendarUnitWeekday fromDate:self];
 	return [component weekday];
+}
+
+- (NSInteger)dayOfMonth
+{
+	NSDateComponents *component = [[NSDate customCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:self];
+	return [component day];
 }
 
 - (NSInteger)weekOfMonth
 {
-	NSDateComponents *component = [[self customCalendar] components:NSCalendarUnitWeekOfMonth fromDate:self];
+	NSDateComponents *component = [[NSDate customCalendar] components:NSCalendarUnitWeekOfMonth fromDate:self];
 	return [component weekOfMonth];
 }
 
 - (NSInteger)weekOfYear
 {
-	NSDateComponents *component = [[self customCalendar] components:NSCalendarUnitWeekOfYear fromDate:self];
+	NSDateComponents *component = [[NSDate customCalendar] components:NSCalendarUnitWeekOfYear fromDate:self];
 	return [component weekOfYear];
 }
 
 - (NSInteger)monthOfYear
 {
-	NSDateComponents *component = [[self customCalendar] components:NSCalendarUnitMonth fromDate:self];
+	NSDateComponents *component = [[NSDate customCalendar] components:NSCalendarUnitMonth fromDate:self];
 	return [component month];
 }
 
 - (NSInteger)dayComponent
 {
-	NSDateComponents *component = [[self customCalendar] components:NSCalendarUnitDay fromDate:self];
+	NSDateComponents *component = [[NSDate customCalendar] components:NSCalendarUnitDay fromDate:self];
 	return [component day];
 }
 
 - (NSInteger)monthComponent
 {
-	NSDateComponents *component = [[self customCalendar] components:NSCalendarUnitMonth fromDate:self];
+	NSDateComponents *component = [[NSDate customCalendar] components:NSCalendarUnitMonth fromDate:self];
 	return [component month];
 }
 
 - (NSInteger)yearComponent
 {
-	NSDateComponents *component = [[self customCalendar] components:NSCalendarUnitYear fromDate:self];
+	NSDateComponents *component = [[NSDate customCalendar] components:NSCalendarUnitYear fromDate:self];
 	return [component year];
+}
+
+- (NSInteger)dayOfYear
+{
+	return [[NSDate customCalendar] ordinalityOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitYear forDate:self];
+}
+
+- (NSInteger)daysInMonth
+{
+	NSRange range = [[NSDate customCalendar] rangeOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitMonth forDate:self];
+	return range.length;
 }
 
 - (NSDate *)normalization
 {
 	NSDate *date = nil;
-	NSCalendar *calendar = [self customCalendar];
+	NSCalendar *calendar = [NSDate customCalendar];
 	NSDateComponents *components = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour) fromDate:self];
 	[components setHour:12];
 	date = [calendar dateFromComponents:components];
@@ -73,16 +106,48 @@
 {
 	NSDateComponents *components = [[NSDateComponents alloc] init];
 	[components setWeekOfYear:aWeekDelta];
-	return [[self customCalendar] dateByAddingComponents:components toDate:self options:0];
+	return [[NSDate customCalendar] dateByAddingComponents:components toDate:self options:0];
 }
 
 - (NSDate *)moveMonth:(NSInteger)aMonthDelta
 {
-	NSCalendar *calendar = [self customCalendar];
+	NSCalendar *calendar = [NSDate customCalendar];
 	NSDateComponents *components = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth) fromDate:self];
 	[components setMonth:[components month] + aMonthDelta];
 	NSDate *date = [calendar dateFromComponents:components];
 	return date;
+}
+
+-(NSDate *)moveYear:(NSInteger)aYearDelta
+{
+	NSCalendar *calendar = [NSDate customCalendar];
+	NSDateComponents *components = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:self];
+	[components setYear:[components year] + aYearDelta];
+	NSDate *date = [calendar dateFromComponents:components];
+	return date;
+}
+
+- (NSString *)localizedStringWithDateStyle:(NSDateFormatterStyle)dstyle timeStyle:(NSDateFormatterStyle)tstyle
+{
+	NSDateFormatter *dateFormatter = [NSDate dateFormatter];
+	[dateFormatter setDateStyle:dstyle];
+	[dateFormatter setTimeStyle:tstyle];
+	return [dateFormatter stringFromDate:self];
+}
+
++ (NSDateFormatter *)dateFormatter
+{
+	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+	[dateFormatter setCalendar:[NSDate customCalendar]];
+	[dateFormatter setLocale:[[NSLocale alloc]initWithLocaleIdentifier:@"ru_RU"]];
+	return dateFormatter;
+}
+
+- (NSString *)localizedStringWithDateFormat:(NSString *)aDateFormat
+{
+	NSDateFormatter *dateFormatter = [NSDate dateFormatter];
+	[dateFormatter setDateFormat:aDateFormat];
+	return [dateFormatter stringFromDate:self];
 }
 
 @end
