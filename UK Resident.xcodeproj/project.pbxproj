@@ -32,6 +32,7 @@
 		845204E41AF1747300E535FD /* UKWarningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845204E31AF1747300E535FD /* UKWarningViewController.m */; };
 		845204EB1AF2AD5C00E535FD /* UKReportTopDiagramVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 845204EA1AF2AD5C00E535FD /* UKReportTopDiagramVC.m */; };
 		845204EE1AF3E83E00E535FD /* NSString+UKResident.m in Sources */ = {isa = PBXBuildFile; fileRef = 845204ED1AF3E83E00E535FD /* NSString+UKResident.m */; };
+		847F4C251AF451F700831F11 /* UKReportCenterMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 847F4C241AF451F700831F11 /* UKReportCenterMainView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,8 @@
 		845204EA1AF2AD5C00E535FD /* UKReportTopDiagramVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKReportTopDiagramVC.m; sourceTree = "<group>"; };
 		845204EC1AF3E83E00E535FD /* NSString+UKResident.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+UKResident.h"; sourceTree = "<group>"; };
 		845204ED1AF3E83E00E535FD /* NSString+UKResident.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+UKResident.m"; sourceTree = "<group>"; };
+		847F4C231AF451F700831F11 /* UKReportCenterMainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UKReportCenterMainView.h; sourceTree = "<group>"; };
+		847F4C241AF451F700831F11 /* UKReportCenterMainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKReportCenterMainView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +192,8 @@
 		845204B21AEA4D9D00E535FD /* VIEW */ = {
 			isa = PBXGroup;
 			children = (
+				847F4C231AF451F700831F11 /* UKReportCenterMainView.h */,
+				847F4C241AF451F700831F11 /* UKReportCenterMainView.m */,
 				845204BA1AEE63D500E535FD /* UKCalendarTableView.h */,
 				845204BB1AEE63D500E535FD /* UKCalendarTableView.m */,
 				845204B71AEE270700E535FD /* UKCalendarWeekCell.h */,
@@ -381,6 +386,7 @@
 				845204EB1AF2AD5C00E535FD /* UKReportTopDiagramVC.m in Sources */,
 				845204CC1AEFDA5E00E535FD /* NSDateFormatter+UKResident.m in Sources */,
 				845204B61AECFD4900E535FD /* UKCalendarTableViewController.m in Sources */,
+				847F4C251AF451F700831F11 /* UKReportCenterMainView.m in Sources */,
 				845204DB1AF1179200E535FD /* UKReportCenterCVC.m in Sources */,
 				845204C31AEEE70000E535FD /* NSDate+UKResident.m in Sources */,
 				845204E41AF1747300E535FD /* UKWarningViewController.m in Sources */,
@@ -588,6 +594,7 @@
 				845204AD1AEA4AD600E535FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		845204AE1AEA4AD600E535FD /* Build configuration list for PBXNativeTarget "UK ResidentTests" */ = {
 			isa = XCConfigurationList;
@@ -596,6 +603,7 @@
 				845204B01AEA4AD600E535FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
