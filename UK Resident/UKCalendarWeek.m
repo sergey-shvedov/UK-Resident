@@ -9,7 +9,28 @@
 #import "UKCalendarWeek.h"
 #import "NSDate+UKResident.h"
 
+@interface UKCalendarWeek ()
+
+@property (nonatomic, strong) NSArray *testTrips;
+
+@end
+
 @implementation UKCalendarWeek
+
+- (NSArray *)testTrips
+{
+	if (nil == _testTrips)
+	{
+		NSArray *array1 = [[NSArray alloc] initWithObjects:[NSDate dateFromMyString:@"25-05-2015"], [NSDate dateFromMyString:@"15-06-2015"], nil];
+		NSArray *array2 = [[NSArray alloc] initWithObjects:[NSDate dateFromMyString:@"02-02-2015"], [NSDate dateFromMyString:@"10-02-2015"], nil];
+		NSArray *array3 = [[NSArray alloc] initWithObjects:[NSDate dateFromMyString:@"20-08-2015"], [NSDate dateFromMyString:@"03-09-2015"], nil];
+		NSArray *array4 = [[NSArray alloc] initWithObjects:[NSDate dateFromMyString:@"07-12-2015"], [NSDate dateFromMyString:@"23-12-2015"], nil];
+		NSArray *array5 = [[NSArray alloc] initWithObjects:[NSDate dateFromMyString:@"10-03-2016"], [NSDate dateFromMyString:@"25-03-2016"], nil];
+		
+		_testTrips = [[NSArray alloc] initWithObjects:array1, array2, array3, array4, array5, nil];
+	}
+	return _testTrips;
+}
 
 - (instancetype)init
 {
@@ -116,6 +137,7 @@
 		//NSLog(@"%@", date);
 		
 		NSMutableArray *array = [[NSMutableArray alloc] init];
+		NSMutableArray *trips = [[NSMutableArray alloc] init];
 		
 		for (int i = 2; i <= 8; i++)
 		{
@@ -131,13 +153,23 @@
 			{
 				[array addObject:searchDate];
 				//NSLog(@"%@", searchDate);
+				if ([self isATripDate:searchDate])
+				{
+					[trips addObject:@(1)];
+				}
+				else
+				{
+					[trips addObject:[NSNull null]];
+				}
 			}
 			else
 			{
 				[array addObject:[NSNull null]];
+				[trips addObject:[NSNull null]];
 			}
 			
 			self.days = array;
+			self.tripDays = trips;
 		}
 
 
@@ -148,5 +180,25 @@
 	
 	return self;
 }
+
+- (BOOL)isATripDate:(NSDate *)aDate
+{
+	BOOL result = NO;
+	
+	for (NSArray *trip in self.testTrips)
+	{
+		NSDate *startTrip = (NSDate *)[trip objectAtIndex:0];
+		NSDate *endTrip = (NSDate *)[trip objectAtIndex:1];
+		if ((NSOrderedAscending == [startTrip compare:aDate]) && (NSOrderedAscending == [aDate compare:endTrip]))
+		{
+			result = YES;
+			break;
+		}
+	}
+	
+	return result;
+}
+
+
 
 @end

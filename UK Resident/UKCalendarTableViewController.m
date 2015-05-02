@@ -23,6 +23,8 @@
 @property (nonatomic, strong) NSDate *todayDate;
 @property (nonatomic, assign) NSInteger topYear;
 
+@property (nonatomic,strong) NSArray *testTrips;
+
 @end
 
 @implementation UKCalendarTableViewController
@@ -43,6 +45,21 @@
 	
 	NSDictionary *userInfo = [NSDictionary dictionaryWithObject:[NSNumber numberWithInteger:topYear] forKey:@"topYear"];
 	[[NSNotificationCenter defaultCenter] postNotificationName: @"TopYearChangedNotification" object:nil userInfo:userInfo];
+}
+
+- (NSArray *)testTrips
+{
+	if (nil == _testTrips)
+	{
+		NSArray *array1 = [[NSArray alloc] initWithObjects:[NSDate dateFromMyString:@"25-05-2015"], [NSDate dateFromMyString:@"15-06-2015"], nil];
+		NSArray *array2 = [[NSArray alloc] initWithObjects:[NSDate dateFromMyString:@"02-02-2015"], [NSDate dateFromMyString:@"10-02-2015"], nil];
+		NSArray *array3 = [[NSArray alloc] initWithObjects:[NSDate dateFromMyString:@"20-08-2015"], [NSDate dateFromMyString:@"03-09-2015"], nil];
+		NSArray *array4 = [[NSArray alloc] initWithObjects:[NSDate dateFromMyString:@"07-12-2015"], [NSDate dateFromMyString:@"23-12-2015"], nil];
+		NSArray *array5 = [[NSArray alloc] initWithObjects:[NSDate dateFromMyString:@"10-03-2016"], [NSDate dateFromMyString:@"25-03-2016"], nil];
+		
+		_testTrips = [[NSArray alloc] initWithObjects:array1, array2, array3, array4, array5, nil];
+	}
+	return _testTrips;
 }
 
 - (void)calendarTableViewWillRecenterTo:(NSInteger)aRowNumber
@@ -117,6 +134,8 @@
 		((UKCalendarWeekCell *)cell).mark = (int)(indexPath.row + self.currentCenter);
 		//UKCalendarWeek *week = [[UKCalendarWeek alloc] initWithWeekDelta:(searchMonth * 6 + searchWeek) fromDate:self.todayDate];
 		UKCalendarWeek *week = [[UKCalendarWeek alloc] initWithMonthDelta:searchMonth andWeekOfMonth:searchWeek fromDate:self.todayDate];
+		
+		
 		((UKCalendarWeekCell *)cell).week = week;
 	}
 

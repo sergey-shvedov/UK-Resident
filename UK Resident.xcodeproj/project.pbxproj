@@ -33,6 +33,11 @@
 		845204EB1AF2AD5C00E535FD /* UKReportTopDiagramVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 845204EA1AF2AD5C00E535FD /* UKReportTopDiagramVC.m */; };
 		845204EE1AF3E83E00E535FD /* NSString+UKResident.m in Sources */ = {isa = PBXBuildFile; fileRef = 845204ED1AF3E83E00E535FD /* NSString+UKResident.m */; };
 		847F4C251AF451F700831F11 /* UKReportCenterMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 847F4C241AF451F700831F11 /* UKReportCenterMainView.m */; };
+		847F4C281AF5311500831F11 /* CALayer+RuntimeAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 847F4C271AF5311500831F11 /* CALayer+RuntimeAttributes.m */; };
+		847F4C2B1AF553FD00831F11 /* UKTripAddFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847F4C2A1AF553FD00831F11 /* UKTripAddFormViewController.m */; };
+		847F4C2E1AF5543F00831F11 /* FormButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 847F4C2D1AF5543F00831F11 /* FormButton.m */; };
+		847F4C311AF554A400831F11 /* UIColor+UKResident.m in Sources */ = {isa = PBXBuildFile; fileRef = 847F4C301AF554A400831F11 /* UIColor+UKResident.m */; };
+		847F4C341AF55FB400831F11 /* UKTripFormTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847F4C331AF55FB400831F11 /* UKTripFormTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +101,16 @@
 		845204ED1AF3E83E00E535FD /* NSString+UKResident.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+UKResident.m"; sourceTree = "<group>"; };
 		847F4C231AF451F700831F11 /* UKReportCenterMainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UKReportCenterMainView.h; sourceTree = "<group>"; };
 		847F4C241AF451F700831F11 /* UKReportCenterMainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKReportCenterMainView.m; sourceTree = "<group>"; };
+		847F4C261AF5311500831F11 /* CALayer+RuntimeAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+RuntimeAttributes.h"; sourceTree = "<group>"; };
+		847F4C271AF5311500831F11 /* CALayer+RuntimeAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+RuntimeAttributes.m"; sourceTree = "<group>"; };
+		847F4C291AF553FD00831F11 /* UKTripAddFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UKTripAddFormViewController.h; sourceTree = "<group>"; };
+		847F4C2A1AF553FD00831F11 /* UKTripAddFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKTripAddFormViewController.m; sourceTree = "<group>"; };
+		847F4C2C1AF5543F00831F11 /* FormButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormButton.h; sourceTree = "<group>"; };
+		847F4C2D1AF5543F00831F11 /* FormButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormButton.m; sourceTree = "<group>"; };
+		847F4C2F1AF554A400831F11 /* UIColor+UKResident.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+UKResident.h"; sourceTree = "<group>"; };
+		847F4C301AF554A400831F11 /* UIColor+UKResident.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+UKResident.m"; sourceTree = "<group>"; };
+		847F4C321AF55FB400831F11 /* UKTripFormTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UKTripFormTableViewController.h; sourceTree = "<group>"; };
+		847F4C331AF55FB400831F11 /* UKTripFormTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKTripFormTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +207,8 @@
 		845204B21AEA4D9D00E535FD /* VIEW */ = {
 			isa = PBXGroup;
 			children = (
+				847F4C2C1AF5543F00831F11 /* FormButton.h */,
+				847F4C2D1AF5543F00831F11 /* FormButton.m */,
 				847F4C231AF451F700831F11 /* UKReportCenterMainView.h */,
 				847F4C241AF451F700831F11 /* UKReportCenterMainView.m */,
 				845204BA1AEE63D500E535FD /* UKCalendarTableView.h */,
@@ -218,6 +235,10 @@
 		845204C01AEEE69B00E535FD /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				847F4C2F1AF554A400831F11 /* UIColor+UKResident.h */,
+				847F4C301AF554A400831F11 /* UIColor+UKResident.m */,
+				847F4C261AF5311500831F11 /* CALayer+RuntimeAttributes.h */,
+				847F4C271AF5311500831F11 /* CALayer+RuntimeAttributes.m */,
 				845204EC1AF3E83E00E535FD /* NSString+UKResident.h */,
 				845204ED1AF3E83E00E535FD /* NSString+UKResident.m */,
 				845204D01AF0F5E000E535FD /* UIButton+UKRecord.h */,
@@ -261,6 +282,10 @@
 		845204E71AF174BF00E535FD /* TRIP */ = {
 			isa = PBXGroup;
 			children = (
+				847F4C321AF55FB400831F11 /* UKTripFormTableViewController.h */,
+				847F4C331AF55FB400831F11 /* UKTripFormTableViewController.m */,
+				847F4C291AF553FD00831F11 /* UKTripAddFormViewController.h */,
+				847F4C2A1AF553FD00831F11 /* UKTripAddFormViewController.m */,
 				845204DF1AF1743F00E535FD /* UKTripViewController.h */,
 				845204E01AF1743F00E535FD /* UKTripViewController.m */,
 			);
@@ -380,17 +405,22 @@
 				8452048B1AEA4AD600E535FD /* main.m in Sources */,
 				845204911AEA4AD600E535FD /* UK_Resident.xcdatamodeld in Sources */,
 				845204E11AF1743F00E535FD /* UKTripViewController.m in Sources */,
+				847F4C2E1AF5543F00831F11 /* FormButton.m in Sources */,
 				845204BF1AEECE2C00E535FD /* UKCalendarUnit.m in Sources */,
+				847F4C341AF55FB400831F11 /* UKTripFormTableViewController.m in Sources */,
 				845204EE1AF3E83E00E535FD /* NSString+UKResident.m in Sources */,
 				845204BC1AEE63D500E535FD /* UKCalendarTableView.m in Sources */,
 				845204EB1AF2AD5C00E535FD /* UKReportTopDiagramVC.m in Sources */,
 				845204CC1AEFDA5E00E535FD /* NSDateFormatter+UKResident.m in Sources */,
 				845204B61AECFD4900E535FD /* UKCalendarTableViewController.m in Sources */,
 				847F4C251AF451F700831F11 /* UKReportCenterMainView.m in Sources */,
+				847F4C2B1AF553FD00831F11 /* UKTripAddFormViewController.m in Sources */,
+				847F4C311AF554A400831F11 /* UIColor+UKResident.m in Sources */,
 				845204DB1AF1179200E535FD /* UKReportCenterCVC.m in Sources */,
 				845204C31AEEE70000E535FD /* NSDate+UKResident.m in Sources */,
 				845204E41AF1747300E535FD /* UKWarningViewController.m in Sources */,
 				845204D81AF1176C00E535FD /* UKReportBottomCVC.m in Sources */,
+				847F4C281AF5311500831F11 /* CALayer+RuntimeAttributes.m in Sources */,
 				845204D51AF0FFD500E535FD /* UKReportViewController.m in Sources */,
 				845204C61AEF004900E535FD /* UKCalendarWeek.m in Sources */,
 				845204C91AEFD3BB00E535FD /* UKCalendarMonthCell.m in Sources */,

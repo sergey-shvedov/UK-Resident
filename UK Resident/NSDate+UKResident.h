@@ -32,6 +32,9 @@
 - (NSDate *)moveYear:(NSInteger)aYearDelta;
 - (NSDate *)moveDay:(NSInteger)aDayDelta;
 
+- (BOOL)isTheSameDayWith:(NSDate *)aSecondDate;
+- (BOOL)isToday;
+
 - (NSString *)localizedStringWithDateStyle:(NSDateFormatterStyle)dstyle timeStyle:(NSDateFormatterStyle)tstyle;
 - (NSString *)localizedStringWithDateFormat:(NSString *)aDateFormat;
 

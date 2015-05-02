@@ -141,6 +141,18 @@
 	return date;
 }
 
+- (BOOL)isTheSameDayWith:(NSDate *)aSecondDate
+{
+	NSCalendar *calendar = [NSDate customCalendar];
+	return [calendar isDate:self inSameDayAsDate:aSecondDate];
+}
+
+- (BOOL)isToday
+{
+	NSCalendar *calendar = [NSDate customCalendar];
+	return [calendar isDateInToday:self];
+}
+
 - (NSString *)localizedStringWithDateStyle:(NSDateFormatterStyle)dstyle timeStyle:(NSDateFormatterStyle)tstyle
 {
 	NSDateFormatter *dateFormatter = [NSDate dateFormatter];
