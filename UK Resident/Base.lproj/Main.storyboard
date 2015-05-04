@@ -66,7 +66,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <segue destination="7rx-PN-vbc" kind="modal" id="wkV-q5-3hL"/>
+                                    <segue destination="7rx-PN-vbc" kind="presentation" id="wkV-q5-3hL"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -89,12 +89,12 @@
                                 <exclude reference="zQe-TO-btb"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="Lqw-XQ-sEV"/>
-                                <exclude reference="TiS-Nk-uD3"/>
-                                <exclude reference="ppB-l7-RMl"/>
                                 <exclude reference="7DJ-NN-TVN"/>
                                 <exclude reference="lOc-ce-2MT"/>
                                 <exclude reference="uUr-jR-EZH"/>
+                                <exclude reference="Lqw-XQ-sEV"/>
+                                <exclude reference="TiS-Nk-uD3"/>
+                                <exclude reference="ppB-l7-RMl"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
@@ -103,12 +103,12 @@
                                 <include reference="zQe-TO-btb"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="Lqw-XQ-sEV"/>
-                                <include reference="TiS-Nk-uD3"/>
-                                <include reference="ppB-l7-RMl"/>
                                 <include reference="7DJ-NN-TVN"/>
                                 <include reference="lOc-ce-2MT"/>
                                 <include reference="uUr-jR-EZH"/>
+                                <include reference="Lqw-XQ-sEV"/>
+                                <include reference="TiS-Nk-uD3"/>
+                                <include reference="ppB-l7-RMl"/>
                             </mask>
                         </variation>
                     </view>
@@ -1648,7 +1648,8 @@
                                                             <constraint firstAttribute="width" constant="190" id="bv7-oh-v6d"/>
                                                             <constraint firstAttribute="height" constant="28" id="jUs-c4-IbL"/>
                                                         </constraints>
-                                                        <string key="text">С даты начала учета 247 из 421 днейпроведены в UK </string>
+                                                        <string key="text">С даты начала учета 247 из 421 дней
+проведены в UK </string>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
@@ -2211,9 +2212,9 @@
                                                                                 <exclude reference="Tcw-wx-FJk"/>
                                                                                 <exclude reference="aJi-sZ-Atr"/>
                                                                                 <exclude reference="yG4-70-6lf"/>
+                                                                                <exclude reference="s4d-B8-hGf"/>
                                                                                 <exclude reference="Jpx-Jh-b07"/>
                                                                                 <exclude reference="XQB-ai-AuL"/>
-                                                                                <exclude reference="s4d-B8-hGf"/>
                                                                                 <exclude reference="1CK-u6-VWx"/>
                                                                                 <exclude reference="jaA-el-kTu"/>
                                                                             </mask>
@@ -2231,9 +2232,9 @@
                                                                                 <include reference="Tcw-wx-FJk"/>
                                                                                 <include reference="aJi-sZ-Atr"/>
                                                                                 <include reference="yG4-70-6lf"/>
+                                                                                <include reference="s4d-B8-hGf"/>
                                                                                 <include reference="Jpx-Jh-b07"/>
                                                                                 <include reference="XQB-ai-AuL"/>
-                                                                                <include reference="s4d-B8-hGf"/>
                                                                                 <include reference="1CK-u6-VWx"/>
                                                                                 <include reference="jaA-el-kTu"/>
                                                                             </mask>
@@ -2246,7 +2247,8 @@
                                                                                 <variation key="heightClass=regular-widthClass=regular" constant="270"/>
                                                                             </constraint>
                                                                         </constraints>
-                                                                        <string key="text">На 14 дней можно запланировать поездкус 20 апреля.</string>
+                                                                        <string key="text">На 14 дней можно запланировать поездку
+с 20 апреля.</string>
                                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                                                         <color key="textColor" red="0.17254901959999999" green="0.25490196079999999" blue="0.56078431370000004" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <nil key="highlightedColor"/>
@@ -2306,14 +2308,14 @@
                                                                     <mask key="constraints">
                                                                         <exclude reference="QHn-Uk-lfV"/>
                                                                         <exclude reference="Ve8-tV-QSl"/>
-                                                                        <exclude reference="6Je-du-g8A"/>
-                                                                        <exclude reference="Ev8-Wr-xfR"/>
-                                                                        <exclude reference="qA5-27-DTp"/>
-                                                                        <exclude reference="aOG-mn-aJp"/>
                                                                         <exclude reference="1Br-o4-aSB"/>
                                                                         <exclude reference="gC3-f9-hT3"/>
+                                                                        <exclude reference="aOG-mn-aJp"/>
+                                                                        <exclude reference="qA5-27-DTp"/>
                                                                         <exclude reference="ZaQ-ZR-MzQ"/>
                                                                         <exclude reference="gDY-Wx-4nz"/>
+                                                                        <exclude reference="6Je-du-g8A"/>
+                                                                        <exclude reference="Ev8-Wr-xfR"/>
                                                                     </mask>
                                                                 </variation>
                                                                 <variation key="heightClass=regular-widthClass=regular">
@@ -2326,14 +2328,14 @@
                                                                     <mask key="constraints">
                                                                         <include reference="QHn-Uk-lfV"/>
                                                                         <include reference="Ve8-tV-QSl"/>
-                                                                        <include reference="6Je-du-g8A"/>
-                                                                        <include reference="Ev8-Wr-xfR"/>
-                                                                        <include reference="qA5-27-DTp"/>
-                                                                        <include reference="aOG-mn-aJp"/>
                                                                         <include reference="1Br-o4-aSB"/>
                                                                         <include reference="gC3-f9-hT3"/>
+                                                                        <include reference="aOG-mn-aJp"/>
+                                                                        <include reference="qA5-27-DTp"/>
                                                                         <include reference="ZaQ-ZR-MzQ"/>
                                                                         <include reference="gDY-Wx-4nz"/>
+                                                                        <include reference="6Je-du-g8A"/>
+                                                                        <include reference="Ev8-Wr-xfR"/>
                                                                     </mask>
                                                                 </variation>
                                                             </view>
@@ -2395,10 +2397,10 @@
                                                                             <mask key="constraints">
                                                                                 <exclude reference="84N-sj-939"/>
                                                                                 <exclude reference="zaV-aN-Nym"/>
-                                                                                <exclude reference="8Tf-o9-Hjc"/>
-                                                                                <exclude reference="r7e-M2-vUo"/>
                                                                                 <exclude reference="cJS-ER-rjy"/>
                                                                                 <exclude reference="cfT-pJ-c37"/>
+                                                                                <exclude reference="8Tf-o9-Hjc"/>
+                                                                                <exclude reference="r7e-M2-vUo"/>
                                                                             </mask>
                                                                         </variation>
                                                                         <variation key="heightClass=regular-widthClass=regular">
@@ -2409,10 +2411,10 @@
                                                                             <mask key="constraints">
                                                                                 <include reference="84N-sj-939"/>
                                                                                 <include reference="zaV-aN-Nym"/>
-                                                                                <include reference="8Tf-o9-Hjc"/>
-                                                                                <include reference="r7e-M2-vUo"/>
                                                                                 <include reference="cJS-ER-rjy"/>
                                                                                 <include reference="cfT-pJ-c37"/>
+                                                                                <include reference="8Tf-o9-Hjc"/>
+                                                                                <include reference="r7e-M2-vUo"/>
                                                                             </mask>
                                                                         </variation>
                                                                     </view>
@@ -2484,14 +2486,14 @@
                                                                     <mask key="constraints">
                                                                         <exclude reference="J7G-fU-Mbz"/>
                                                                         <exclude reference="yn8-16-FNR"/>
-                                                                        <exclude reference="I32-lk-x6u"/>
-                                                                        <exclude reference="MTP-Xw-ac9"/>
+                                                                        <exclude reference="e57-F8-iut"/>
+                                                                        <exclude reference="jcW-wM-pTl"/>
                                                                         <exclude reference="L3T-9J-M7R"/>
                                                                         <exclude reference="klg-mi-VIV"/>
                                                                         <exclude reference="BIJ-hx-bf0"/>
                                                                         <exclude reference="gBG-Ux-aMR"/>
-                                                                        <exclude reference="e57-F8-iut"/>
-                                                                        <exclude reference="jcW-wM-pTl"/>
+                                                                        <exclude reference="I32-lk-x6u"/>
+                                                                        <exclude reference="MTP-Xw-ac9"/>
                                                                     </mask>
                                                                 </variation>
                                                                 <variation key="heightClass=regular-widthClass=regular">
@@ -2504,14 +2506,14 @@
                                                                     <mask key="constraints">
                                                                         <include reference="J7G-fU-Mbz"/>
                                                                         <include reference="yn8-16-FNR"/>
-                                                                        <include reference="I32-lk-x6u"/>
-                                                                        <include reference="MTP-Xw-ac9"/>
+                                                                        <include reference="e57-F8-iut"/>
+                                                                        <include reference="jcW-wM-pTl"/>
                                                                         <include reference="L3T-9J-M7R"/>
                                                                         <include reference="klg-mi-VIV"/>
                                                                         <include reference="BIJ-hx-bf0"/>
                                                                         <include reference="gBG-Ux-aMR"/>
-                                                                        <include reference="e57-F8-iut"/>
-                                                                        <include reference="jcW-wM-pTl"/>
+                                                                        <include reference="I32-lk-x6u"/>
+                                                                        <include reference="MTP-Xw-ac9"/>
                                                                     </mask>
                                                                 </variation>
                                                             </view>
@@ -2538,10 +2540,10 @@
                                                             <mask key="constraints">
                                                                 <exclude reference="Zoy-Bb-zXp"/>
                                                                 <exclude reference="poa-HM-N50"/>
-                                                                <exclude reference="AsY-SD-Dix"/>
-                                                                <exclude reference="rk1-0C-lOK"/>
                                                                 <exclude reference="Akk-Na-bh6"/>
                                                                 <exclude reference="dQh-G0-BcA"/>
+                                                                <exclude reference="AsY-SD-Dix"/>
+                                                                <exclude reference="rk1-0C-lOK"/>
                                                             </mask>
                                                         </variation>
                                                         <variation key="heightClass=regular-widthClass=regular">
@@ -2552,10 +2554,10 @@
                                                             <mask key="constraints">
                                                                 <include reference="Zoy-Bb-zXp"/>
                                                                 <include reference="poa-HM-N50"/>
-                                                                <include reference="AsY-SD-Dix"/>
-                                                                <include reference="rk1-0C-lOK"/>
                                                                 <include reference="Akk-Na-bh6"/>
                                                                 <include reference="dQh-G0-BcA"/>
+                                                                <include reference="AsY-SD-Dix"/>
+                                                                <include reference="rk1-0C-lOK"/>
                                                             </mask>
                                                         </variation>
                                                     </view>
@@ -2586,14 +2588,14 @@
                                                     <mask key="constraints">
                                                         <exclude reference="Io4-he-6TA"/>
                                                         <exclude reference="TJl-4L-H4T"/>
-                                                        <exclude reference="h6c-9U-dfv"/>
-                                                        <exclude reference="wUc-H9-vtK"/>
                                                         <exclude reference="14f-VN-eRU"/>
                                                         <exclude reference="8Gv-pF-S7m"/>
                                                         <exclude reference="AsZ-yZ-rDz"/>
                                                         <exclude reference="Ssx-Jd-3q2"/>
                                                         <exclude reference="iIE-Vr-Fpt"/>
                                                         <exclude reference="rS6-Tk-CmB"/>
+                                                        <exclude reference="h6c-9U-dfv"/>
+                                                        <exclude reference="wUc-H9-vtK"/>
                                                     </mask>
                                                 </variation>
                                                 <variation key="heightClass=regular-widthClass=regular">
@@ -2604,14 +2606,14 @@
                                                     <mask key="constraints">
                                                         <exclude reference="Io4-he-6TA"/>
                                                         <exclude reference="TJl-4L-H4T"/>
-                                                        <include reference="h6c-9U-dfv"/>
-                                                        <include reference="wUc-H9-vtK"/>
                                                         <exclude reference="14f-VN-eRU"/>
                                                         <include reference="8Gv-pF-S7m"/>
                                                         <exclude reference="AsZ-yZ-rDz"/>
                                                         <exclude reference="Ssx-Jd-3q2"/>
                                                         <include reference="iIE-Vr-Fpt"/>
                                                         <exclude reference="rS6-Tk-CmB"/>
+                                                        <include reference="h6c-9U-dfv"/>
+                                                        <include reference="wUc-H9-vtK"/>
                                                     </mask>
                                                 </variation>
                                             </view>
@@ -3035,6 +3037,6 @@
         <image name="warningOkIcon" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wyX-WE-Wmu"/>
+        <segue reference="wkV-q5-3hL"/>
     </inferredMetricsTieBreakers>
 </document>

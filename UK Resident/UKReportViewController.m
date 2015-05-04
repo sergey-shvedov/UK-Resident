@@ -90,8 +90,6 @@
 	[rightButton sizeToFit];
 	[rightButtonView addSubview:rightButton];
 	
-	NSLog(@"%f", rightButton.titleLabel.frame.size.width);
-	
 	UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc]initWithCustomView:rightButtonView];
 	self.navigationItem.rightBarButtonItem = rightBarButton;
 	

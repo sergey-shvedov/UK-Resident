@@ -74,8 +74,6 @@
 		UIButton *button = (UIButton *)sender;
 		if (nil != button.buttonDate)
 		{
-			NSLog(@"%@ = %li", button.buttonDate, (long)[button.buttonDate dayComponent]);
-			
 			id detailvc=[self.splitViewController.viewControllers lastObject];
 			if ([detailvc isKindOfClass:[UITabBarController class]])
 			{
