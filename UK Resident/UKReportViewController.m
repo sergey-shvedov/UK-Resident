@@ -50,9 +50,9 @@
 {
 	[super viewDidLoad];
 	self.navigationController.tabBarItem.selectedImage = [UIImage imageNamed:@"tabBarIconReportSelected"];
-	self.date = [[NSDate date] normalization];
-	
 	[self mountBarButtons];
+	
+	self.date = [[NSDate date] normalization];
 	//[self updateUI];
 }
 
