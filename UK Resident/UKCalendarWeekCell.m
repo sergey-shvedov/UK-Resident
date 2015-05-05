@@ -29,7 +29,7 @@
 - (void)layoutSubviews
 {
 	NSArray *buttons = @[self.day01, self.day02, self.day03, self.day04, self.day05, self.day06, self.day07];
-	//[self.day01 setTitle:[NSString stringWithFormat:@"%i", (int)self.mark] forState:UIControlStateNormal];
+
 	for (int i = 0 ; i < 7; i++)
 	{
 		UIButton *button = (UIButton *)[buttons objectAtIndex:i];

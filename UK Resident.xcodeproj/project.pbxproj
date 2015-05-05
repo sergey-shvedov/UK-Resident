@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		840A817C1AF812BA0025BC6C /* UKLibraryAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 840A817B1AF812BA0025BC6C /* UKLibraryAPI.m */; };
 		8452048B1AEA4AD600E535FD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8452048A1AEA4AD600E535FD /* main.m */; };
 		8452048E1AEA4AD600E535FD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8452048D1AEA4AD600E535FD /* AppDelegate.m */; };
 		845204911AEA4AD600E535FD /* UK_Resident.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8452048F1AEA4AD600E535FD /* UK_Resident.xcdatamodeld */; };
@@ -51,6 +52,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		840A817A1AF812BA0025BC6C /* UKLibraryAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UKLibraryAPI.h; sourceTree = "<group>"; };
+		840A817B1AF812BA0025BC6C /* UKLibraryAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKLibraryAPI.m; sourceTree = "<group>"; };
 		845204851AEA4AD600E535FD /* UK Resident.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UK Resident.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		845204891AEA4AD600E535FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8452048A1AEA4AD600E535FD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -224,6 +227,8 @@
 		845204B31AEA4DA500E535FD /* MODEL */ = {
 			isa = PBXGroup;
 			children = (
+				840A817A1AF812BA0025BC6C /* UKLibraryAPI.h */,
+				840A817B1AF812BA0025BC6C /* UKLibraryAPI.m */,
 				845204BD1AEECE2C00E535FD /* UKCalendarUnit.h */,
 				845204BE1AEECE2C00E535FD /* UKCalendarUnit.m */,
 				845204C41AEF004900E535FD /* UKCalendarWeek.h */,
@@ -425,6 +430,7 @@
 				845204C61AEF004900E535FD /* UKCalendarWeek.m in Sources */,
 				845204C91AEFD3BB00E535FD /* UKCalendarMonthCell.m in Sources */,
 				845204CF1AF03CA800E535FD /* UKMasterViewController.m in Sources */,
+				840A817C1AF812BA0025BC6C /* UKLibraryAPI.m in Sources */,
 				845204DE1AF117BD00E535FD /* UKReportTopCVC.m in Sources */,
 				845204D21AF0F5E000E535FD /* UIButton+UKRecord.m in Sources */,
 				845204B91AEE270700E535FD /* UKCalendarWeekCell.m in Sources */,

@@ -7,14 +7,15 @@
 //
 
 #import "NSDate+UKResident.h"
+#import "UKLibraryAPI.h"
 
 @implementation NSDate (UKResident)
 
 + (NSCalendar *)customCalendar
 {
-	NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-	[gregorian setFirstWeekday:2];
-	return gregorian;
+	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
+	
+	return library.customCalendar;
 }
 
 + (NSDate *)dateFromMyString:(NSString *)aDateString

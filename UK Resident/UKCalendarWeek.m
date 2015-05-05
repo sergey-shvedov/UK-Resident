@@ -8,29 +8,13 @@
 
 #import "UKCalendarWeek.h"
 #import "NSDate+UKResident.h"
+#import "UKLibraryAPI.h"
 
 @interface UKCalendarWeek ()
-
-@property (nonatomic, strong) NSArray *testTrips;
 
 @end
 
 @implementation UKCalendarWeek
-
-- (NSArray *)testTrips
-{
-	if (nil == _testTrips)
-	{
-		NSArray *array1 = [[NSArray alloc] initWithObjects:[NSDate dateFromMyString:@"25-05-2015"], [NSDate dateFromMyString:@"15-06-2015"], nil];
-		NSArray *array2 = [[NSArray alloc] initWithObjects:[NSDate dateFromMyString:@"02-02-2015"], [NSDate dateFromMyString:@"10-02-2015"], nil];
-		NSArray *array3 = [[NSArray alloc] initWithObjects:[NSDate dateFromMyString:@"20-08-2015"], [NSDate dateFromMyString:@"03-09-2015"], nil];
-		NSArray *array4 = [[NSArray alloc] initWithObjects:[NSDate dateFromMyString:@"07-12-2015"], [NSDate dateFromMyString:@"23-12-2015"], nil];
-		NSArray *array5 = [[NSArray alloc] initWithObjects:[NSDate dateFromMyString:@"10-03-2016"], [NSDate dateFromMyString:@"25-03-2016"], nil];
-		
-		_testTrips = [[NSArray alloc] initWithObjects:array1, array2, array3, array4, array5, nil];
-	}
-	return _testTrips;
-}
 
 - (instancetype)init
 {
@@ -96,7 +80,9 @@
 {
 	BOOL result = NO;
 	
-	for (NSArray *trip in self.testTrips)
+	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
+	
+	for (NSArray *trip in library.testTrips)
 	{
 		NSDate *startTrip = (NSDate *)[trip objectAtIndex:0];
 		NSDate *endTrip = (NSDate *)[trip objectAtIndex:1];
