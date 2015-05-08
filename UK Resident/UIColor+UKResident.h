@@ -32,4 +32,9 @@
 + (UIColor *)colorCalendarWorkDay;
 + (UIColor *)colorCalendarWeekend;
 
++ (UIColor *)colorLeftGraphMain;
++ (UIColor *)colorLeftGraphBackground;
++ (UIColor *)colorRightGraphMain;
++ (UIColor *)colorRightGraphBackground;
+
 @end

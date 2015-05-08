@@ -8,7 +8,9 @@
 
 #import "UKReportTopCVC.h"
 #import "UKReportTopDiagramVC.h"
+#import "GraphRoundView.h"
 #import "NSDate+UKResident.h"
+#import "UIColor+UKResident.h"
 
 @interface UKReportTopCVC ()
 
@@ -17,6 +19,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *dayLabel;
 @property (weak, nonatomic) IBOutlet UILabel *monthLabel;
 @property (weak, nonatomic) IBOutlet UILabel *yearLabel;
+
+@property (weak, nonatomic) IBOutlet UIView *leftGraphView;
+@property (weak, nonatomic) IBOutlet UIView *rightGraphView;
 
 @end
 
@@ -41,6 +46,19 @@
 	[self.monthLabel setText:[self.date localizedStringWithDateFormat:@"MMMM"]];
 	[self.yearLabel setText:[self.date localizedStringWithDateFormat:@"YYYY"]];
 	
+	[self updateGraphs];
+}
+
+- (void)updateGraphs
+{
+	[self.leftGraphView.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
+	[self.rightGraphView.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
+	
+	GraphRoundView *leftGraphView = [[GraphRoundView alloc] initWithSegment:[self.date dayComponent]/31. withFrame:CGRectMake(0., 0., 56, 56) withBackgrondColor:[UIColor colorLeftGraphBackground] andMainColor:[UIColor colorLeftGraphMain]];
+	[self.leftGraphView addSubview:leftGraphView];
+	
+	GraphRoundView *rightGraphView = [[GraphRoundView alloc] initWithSegment:(1-[self.date dayComponent]/31.) withFrame:CGRectMake(0., 0., 56, 56) withBackgrondColor:[UIColor colorRightGraphBackground] andMainColor:[UIColor colorRightGraphMain]];
+	[self.rightGraphView addSubview:rightGraphView];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

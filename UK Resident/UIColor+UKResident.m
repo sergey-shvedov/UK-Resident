@@ -103,4 +103,26 @@
 	return [UIColor colorWithRed:170.0/255.0 green:170.0/255.0 blue:170.0/255.0 alpha:1.0];
 }
 
+////////////////////////////////////////////////
+
++ (UIColor *)colorLeftGraphMain
+{
+	return [UIColor colorWithRed:67.0/255.0 green:213.0/255.0 blue:81.0/255.0 alpha:1.0];
+}
+
++ (UIColor *)colorLeftGraphBackground
+{
+	return [UIColor colorWithRed:42.0/255.0 green:135.0/255.0 blue:195.0/255.0 alpha:1.0];
+}
+
++ (UIColor *)colorRightGraphMain
+{
+	return [UIColor whiteColor];
+}
+
++ (UIColor *)colorRightGraphBackground
+{
+	return [UIColor colorWithRed:44.0/255.0 green:153.0/255.0 blue:215.0/255.0 alpha:1.0];
+}
+
 @end
