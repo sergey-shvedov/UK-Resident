@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface FormButton : UIButton
+
 @property (strong,nonatomic) UILabel *textLabel;
 @property (strong,nonatomic) UILabel *backgroundLabel;
 @property (nonatomic) BOOL isNeedEdit;
 @property (nonatomic) BOOL isCancel;
+
 - (void)setText:(NSString *)text withIsNeedEdit:(BOOL)isNeedEdit ansIsCancel:(BOOL)isCancel;
 
 @end
