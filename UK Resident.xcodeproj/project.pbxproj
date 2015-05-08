@@ -54,7 +54,7 @@
 /* Begin PBXFileReference section */
 		840A817A1AF812BA0025BC6C /* UKLibraryAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UKLibraryAPI.h; sourceTree = "<group>"; };
 		840A817B1AF812BA0025BC6C /* UKLibraryAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKLibraryAPI.m; sourceTree = "<group>"; };
-		845204851AEA4AD600E535FD /* UK Resident.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UK Resident.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		845204851AEA4AD600E535FD /* uk-resident.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "uk-resident.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		845204891AEA4AD600E535FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8452048A1AEA4AD600E535FD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8452048C1AEA4AD600E535FD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -146,7 +146,7 @@
 		845204861AEA4AD600E535FD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				845204851AEA4AD600E535FD /* UK Resident.app */,
+				845204851AEA4AD600E535FD /* uk-resident.app */,
 				845204A11AEA4AD600E535FD /* UK ResidentTests.xctest */,
 			);
 			name = Products;
@@ -323,7 +323,7 @@
 			);
 			name = "UK Resident";
 			productName = "UK Resident";
-			productReference = 845204851AEA4AD600E535FD /* UK Resident.app */;
+			productReference = 845204851AEA4AD600E535FD /* uk-resident.app */;
 			productType = "com.apple.product-type.application";
 		};
 		845204A01AEA4AD600E535FD /* UK ResidentTests */ = {
@@ -355,6 +355,7 @@
 				TargetAttributes = {
 					845204841AEA4AD600E535FD = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = YHHUWZGPYT;
 					};
 					845204A01AEA4AD600E535FD = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -561,9 +562,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "UK Resident/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "uk-resident";
+				PROVISIONING_PROFILE = "2b07b1d9-cfd4-4163-9544-58bd12cd8c0c";
 			};
 			name = Debug;
 		};
@@ -571,9 +575,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				INFOPLIST_FILE = "UK Resident/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "uk-resident";
+				PROVISIONING_PROFILE = "2b07b1d9-cfd4-4163-9544-58bd12cd8c0c";
 			};
 			name = Release;
 		};

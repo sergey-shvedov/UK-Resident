@@ -31,7 +31,7 @@
 		NSDateComponents* components = [calendar components:NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitWeekOfMonth | NSCalendarUnitWeekday fromDate:aDate];
 		
 		[components setMonth:[components month] + aMonthDelta];
-		NSInteger searchMonth = [components month];
+		//NSInteger searchMonth = [components month];
 		[components setWeekOfMonth:aWeekOfMonth];
 		
 
