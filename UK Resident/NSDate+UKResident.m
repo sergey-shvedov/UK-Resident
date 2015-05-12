@@ -133,6 +133,34 @@
 	return date;
 }
 
+- (NSDate *)startOfYear
+{
+	NSDate *date = nil;
+	NSCalendar *calendar = [NSDate customCalendar];
+	NSDateComponents *components = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond) fromDate:self];
+	[components setMonth:1];
+	[components setDay:1];
+	[components setHour:0];
+	[components setMinute:0];
+	[components setSecond:0];
+	date = [calendar dateFromComponents:components];
+	return date;
+}
+
+- (NSDate *)endOfYear
+{
+	NSDate *date = nil;
+	NSCalendar *calendar = [NSDate customCalendar];
+	NSDateComponents *components = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond) fromDate:self];
+	[components setMonth:12];
+	[components setDay:31];
+	[components setHour:23];
+	[components setMinute:59];
+	[components setSecond:59];
+	date = [calendar dateFromComponents:components];
+	return date;
+}
+
 - (NSDate *)addWeekDelta:(NSInteger)aWeekDelta
 {
 	NSDateComponents *components = [[NSDateComponents alloc] init];

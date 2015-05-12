@@ -29,6 +29,8 @@
 - (NSDate *)normalization;
 - (NSDate *)startOfDay;
 - (NSDate *)endOfDay;
+- (NSDate *)startOfYear;
+- (NSDate *)endOfYear;
 - (NSDate *)addWeekDelta:(NSInteger)aWeekDelta;
 - (NSDate *)moveMonth:(NSInteger)aMonthDelta;
 - (NSDate *)moveYear:(NSInteger)aYearDelta;

@@ -8,6 +8,8 @@
 
 #import "UKReportTopDiagramVC.h"
 #import "NSDate+UKResident.h"
+#import "AppDelegate.h"
+#import "Trip.h"
 
 @interface UKReportTopDiagramVC ()
 
@@ -89,8 +91,6 @@
 
 	[self.view addSubview:initialDateLabel];
 	self.initialDateLabel = initialDateLabel;
-	
-	
 }
 
 - (void)updateUI
@@ -99,7 +99,7 @@
 	self.yearBorderBottom.center = [self pointForDate:self.initialDate withXDelra:5];
 	self.yearBorderTop.center = [self pointForDate:[self.initialDate moveYear:5] withXDelra:-5];
 	[self createShadingOutsideBordings];
-	[self createTestTripsViews];
+	[self createTripsViews];
 	[self createLightingForVisaYear];
 	
 	[self.initialDateLabel setText:[self.initialDate localizedStringWithDateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterNoStyle]];
@@ -158,6 +158,45 @@
 	}
 }
 
+- (void)createTripsViews
+{
+	for (UIView *view in self.tripsViews)
+	{
+		[view removeFromSuperview];
+	}
+	[self.tripsViews removeAllObjects];
+	
+	NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
+	
+	NSDate *startGraphDate = [self.initialDate startOfYear];
+	NSDate *endGraphDate = [[self.initialDate moveYear:5] endOfYear];
+	
+	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Trip"];
+	request.predicate = [NSPredicate predicateWithFormat:@"((startDate <= %@) AND (endDate >= %@)) OR ((startDate >= %@) AND (endDate <= %@)) OR ((startDate <= %@) AND (endDate >= %@))",
+						 startGraphDate, startGraphDate,
+						 startGraphDate, endGraphDate,
+						 endGraphDate, endGraphDate
+						 ];
+	NSError *error;
+	NSArray *trips = [context executeFetchRequest:request error:&error];
+	
+	NSDate *initialBorder = [NSDate dateWithDay:1 month:1 andYear:[self.initialDate yearComponent]];
+	NSDate *finalBorder = [NSDate dateWithDay:31 month:12 andYear:[[self.initialDate moveYear:5] yearComponent]];
+	UIColor *color = [UIColor colorWithRed:76/255. green:217/255. blue:99/255. alpha:1.];
+	CGFloat height = 12;
+	
+	for (Trip *trip in trips)
+	{
+		[self.tripsViews addObjectsFromArray:[self createViewsWithStartDate:trip.startDate andEndDate:trip.endDate withInitialBorderDate:initialBorder andFinalBorderDate:finalBorder withHeight:height andColor:color]];
+	}
+	
+	for (UIView *view in self.tripsViews)
+	{
+		[self.drawingView addSubview:view];
+	}
+}
+
+//TODO: Delete Test trips
 - (void)createTestTripsViews
 {
 	for (UIView *view in self.tripsViews)
