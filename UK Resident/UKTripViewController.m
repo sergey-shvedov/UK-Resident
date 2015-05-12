@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "UKDatabaseAvailability.h"
 #import "UKTripTableVC.h"
+#import "UKTripAddFormViewController.h"
 
 @interface UKTripViewController ()
 
@@ -53,18 +54,17 @@
 	{
 		[super prepareForSegue:segue sender:sender];
 	}
-//	if ([segue.identifier isEqualToString:@"Add Trip"]) {
-//		if ([segue.destinationViewController isKindOfClass:[TripAddVC class]]) {
-//			TripAddVC *tripAVC = segue.destinationViewController;
-//			tripAVC.userEditingTrip=self.user;
-//			tripAVC.managedObjectContext=self.managedObjectContext;
-//			
-//			NSManagedObjectContext *saveContext=((MultiTestAppDelegate *)[UIApplication sharedApplication].delegate).saveContext; //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>SAVE CONTEXT
-//			tripAVC.editingTrip=[TripTemp defaultTripTempInContext:saveContext];
-//			tripAVC.isCreating=YES;
-//			//NSLog(@"TRIPAVC is Creating");
-//		}
-//	}
+	if ([segue.identifier isEqualToString:@"Add Trip"]) {
+		if ([segue.destinationViewController isKindOfClass:[UKTripAddFormViewController class]]) {
+			UKTripAddFormViewController *tripAVC = segue.destinationViewController;
+			//tripAVC.userEditingTrip=self.user;
+			tripAVC.managedObjectContext=self.managedObjectContext;
+			
+			tripAVC.editingTrip = [TempTrip defaultTempTripInContext:self.managedObjectContext];
+			tripAVC.isCreating = YES;
+			//NSLog(@"TRIPAVC is Creating");
+		}
+	}
 }
 
 @end

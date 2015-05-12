@@ -9,6 +9,7 @@
 #import "UKCalendarWeek.h"
 #import "NSDate+UKResident.h"
 #import "UKLibraryAPI.h"
+#import "AppDelegate.h"
 
 @interface UKCalendarWeek ()
 
@@ -80,18 +81,27 @@
 {
 	BOOL result = NO;
 	
-	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
+	NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
 	
-	for (NSArray *trip in library.testTrips)
-	{
-		NSDate *startTrip = (NSDate *)[trip objectAtIndex:0];
-		NSDate *endTrip = (NSDate *)[trip objectAtIndex:1];
-		if ((NSOrderedAscending == [startTrip compare:aDate]) && (NSOrderedAscending == [aDate compare:endTrip]))
-		{
-			result = YES;
-			break;
-		}
-	}
+	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Trip"];
+	request.predicate = [NSPredicate predicateWithFormat:@"(startDate <= %@) AND (endDate >= %@)", [aDate endOfDay], [aDate startOfDay]];
+	
+	NSError *error;
+	NSArray *trips = [context executeFetchRequest:request error:&error];
+	if ([trips count] > 0) result = YES;
+	
+//	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
+//	
+//	for (NSArray *trip in library.testTrips)
+//	{
+//		NSDate *startTrip = (NSDate *)[trip objectAtIndex:0];
+//		NSDate *endTrip = (NSDate *)[trip objectAtIndex:1];
+//		if ((NSOrderedAscending == [startTrip compare:aDate]) && (NSOrderedAscending == [aDate compare:endTrip]))
+//		{
+//			result = YES;
+//			break;
+//		}
+//	}
 	
 	return result;
 }

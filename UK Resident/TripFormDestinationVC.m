@@ -31,9 +31,6 @@
 	self.selectedText = nil;
 }
 
-
-
-
 - (IBAction)okButton:(id)sender
 {
 	[self.navigationController popViewControllerAnimated:YES];

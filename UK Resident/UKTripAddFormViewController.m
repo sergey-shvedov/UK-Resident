@@ -58,29 +58,59 @@
 	[self.view addSubview:self.buttonCancel];
 }
 
+/////////////////////////////////////////
+#pragma mark - Buttons action
+
+- (IBAction)deleteTrip:(id)sender
+{
+	UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Удаление" message:@"Вы уверены, что хотите удалить это путешествие?" delegate:self cancelButtonTitle:@"Нет" otherButtonTitles:@"Да", nil];
+	[alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+	if ([alertView.title isEqualToString:@"Удаление"] && (1 == buttonIndex)) {
+		
+		[self.editingTrip deleteTrip:self.trip InContext:self.managedObjectContext];
+		
+		//[self updateTodayView];
+		//[self updateCalendarView];
+		[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
+	}
+	
+}
+
 - (void)clickOKForCreate:(id)sender
 {
-//	if (self.editingTrip.isNeedToEdit) {
-//		UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Внимание!" message:@"Перед созданием нового путешествия необходимо заполнить все требуемые данные." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-//		[alert show];
-//	}else{
-//		[self.editingTrip insertNewTripInContext:self.managedObjectContext];
+	if (YES == self.editingTrip.isNeedToEdit)
+	{
+		UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Внимание!" message:@"Перед созданием нового путешествия необходимо заполнить все требуемые данные." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+		[alert show];
+	}
+	else
+	{
+		[self.editingTrip insertNewTripInContext:self.managedObjectContext];
+	
 //		[self updateTodayView];
 //		[self updateCalendarView];
+	
 		[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
-//	}
+	}
 }
 - (void)clickOKForSave:(id)sender
 {
-//	if (self.editingTrip.isNeedToEdit) {
-//		UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Внимание!" message:@"Перед сохранением путешествия необходимо отредактировать отмеченные данные." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-//		[alert show];
-//	}else{
-//		[self.editingTrip updateDaysWithTrip:self.trip inContext:self.managedObjectContext];
+	if (self.editingTrip.isNeedToEdit)
+	{
+		UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Внимание!" message:@"Перед сохранением путешествия необходимо отредактировать отмеченные данные." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+		[alert show];
+	}
+	else
+	{
+		[self.editingTrip updateDaysWithTrip:self.trip inContext:self.managedObjectContext];
 //		[self updateTodayView];
 //		[self updateCalendarView];
 		[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
-//	}
+	}
 }
 - (void)clickCancel:(id)sender
 {

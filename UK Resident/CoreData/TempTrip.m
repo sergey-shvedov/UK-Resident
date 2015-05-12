@@ -66,4 +66,68 @@
 	return editingTrip;
 }
 
+- (void)insertNewTripInContext:(NSManagedObjectContext *)aContext //CREATE
+{
+	//[aContext performBlock:^{
+		Trip *newTrip=[NSEntityDescription insertNewObjectForEntityForName:@"Trip" inManagedObjectContext:aContext];
+		
+//		NSMutableSet *newSet=[[NSMutableSet alloc]init];
+//		for (User *user in self.users) {
+//			UserWithTrip *userWithTrip= [NSEntityDescription insertNewObjectForEntityForName:@"UserWithTrip" inManagedObjectContext:self.saveContext];
+//			userWithTrip.whoTravel=user;
+//			userWithTrip.inTrip=newTrip;
+//			[newSet addObject:userWithTrip];
+//		}
+//		self.usersByTrip=newSet;
+		
+		[self updateTrip:newTrip];
+		
+		NSError *error;
+		[aContext save:&error];
+		
+//		NSError *error;
+//		[self.saveContext save:&error]; //SAVE
+//		[context performBlock:^{
+//			[[NSNotificationCenter defaultCenter] postNotificationName:TripNeedUpdateTodayCalendarView object:nil]; //NOTIFICATION
+//		}];
+		
+		
+		///UPDATE DAYS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//		[DayWithTrip updateDaysFromDate:self.entryDate toDate:self.outDate withTrip:newTrip inContext:self.saveContext]; //Create DaysWithTrip
+//		
+//		[self.saveContext save:&error];
+		
+//		[context performBlock:^{
+//			[[NSNotificationCenter defaultCenter] postNotificationName:TripSavedNotification object:nil]; //NOTIFICATION
+//		}];
+		
+		
+		//[context performBlock:^{ }]; //Main Thread
+		
+	//}];
+}
+
+- (void)updateTrip:(Trip *)trip
+{
+	trip.destination = self.destination;
+	trip.startDate = self.startDate;
+	trip.endDate = self.endDate;
+	trip.comment = self.comment;
+}
+
+- (void)deleteTrip:(Trip *)aTrip InContext:(NSManagedObjectContext *)aContext //DELETE
+{
+	[aContext deleteObject:aTrip];
+	NSError *error;
+	[aContext save:&error];
+}
+
+- (void)updateDaysWithTrip:(Trip *)aTrip inContext:(NSManagedObjectContext *)aContext
+{
+	[self updateTrip:aTrip];
+	NSError *error;
+	[aContext save:&error];
+}
+
+
 @end

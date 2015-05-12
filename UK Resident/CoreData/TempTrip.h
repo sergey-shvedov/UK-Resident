@@ -30,5 +30,8 @@
 
 + (TempTrip *)editingTempTripCopyFromTrip:(Trip *)trip;
 + (TempTrip *)defaultTempTripInContext:(NSManagedObjectContext *)context;
+- (void)insertNewTripInContext:(NSManagedObjectContext *)aContext;
+- (void)deleteTrip:(Trip *)aTrip InContext:(NSManagedObjectContext *)aContext; //DELETE
+- (void)updateDaysWithTrip:(Trip *)aTrip inContext:(NSManagedObjectContext *)aContext;
 
 @end

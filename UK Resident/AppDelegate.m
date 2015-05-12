@@ -19,7 +19,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	
-	Trip *trip = [Trip firstTripInContext:self.managedObjectContext];
+	//Trip *trip = [Trip firstTripInContext:self.managedObjectContext];
 	
 	return YES;
 }
