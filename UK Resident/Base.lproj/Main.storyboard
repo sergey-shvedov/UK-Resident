@@ -241,7 +241,7 @@
         <!--Начало путешествия-->
         <scene sceneID="5ZK-8S-eem">
             <objects>
-                <viewController id="Rhu-gf-nSc" sceneMemberID="viewController">
+                <viewController id="Rhu-gf-nSc" customClass="TripFormStartDateVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2Ge-Zx-e41"/>
                         <viewControllerLayoutGuide type="bottom" id="JyL-OJ-8cr"/>
@@ -281,6 +281,9 @@
                                         <exclude reference="AbA-IE-jvY"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="okButton:" destination="Rhu-gf-nSc" eventType="touchUpInside" id="z0l-W8-meK"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -294,6 +297,9 @@
                     <navigationItem key="navigationItem" title="Начало путешествия" id="IWj-DO-tZz">
                         <barButtonItem key="backBarButtonItem" title="Назад" id="rpD-rc-U3r"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="datePicker" destination="Ia0-r4-HyM" id="X1s-Jg-vE5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wj3-Te-xfk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -302,7 +308,7 @@
         <!--Окончание путешествия-->
         <scene sceneID="TMA-tt-znM">
             <objects>
-                <viewController title="Окончание путешествия" id="74h-Wq-OGs" sceneMemberID="viewController">
+                <viewController title="Окончание путешествия" id="74h-Wq-OGs" customClass="TripFormEndDateVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SBp-yf-Bs0"/>
                         <viewControllerLayoutGuide type="bottom" id="twx-Mj-3VD"/>
@@ -325,6 +331,9 @@
                                         <exclude reference="IW2-wm-Dk0"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="okButton:" destination="74h-Wq-OGs" eventType="touchUpInside" id="9xw-LH-lfs"/>
+                                </connections>
                             </button>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="wqX-97-QbJ">
                                 <rect key="frame" x="0.0" y="79" width="600" height="216"/>
@@ -361,6 +370,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Окончание путешествия" id="IJC-tO-3up"/>
+                    <connections>
+                        <outlet property="datePicker" destination="wqX-97-QbJ" id="NIi-cF-XoO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aeX-9i-bcQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -422,7 +434,7 @@
         <!--Test-->
         <scene sceneID="iBW-uX-pz1">
             <objects>
-                <viewController title="Test" id="hny-9N-aip" sceneMemberID="viewController">
+                <viewController title="Test" id="hny-9N-aip" customClass="TripFormDestinationVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pfA-OT-CNv"/>
                         <viewControllerLayoutGuide type="bottom" id="ayg-2O-P9V"/>
@@ -499,16 +511,40 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5cx-ea-gE0">
+                                <rect key="frame" x="247" y="315" width="106" height="104"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="5cx-ea-gE0" secondAttribute="height" multiplier="202:123" id="5yg-n3-9bs"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="80"/>
+                                <state key="normal" title="ОК">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="5yg-n3-9bs"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="okButton:" destination="hny-9N-aip" eventType="touchUpInside" id="E1A-62-JS1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="vkB-h4-xmn" secondAttribute="centerX" id="2MA-Ae-GoF"/>
+                            <constraint firstItem="5cx-ea-gE0" firstAttribute="top" secondItem="vkB-h4-xmn" secondAttribute="bottom" constant="8" id="JPR-3Q-uld"/>
+                            <constraint firstAttribute="centerX" secondItem="5cx-ea-gE0" secondAttribute="centerX" id="Pd9-cD-ejm"/>
                             <constraint firstAttribute="centerX" secondItem="osG-Kn-SLN" secondAttribute="centerX" id="ZbV-UU-r5p"/>
                             <constraint firstItem="vkB-h4-xmn" firstAttribute="top" secondItem="osG-Kn-SLN" secondAttribute="bottom" constant="33" id="azH-Xh-TM3"/>
                             <constraint firstItem="osG-Kn-SLN" firstAttribute="top" secondItem="pfA-OT-CNv" secondAttribute="bottom" constant="50" id="jbR-W1-xtX"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Описание поездки" id="3b4-6P-xHT"/>
+                    <connections>
+                        <outlet property="commentTextView" destination="jX6-Mk-OBn" id="adS-LQ-32M"/>
+                        <outlet property="destinationTextField" destination="wY2-CA-VpC" id="ztO-70-CpJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wQy-Ri-32J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -545,7 +581,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Rhu-gf-nSc" kind="show" id="KKW-Ha-Dh1"/>
+                                            <segue destination="Rhu-gf-nSc" kind="show" identifier="Trip StartDate Form" id="KKW-Ha-Dh1"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="I5M-EJ-Hl0" detailTextLabel="8sc-fg-iXS" style="IBUITableViewCellStyleValue1" id="cvR-9Z-zpe">
@@ -567,7 +603,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="74h-Wq-OGs" kind="show" id="tPn-hH-owd"/>
+                                            <segue destination="74h-Wq-OGs" kind="show" identifier="Trip EndDate Form" id="tPn-hH-owd"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -593,7 +629,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="hny-9N-aip" kind="show" id="Ban-aL-4gK"/>
+                                            <segue destination="hny-9N-aip" kind="show" identifier="Trip Destination Form" id="Ban-aL-4gK"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="oo4-4r-twv" detailTextLabel="ZbS-1p-Akx" style="IBUITableViewCellStyleValue1" id="u5z-Rr-OUU">

@@ -16,6 +16,9 @@
 		8430EC0F1B01FABD00DC1959 /* UserWithTrip.m in Sources */ = {isa = PBXBuildFile; fileRef = 8430EC0E1B01FABD00DC1959 /* UserWithTrip.m */; };
 		8430EC121B01FAF400DC1959 /* Trip+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 8430EC111B01FAF400DC1959 /* Trip+Create.m */; };
 		8430EC151B02253D00DC1959 /* TempTrip.m in Sources */ = {isa = PBXBuildFile; fileRef = 8430EC141B02253D00DC1959 /* TempTrip.m */; };
+		8430EC181B02550900DC1959 /* TripFormStartDateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8430EC171B02550900DC1959 /* TripFormStartDateVC.m */; };
+		8430EC1B1B02552A00DC1959 /* TripFormEndDateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8430EC1A1B02552A00DC1959 /* TripFormEndDateVC.m */; };
+		8430EC1E1B02554C00DC1959 /* TripFormDestinationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8430EC1D1B02554C00DC1959 /* TripFormDestinationVC.m */; };
 		8452048B1AEA4AD600E535FD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8452048A1AEA4AD600E535FD /* main.m */; };
 		8452048E1AEA4AD600E535FD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8452048D1AEA4AD600E535FD /* AppDelegate.m */; };
 		845204911AEA4AD600E535FD /* UK_Resident.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8452048F1AEA4AD600E535FD /* UK_Resident.xcdatamodeld */; };
@@ -80,6 +83,12 @@
 		8430EC111B01FAF400DC1959 /* Trip+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Trip+Create.m"; sourceTree = "<group>"; };
 		8430EC131B02253D00DC1959 /* TempTrip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TempTrip.h; path = CoreData/TempTrip.h; sourceTree = "<group>"; };
 		8430EC141B02253D00DC1959 /* TempTrip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TempTrip.m; path = CoreData/TempTrip.m; sourceTree = "<group>"; };
+		8430EC161B02550900DC1959 /* TripFormStartDateVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripFormStartDateVC.h; sourceTree = "<group>"; };
+		8430EC171B02550900DC1959 /* TripFormStartDateVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripFormStartDateVC.m; sourceTree = "<group>"; };
+		8430EC191B02552A00DC1959 /* TripFormEndDateVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripFormEndDateVC.h; sourceTree = "<group>"; };
+		8430EC1A1B02552A00DC1959 /* TripFormEndDateVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripFormEndDateVC.m; sourceTree = "<group>"; };
+		8430EC1C1B02554C00DC1959 /* TripFormDestinationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripFormDestinationVC.h; sourceTree = "<group>"; };
+		8430EC1D1B02554C00DC1959 /* TripFormDestinationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripFormDestinationVC.m; sourceTree = "<group>"; };
 		845204851AEA4AD600E535FD /* uk-resident.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "uk-resident.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		845204891AEA4AD600E535FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8452048A1AEA4AD600E535FD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -184,6 +193,12 @@
 		8430EBF31B01617500DC1959 /* Form */ = {
 			isa = PBXGroup;
 			children = (
+				8430EC161B02550900DC1959 /* TripFormStartDateVC.h */,
+				8430EC171B02550900DC1959 /* TripFormStartDateVC.m */,
+				8430EC191B02552A00DC1959 /* TripFormEndDateVC.h */,
+				8430EC1A1B02552A00DC1959 /* TripFormEndDateVC.m */,
+				8430EC1C1B02554C00DC1959 /* TripFormDestinationVC.h */,
+				8430EC1D1B02554C00DC1959 /* TripFormDestinationVC.m */,
 				847F4C321AF55FB400831F11 /* UKTripFormTableViewController.h */,
 				847F4C331AF55FB400831F11 /* UKTripFormTableViewController.m */,
 				847F4C291AF553FD00831F11 /* UKTripAddFormViewController.h */,
@@ -476,6 +491,7 @@
 				845204E11AF1743F00E535FD /* UKTripViewController.m in Sources */,
 				847F4C2E1AF5543F00831F11 /* FormButton.m in Sources */,
 				845204BF1AEECE2C00E535FD /* UKCalendarUnit.m in Sources */,
+				8430EC181B02550900DC1959 /* TripFormStartDateVC.m in Sources */,
 				847F4C341AF55FB400831F11 /* UKTripFormTableViewController.m in Sources */,
 				845204EE1AF3E83E00E535FD /* NSString+UKResident.m in Sources */,
 				8430EC0C1B01FABD00DC1959 /* Trip.m in Sources */,
@@ -493,6 +509,7 @@
 				8430EC091B01FABD00DC1959 /* User.m in Sources */,
 				845204C31AEEE70000E535FD /* NSDate+UKResident.m in Sources */,
 				845204E41AF1747300E535FD /* UKWarningViewController.m in Sources */,
+				8430EC1E1B02554C00DC1959 /* TripFormDestinationVC.m in Sources */,
 				845204D81AF1176C00E535FD /* UKReportBottomCVC.m in Sources */,
 				8430EBFC1B01639700DC1959 /* UKTripTableVC.m in Sources */,
 				847F4C281AF5311500831F11 /* CALayer+RuntimeAttributes.m in Sources */,
@@ -503,6 +520,7 @@
 				8430EBF21B015AE100DC1959 /* User+Create.m in Sources */,
 				845204CF1AF03CA800E535FD /* UKMasterViewController.m in Sources */,
 				840A817C1AF812BA0025BC6C /* UKLibraryAPI.m in Sources */,
+				8430EC1B1B02552A00DC1959 /* TripFormEndDateVC.m in Sources */,
 				845204DE1AF117BD00E535FD /* UKReportTopCVC.m in Sources */,
 				845204D21AF0F5E000E535FD /* UIButton+UKRecord.m in Sources */,
 				845204B91AEE270700E535FD /* UKCalendarWeekCell.m in Sources */,

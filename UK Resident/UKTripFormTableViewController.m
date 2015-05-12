@@ -7,6 +7,9 @@
 //
 
 #import "UKTripFormTableViewController.h"
+#import "TripFormStartDateVC.h"
+#import "TripFormEndDateVC.h"
+#import "TripFormDestinationVC.h"
 #import "NSDate+UKResident.h"
 #import "UIColor+UKResident.h"
 
@@ -128,39 +131,42 @@
 		self.destinationFormCell.detailTextLabel.textColor=[UIColor colorNotYetEdit];
 		self.destinationFormCell.accessoryView=[[UIImageView alloc] initWithImage: self.disclosureGrey];
 	}
-#pragma TODO
-	//Attachment
+
+	// TODO: Attachment
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
 	[self.delegate dismissButtons];
 	
-//	if ([segue.identifier isEqualToString:@"Passport IssueDate Form"]) {
-//		if ([segue.destinationViewController isKindOfClass:[PassportFormIssueDateVC class]]) {
-//			PassportFormIssueDateVC *pfidVC=(PassportFormIssueDateVC *)segue.destinationViewController;
-//			pfidVC.editingPassport=self.editingPassport;
-//			[self.passportaddvc dismissButtons];
-//		}
-//	}
-//	
-//	
-//	if ([segue.identifier isEqualToString:@"Passport ExperationDate Form"]) {
-//		if ([segue.destinationViewController isKindOfClass:[PassportFormExperationDateVC class]]) {
-//			PassportFormExperationDateVC *pfedVC=(PassportFormExperationDateVC *)segue.destinationViewController;
-//			pfedVC.editingPassport=self.editingPassport;
-//			
-//			[self.passportaddvc dismissButtons];
-//		}
-//	}
-//	
-//	if ([segue.identifier isEqualToString:@"Passport Type Form"]) {
-//		if ([segue.destinationViewController isKindOfClass:[PassportFormTypeVC class]]) {
-//			PassportFormTypeVC *pftVC=(PassportFormTypeVC *)segue.destinationViewController;
-//			pftVC.editingPassport=self.editingPassport;
-//			[self.passportaddvc dismissButtons];
-//		}
-//	}
+	if ([segue.identifier isEqualToString:@"Trip StartDate Form"])
+	{
+		if ([segue.destinationViewController isKindOfClass:[TripFormStartDateVC class]])
+		{
+			TripFormStartDateVC *tfedVC = (TripFormStartDateVC *)segue.destinationViewController;
+			tfedVC.editingTrip = self.editingTrip;
+			[self.delegate dismissButtons];
+		}
+	}
+	else if ([segue.identifier isEqualToString:@"Trip EndDate Form"])
+	{
+		if ([segue.destinationViewController isKindOfClass:[TripFormEndDateVC class]])
+		{
+			TripFormEndDateVC *tfodVC = (TripFormEndDateVC *)segue.destinationViewController;
+			tfodVC.editingTrip = self.editingTrip;
+			[self.delegate dismissButtons];
+		}
+	}
+	else if ([segue.identifier isEqualToString:@"Trip Destination Form"])
+	{
+		if ([segue.destinationViewController isKindOfClass:[TripFormDestinationVC class]])
+		{
+			TripFormDestinationVC *tfodVC = (TripFormDestinationVC *)segue.destinationViewController;
+			tfodVC.editingTrip = self.editingTrip;
+			[self.delegate dismissButtons];
+		}
+	}
+	
 }
 
 @end
