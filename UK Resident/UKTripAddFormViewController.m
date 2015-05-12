@@ -23,12 +23,12 @@
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
-	self.isCreating = YES;
+	//self.isCreating = YES;
 	[self createButtonCancel];
 	[self createButtonOk];
 }
 
--(void) createButtonOk
+- (void)createButtonOk
 {
 	FormButton *button=[FormButton buttonWithType:UIButtonTypeCustom];
 	[button setFrame:CGRectMake(275.0, 150.0, 265.0, 44.0)];
@@ -47,7 +47,7 @@
 	[self.view addSubview:self.buttonOk];
 }
 
--(void) createButtonCancel
+- (void)createButtonCancel
 {
 	FormButton *button=[FormButton buttonWithType:UIButtonTypeCustom];
 	[button setFrame:CGRectMake(0.0, 150.0, 265.0, 44.0)];
@@ -96,6 +96,8 @@
 	}];
 }
 
+#pragma mark - UKTripFormTVCDelegate's methods
+
 - (void)dismissButtons
 {
 	self.buttonOk.hidden = YES;
@@ -112,21 +114,29 @@
 	[self animateAppearsButton:self.deleteButton];
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void)changeNeedEditStatusTo:(BOOL)isNeedEdit
 {
-	if ([segue.identifier isEqualToString:@"Trip Form Segue"]) {
-		if ([segue.destinationViewController isKindOfClass:[UINavigationController class]]) {
+	self.buttonOk.isNeedEdit = isNeedEdit;
+}
+
+#pragma mark
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+	if ([segue.identifier isEqualToString:@"Trip Form Segue"])
+	{
+		if ([segue.destinationViewController isKindOfClass:[UINavigationController class]])
+		{
 			UINavigationController *navc = (UINavigationController *)segue.destinationViewController;
 			
 			if ([[navc.viewControllers firstObject] isKindOfClass:[UKTripFormTableViewController class]])
 			{
-				UKTripFormTableViewController *tripTVC =(UKTripFormTableViewController *)[navc.viewControllers firstObject];
+				UKTripFormTableViewController *tripTVC = (UKTripFormTableViewController *)[navc.viewControllers firstObject];
 				tripTVC.delegate = self;
-//				pfTVC.passportaddvc=self;
-//				pfTVC.passport=self.passport;
-//				pfTVC.managedObjectContect=self.managedObjectContext;
-//				pfTVC.editingPassport=self.editingPassport;
-//				pfTVC.isCreating=self.isCreating;
+				tripTVC.managedObjectContect = self.managedObjectContext;
+				tripTVC.trip = self.trip;
+				tripTVC.editingTrip = self.editingTrip;
+				tripTVC.isCreating = self.isCreating;
 			}
 		}
 	}
