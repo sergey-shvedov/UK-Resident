@@ -95,9 +95,31 @@
 
 - (NSInteger)numberOfDaysUntil:(NSDate *)aDate
 {
-	NSDateComponents *components = [[NSDate customCalendar] components:NSCalendarUnitDay fromDate:self toDate:aDate options:0];
+	NSDate *fromDate;
+	NSDate *toDate;
+	
+	NSCalendar *calendar = [NSDate customCalendar];
+	[calendar rangeOfUnit:NSCalendarUnitDay startDate:&fromDate interval:NULL forDate:self];
+	[calendar rangeOfUnit:NSCalendarUnitDay startDate:&toDate interval:NULL forDate:aDate];
+	
+	NSDateComponents *components = [calendar components:NSCalendarUnitDay fromDate:fromDate toDate:toDate options:0];;
 	return [components day];
 }
+
+- (NSInteger)numberOfDaysBetween:(NSDate *)aDate includedBorderDates:(BOOL)aNeedIncludeBorderDates
+{
+	NSDate *startDate = self;
+	NSDate *endDate = aDate;
+	if (NSOrderedAscending == [endDate compare:startDate])
+	{
+		startDate = aDate;
+		endDate = self;
+	}
+
+	NSInteger delta = aNeedIncludeBorderDates ? 1 : -1;
+	return [startDate numberOfDaysUntil:endDate] + delta;
+}
+
 
 - (NSDate *)normalization
 {

@@ -9,8 +9,10 @@
 #import "UKReportTopCVC.h"
 #import "UKReportTopDiagramVC.h"
 #import "GraphRoundView.h"
+#import "UKLibraryAPI.h"
 #import "NSDate+UKResident.h"
 #import "UIColor+UKResident.h"
+#import "NSString+UKResident.h"
 
 @interface UKReportTopCVC ()
 
@@ -21,7 +23,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *yearLabel;
 
 @property (weak, nonatomic) IBOutlet UIView *leftGraphView;
+@property (weak, nonatomic) IBOutlet UILabel *leftNumberLabel;
+@property (weak, nonatomic) IBOutlet UILabel *leftTextLabel;
+
 @property (weak, nonatomic) IBOutlet UIView *rightGraphView;
+@property (weak, nonatomic) IBOutlet UILabel *rightNumberLabel;
+@property (weak, nonatomic) IBOutlet UILabel *rightTextLabel;
 
 @end
 
@@ -29,19 +36,25 @@
 
 - (void)viewDidLoad
 {
-	self.date = [NSDate date];
+	self.initialDate = [[NSDate dateWithTimeIntervalSinceReferenceDate:14*370*24*60*60] normalization];
+	self.date = [[NSDate date] normalization];
 }
 
 - (void)setDate:(NSDate *)date
 {
 	_date = date;
+	[self.diagramVC setDate:self.date];
 	[self updateUI];
+}
+
+- (void)setInitialDate:(NSDate *)initialDate
+{
+	_initialDate = initialDate;
+	[self.diagramVC setInitialDate:self.initialDate];
 }
 
 - (void)updateUI
 {
-	[self.diagramVC setDate:self.date];
-	
 	[self.dayLabel setText:[self.date localizedStringWithDateFormat:@"d"]];
 	[self.monthLabel setText:[self.date localizedStringWithDateFormat:@"MMMM"]];
 	[self.yearLabel setText:[self.date localizedStringWithDateFormat:@"YYYY"]];
@@ -54,19 +67,70 @@
 	[self.leftGraphView.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
 	[self.rightGraphView.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
 	
-	GraphRoundView *leftGraphView = [[GraphRoundView alloc] initWithSegment:[self.date dayComponent]/31. withFrame:CGRectMake(0., 0., 56, 56) withBackgrondColor:[UIColor colorLeftGraphBackground] andMainColor:[UIColor colorLeftGraphMain]];
+	//LeftGraphView
+	NSArray *leftDaysArray = [self daysForLeftGraph];
+	float leftTripDays = 0;
+	float leftDays = 1;
+	if (2 == [leftDaysArray count])
+	{
+		leftTripDays = [((NSNumber *)[leftDaysArray firstObject]) floatValue];
+		leftDays = [((NSNumber *)[leftDaysArray lastObject]) floatValue];
+	}
+	
+	GraphRoundView *leftGraphView = [[GraphRoundView alloc] initWithSegment:leftTripDays/leftDays withFrame:CGRectMake(0., 0., 56, 56) withBackgrondColor:[UIColor colorLeftGraphBackground] andMainColor:[UIColor colorLeftGraphMain]];
 	[self.leftGraphView addSubview:leftGraphView];
 	
-	GraphRoundView *rightGraphView = [[GraphRoundView alloc] initWithSegment:(1-[self.date dayComponent]/31.) withFrame:CGRectMake(0., 0., 56, 56) withBackgrondColor:[UIColor colorRightGraphBackground] andMainColor:[UIColor colorRightGraphMain]];
+	[self.leftNumberLabel setText:[NSString stringWithFormat:@"%i%%", (int)(100 * leftTripDays / leftDays)]];
+	[self.leftTextLabel setText:[NSString stringWithFormat:@"За текущий визовый год %i из %i %@ \nпроведены за пределами UK", (int)leftTripDays, (int)leftDays, [NSString russianStringFor1:@"дня" for2to4:@"дней" for5up:@"дней" withValue:leftDays]]];
+	
+	//RightGraphView
+	NSArray *rightDaysArray = [self daysForRightGraph];
+	float rightTripDays = 0;
+	float rightDays = 1;
+	if (2 == [rightDaysArray count])
+	{
+		rightTripDays = [((NSNumber *)[rightDaysArray firstObject]) floatValue];
+		rightDays = [((NSNumber *)[rightDaysArray lastObject]) floatValue];
+	}
+	GraphRoundView *rightGraphView = [[GraphRoundView alloc] initWithSegment:rightTripDays/rightDays withFrame:CGRectMake(0., 0., 56, 56) withBackgrondColor:[UIColor colorRightGraphBackground] andMainColor:[UIColor colorRightGraphMain]];
 	[self.rightGraphView addSubview:rightGraphView];
+	
+	[self.rightNumberLabel setText:[NSString stringWithFormat:@"%i%%", (int)(100 * rightTripDays / rightDays)]];
+	[self.rightTextLabel setText:[NSString stringWithFormat:@"С даты начала учета %i из %i %@ \nпроведены в UK", (int)rightTripDays, (int)rightDays, [NSString russianStringFor1:@"дня" for2to4:@"дней" for5up:@"дней" withValue:rightDays]]];
+}
+
+- (NSArray *)daysForLeftGraph
+{
+	NSDate *startDate = [[self.date moveYear: -1] moveDay: +1];
+	if (NSOrderedAscending == [startDate compare:self.initialDate])
+	{
+		startDate = self.initialDate;
+	}
+	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
+	NSInteger days = [startDate numberOfDaysBetween:self.date includedBorderDates:YES];
+	NSInteger tripDays = [library numberOfTripDaysBetweenStartDate:startDate andEndDate:self.date andCountArrivalAndDepartureDays:YES];
+	return @[[NSNumber numberWithInteger:tripDays], [NSNumber numberWithInteger:days]];
+}
+
+- (NSArray *)daysForRightGraph
+{
+	NSDate *startDate = self.initialDate;
+
+	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
+	NSInteger days = [startDate numberOfDaysBetween:self.date includedBorderDates:YES];
+	NSInteger tripDays = [library numberOfTripDaysBetweenStartDate:startDate andEndDate:self.date andCountArrivalAndDepartureDays:YES];
+	return @[[NSNumber numberWithInteger:(days - tripDays)], [NSNumber numberWithInteger:days]];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
 	if ([segue.identifier isEqualToString:@"ReportDiagramVC"])
 	{
-		UKReportTopDiagramVC *reportTopDiagramVC = (UKReportTopDiagramVC *)[segue destinationViewController];
-		self.diagramVC = reportTopDiagramVC;
+		if ([[segue destinationViewController] isKindOfClass:[UKReportTopDiagramVC class]])
+		{
+			UKReportTopDiagramVC *reportTopDiagramVC = (UKReportTopDiagramVC *)[segue destinationViewController];
+			self.diagramVC = reportTopDiagramVC;
+		}
 	}
 }
 

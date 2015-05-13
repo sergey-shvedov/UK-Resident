@@ -39,7 +39,7 @@
 	self.shadingViews = [[NSMutableArray alloc] init];
 	self.lightingViews = [[NSMutableArray alloc] init];
 	self.tripsViews = [[NSMutableArray alloc] init];
-	self.initialDate = [NSDate dateWithTimeIntervalSinceReferenceDate:14*370*24*60*60];
+	self.initialDate = [NSDate dateWithTimeIntervalSinceReferenceDate:14*375*24*60*60];
 	self.date = [NSDate date];
 	[self mountDiagramIcons];
 	[self updateUI];
@@ -60,6 +60,7 @@
 {
 	_initialDate = initialDate;
 	self.initialYear = [initialDate yearComponent];
+	[self updateUI];
 }
 
 - (void)mountDiagramIcons

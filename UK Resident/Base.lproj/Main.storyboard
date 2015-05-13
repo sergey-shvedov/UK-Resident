@@ -1813,7 +1813,7 @@
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 </variation>
                                 <connections>
-                                    <segue destination="ji7-OB-Sc3" kind="popoverPresentation" popoverAnchorView="F9y-Fr-LSF" id="SWa-SF-4Cf">
+                                    <segue destination="ji7-OB-Sc3" kind="popoverPresentation" identifier="Initial Date Popover" popoverAnchorView="F9y-Fr-LSF" id="SWa-SF-4Cf">
                                         <popoverArrowDirection key="popoverArrowDirection" up="YES"/>
                                     </segue>
                                 </connections>
@@ -1912,8 +1912,12 @@
                     <connections>
                         <outlet property="dayLabel" destination="2nq-eZ-CbX" id="TdS-F4-3sN"/>
                         <outlet property="leftGraphView" destination="sZh-S1-WDh" id="xkg-9c-fc2"/>
+                        <outlet property="leftNumberLabel" destination="Y6j-rq-JkC" id="pKt-rp-Qx6"/>
+                        <outlet property="leftTextLabel" destination="yWP-aP-Fv3" id="v7p-bc-mPd"/>
                         <outlet property="monthLabel" destination="gjA-Ib-Ajr" id="65l-zZ-HhL"/>
                         <outlet property="rightGraphView" destination="d67-LC-Z8B" id="VRo-gl-kFb"/>
+                        <outlet property="rightNumberLabel" destination="V1U-II-fjj" id="eZU-Qf-cq5"/>
+                        <outlet property="rightTextLabel" destination="xAE-KQ-os0" id="1OY-Mv-ftQ"/>
                         <outlet property="yearLabel" destination="B5j-0t-Ih8" id="J3t-0F-zFe"/>
                     </connections>
                 </viewController>

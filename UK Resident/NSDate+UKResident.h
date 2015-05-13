@@ -25,6 +25,7 @@
 - (NSInteger)dayOfYear;
 - (NSInteger)daysInMonth;
 - (NSInteger)numberOfDaysUntil:(NSDate *)aDate;
+- (NSInteger)numberOfDaysBetween:(NSDate *)aDate includedBorderDates:(BOOL)aNeedIncludeBorderDates;
 
 - (NSDate *)normalization;
 - (NSDate *)startOfDay;

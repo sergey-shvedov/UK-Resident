@@ -95,19 +95,19 @@
 	{
 		if ((NSOrderedAscending == [trip.startDate compare:aStartBorderDate]) && (NSOrderedAscending == [anEndBorderDate compare:trip.endDate]))
 		{
-			result += [aStartBorderDate numberOfDaysUntil:anEndBorderDate];
+			result += [aStartBorderDate numberOfDaysBetween:anEndBorderDate includedBorderDates:YES];
 		}
 		else if (NSOrderedAscending == [trip.startDate compare:aStartBorderDate])
 		{
-			result += [aStartBorderDate numberOfDaysUntil:trip.endDate] - minusDay;
+			result += [aStartBorderDate numberOfDaysBetween:trip.endDate includedBorderDates:YES] - minusDay;
 		}
 		else if (NSOrderedAscending == [anEndBorderDate compare:trip.endDate])
 		{
-			result += [trip.startDate numberOfDaysUntil:anEndBorderDate] - minusDay;
+			result += [trip.startDate numberOfDaysBetween:anEndBorderDate includedBorderDates:YES] - minusDay;
 		}
 		else
 		{
-			result += [trip.startDate numberOfDaysUntil:trip.endDate] - 2 * minusDay;
+			result += [trip.startDate numberOfDaysBetween:trip.endDate includedBorderDates:aNeedCountArrivalDays];
 		}
 	}
 	
