@@ -11,6 +11,7 @@
         <attribute name="colorID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="establishedDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="userByTrip" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UserWithTrip" inverseName="whoTravel" inverseEntity="UserWithTrip" syncable="YES"/>
     </entity>
     <entity name="UserWithTrip" representedClassName="UserWithTrip" syncable="YES">
@@ -19,7 +20,7 @@
     </entity>
     <elements>
         <element name="Trip" positionX="-7319" positionY="-5422" width="128" height="118"/>
-        <element name="User" positionX="-7760" positionY="-5427" width="128" height="103"/>
+        <element name="User" positionX="-7760" positionY="-5427" width="128" height="118"/>
         <element name="UserWithTrip" positionX="-7553" positionY="-5247" width="128" height="73"/>
     </elements>
 </model>

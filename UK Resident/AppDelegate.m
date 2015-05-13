@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "UKDatabaseAvailability.h"
 #import "Trip+Create.h"
+#import "UKLibraryAPI.h"
+#import "User+Create.h"
 
 @interface AppDelegate ()
 
@@ -18,6 +20,9 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+	
+	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
+	library.currentUser = [User firstUserInContext:self.managedObjectContext];
 	
 	//Trip *trip = [Trip firstTripInContext:self.managedObjectContext];
 	

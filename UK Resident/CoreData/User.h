@@ -2,7 +2,7 @@
 //  User.h
 //  UK Resident
 //
-//  Created by Sergey Shvedov on 12.05.15.
+//  Created by Sergey Shvedov on 13.05.15.
 //  Copyright (c) 2015 Administrator. All rights reserved.
 //
 
@@ -16,6 +16,7 @@
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSDate * establishedDate;
 @property (nonatomic, retain) NSNumber * colorID;
+@property (nonatomic, retain) NSNumber * userID;
 @property (nonatomic, retain) NSSet *userByTrip;
 @end
 

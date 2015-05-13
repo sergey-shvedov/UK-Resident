@@ -9,6 +9,7 @@
 #import "UKLibraryAPI.h"
 #import "AppDelegate.h"
 #import "Trip.h"
+#import "User.h"
 #import "NSDate+UKResident.h"
 
 @interface UKLibraryAPI ()
@@ -56,6 +57,18 @@
 		_managedObjectContext = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
 	}
 	return _managedObjectContext;
+}
+
+- (NSDate *)currentInitDate
+{
+	return self.currentUser.establishedDate;
+}
+
+- (void)setCurrentInitDate:(NSDate *)currentInitDate
+{
+	self.currentUser.establishedDate = currentInitDate;
+	NSError *error;
+	[self.managedObjectContext save:&error];
 }
 
 - (BOOL)isATripDate:(NSDate *)aDate

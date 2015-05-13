@@ -8,10 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+@class User;
+
 @interface UKLibraryAPI : NSObject
 
 @property (nonatomic, strong) NSCalendar *customCalendar;
 @property (nonatomic, strong) NSArray *testTrips;
+@property (nonatomic, strong) User *currentUser;
+@property (nonatomic, strong) NSDate *currentInitDate;
 
 + (UKLibraryAPI *)sharedInstance;
 

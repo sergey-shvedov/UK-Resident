@@ -8,6 +8,7 @@
 
 #import "UKReportTopCVC.h"
 #import "UKReportTopDiagramVC.h"
+#import "UKReportTopInitialDatePopoverVC.h"
 #import "GraphRoundView.h"
 #import "UKLibraryAPI.h"
 #import "NSDate+UKResident.h"
@@ -30,13 +31,29 @@
 @property (weak, nonatomic) IBOutlet UILabel *rightNumberLabel;
 @property (weak, nonatomic) IBOutlet UILabel *rightTextLabel;
 
+@property (weak, nonatomic) IBOutlet UIView *generalGraphView;
+
+@property (nonatomic, assign) BOOL isInitialDateSetted;
+
 @end
 
 @implementation UKReportTopCVC
 
 - (void)viewDidLoad
 {
-	self.initialDate = [[NSDate dateWithTimeIntervalSinceReferenceDate:14*370*24*60*60] normalization];
+	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
+	
+	if (nil == library.currentInitDate)
+	{
+		self.isInitialDateSetted = NO;
+		self.initialDate = [[NSDate date] normalization];
+	}
+	else
+	{
+		self.isInitialDateSetted = YES;
+		self.initialDate = library.currentInitDate;
+	}
+	
 	self.date = [[NSDate date] normalization];
 }
 
@@ -59,7 +76,19 @@
 	[self.monthLabel setText:[self.date localizedStringWithDateFormat:@"MMMM"]];
 	[self.yearLabel setText:[self.date localizedStringWithDateFormat:@"YYYY"]];
 	
-	[self updateGraphs];
+	[self updateGraphViews];
+}
+
+- (void)updateGraphViews
+{
+	if (nil == self.initialDate)
+	{
+		
+	}
+	else
+	{
+		[self updateGraphs];
+	}
 }
 
 - (void)updateGraphs
@@ -131,6 +160,27 @@
 			UKReportTopDiagramVC *reportTopDiagramVC = (UKReportTopDiagramVC *)[segue destinationViewController];
 			self.diagramVC = reportTopDiagramVC;
 		}
+	}
+	else if ([segue.identifier isEqualToString:@"Initial Date Popover"])
+	{
+		if ([[segue destinationViewController] isKindOfClass:[UKReportTopInitialDatePopoverVC class]])
+		{
+			UKReportTopInitialDatePopoverVC *popover = (UKReportTopInitialDatePopoverVC *)[segue destinationViewController];
+			popover.initialDate = self.initialDate;
+		}
+	}
+}
+
+- (IBAction)popoverApplied:(UIStoryboardSegue *)segue
+{
+	if ([segue.identifier isEqualToString:@"Unwind To ReportTop"])
+	{
+		UKReportTopInitialDatePopoverVC *popover = (UKReportTopInitialDatePopoverVC *)[segue sourceViewController];
+		self.initialDate = popover.initialDate;
+		UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
+		library.currentInitDate = popover.initialDate;
+		self.isInitialDateSetted = YES;
+		[self updateUI];
 	}
 }
 

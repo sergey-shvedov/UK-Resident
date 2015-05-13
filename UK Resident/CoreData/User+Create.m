@@ -12,23 +12,28 @@
 
 + (User *)firstUserInContext:(NSManagedObjectContext *)context
 {
+	User *result = nil;
+	
 	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"User"];
-	request.predicate = [NSPredicate predicateWithFormat:@"name = %@", @"User#1"];
+	request.predicate = [NSPredicate predicateWithFormat:@"userID = %@", @0];
 	NSError *error;
-	NSArray *users=  [context executeFetchRequest:request error:&error];
+	NSArray *users = [context executeFetchRequest:request error:&error];
+	
 	
 	if (0 == [users count])
 	{
 		User *user = [NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:context];
-		user.name = @"User#1";
-		//NSLog(@"Create new user");
-		return user;
+		user.name = @"User 1";
+		user.userID = @0;
+		user.colorID = @0;
+		result = user;
 	}
 	else
 	{
-		//NSLog(@"User already exists: %@", ((User *)users[0]).name);
-		return ((User *)users[0]);
+		result = ((User *)[users firstObject]);
 	}
+	
+	return result;
 }
 
 @end

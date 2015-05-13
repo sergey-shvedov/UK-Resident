@@ -1374,7 +1374,7 @@
                                             </mask>
                                         </variation>
                                     </imageView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GF8-1C-cYx">
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GF8-1C-cYx">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3xb-43-Mgs">
@@ -1759,13 +1759,25 @@
                                             </mask>
                                         </variation>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￼Выбранная дата находится вне рассматриваемого периода" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P86-vW-ViY">
+                                        <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="centerY" secondItem="P86-vW-ViY" secondAttribute="centerY" constant="-0.5" id="1B2-h1-OgT">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="0.0"/>
+                                    </constraint>
                                     <constraint firstItem="yst-sw-xjH" firstAttribute="leading" secondItem="W1q-al-7Y6" secondAttribute="leading" id="7hV-ZB-itT"/>
                                     <constraint firstAttribute="bottom" secondItem="yst-sw-xjH" secondAttribute="bottom" id="KTv-Qf-Tbt"/>
                                     <constraint firstAttribute="height" constant="134" id="PIo-CT-heZ"/>
                                     <constraint firstAttribute="trailing" secondItem="yst-sw-xjH" secondAttribute="trailing" id="XXk-VY-9vC"/>
                                     <constraint firstAttribute="centerY" secondItem="GF8-1C-cYx" secondAttribute="centerY" id="ZWi-8I-mqj"/>
+                                    <constraint firstAttribute="centerX" secondItem="P86-vW-ViY" secondAttribute="centerX" constant="0.5" id="nfV-HF-2my">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="0.0"/>
+                                    </constraint>
                                     <constraint firstAttribute="centerX" secondItem="GF8-1C-cYx" secondAttribute="centerX" id="oHI-8U-GGg"/>
                                     <constraint firstItem="yst-sw-xjH" firstAttribute="top" secondItem="W1q-al-7Y6" secondAttribute="top" id="qei-ik-fDr"/>
                                 </constraints>
@@ -1773,6 +1785,7 @@
                                     <mask key="subviews">
                                         <exclude reference="yst-sw-xjH"/>
                                         <exclude reference="GF8-1C-cYx"/>
+                                        <exclude reference="P86-vW-ViY"/>
                                     </mask>
                                     <mask key="constraints">
                                         <exclude reference="PIo-CT-heZ"/>
@@ -1782,12 +1795,15 @@
                                         <exclude reference="qei-ik-fDr"/>
                                         <exclude reference="ZWi-8I-mqj"/>
                                         <exclude reference="oHI-8U-GGg"/>
+                                        <exclude reference="1B2-h1-OgT"/>
+                                        <exclude reference="nfV-HF-2my"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=regular">
                                     <mask key="subviews">
                                         <include reference="yst-sw-xjH"/>
                                         <include reference="GF8-1C-cYx"/>
+                                        <include reference="P86-vW-ViY"/>
                                     </mask>
                                     <mask key="constraints">
                                         <include reference="PIo-CT-heZ"/>
@@ -1797,6 +1813,8 @@
                                         <include reference="qei-ik-fDr"/>
                                         <include reference="ZWi-8I-mqj"/>
                                         <include reference="oHI-8U-GGg"/>
+                                        <include reference="1B2-h1-OgT"/>
+                                        <include reference="nfV-HF-2my"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -1911,6 +1929,7 @@
                     <toolbarItems/>
                     <connections>
                         <outlet property="dayLabel" destination="2nq-eZ-CbX" id="TdS-F4-3sN"/>
+                        <outlet property="generalGraphView" destination="GF8-1C-cYx" id="3V1-zb-6c0"/>
                         <outlet property="leftGraphView" destination="sZh-S1-WDh" id="xkg-9c-fc2"/>
                         <outlet property="leftNumberLabel" destination="Y6j-rq-JkC" id="pKt-rp-Qx6"/>
                         <outlet property="leftTextLabel" destination="yWP-aP-Fv3" id="v7p-bc-mPd"/>
@@ -2914,10 +2933,10 @@
             </objects>
             <point key="canvasLocation" x="3186.75" y="229.125"/>
         </scene>
-        <!--View Controller-->
+        <!--Report Top Initial Date PopoverVC-->
         <scene sceneID="knn-LW-pKf">
             <objects>
-                <viewController id="ji7-OB-Sc3" sceneMemberID="viewController">
+                <viewController id="ji7-OB-Sc3" customClass="UKReportTopInitialDatePopoverVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BEV-1Z-5Ez"/>
                         <viewControllerLayoutGuide type="bottom" id="2m5-f5-4rp"/>
@@ -2961,6 +2980,10 @@
                                             <state key="normal" title="Установить">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="applyButton:" destination="ji7-OB-Sc3" eventType="touchUpInside" id="DCz-E1-yQ2"/>
+                                                <segue destination="Qc0-mY-4rO" kind="unwind" identifier="Unwind To ReportTop" unwindAction="popoverApplied:" id="qgP-Bw-YK0"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -2991,8 +3014,12 @@
                     <value key="contentSizeForViewInPopover" type="size" width="300" height="300"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="300" height="300"/>
+                    <connections>
+                        <outlet property="datePicker" destination="PfT-TC-f5A" id="oWg-31-2oe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iDr-rv-KeI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Qc0-mY-4rO" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3217" y="556"/>
         </scene>
