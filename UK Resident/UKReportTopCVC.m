@@ -18,6 +18,9 @@
 @interface UKReportTopCVC ()
 
 @property (nonatomic, weak) UKReportTopDiagramVC *diagramVC;
+@property (weak, nonatomic) IBOutlet UIView *initialBigArrowView;
+@property (weak, nonatomic) IBOutlet UIView *generalGraphView;
+@property (weak, nonatomic) IBOutlet UILabel *generalGraphReplaceLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *dayLabel;
 @property (weak, nonatomic) IBOutlet UILabel *monthLabel;
@@ -30,8 +33,6 @@
 @property (weak, nonatomic) IBOutlet UIView *rightGraphView;
 @property (weak, nonatomic) IBOutlet UILabel *rightNumberLabel;
 @property (weak, nonatomic) IBOutlet UILabel *rightTextLabel;
-
-@property (weak, nonatomic) IBOutlet UIView *generalGraphView;
 
 @property (nonatomic, assign) BOOL isInitialDateSetted;
 
@@ -72,23 +73,32 @@
 
 - (void)updateUI
 {
-	[self.dayLabel setText:[self.date localizedStringWithDateFormat:@"d"]];
-	[self.monthLabel setText:[self.date localizedStringWithDateFormat:@"MMMM"]];
-	[self.yearLabel setText:[self.date localizedStringWithDateFormat:@"YYYY"]];
-	
-	[self updateGraphViews];
-}
-
-- (void)updateGraphViews
-{
-	if (nil == self.initialDate)
+	if (NO == self.isInitialDateSetted)
 	{
-		
+		[self.diagramVC.view setHidden:YES];
+		[self.initialBigArrowView setHidden:NO];
+		[self.generalGraphView setHidden:YES];
+		[self.generalGraphReplaceLabel setHidden:YES];
 	}
 	else
 	{
-		[self updateGraphs];
+		[self.diagramVC.view setHidden:NO];
+		[self.initialBigArrowView setHidden:YES];
+		if ((NSOrderedAscending == [self.initialDate compare:self.date]) && (NSOrderedAscending == [self.date compare:[self.initialDate moveYear:5]]))
+		{
+			[self.generalGraphView setHidden:NO];
+			[self.generalGraphReplaceLabel setHidden:YES];
+			[self updateGraphs];
+		}
+		else
+		{
+			[self.generalGraphView setHidden:YES];
+			[self.generalGraphReplaceLabel setHidden:NO];
+		}
 	}
+	[self.dayLabel setText:[self.date localizedStringWithDateFormat:@"d"]];
+	[self.monthLabel setText:[self.date localizedStringWithDateFormat:@"MMMM"]];
+	[self.yearLabel setText:[self.date localizedStringWithDateFormat:@"YYYY"]];
 }
 
 - (void)updateGraphs
