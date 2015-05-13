@@ -8,6 +8,7 @@
 
 #import "UKLibraryAPI.h"
 #import "AppDelegate.h"
+#import "Trip.h"
 #import "NSDate+UKResident.h"
 
 @interface UKLibraryAPI ()
@@ -82,6 +83,35 @@
 	NSError *error;
 	NSArray *trips = [self.managedObjectContext executeFetchRequest:request error:&error];
 	return trips;
+}
+
+- (NSInteger)numberOfTripDaysBetweenStartDate:(NSDate *)aStartBorderDate andEndDate:(NSDate *)anEndBorderDate andCountArrivalAndDepartureDays:(BOOL)aNeedCountArrivalDays
+{
+	NSInteger result = 0;
+	NSInteger minusDay = aNeedCountArrivalDays ? 0 : 1;
+	NSArray *trips = [self arrayWithTripsBetweenStartDate:aStartBorderDate andEndDate:anEndBorderDate];
+	
+	for (Trip *trip in trips)
+	{
+		if ((NSOrderedAscending == [trip.startDate compare:aStartBorderDate]) && (NSOrderedAscending == [anEndBorderDate compare:trip.endDate]))
+		{
+			result += [aStartBorderDate numberOfDaysUntil:anEndBorderDate];
+		}
+		else if (NSOrderedAscending == [trip.startDate compare:aStartBorderDate])
+		{
+			result += [aStartBorderDate numberOfDaysUntil:trip.endDate] - minusDay;
+		}
+		else if (NSOrderedAscending == [anEndBorderDate compare:trip.endDate])
+		{
+			result += [trip.startDate numberOfDaysUntil:anEndBorderDate] - minusDay;
+		}
+		else
+		{
+			result += [trip.startDate numberOfDaysUntil:trip.endDate] - 2 * minusDay;
+		}
+	}
+	
+	return result;
 }
 
 
