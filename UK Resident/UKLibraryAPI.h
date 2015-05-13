@@ -15,4 +15,7 @@
 
 + (UKLibraryAPI *)sharedInstance;
 
+- (BOOL)isATripDate:(NSDate *)aDate;
+- (NSArray *)arrayWithTripsBetweenStartDate:(NSDate *)aStartBorderDate andEndDate:(NSDate *)anEndBorderDate;
+
 @end

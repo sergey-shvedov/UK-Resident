@@ -79,31 +79,8 @@
 
 - (BOOL)isATripDate:(NSDate *)aDate
 {
-	BOOL result = NO;
-	
-	NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
-	
-	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Trip"];
-	request.predicate = [NSPredicate predicateWithFormat:@"(startDate <= %@) AND (endDate >= %@)", [aDate endOfDay], [aDate startOfDay]];
-	
-	NSError *error;
-	NSArray *trips = [context executeFetchRequest:request error:&error];
-	if ([trips count] > 0) result = YES;
-	
-//	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
-//	
-//	for (NSArray *trip in library.testTrips)
-//	{
-//		NSDate *startTrip = (NSDate *)[trip objectAtIndex:0];
-//		NSDate *endTrip = (NSDate *)[trip objectAtIndex:1];
-//		if ((NSOrderedAscending == [startTrip compare:aDate]) && (NSOrderedAscending == [aDate compare:endTrip]))
-//		{
-//			result = YES;
-//			break;
-//		}
-//	}
-	
-	return result;
+	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
+	return [library isATripDate:aDate];
 }
 
 

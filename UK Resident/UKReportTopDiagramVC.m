@@ -8,7 +8,7 @@
 
 #import "UKReportTopDiagramVC.h"
 #import "NSDate+UKResident.h"
-#import "AppDelegate.h"
+#import "UKLibraryAPI.h"
 #import "Trip.h"
 
 @interface UKReportTopDiagramVC ()
@@ -166,19 +166,11 @@
 	}
 	[self.tripsViews removeAllObjects];
 	
-	NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
-	
 	NSDate *startGraphDate = [self.initialDate startOfYear];
 	NSDate *endGraphDate = [[self.initialDate moveYear:5] endOfYear];
 	
-	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Trip"];
-	request.predicate = [NSPredicate predicateWithFormat:@"((startDate <= %@) AND (endDate >= %@)) OR ((startDate >= %@) AND (endDate <= %@)) OR ((startDate <= %@) AND (endDate >= %@))",
-						 startGraphDate, startGraphDate,
-						 startGraphDate, endGraphDate,
-						 endGraphDate, endGraphDate
-						 ];
-	NSError *error;
-	NSArray *trips = [context executeFetchRequest:request error:&error];
+	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
+	NSArray *trips = [library arrayWithTripsBetweenStartDate:startGraphDate andEndDate:endGraphDate];
 	
 	NSDate *initialBorder = [NSDate dateWithDay:1 month:1 andYear:[self.initialDate yearComponent]];
 	NSDate *finalBorder = [NSDate dateWithDay:31 month:12 andYear:[[self.initialDate moveYear:5] yearComponent]];
@@ -189,34 +181,6 @@
 	{
 		[self.tripsViews addObjectsFromArray:[self createViewsWithStartDate:trip.startDate andEndDate:trip.endDate withInitialBorderDate:initialBorder andFinalBorderDate:finalBorder withHeight:height andColor:color]];
 	}
-	
-	for (UIView *view in self.tripsViews)
-	{
-		[self.drawingView addSubview:view];
-	}
-}
-
-//TODO: Delete Test trips
-- (void)createTestTripsViews
-{
-	for (UIView *view in self.tripsViews)
-	{
-		[view removeFromSuperview];
-	}
-	[self.tripsViews removeAllObjects];
-	
-	//test creating
-	NSDate *initialBorder = [NSDate dateWithDay:1 month:1 andYear:[self.initialDate yearComponent]];
-	NSDate *finalBorder = [NSDate dateWithDay:31 month:12 andYear:[[self.initialDate moveYear:5] yearComponent]];
-	UIColor *color = [UIColor colorWithRed:76/255. green:217/255. blue:99/255. alpha:1.];
-	CGFloat height = 12;
-	[self.tripsViews addObjectsFromArray:[self createViewsWithStartDate:[NSDate dateFromMyString:@"10-04-2016"] andEndDate:[NSDate dateFromMyString:@"05-05-2016"] withInitialBorderDate:initialBorder andFinalBorderDate:finalBorder withHeight:height andColor:color]];
-	[self.tripsViews addObjectsFromArray:[self createViewsWithStartDate:[NSDate dateFromMyString:@"20-05-2017"] andEndDate:[NSDate dateFromMyString:@"29-07-2017"] withInitialBorderDate:initialBorder andFinalBorderDate:finalBorder withHeight:height andColor:color]];
-	[self.tripsViews addObjectsFromArray:[self createViewsWithStartDate:[NSDate dateFromMyString:@"03-12-2017"] andEndDate:[NSDate dateFromMyString:@"12-02-2018"] withInitialBorderDate:initialBorder andFinalBorderDate:finalBorder withHeight:height andColor:color]];
-	[self.tripsViews addObjectsFromArray:[self createViewsWithStartDate:[NSDate dateFromMyString:@"15-03-2018"] andEndDate:[NSDate dateFromMyString:@"23-05-2018"] withInitialBorderDate:initialBorder andFinalBorderDate:finalBorder withHeight:height andColor:color]];
-	[self.tripsViews addObjectsFromArray:[self createViewsWithStartDate:[NSDate dateFromMyString:@"07-10-2018"] andEndDate:[NSDate dateFromMyString:@"23-11-2018"] withInitialBorderDate:initialBorder andFinalBorderDate:finalBorder withHeight:height andColor:color]];
-	[self.tripsViews addObjectsFromArray:[self createViewsWithStartDate:[NSDate dateFromMyString:@"25-08-2019"] andEndDate:[NSDate dateFromMyString:@"17-11-2019"] withInitialBorderDate:initialBorder andFinalBorderDate:finalBorder withHeight:height andColor:color]];
-	
 	
 	for (UIView *view in self.tripsViews)
 	{

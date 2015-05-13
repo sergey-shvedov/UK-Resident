@@ -7,7 +7,14 @@
 //
 
 #import "UKLibraryAPI.h"
+#import "AppDelegate.h"
 #import "NSDate+UKResident.h"
+
+@interface UKLibraryAPI ()
+
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+
+@end
 
 @implementation UKLibraryAPI
 
@@ -40,5 +47,42 @@
 	}
 	return self;
 }
+
+- (NSManagedObjectContext *)managedObjectContext
+{
+	if (nil == _managedObjectContext)
+	{
+		_managedObjectContext = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
+	}
+	return _managedObjectContext;
+}
+
+- (BOOL)isATripDate:(NSDate *)aDate
+{
+	BOOL result = NO;
+	
+	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Trip"];
+	request.predicate = [NSPredicate predicateWithFormat:@"(startDate <= %@) AND (endDate >= %@)", [aDate endOfDay], [aDate startOfDay]];
+	
+	NSError *error;
+	NSArray *trips = [self.managedObjectContext executeFetchRequest:request error:&error];
+	if ([trips count] > 0) result = YES;
+
+	return result;
+}
+
+- (NSArray *)arrayWithTripsBetweenStartDate:(NSDate *)aStartBorderDate andEndDate:(NSDate *)anEndBorderDate
+{
+	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Trip"];
+	request.predicate = [NSPredicate predicateWithFormat:@"((startDate <= %@) AND (endDate >= %@)) OR ((startDate >= %@) AND (endDate <= %@)) OR ((startDate <= %@) AND (endDate >= %@))",
+						 aStartBorderDate, aStartBorderDate,
+						 aStartBorderDate, anEndBorderDate,
+						 anEndBorderDate, anEndBorderDate
+						 ];
+	NSError *error;
+	NSArray *trips = [self.managedObjectContext executeFetchRequest:request error:&error];
+	return trips;
+}
+
 
 @end
