@@ -7,6 +7,7 @@
 //
 
 #import "User+Create.h"
+#import "UKLibraryAPI.h"
 
 @implementation User (Create)
 
@@ -34,6 +35,51 @@
 	}
 	
 	return result;
+}
+
++ (User *)userWithID:(NSUInteger)anUserID inContext:(NSManagedObjectContext *)aContext
+{
+	User *result = nil;
+	
+	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"User"];
+	request.predicate = [NSPredicate predicateWithFormat:@"userID = %@", anUserID];
+	NSError *error;
+	NSArray *users = [aContext executeFetchRequest:request error:&error];
+	
+	if ([users count])
+	{
+		result = ((User *)[users firstObject]);
+	}
+	else
+	{
+		NSFetchRequest *request2 = [NSFetchRequest fetchRequestWithEntityName:@"User"];
+		request2.predicate = [NSPredicate predicateWithFormat:@"userID = %@", anUserID];
+		request2.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"userID" ascending:YES]];
+		NSError *error2;
+		NSArray *users2 = [aContext executeFetchRequest:request error:&error2];
+		if ([users2 count])
+		{
+			result = ((User *)[users2 firstObject]);
+		}
+		else
+		{
+			result = [User firstUserInContext:aContext];
+		}
+	}
+	
+	return result;
+}
+
++ (void)deleteUser:(User *)anUser inContext:(NSManagedObjectContext *)aContext
+{
+	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
+	if (YES == [library.currentUser isEqual:anUser])
+	{
+		library.currentUser = nil;
+	}
+	[aContext deleteObject:anUser];
+	NSError *error;
+	[aContext save:&error];
 }
 
 @end

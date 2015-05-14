@@ -16,11 +16,14 @@
 @property (nonatomic, strong) NSArray *testTrips;
 @property (nonatomic, strong) User *currentUser;
 @property (nonatomic, strong) NSDate *currentInitDate;
+@property (nonatomic, assign) BOOL isInitDateSetted;
 
 + (UKLibraryAPI *)sharedInstance;
 
 - (BOOL)isATripDate:(NSDate *)aDate;
 - (NSArray *)arrayWithTripsBetweenStartDate:(NSDate *)aStartBorderDate andEndDate:(NSDate *)anEndBorderDate;
 - (NSInteger)numberOfTripDaysBetweenStartDate:(NSDate *)aStartBorderDate andEndDate:(NSDate *)anEndBorderDate andCountArrivalAndDepartureDays:(BOOL)aNeedCountArrivalDays;
+
+- (void)logAllData;
 
 @end

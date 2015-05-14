@@ -11,5 +11,9 @@
 @interface User (Create)
 
 + (User *)firstUserInContext:(NSManagedObjectContext *)context;
++ (User *)userWithID:(NSUInteger)anUserID inContext:(NSManagedObjectContext *)aContext;
+//+ (User *)createNextUserinContext:(NSManagedObjectContext *)context;
+
++ (void)deleteUser:(User *)anUser inContext:(NSManagedObjectContext *)aContext;
 
 @end

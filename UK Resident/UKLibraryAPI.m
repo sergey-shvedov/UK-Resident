@@ -9,7 +9,8 @@
 #import "UKLibraryAPI.h"
 #import "AppDelegate.h"
 #import "Trip.h"
-#import "User.h"
+#import "User+Create.h"
+#import "UserWithTrip.h"
 #import "NSDate+UKResident.h"
 
 @interface UKLibraryAPI ()
@@ -125,6 +126,39 @@
 	}
 	
 	return result;
+}
+
+- (void)logAllData
+{
+	NSFetchRequest *userRequest = [NSFetchRequest fetchRequestWithEntityName:@"User"];
+	userRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"userID" ascending:YES]];
+	NSError *error;
+	NSArray *users = [self.managedObjectContext executeFetchRequest:userRequest error:&error];
+	for (User *user in users)
+	{
+		NSLog(@"=====================================================");
+		NSLog(@"User: %@ \nestablishedDate: %@ \nuserByTrip: %i", user.userID, user.establishedDate, (int)[user.userByTrip count]);
+	}
+	
+	NSFetchRequest *userWithTripRequest = [NSFetchRequest fetchRequestWithEntityName:@"UserWithTrip"];
+	userRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"whoTravel.userID" ascending:YES]];
+	NSError *error2;
+	NSArray *usersWithTrips = [self.managedObjectContext executeFetchRequest:userWithTripRequest error:&error2];
+	for (UserWithTrip *userWithTrip in usersWithTrips)
+	{
+		NSLog(@"+++++++++++++++++++++++++++++++++++++++++++++++++++++");
+		NSLog(@"UserWithTrip: \nwhoTravel: %@ \ninTrip:%@", userWithTrip.whoTravel.name, userWithTrip.inTrip.startDate);
+	}
+	
+	NSFetchRequest *tripRequest = [NSFetchRequest fetchRequestWithEntityName:@"Trip"];
+	userRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"startDate" ascending:NO selector:@selector(compare:)]];
+	NSError *error3;
+	NSArray *trips= [self.managedObjectContext executeFetchRequest:tripRequest error:&error3];
+	for (Trip *trip in trips)
+	{
+		NSLog(@"-----------------------------------------------------");
+		NSLog(@"Trip: %@ \nDates: %@ – %@ \ntripsByUser: %i", trip.destination, trip.startDate, trip.endDate, (int)[trip.tripsByUser count]);
+	}
 }
 
 

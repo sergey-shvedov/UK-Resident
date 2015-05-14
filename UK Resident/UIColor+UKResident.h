@@ -37,4 +37,8 @@
 + (UIColor *)colorRightGraphMain;
 + (UIColor *)colorRightGraphBackground;
 
++ (UIColor *)colorInitialButtonSetted;
++ (UIColor *)colorInitialButton;
+
+
 @end

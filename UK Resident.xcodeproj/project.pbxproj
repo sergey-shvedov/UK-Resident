@@ -20,6 +20,8 @@
 		8430EC1E1B02554C00DC1959 /* TripFormDestinationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8430EC1D1B02554C00DC1959 /* TripFormDestinationVC.m */; };
 		8430EC211B03CDA400DC1959 /* UKReportTopInitialDatePopoverVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8430EC201B03CDA400DC1959 /* UKReportTopInitialDatePopoverVC.m */; };
 		8430EC271B03DEF900DC1959 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 8430EC261B03DEF900DC1959 /* User.m */; };
+		8430EC2E1B04B33E00DC1959 /* NSUserDefaults+AccessoryMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 8430EC2D1B04B33E00DC1959 /* NSUserDefaults+AccessoryMethods.m */; };
+		8430EC311B04EF1400DC1959 /* UserWithTrip+DeleteRules.m in Sources */ = {isa = PBXBuildFile; fileRef = 8430EC301B04EF1400DC1959 /* UserWithTrip+DeleteRules.m */; };
 		8452048B1AEA4AD600E535FD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8452048A1AEA4AD600E535FD /* main.m */; };
 		8452048E1AEA4AD600E535FD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8452048D1AEA4AD600E535FD /* AppDelegate.m */; };
 		845204911AEA4AD600E535FD /* UK_Resident.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8452048F1AEA4AD600E535FD /* UK_Resident.xcdatamodeld */; };
@@ -92,6 +94,10 @@
 		8430EC201B03CDA400DC1959 /* UKReportTopInitialDatePopoverVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKReportTopInitialDatePopoverVC.m; sourceTree = "<group>"; };
 		8430EC251B03DEF900DC1959 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = CoreData/User.h; sourceTree = "<group>"; };
 		8430EC261B03DEF900DC1959 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = CoreData/User.m; sourceTree = "<group>"; };
+		8430EC2C1B04B33E00DC1959 /* NSUserDefaults+AccessoryMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+AccessoryMethods.h"; sourceTree = "<group>"; };
+		8430EC2D1B04B33E00DC1959 /* NSUserDefaults+AccessoryMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+AccessoryMethods.m"; sourceTree = "<group>"; };
+		8430EC2F1B04EF1400DC1959 /* UserWithTrip+DeleteRules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UserWithTrip+DeleteRules.h"; path = "CoreData/UserWithTrip+DeleteRules.h"; sourceTree = "<group>"; };
+		8430EC301B04EF1400DC1959 /* UserWithTrip+DeleteRules.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UserWithTrip+DeleteRules.m"; path = "CoreData/UserWithTrip+DeleteRules.m"; sourceTree = "<group>"; };
 		845204851AEA4AD600E535FD /* uk-resident.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "uk-resident.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		845204891AEA4AD600E535FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8452048A1AEA4AD600E535FD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -185,6 +191,8 @@
 				8430EC141B02253D00DC1959 /* TempTrip.m */,
 				8430EC0D1B01FABD00DC1959 /* UserWithTrip.h */,
 				8430EC0E1B01FABD00DC1959 /* UserWithTrip.m */,
+				8430EC2F1B04EF1400DC1959 /* UserWithTrip+DeleteRules.h */,
+				8430EC301B04EF1400DC1959 /* UserWithTrip+DeleteRules.m */,
 				8430EC251B03DEF900DC1959 /* User.h */,
 				8430EC261B03DEF900DC1959 /* User.m */,
 				8430EBF01B015AE100DC1959 /* User+Create.h */,
@@ -320,6 +328,8 @@
 		845204C01AEEE69B00E535FD /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				8430EC2C1B04B33E00DC1959 /* NSUserDefaults+AccessoryMethods.h */,
+				8430EC2D1B04B33E00DC1959 /* NSUserDefaults+AccessoryMethods.m */,
 				847F4C2F1AF554A400831F11 /* UIColor+UKResident.h */,
 				847F4C301AF554A400831F11 /* UIColor+UKResident.m */,
 				847F4C261AF5311500831F11 /* CALayer+RuntimeAttributes.h */,
@@ -509,6 +519,7 @@
 				845204CC1AEFDA5E00E535FD /* NSDateFormatter+UKResident.m in Sources */,
 				845204B61AECFD4900E535FD /* UKCalendarTableViewController.m in Sources */,
 				847F4C251AF451F700831F11 /* UKReportCenterMainView.m in Sources */,
+				8430EC2E1B04B33E00DC1959 /* NSUserDefaults+AccessoryMethods.m in Sources */,
 				847F4C2B1AF553FD00831F11 /* UKTripAddFormViewController.m in Sources */,
 				847F4C311AF554A400831F11 /* UIColor+UKResident.m in Sources */,
 				8430EC151B02253D00DC1959 /* TempTrip.m in Sources */,
@@ -517,6 +528,7 @@
 				845204E41AF1747300E535FD /* UKWarningViewController.m in Sources */,
 				8430EC1E1B02554C00DC1959 /* TripFormDestinationVC.m in Sources */,
 				845204D81AF1176C00E535FD /* UKReportBottomCVC.m in Sources */,
+				8430EC311B04EF1400DC1959 /* UserWithTrip+DeleteRules.m in Sources */,
 				8430EBFC1B01639700DC1959 /* UKTripTableVC.m in Sources */,
 				847F4C281AF5311500831F11 /* CALayer+RuntimeAttributes.m in Sources */,
 				845204D51AF0FFD500E535FD /* UKReportViewController.m in Sources */,

@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *dayLabel;
 @property (weak, nonatomic) IBOutlet UILabel *monthLabel;
 @property (weak, nonatomic) IBOutlet UILabel *yearLabel;
+@property (weak, nonatomic) IBOutlet UIButton *initialDateButton;
 
 @property (weak, nonatomic) IBOutlet UIView *leftGraphView;
 @property (weak, nonatomic) IBOutlet UILabel *leftNumberLabel;
@@ -34,7 +35,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *rightNumberLabel;
 @property (weak, nonatomic) IBOutlet UILabel *rightTextLabel;
 
-@property (nonatomic, assign) BOOL isInitialDateSetted;
+@property (nonatomic, strong) NSDate *initialDate;
 
 @end
 
@@ -42,20 +43,7 @@
 
 - (void)viewDidLoad
 {
-	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
-	
-	if (nil == library.currentInitDate)
-	{
-		self.isInitialDateSetted = NO;
-		self.initialDate = [[NSDate date] normalization];
-	}
-	else
-	{
-		self.isInitialDateSetted = YES;
-		self.initialDate = library.currentInitDate;
-	}
-	
-	self.date = [[NSDate date] normalization];
+
 }
 
 - (void)setDate:(NSDate *)date
@@ -67,23 +55,32 @@
 
 - (void)setInitialDate:(NSDate *)initialDate
 {
-	_initialDate = initialDate;
+	[UKLibraryAPI sharedInstance].currentInitDate = initialDate;
 	[self.diagramVC setInitialDate:self.initialDate];
+}
+
+- (NSDate *)initialDate
+{
+	return [UKLibraryAPI sharedInstance].currentInitDate;
 }
 
 - (void)updateUI
 {
-	if (NO == self.isInitialDateSetted)
+	if (NO == [UKLibraryAPI sharedInstance].isInitDateSetted)
 	{
 		[self.diagramVC.view setHidden:YES];
 		[self.initialBigArrowView setHidden:NO];
 		[self.generalGraphView setHidden:YES];
 		[self.generalGraphReplaceLabel setHidden:YES];
+		[self.initialDateButton setTintColor:[UIColor colorInitialButton]];
+		[self.initialDateButton setTitleColor:[UIColor colorInitialButton] forState:UIControlStateNormal];
 	}
 	else
 	{
 		[self.diagramVC.view setHidden:NO];
 		[self.initialBigArrowView setHidden:YES];
+		[self.initialDateButton setTintColor:[UIColor colorInitialButtonSetted]];
+		[self.initialDateButton setTitleColor:[UIColor colorInitialButtonSetted] forState:UIControlStateNormal];
 		if ((NSOrderedAscending == [self.initialDate compare:self.date]) && (NSOrderedAscending == [self.date compare:[self.initialDate moveYear:5]]))
 		{
 			[self.generalGraphView setHidden:NO];
@@ -188,8 +185,7 @@
 		UKReportTopInitialDatePopoverVC *popover = (UKReportTopInitialDatePopoverVC *)[segue sourceViewController];
 		self.initialDate = popover.initialDate;
 		UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
-		library.currentInitDate = popover.initialDate;
-		self.isInitialDateSetted = YES;
+		library.isInitDateSetted = YES;
 		[self updateUI];
 	}
 }

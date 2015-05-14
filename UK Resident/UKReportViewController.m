@@ -7,6 +7,7 @@
 //
 
 #import "UKReportViewController.h"
+#import "UKLibraryAPI.h"
 #import "UKReportTopCVC.h"
 #import "UKReportCenterCVC.h"
 #import "UKReportBottomCVC.h"
@@ -52,8 +53,20 @@
 	self.navigationController.tabBarItem.selectedImage = [UIImage imageNamed:@"tabBarIconReportSelected"];
 	[self mountBarButtons];
 	
+	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
+	
+	if (nil == library.currentInitDate)
+	{
+		library.isInitDateSetted = NO;
+		library.currentInitDate = [[NSDate date] normalization];
+	}
+	else
+	{
+		library.isInitDateSetted = YES;
+		library.currentInitDate = library.currentInitDate;
+	}
+	
 	self.date = [[NSDate date] normalization];
-	//[self updateUI];
 }
 
 - (void)mountBarButtons

@@ -7,6 +7,9 @@
 //
 
 #import "TempTrip.h"
+#import "UserWithTrip.h"
+#import "User.h"
+#import "UKLibraryAPI.h"
 #import "NSDate+UKResident.h"
 
 @implementation TempTrip
@@ -70,7 +73,15 @@
 {
 	//[aContext performBlock:^{
 		Trip *newTrip=[NSEntityDescription insertNewObjectForEntityForName:@"Trip" inManagedObjectContext:aContext];
-		
+	
+	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
+	UserWithTrip *userWithTrip = [NSEntityDescription insertNewObjectForEntityForName:@"UserWithTrip" inManagedObjectContext:aContext];
+	//userWithTrip.whoTravel = library.currentUser;
+	//userWithTrip.inTrip = newTrip;
+	[library.currentUser addUserByTripObject:userWithTrip];
+	[newTrip addTripsByUserObject:userWithTrip];
+	
+	
 //		NSMutableSet *newSet=[[NSMutableSet alloc]init];
 //		for (User *user in self.users) {
 //			UserWithTrip *userWithTrip= [NSEntityDescription insertNewObjectForEntityForName:@"UserWithTrip" inManagedObjectContext:self.saveContext];

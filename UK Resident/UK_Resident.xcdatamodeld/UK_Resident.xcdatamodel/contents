@@ -5,14 +5,14 @@
         <attribute name="destination" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
-        <relationship name="tripsByUser" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UserWithTrip" inverseName="inTrip" inverseEntity="UserWithTrip" syncable="YES"/>
+        <relationship name="tripsByUser" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="UserWithTrip" inverseName="inTrip" inverseEntity="UserWithTrip" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES">
         <attribute name="colorID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="establishedDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <relationship name="userByTrip" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UserWithTrip" inverseName="whoTravel" inverseEntity="UserWithTrip" syncable="YES"/>
+        <relationship name="userByTrip" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="UserWithTrip" inverseName="whoTravel" inverseEntity="UserWithTrip" syncable="YES"/>
     </entity>
     <entity name="UserWithTrip" representedClassName="UserWithTrip" syncable="YES">
         <relationship name="inTrip" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Trip" inverseName="tripsByUser" inverseEntity="Trip" syncable="YES"/>

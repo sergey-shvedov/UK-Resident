@@ -7,6 +7,7 @@
 //
 
 #import "UKTripTableVC.h"
+#import "UKLibraryAPI.h"
 #import "UKTripAddFormViewController.h"
 #import "Trip.h"
 #import "NSDate+UKResident.h"
@@ -18,8 +19,10 @@
 {
 	_managedObjectContext = managedObjectContext;
 	
+	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
+	
 	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Trip"];
-	request.predicate = nil;
+	request.predicate = [NSPredicate predicateWithFormat:@"ANY tripsByUser.whoTravel == %@", library.currentUser];
 	request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"startDate" ascending:NO selector:@selector(compare:)]];
 	
 	self.fetchedResultsController = [[NSFetchedResultsController alloc]initWithFetchRequest:request managedObjectContext:managedObjectContext sectionNameKeyPath:nil cacheName:nil];

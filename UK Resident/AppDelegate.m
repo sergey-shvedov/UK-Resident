@@ -11,6 +11,7 @@
 #import "Trip+Create.h"
 #import "UKLibraryAPI.h"
 #import "User+Create.h"
+#import "NSUserDefaults+AccessoryMethods.h"
 
 @interface AppDelegate ()
 
@@ -25,6 +26,20 @@
 	library.currentUser = [User firstUserInContext:self.managedObjectContext];
 	
 	//Trip *trip = [Trip firstTripInContext:self.managedObjectContext];
+	
+	if (YES == [[NSUserDefaults standardUserDefaults] isLaunchedOnce])
+	{
+		library.currentUser = [User userWithID:[NSUserDefaults standardUserDefaults].userID inContext:self.managedObjectContext];
+	}
+	else
+	{
+		[NSUserDefaults standardUserDefaults].isLaunchedOnce = YES;
+		[NSUserDefaults standardUserDefaults].userID = 0;
+		[NSUserDefaults standardUserDefaults].displayCheckType = 0;
+		[NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus = 1;
+		
+		library.currentUser = [User firstUserInContext:self.managedObjectContext];
+	}
 	
 	return YES;
 }

@@ -11,6 +11,5 @@
 @interface UKReportTopCVC : UIViewController
 
 @property (nonatomic, strong) NSDate *date;
-@property (nonatomic, strong) NSDate *initialDate;
 
 @end

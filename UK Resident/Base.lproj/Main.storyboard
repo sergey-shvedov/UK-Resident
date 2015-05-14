@@ -1251,6 +1251,15 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Djw-6D-QO7">
+                                <rect key="frame" x="16" y="20" width="32" height="30"/>
+                                <state key="normal" title="LOG">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="callUserPopover:" destination="mOi-oe-taK" eventType="touchUpInside" id="944-61-M91"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.19793567519999999" blue="0.4003193431" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -1258,7 +1267,9 @@
                             <constraint firstItem="8fI-KW-KAt" firstAttribute="leading" secondItem="jpx-Ia-e9E" secondAttribute="leading" id="1Yk-XL-vM4"/>
                             <constraint firstAttribute="trailing" secondItem="tAe-b9-zXy" secondAttribute="trailing" constant="20" id="LgO-Eg-alt"/>
                             <constraint firstItem="8fI-KW-KAt" firstAttribute="top" secondItem="jpx-Ia-e9E" secondAttribute="top" id="QjF-ZC-soo"/>
+                            <constraint firstItem="Djw-6D-QO7" firstAttribute="leading" secondItem="jpx-Ia-e9E" secondAttribute="leadingMargin" id="TP8-xW-Ood"/>
                             <constraint firstAttribute="trailing" secondItem="8fI-KW-KAt" secondAttribute="trailing" id="XOp-8m-PA2"/>
+                            <constraint firstItem="Djw-6D-QO7" firstAttribute="top" secondItem="WZb-fB-whr" secondAttribute="bottom" id="dEI-1V-iwR"/>
                             <constraint firstItem="tAe-b9-zXy" firstAttribute="top" secondItem="WZb-fB-whr" secondAttribute="bottom" constant="2" id="rxH-b1-evq"/>
                         </constraints>
                     </view>
@@ -1759,9 +1770,10 @@
                                             </mask>
                                         </variation>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￼Выбранная дата находится вне рассматриваемого периода" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P86-vW-ViY">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P86-vW-ViY">
                                         <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <string key="text">Выбранная дата находится вне рассматриваемого периода</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1821,7 +1833,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F9y-Fr-LSF">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="tintColor" red="0.34684193120000001" green="0.72725267459999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.34509803921568627" green="0.72549019607843135" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="titleEdgeInsets" minX="-28" minY="0.0" maxX="28" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="150" minY="-1" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Дата начала учета" image="reportTopDownArrowIcon">
@@ -2020,6 +2032,7 @@
                         <outlet property="generalGraphReplaceLabel" destination="P86-vW-ViY" id="uXV-kF-e8D"/>
                         <outlet property="generalGraphView" destination="GF8-1C-cYx" id="3V1-zb-6c0"/>
                         <outlet property="initialBigArrowView" destination="1fX-gU-mJh" id="yA4-Zo-xc2"/>
+                        <outlet property="initialDateButton" destination="F9y-Fr-LSF" id="HMv-zA-FZv"/>
                         <outlet property="leftGraphView" destination="sZh-S1-WDh" id="xkg-9c-fc2"/>
                         <outlet property="leftNumberLabel" destination="Y6j-rq-JkC" id="pKt-rp-Qx6"/>
                         <outlet property="leftTextLabel" destination="yWP-aP-Fv3" id="v7p-bc-mPd"/>
@@ -2073,6 +2086,9 @@
                                                         <include reference="4Fp-C1-Poq"/>
                                                     </mask>
                                                 </variation>
+                                                <connections>
+                                                    <action selector="changedSelectedSegment:" destination="lkC-3r-gRN" eventType="valueChanged" id="8hO-VQ-n0w"/>
+                                                </connections>
                                             </segmentedControl>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G2U-Qv-hr5" userLabel="MainView" customClass="UKReportCenterMainView">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -2710,11 +2726,20 @@
                                                     </mask>
                                                 </variation>
                                             </view>
+                                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reportCenterImageUninitial" translatesAutoresizingMaskIntoConstraints="NO" id="YSs-BN-YfH">
+                                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.72549019609999998" green="0.87058823529999996" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="G2U-Qv-hr5" firstAttribute="top" secondItem="vor-yB-fM9" secondAttribute="bottom" constant="27" id="3on-kv-Bfe">
                                                 <variation key="heightClass=regular-widthClass=regular" constant="32"/>
+                                            </constraint>
+                                            <constraint firstAttribute="centerX" secondItem="YSs-BN-YfH" secondAttribute="centerX" constant="-165" id="GwX-cS-JdL">
+                                                <variation key="heightClass=regular-widthClass=regular" constant="0.0"/>
+                                            </constraint>
+                                            <constraint firstAttribute="centerY" secondItem="YSs-BN-YfH" secondAttribute="centerY" constant="138" id="LeR-6h-CUF">
+                                                <variation key="heightClass=regular-widthClass=regular" constant="0.0"/>
                                             </constraint>
                                             <constraint firstItem="G2U-Qv-hr5" firstAttribute="leading" secondItem="hOt-ce-vjG" secondAttribute="leading" id="M5S-ac-v1d"/>
                                             <constraint firstAttribute="trailing" secondItem="G2U-Qv-hr5" secondAttribute="trailing" id="hcR-rc-6x2"/>
@@ -2730,32 +2755,38 @@
                                             <mask key="subviews">
                                                 <exclude reference="vor-yB-fM9"/>
                                                 <exclude reference="G2U-Qv-hr5"/>
+                                                <exclude reference="YSs-BN-YfH"/>
                                             </mask>
                                             <mask key="constraints">
-                                                <exclude reference="nSI-5U-9T9"/>
-                                                <exclude reference="ya1-bh-0Lt"/>
                                                 <exclude reference="3on-kv-Bfe"/>
                                                 <exclude reference="M5S-ac-v1d"/>
                                                 <exclude reference="hcR-rc-6x2"/>
                                                 <exclude reference="p2N-W5-cUJ"/>
                                                 <exclude reference="qgo-Gc-F7d"/>
                                                 <exclude reference="uQJ-Fx-heY"/>
+                                                <exclude reference="nSI-5U-9T9"/>
+                                                <exclude reference="ya1-bh-0Lt"/>
+                                                <exclude reference="GwX-cS-JdL"/>
+                                                <exclude reference="LeR-6h-CUF"/>
                                             </mask>
                                         </variation>
                                         <variation key="heightClass=regular-widthClass=regular">
                                             <mask key="subviews">
                                                 <include reference="vor-yB-fM9"/>
                                                 <include reference="G2U-Qv-hr5"/>
+                                                <include reference="YSs-BN-YfH"/>
                                             </mask>
                                             <mask key="constraints">
-                                                <include reference="nSI-5U-9T9"/>
-                                                <include reference="ya1-bh-0Lt"/>
                                                 <exclude reference="3on-kv-Bfe"/>
                                                 <include reference="M5S-ac-v1d"/>
                                                 <include reference="hcR-rc-6x2"/>
                                                 <exclude reference="p2N-W5-cUJ"/>
                                                 <include reference="qgo-Gc-F7d"/>
                                                 <include reference="uQJ-Fx-heY"/>
+                                                <include reference="nSI-5U-9T9"/>
+                                                <include reference="ya1-bh-0Lt"/>
+                                                <include reference="GwX-cS-JdL"/>
+                                                <include reference="LeR-6h-CUF"/>
                                             </mask>
                                         </variation>
                                     </view>
@@ -2830,6 +2861,7 @@
                         <outlet property="fullBlock2Stepper" destination="Wds-ac-WbZ" id="Oeq-pZ-1fO"/>
                         <outlet property="fullBlock2StepperLabel" destination="ccb-rt-QV5" id="gXn-Ud-Xnr"/>
                         <outlet property="fullVersion" destination="RlN-cg-89w" id="Exw-hY-edo"/>
+                        <outlet property="imageView" destination="YSs-BN-YfH" id="gmp-Jv-4vB"/>
                         <outlet property="mainView" destination="G2U-Qv-hr5" id="zFH-w2-i6k"/>
                         <outlet property="segment" destination="vor-yB-fM9" id="bXn-RW-9GN"/>
                         <outlet property="shortVersion" destination="hUQ-MQ-lOK" id="NuQ-kF-PCU"/>
@@ -2853,6 +2885,9 @@
                         <subviews>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cC9-sN-TdG">
                                 <rect key="frame" x="-25" y="-15" width="51" height="31"/>
+                                <connections>
+                                    <action selector="switchChanged:" destination="8aN-ng-BEu" eventType="valueChanged" id="7qo-dQ-YEp"/>
+                                </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Дни улета и прилета считатаются днями присутствия в UK" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EwJ-25-v9r">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
@@ -2894,6 +2929,10 @@
                         </variation>
                     </view>
                     <toolbarItems/>
+                    <connections>
+                        <outlet property="switchLabel" destination="EwJ-25-v9r" id="gdO-QW-plJ"/>
+                        <outlet property="switcher" destination="cC9-sN-TdG" id="QgI-E5-xIL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0dK-Ty-4jO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -3115,6 +3154,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="reportCenterImageUninitial" width="640" height="160"/>
         <image name="reportCenterPlaneLarge" width="65" height="30"/>
         <image name="reportCenterPlaneMedium" width="50" height="24"/>
         <image name="reportCenterPlaneSmall" width="26" height="13"/>
