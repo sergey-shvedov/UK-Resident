@@ -11,6 +11,7 @@
 #import "UKReportTopInitialDatePopoverVC.h"
 #import "GraphRoundView.h"
 #import "UKLibraryAPI.h"
+#import "NSUserDefaults+AccessoryMethods.h"
 #import "NSDate+UKResident.h"
 #import "UIColor+UKResident.h"
 #import "NSString+UKResident.h"
@@ -144,7 +145,7 @@
 	}
 	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
 	NSInteger days = [startDate numberOfDaysBetween:self.date includedBorderDates:YES];
-	NSInteger tripDays = [library numberOfTripDaysBetweenStartDate:startDate andEndDate:self.date andCountArrivalAndDepartureDays:YES];
+	NSInteger tripDays = [library numberOfTripDaysBetweenStartDate:startDate andEndDate:self.date andCountArrivalAndDepartureDays:[NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus];
 	return @[[NSNumber numberWithInteger:tripDays], [NSNumber numberWithInteger:days]];
 }
 
@@ -154,7 +155,7 @@
 
 	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
 	NSInteger days = [startDate numberOfDaysBetween:self.date includedBorderDates:YES];
-	NSInteger tripDays = [library numberOfTripDaysBetweenStartDate:startDate andEndDate:self.date andCountArrivalAndDepartureDays:YES];
+	NSInteger tripDays = [library numberOfTripDaysBetweenStartDate:startDate andEndDate:self.date andCountArrivalAndDepartureDays:[NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus];
 	return @[[NSNumber numberWithInteger:(days - tripDays)], [NSNumber numberWithInteger:days]];
 }
 

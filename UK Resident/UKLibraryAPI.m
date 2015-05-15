@@ -94,6 +94,7 @@
 						 aStartBorderDate, anEndBorderDate,
 						 anEndBorderDate, anEndBorderDate
 						 ];
+	request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"startDate" ascending:YES]];
 	NSError *error;
 	NSArray *trips = [self.managedObjectContext executeFetchRequest:request error:&error];
 	return trips;
@@ -122,6 +123,86 @@
 		else
 		{
 			result += [trip.startDate numberOfDaysBetween:trip.endDate includedBorderDates:aNeedCountArrivalDays];
+		}
+	}
+	
+	return result;
+}
+
+- (NSInteger)numberOfLigalInvestDaysFromDate:(NSDate *)aDate withBoundaryDatesStatus:(BOOL)aBoundaryDatesStatus
+{
+	NSInteger result = 0;
+	NSDate *startDate = [[aDate moveYear:-1] moveDay:+1];
+	if (NSOrderedAscending == [startDate compare:self.currentInitDate]) startDate = self.currentInitDate;
+	NSInteger mainNumber = [self numberOfTripDaysBetweenStartDate:startDate andEndDate:aDate andCountArrivalAndDepartureDays:aBoundaryDatesStatus];
+	if (mainNumber > 180)
+	{
+		result = 180 - mainNumber;
+	}
+	else
+	{
+		if (mainNumber <= 90)
+		{
+			result = 90;
+		}
+		else
+		{
+			NSDate *movedDate = aDate;
+			
+			if(0)
+			{
+				result = 1;
+				for (result = 1 ; result < 90; result++)
+				{
+					movedDate = [aDate moveDay:result];
+					startDate = [[movedDate moveYear:-1] moveDay:+1];
+					if (NSOrderedAscending == [startDate compare:self.currentInitDate]) startDate = self.currentInitDate;
+					if (result + [self numberOfTripDaysBetweenStartDate:startDate andEndDate:aDate andCountArrivalAndDepartureDays:aBoundaryDatesStatus] >= 180)
+					{
+						break;
+					}
+				}
+			}
+			else
+			{
+				for (result = 0 ; result < 90; result++)
+				{
+					movedDate = [aDate moveDay:result];
+					startDate = [[movedDate moveYear:-1] moveDay:+1];
+					if (NSOrderedAscending == [startDate compare:self.currentInitDate]) startDate = self.currentInitDate;
+					
+					NSInteger tripDaysFromMovedDate = [self numberOfTripDaysBetweenStartDate:startDate andEndDate:aDate andCountArrivalAndDepartureDays:aBoundaryDatesStatus];
+					
+					NSInteger delta = 180 - tripDaysFromMovedDate - result;
+					
+					if (delta > 5)
+					{
+						result += delta - 1;
+						if (result > 90)
+						{
+							result = 90;
+							break;
+						}
+					}
+					else if (result + tripDaysFromMovedDate >= 180)
+					{
+						break;
+					}
+				}
+				
+//				if (0)
+//				{
+//					while ((result < 90) && (mainNumber < 180))
+//					{
+//						result = 180 - mainNumber;
+//						movedDate = [aDate moveDay:result];
+//						startDate = [[movedDate moveYear:-1] moveDay:+1];
+//						if (NSOrderedAscending == [startDate compare:self.currentInitDate]) startDate = self.currentInitDate;
+//						mainNumber = result + [self numberOfTripDaysBetweenStartDate:startDate andEndDate:aDate andCountArrivalAndDepartureDays:aBoundaryDatesStatus];
+//					}
+//				}
+			}
+			
 		}
 	}
 	

@@ -11,15 +11,24 @@
 #import "UKReportCenterMainView.h"
 #import "NSUserDefaults+AccessoryMethods.h"
 #import "NSDate+UKResident.h"
+#import "NSString+UKResident.h"
 
 @interface UKReportCenterCVC ()<UKReportCenterMainViewDelegate>
 
-@property (nonatomic, weak) IBOutlet UISegmentedControl *segment;
-@property (nonatomic, weak) IBOutlet UKReportCenterMainView *mainView;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segment;
+@property (weak, nonatomic) IBOutlet UKReportCenterMainView *mainView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
-@property (nonatomic, weak) IBOutlet UIView *shortVersion;
+@property (weak, nonatomic) IBOutlet UIView *shortVersion;
 @property (weak, nonatomic) IBOutlet UIView *fullVersion;
+
+@property (weak, nonatomic) IBOutlet UILabel *firstShortDaysLabel;
+@property (weak, nonatomic) IBOutlet UILabel *firstShortDescriptionLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *firstFullDaysLabel;
+@property (weak, nonatomic) IBOutlet UILabel *firstFullWordDaysLabel;
+@property (weak, nonatomic) IBOutlet UILabel *firstFullDescriptionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *firstFullTripDatesLabel;
 
 @property (weak, nonatomic) IBOutlet UIStepper *fullBlock2Stepper;
 @property (weak, nonatomic) IBOutlet UILabel *fullBlock2StepperLabel;
@@ -96,19 +105,49 @@
 
 - (void)updateСalculatedData
 {
+	
+	
 	switch ([NSUserDefaults standardUserDefaults].displayCheckType)
 	{
 		case kUKRecentCheckTypeInvestor:
 			[self.segment setSelectedSegmentIndex:kUKRecentCheckTypeInvestor];
+			[self updateInvestData];
 			break;
 			
 		case kUKRecentCheckTypeСitizen:
 			[self.segment setSelectedSegmentIndex:kUKRecentCheckTypeСitizen];
+			[self updateСitizenData];
 			break;
 			
 		default:
 			break;
 	}
+}
+
+- (void)updateInvestData
+{
+	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
+	NSInteger delta = [NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus ? -1 : +1;
+	NSInteger ligalInvestDays = [library numberOfLigalInvestDaysFromDate:self.date withBoundaryDatesStatus:[NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus];
+	NSString *firstDescription = [NSString stringWithFormat:@"С %@ можно совершить поездку\nдо %@ (на %i %@).",
+								  [self.date localizedStringWithDateFormat:@"d MMMM"],
+								  [[self.date moveDay:(ligalInvestDays + delta)] localizedStringWithDateFormat:@"d MMMM"],
+								  (int)ligalInvestDays,
+								  [NSString russianStringFor1:@"день" for2to4:@"дня" for5up:@"дней" withValue:ligalInvestDays]];
+	
+	[self.firstShortDaysLabel setText:[NSString stringWithFormat:@"%i", (int)ligalInvestDays]];
+	[self.firstShortDescriptionLabel setText:firstDescription];
+	[self.firstFullDaysLabel setText:[NSString stringWithFormat:@"%i", (int)ligalInvestDays]];
+	[self.firstFullWordDaysLabel setText:[NSString russianStringFor1:@"день" for2to4:@"дня" for5up:@"дней" withValue:ligalInvestDays]];
+	[self.firstFullDescriptionLabel setText:firstDescription];
+	[self.firstFullTripDatesLabel setText:[NSString stringWithFormat:@"%@ — %@",
+										   [self.date localizedStringWithDateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterNoStyle],
+										   [[self.date moveDay:(ligalInvestDays + delta)] localizedStringWithDateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterNoStyle]]];
+}
+
+- (void)updateСitizenData
+{
+	
 }
 
 - (IBAction)fullBlockStepperChanged:(id)sender
