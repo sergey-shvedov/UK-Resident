@@ -14,9 +14,8 @@
 @interface UKReportTopDiagramVC ()
 
 @property (nonatomic, weak) IBOutlet UIImageView *background;
-@property (nonatomic, weak) IBOutlet UILabel *yearLabelTop;
-@property (nonatomic, weak) IBOutlet UILabel *yearLabelBottom;
 @property (nonatomic, weak) IBOutlet UIView *drawingView;
+@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *yearLabels;
 
 @property (nonatomic, strong) UIImageView *todayIcon;
 @property (nonatomic, strong) UIImageView *yearBorderTop;
@@ -108,8 +107,11 @@
 	CGRect initialDateLabelFrame = [self changeFrame:self.initialDateLabel.frame forDate:self.initialDate withXDelra:32];
 	initialDateLabelFrame.origin.y = 140;
 	[self.initialDateLabel setFrame:initialDateLabelFrame];
-	[self.yearLabelBottom setText:[self.initialDate localizedStringWithDateFormat:@"YYYY"]];
-	[self.yearLabelTop setText:[[self.initialDate moveYear:5] localizedStringWithDateFormat:@"YYYY"]];
+	
+	for (UILabel *yearLabel in self.yearLabels)
+	{
+		[yearLabel setText:[[self.initialDate moveYear:yearLabel.tag] localizedStringWithDateFormat:@"YYYY"]];
+	}
 	
 	[self reorderViews];
 }
