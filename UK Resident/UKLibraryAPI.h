@@ -14,6 +14,7 @@
 @interface UKLibraryAPI : NSObject
 
 @property (nonatomic, strong, readonly) NSManagedObjectContext *expenciveFetchContext;
+@property (nonatomic, strong, readonly) NSManagedObjectContext *managedObjectContext;
 
 @property (nonatomic, strong) NSCalendar *customCalendar;
 @property (nonatomic, strong) NSArray *testTrips;
@@ -23,11 +24,11 @@
 
 + (UKLibraryAPI *)sharedInstance;
 
-- (BOOL)isATripDate:(NSDate *)aDate;
-- (NSArray *)arrayWithTripsBetweenStartDate:(NSDate *)aStartBorderDate andEndDate:(NSDate *)anEndBorderDate;
-- (NSInteger)numberOfTripDaysBetweenStartDate:(NSDate *)aStartBorderDate andEndDate:(NSDate *)anEndBorderDate andCountArrivalAndDepartureDays:(BOOL)aNeedCountArrivalDays;
-- (NSInteger)numberOfLigalInvestDaysFromDate:(NSDate *)aDate withBoundaryDatesStatus:(BOOL)aBoundaryDatesStatus;
-- (NSDate *)nearestDateWithRequiredTripDays:(NSInteger)aRequiredTripDaysNumber fromDate:(NSDate *)aDate withBoundaryDatesStatus:(BOOL)aBoundaryDatesStatus;
+- (BOOL)isATripDate:(NSDate *)aDate inContext:(NSManagedObjectContext *)aContext;
+- (NSArray *)arrayWithTripsBetweenStartDate:(NSDate *)aStartBorderDate andEndDate:(NSDate *)anEndBorderDate inContext:(NSManagedObjectContext *)aContext;
+- (NSInteger)numberOfTripDaysBetweenStartDate:(NSDate *)aStartBorderDate andEndDate:(NSDate *)anEndBorderDate andCountArrivalAndDepartureDays:(BOOL)aNeedCountArrivalDays inContext:(NSManagedObjectContext *)aContext;
+- (NSInteger)numberOfLigalInvestDaysFromDate:(NSDate *)aDate withBoundaryDatesStatus:(BOOL)aBoundaryDatesStatus inContext:(NSManagedObjectContext *)aContext;
+- (NSDate *)nearestDateWithRequiredTripDays:(NSInteger)aRequiredTripDaysNumber fromDate:(NSDate *)aDate withBoundaryDatesStatus:(BOOL)aBoundaryDatesStatus inContext:(NSManagedObjectContext *)aContext;
 - (void)logAllData;
 - (void)saveContext;
 

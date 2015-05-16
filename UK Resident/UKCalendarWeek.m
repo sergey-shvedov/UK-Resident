@@ -80,7 +80,7 @@
 - (BOOL)isATripDate:(NSDate *)aDate
 {
 	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
-	return [library isATripDate:aDate];
+	return [library isATripDate:aDate inContext:library.managedObjectContext];
 }
 
 

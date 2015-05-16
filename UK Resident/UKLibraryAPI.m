@@ -15,6 +15,7 @@
 
 @interface UKLibraryAPI ()
 
+@property (nonatomic, strong) NSManagedObjectContext *expenciveFetchContext;
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
 @end
@@ -87,7 +88,7 @@
 	[self saveContext];
 }
 
-- (BOOL)isATripDate:(NSDate *)aDate
+- (BOOL)isATripDate:(NSDate *)aDate inContext:(NSManagedObjectContext *)aContext
 {
 	BOOL result = NO;
 	
@@ -95,13 +96,13 @@
 	request.predicate = [NSPredicate predicateWithFormat:@"(startDate <= %@) AND (endDate >= %@)", [aDate endOfDay], [aDate startOfDay]];
 	
 	NSError *error;
-	NSArray *trips = [self.managedObjectContext executeFetchRequest:request error:&error];
+	NSArray *trips = [aContext executeFetchRequest:request error:&error];
 	if ([trips count] > 0) result = YES;
 
 	return result;
 }
 
-- (NSArray *)arrayWithTripsBetweenStartDate:(NSDate *)aStartBorderDate andEndDate:(NSDate *)anEndBorderDate
+- (NSArray *)arrayWithTripsBetweenStartDate:(NSDate *)aStartBorderDate andEndDate:(NSDate *)anEndBorderDate inContext:(NSManagedObjectContext *)aContext
 {
 	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Trip"];
 	request.predicate = [NSPredicate predicateWithFormat:@"((startDate <= %@) AND (endDate >= %@)) OR ((startDate >= %@) AND (endDate <= %@)) OR ((startDate <= %@) AND (endDate >= %@))",
@@ -111,15 +112,15 @@
 						 ];
 	request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"startDate" ascending:YES]];
 	NSError *error;
-	NSArray *trips = [self.managedObjectContext executeFetchRequest:request error:&error];
+	NSArray *trips = [aContext executeFetchRequest:request error:&error];
 	return trips;
 }
 
-- (NSInteger)numberOfTripDaysBetweenStartDate:(NSDate *)aStartBorderDate andEndDate:(NSDate *)anEndBorderDate andCountArrivalAndDepartureDays:(BOOL)aNeedCountArrivalDays
+- (NSInteger)numberOfTripDaysBetweenStartDate:(NSDate *)aStartBorderDate andEndDate:(NSDate *)anEndBorderDate andCountArrivalAndDepartureDays:(BOOL)aNeedCountArrivalDays inContext:(NSManagedObjectContext *)aContext
 {
 	NSInteger result = 0;
 	NSInteger minusDay = aNeedCountArrivalDays ? 0 : 1;
-	NSArray *trips = [self arrayWithTripsBetweenStartDate:aStartBorderDate andEndDate:anEndBorderDate];
+	NSArray *trips = [self arrayWithTripsBetweenStartDate:aStartBorderDate andEndDate:anEndBorderDate inContext:aContext];
 	
 	for (Trip *trip in trips)
 	{
@@ -144,12 +145,12 @@
 	return result;
 }
 
-- (NSInteger)numberOfLigalInvestDaysFromDate:(NSDate *)aDate withBoundaryDatesStatus:(BOOL)aBoundaryDatesStatus
+- (NSInteger)numberOfLigalInvestDaysFromDate:(NSDate *)aDate withBoundaryDatesStatus:(BOOL)aBoundaryDatesStatus inContext:(NSManagedObjectContext *)aContext
 {
 	NSInteger result = 0;
 	NSDate *startDate = [[aDate moveYear:-1] moveDay:+1];
 	if (NSOrderedAscending == [startDate compare:self.currentInitDate]) startDate = self.currentInitDate;
-	NSInteger mainNumber = [self numberOfTripDaysBetweenStartDate:startDate andEndDate:aDate andCountArrivalAndDepartureDays:aBoundaryDatesStatus];
+	NSInteger mainNumber = [self numberOfTripDaysBetweenStartDate:startDate andEndDate:aDate andCountArrivalAndDepartureDays:aBoundaryDatesStatus inContext:aContext];
 	if (mainNumber > 180)
 	{
 		result = 180 - mainNumber;
@@ -172,7 +173,7 @@
 					movedDate = [aDate moveDay:result];
 					startDate = [[movedDate moveYear:-1] moveDay:+1];
 					if (NSOrderedAscending == [startDate compare:self.currentInitDate]) startDate = self.currentInitDate;
-					if (result + [self numberOfTripDaysBetweenStartDate:startDate andEndDate:aDate andCountArrivalAndDepartureDays:aBoundaryDatesStatus] >= 180)
+					if (result + [self numberOfTripDaysBetweenStartDate:startDate andEndDate:aDate andCountArrivalAndDepartureDays:aBoundaryDatesStatus inContext:aContext] >= 180)
 					{
 						break;
 					}
@@ -186,7 +187,7 @@
 					startDate = [[movedDate moveYear:-1] moveDay:+1];
 					if (NSOrderedAscending == [startDate compare:self.currentInitDate]) startDate = self.currentInitDate;
 					
-					NSInteger tripDaysFromMovedDate = [self numberOfTripDaysBetweenStartDate:startDate andEndDate:aDate andCountArrivalAndDepartureDays:aBoundaryDatesStatus];
+					NSInteger tripDaysFromMovedDate = [self numberOfTripDaysBetweenStartDate:startDate andEndDate:aDate andCountArrivalAndDepartureDays:aBoundaryDatesStatus inContext:aContext];
 					
 					NSInteger delta = 180 - tripDaysFromMovedDate - result;
 					
@@ -224,7 +225,7 @@
 	return result;
 }
 
-- (NSDate *)nearestDateWithRequiredTripDays:(NSInteger)aRequiredTripDaysNumber fromDate:(NSDate *)aDate withBoundaryDatesStatus:(BOOL)aBoundaryDatesStatus
+- (NSDate *)nearestDateWithRequiredTripDays:(NSInteger)aRequiredTripDaysNumber fromDate:(NSDate *)aDate withBoundaryDatesStatus:(BOOL)aBoundaryDatesStatus inContext:(NSManagedObjectContext *)aContext
 {
 	NSDate *result = 0;
 	
@@ -232,7 +233,7 @@
 	
 	NSInteger deltaDays = 0;
 	
-	while ([self numberOfLigalInvestDaysFromDate:[aDate moveDay:deltaDays] withBoundaryDatesStatus:aBoundaryDatesStatus] < aRequiredTripDaysNumber)
+	while ([self numberOfLigalInvestDaysFromDate:[aDate moveDay:deltaDays] withBoundaryDatesStatus:aBoundaryDatesStatus inContext:aContext] < aRequiredTripDaysNumber)
 	{
 		
 		

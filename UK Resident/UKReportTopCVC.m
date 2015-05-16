@@ -145,7 +145,7 @@
 	}
 	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
 	NSInteger days = [startDate numberOfDaysBetween:self.date includedBorderDates:YES];
-	NSInteger tripDays = [library numberOfTripDaysBetweenStartDate:startDate andEndDate:self.date andCountArrivalAndDepartureDays:[NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus];
+	NSInteger tripDays = [library numberOfTripDaysBetweenStartDate:startDate andEndDate:self.date andCountArrivalAndDepartureDays:[NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus inContext:library.managedObjectContext];
 	return @[[NSNumber numberWithInteger:tripDays], [NSNumber numberWithInteger:days]];
 }
 
@@ -155,7 +155,7 @@
 
 	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
 	NSInteger days = [startDate numberOfDaysBetween:self.date includedBorderDates:YES];
-	NSInteger tripDays = [library numberOfTripDaysBetweenStartDate:startDate andEndDate:self.date andCountArrivalAndDepartureDays:[NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus];
+	NSInteger tripDays = [library numberOfTripDaysBetweenStartDate:startDate andEndDate:self.date andCountArrivalAndDepartureDays:[NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus inContext:library.managedObjectContext];
 	return @[[NSNumber numberWithInteger:(days - tripDays)], [NSNumber numberWithInteger:days]];
 }
 

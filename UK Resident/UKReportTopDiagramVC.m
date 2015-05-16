@@ -173,7 +173,7 @@
 	NSDate *endGraphDate = [[self.initialDate moveYear:5] endOfYear];
 	
 	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
-	NSArray *trips = [library arrayWithTripsBetweenStartDate:startGraphDate andEndDate:endGraphDate];
+	NSArray *trips = [library arrayWithTripsBetweenStartDate:startGraphDate andEndDate:endGraphDate inContext:library.managedObjectContext];
 	
 	NSDate *initialBorder = [NSDate dateWithDay:1 month:1 andYear:[self.initialDate yearComponent]];
 	NSDate *finalBorder = [NSDate dateWithDay:31 month:12 andYear:[[self.initialDate moveYear:5] yearComponent]];

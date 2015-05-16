@@ -131,7 +131,7 @@
 {
 	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
 	NSInteger delta = [NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus ? -1 : +1;
-	NSInteger ligalInvestDays = [library numberOfLigalInvestDaysFromDate:self.date withBoundaryDatesStatus:[NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus];
+	NSInteger ligalInvestDays = [library numberOfLigalInvestDaysFromDate:self.date withBoundaryDatesStatus:[NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus inContext:library.managedObjectContext];
 	NSString *firstDescription = [NSString stringWithFormat:@"С %@ можно совершить поездку\nдо %@ (на %i %@).",
 								  [self.date localizedStringWithDateFormat:@"d MMMM"],
 								  [[self.date moveDay:(ligalInvestDays + delta)] localizedStringWithDateFormat:@"d MMMM"],
@@ -147,7 +147,7 @@
 										   [self.date localizedStringWithDateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterNoStyle],
 										   [[self.date moveDay:(ligalInvestDays + delta)] localizedStringWithDateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterNoStyle]]];
 	
-	NSDate *searchDate = [library nearestDateWithRequiredTripDays:self.fullBlock2Stepper.value fromDate:self.date withBoundaryDatesStatus:[NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus];
+	NSDate *searchDate = [library nearestDateWithRequiredTripDays:self.fullBlock2Stepper.value fromDate:self.date withBoundaryDatesStatus:[NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus inContext:library.managedObjectContext];
 	[self.secondFullDayDateLabel setText:[NSString stringWithFormat:@"%@", [searchDate localizedStringWithDateFormat:@"d MMMM"]]];
 	
 }
