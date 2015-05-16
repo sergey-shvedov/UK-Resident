@@ -40,5 +40,10 @@
 + (UIColor *)colorInitialButtonSetted;
 + (UIColor *)colorInitialButton;
 
++ (UIColor *)colorReportCenterBackground;
++ (UIColor *)colorReportCenterBackgroundWarning;
++ (UIColor *)colorReportCenterText;
++ (UIColor *)colorReportCenterTextWarning;
+
 
 @end

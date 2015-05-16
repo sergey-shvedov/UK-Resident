@@ -23,7 +23,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	
 	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
-	library.currentUser = [User firstUserInContext:self.managedObjectContext];
+	//library.currentUser = [User firstUserInContext:self.managedObjectContext];
 	
 	//Trip *trip = [Trip firstTripInContext:self.managedObjectContext];
 	
@@ -39,6 +39,7 @@
 		[NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus = 1;
 		
 		library.currentUser = [User firstUserInContext:self.managedObjectContext];
+		[library logAllData];
 	}
 	
 	return YES;

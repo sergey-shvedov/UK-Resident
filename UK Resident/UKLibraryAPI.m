@@ -145,7 +145,7 @@
 	return result;
 }
 
-- (NSInteger)numberOfLigalInvestDaysFromDate:(NSDate *)aDate withBoundaryDatesStatus:(BOOL)aBoundaryDatesStatus inContext:(NSManagedObjectContext *)aContext
+- (NSInteger)investNumberOfLigalDaysFromDate:(NSDate *)aDate withBoundaryDatesStatus:(BOOL)aBoundaryDatesStatus inContext:(NSManagedObjectContext *)aContext
 {
 	NSInteger result = 0;
 	NSDate *startDate = [[aDate moveYear:-1] moveDay:+1];
@@ -225,7 +225,7 @@
 	return result;
 }
 
-- (NSDate *)nearestDateWithRequiredTripDays:(NSInteger)aRequiredTripDaysNumber fromDate:(NSDate *)aDate withBoundaryDatesStatus:(BOOL)aBoundaryDatesStatus inContext:(NSManagedObjectContext *)aContext
+- (NSDate *)investNearestDateWithRequiredTripDays:(NSInteger)aRequiredTripDaysNumber fromDate:(NSDate *)aDate withBoundaryDatesStatus:(BOOL)aBoundaryDatesStatus inContext:(NSManagedObjectContext *)aContext
 {
 	NSDate *result = 0;
 	
@@ -233,11 +233,79 @@
 	
 	NSInteger deltaDays = 0;
 	
-	while ([self numberOfLigalInvestDaysFromDate:[aDate moveDay:deltaDays] withBoundaryDatesStatus:aBoundaryDatesStatus inContext:aContext] < aRequiredTripDaysNumber)
+	while ([self investNumberOfLigalDaysFromDate:[aDate moveDay:deltaDays] withBoundaryDatesStatus:aBoundaryDatesStatus inContext:aContext] < aRequiredTripDaysNumber)
 	{
-		
-		
 		deltaDays++;
+		if (deltaDays > 1000) break;
+	}
+	
+	result = [aDate moveDay:deltaDays];
+	
+	return result;
+}
+
+- (NSInteger)citizenNumberOfLigalDaysFromDate:(NSDate *)aDate withBoundaryDatesStatus:(BOOL)aBoundaryDatesStatus inContext:(NSManagedObjectContext *)aContext
+{
+	NSInteger result = 0;
+	NSDate *startDate = [[aDate moveYear:-1] moveDay:+1];
+	if (NSOrderedAscending == [startDate compare:self.currentInitDate]) startDate = self.currentInitDate;
+	NSInteger mainNumber = [self numberOfTripDaysBetweenStartDate:startDate andEndDate:aDate andCountArrivalAndDepartureDays:aBoundaryDatesStatus inContext:aContext];
+	if (mainNumber > 90)
+	{
+		result = 90 - mainNumber;
+	}
+	else
+	{
+		if (mainNumber == 90)
+		{
+			result = 90;
+		}
+		else
+		{
+			NSDate *movedDate = aDate;
+			
+			for (result = 0 ; result < 90; result++)
+			{
+				movedDate = [aDate moveDay:result];
+				startDate = [[movedDate moveYear:-1] moveDay:+1];
+				if (NSOrderedAscending == [startDate compare:self.currentInitDate]) startDate = self.currentInitDate;
+				
+				NSInteger tripDaysFromMovedDate = [self numberOfTripDaysBetweenStartDate:startDate andEndDate:aDate andCountArrivalAndDepartureDays:aBoundaryDatesStatus inContext:aContext];
+				
+				NSInteger delta = 90 - tripDaysFromMovedDate - result;
+				
+				if (delta > 5)
+				{
+					result += delta - 1;
+					if (result > 90)
+					{
+						result = 90;
+						break;
+					}
+				}
+				else if (result + tripDaysFromMovedDate >= 90)
+				{
+					break;
+				}
+			}
+		}
+	}
+	
+	return result;
+}
+
+- (NSDate *)citizenNearestDateWithRequiredTripDays:(NSInteger)aRequiredTripDaysNumber fromDate:(NSDate *)aDate withBoundaryDatesStatus:(BOOL)aBoundaryDatesStatus inContext:(NSManagedObjectContext *)aContext
+{
+	NSDate *result = 0;
+	
+	if (aRequiredTripDaysNumber > 90) aRequiredTripDaysNumber = 90;
+	
+	NSInteger deltaDays = 0;
+	
+	while ([self citizenNumberOfLigalDaysFromDate:[aDate moveDay:deltaDays] withBoundaryDatesStatus:aBoundaryDatesStatus inContext:aContext] < aRequiredTripDaysNumber)
+	{
+		deltaDays++;
+		if (deltaDays > 1000) break;
 	}
 	
 	result = [aDate moveDay:deltaDays];

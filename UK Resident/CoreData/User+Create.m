@@ -27,6 +27,7 @@
 		user.name = @"User 1";
 		user.userID = @0;
 		user.colorID = @0;
+		[[UKLibraryAPI sharedInstance] saveContext];
 		result = user;
 	}
 	else

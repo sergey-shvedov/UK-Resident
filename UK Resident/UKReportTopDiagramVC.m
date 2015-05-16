@@ -31,6 +31,8 @@
 
 @implementation UKReportTopDiagramVC
 
+@synthesize initialDate = _initialDate;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -38,7 +40,7 @@
 	self.shadingViews = [[NSMutableArray alloc] init];
 	self.lightingViews = [[NSMutableArray alloc] init];
 	self.tripsViews = [[NSMutableArray alloc] init];
-	self.initialDate = [UKLibraryAPI sharedInstance].currentInitDate;
+	//self.initialDate = [UKLibraryAPI sharedInstance].currentInitDate;
 	self.date = [NSDate date];
 	[self mountDiagramIcons];
 	[self updateUI];
@@ -60,6 +62,22 @@
 	_initialDate = initialDate;
 	self.initialYear = [initialDate yearComponent];
 	[self updateUI];
+}
+
+- (NSDate *)initialDate
+{
+	if (nil == _initialDate)
+	{
+		if (nil != [UKLibraryAPI sharedInstance].currentInitDate)
+		{
+			_initialDate = [UKLibraryAPI sharedInstance].currentInitDate;
+		}
+		else
+		{
+			_initialDate = [NSDate date];
+		}
+	}
+	return _initialDate;
 }
 
 - (void)mountDiagramIcons

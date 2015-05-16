@@ -137,4 +137,26 @@
 	return [UIColor whiteColor];
 }
 
+////////////////////////////////////////////////
+
++ (UIColor *)colorReportCenterBackground
+{
+	return [UIColor colorWithRed:63.0/255.0 green:169.0/255.0 blue:245.0/255.0 alpha:0.33];
+}
+
++ (UIColor *)colorReportCenterBackgroundWarning
+{
+	return [UIColor colorWithRed:255.0/255.0 green:34.0/255.0 blue:34.0/255.0 alpha:0.33];
+}
+
++ (UIColor *)colorReportCenterText
+{
+	return [UIColor colorWithRed:44.0/255.0 green:65.0/255.0 blue:143.0/255.0 alpha:1.0];
+}
+
++ (UIColor *)colorReportCenterTextWarning
+{
+	return [UIColor colorWithRed:227.0/255.0 green:6.0/255.0 blue:19.0/255.0 alpha:1.0];
+}
+
 @end
