@@ -11,10 +11,12 @@
 #import "UKDatabaseAvailability.h"
 #import "UKTripTableVC.h"
 #import "UKTripAddFormViewController.h"
+#import "UKLibraryAPI.h"
 
 @interface UKTripViewController ()
 
 @property (strong,nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (weak, nonatomic) IBOutlet UIView *emptyBackgroundView;
 
 @end
 
@@ -24,6 +26,26 @@
 {
 	[super viewDidLoad];
 	self.navigationController.tabBarItem.selectedImage = [UIImage imageNamed:@"tabBarIconTripSelected"];
+	[self updateUI];
+}
+
+- (void)updateUI
+{
+	
+	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
+	
+	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Trip"];
+	request.predicate = [NSPredicate predicateWithFormat:@"ANY tripsByUser.whoTravel == %@", library.currentUser];
+	NSError *error;
+	NSArray *trips = [library.managedObjectContext executeFetchRequest:request error:&error];
+	if ([trips count])
+	{
+		[self.emptyBackgroundView setHidden:YES];
+	}
+	else
+	{
+		[self.emptyBackgroundView setHidden:NO];
+	}
 }
 
 //- (void)dealloc

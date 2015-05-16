@@ -69,12 +69,81 @@
                                     <segue destination="7rx-PN-vbc" kind="presentation" identifier="Add Trip" id="wkV-q5-3hL"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eYq-1H-0xe">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tripEmptyBackground" translatesAutoresizingMaskIntoConstraints="NO" id="kpD-Pd-pgJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="480" id="b7Z-pw-Zdq"/>
+                                            <constraint firstAttribute="width" constant="500" id="dF7-eY-ZVn"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="b7Z-pw-Zdq"/>
+                                                <exclude reference="dF7-eY-ZVn"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <mask key="constraints">
+                                                <include reference="b7Z-pw-Zdq"/>
+                                                <include reference="dF7-eY-ZVn"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vYA-nG-Ui6">
+                                        <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                        <string key="text">Добавьте завершенные и предстоящие поездки за пределы территории UK</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.74509803921568629" green="0.74509803921568629" blue="0.74509803921568629" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="661" id="6W9-PR-pES"/>
+                                    <constraint firstItem="vYA-nG-Ui6" firstAttribute="leading" secondItem="eYq-1H-0xe" secondAttribute="leading" constant="225" id="E05-yu-5kb"/>
+                                    <constraint firstItem="vYA-nG-Ui6" firstAttribute="top" secondItem="eYq-1H-0xe" secondAttribute="top" constant="499" id="Q5n-SH-sYl"/>
+                                    <constraint firstItem="kpD-Pd-pgJ" firstAttribute="top" secondItem="eYq-1H-0xe" secondAttribute="top" constant="44" id="cXv-it-Evr"/>
+                                    <constraint firstAttribute="height" constant="568" id="pbC-1G-Jqh"/>
+                                    <constraint firstItem="kpD-Pd-pgJ" firstAttribute="leading" secondItem="eYq-1H-0xe" secondAttribute="leading" constant="40" id="uMc-ez-9FN"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="kpD-Pd-pgJ"/>
+                                        <exclude reference="vYA-nG-Ui6"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <exclude reference="6W9-PR-pES"/>
+                                        <exclude reference="pbC-1G-Jqh"/>
+                                        <exclude reference="cXv-it-Evr"/>
+                                        <exclude reference="uMc-ez-9FN"/>
+                                        <exclude reference="E05-yu-5kb"/>
+                                        <exclude reference="Q5n-SH-sYl"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <mask key="subviews">
+                                        <include reference="kpD-Pd-pgJ"/>
+                                        <include reference="vYA-nG-Ui6"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <include reference="6W9-PR-pES"/>
+                                        <include reference="pbC-1G-Jqh"/>
+                                        <include reference="cXv-it-Evr"/>
+                                        <include reference="uMc-ez-9FN"/>
+                                        <include reference="E05-yu-5kb"/>
+                                        <include reference="Q5n-SH-sYl"/>
+                                    </mask>
+                                </variation>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="zQe-TO-btb" firstAttribute="top" secondItem="azp-UF-OcA" secondAttribute="bottom" constant="40" id="7DJ-NN-TVN"/>
+                            <constraint firstItem="eYq-1H-0xe" firstAttribute="top" secondItem="azp-UF-OcA" secondAttribute="bottom" constant="40" id="9cE-yX-54j"/>
                             <constraint firstItem="t44-7E-dfn" firstAttribute="top" secondItem="VWl-Lq-wm6" secondAttribute="top" id="Lqw-XQ-sEV"/>
                             <constraint firstAttribute="bottom" secondItem="t44-7E-dfn" secondAttribute="bottom" id="TiS-Nk-uD3"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="eYq-1H-0xe" secondAttribute="trailing" constant="34" id="jzs-XP-VDT"/>
                             <constraint firstItem="zQe-TO-btb" firstAttribute="leading" secondItem="t44-7E-dfn" secondAttribute="trailing" constant="40" id="lOc-ce-2MT">
                                 <variation key="heightClass=regular-widthClass=regular" constant="50"/>
                             </constraint>
@@ -87,32 +156,41 @@
                             <mask key="subviews">
                                 <exclude reference="t44-7E-dfn"/>
                                 <exclude reference="zQe-TO-btb"/>
+                                <exclude reference="eYq-1H-0xe"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="7DJ-NN-TVN"/>
-                                <exclude reference="lOc-ce-2MT"/>
-                                <exclude reference="uUr-jR-EZH"/>
                                 <exclude reference="Lqw-XQ-sEV"/>
                                 <exclude reference="TiS-Nk-uD3"/>
                                 <exclude reference="ppB-l7-RMl"/>
+                                <exclude reference="9cE-yX-54j"/>
+                                <exclude reference="jzs-XP-VDT"/>
+                                <exclude reference="7DJ-NN-TVN"/>
+                                <exclude reference="lOc-ce-2MT"/>
+                                <exclude reference="uUr-jR-EZH"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
                             <mask key="subviews">
                                 <include reference="t44-7E-dfn"/>
                                 <include reference="zQe-TO-btb"/>
+                                <include reference="eYq-1H-0xe"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="7DJ-NN-TVN"/>
-                                <include reference="lOc-ce-2MT"/>
-                                <include reference="uUr-jR-EZH"/>
                                 <include reference="Lqw-XQ-sEV"/>
                                 <include reference="TiS-Nk-uD3"/>
                                 <include reference="ppB-l7-RMl"/>
+                                <include reference="9cE-yX-54j"/>
+                                <include reference="jzs-XP-VDT"/>
+                                <include reference="7DJ-NN-TVN"/>
+                                <include reference="lOc-ce-2MT"/>
+                                <include reference="uUr-jR-EZH"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Поездки" id="e37-Je-4wm"/>
+                    <connections>
+                        <outlet property="emptyBackgroundView" destination="eYq-1H-0xe" id="auf-J7-24M"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w97-EW-XBp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -3323,6 +3401,7 @@
         <image name="tabBarIconWarning" width="28" height="28"/>
         <image name="tripAddIconLarge" width="120" height="120"/>
         <image name="tripAddIconLargeSelected" width="120" height="120"/>
+        <image name="tripEmptyBackground" width="480" height="500"/>
         <image name="tripFormPhotoBackground" width="230" height="142"/>
         <image name="tripFormTopBackground" width="470" height="110"/>
         <image name="tripTablePlaneUp" width="44" height="44"/>

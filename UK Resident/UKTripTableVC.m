@@ -12,6 +12,7 @@
 #import "Trip.h"
 #import "NSDate+UKResident.h"
 #import "NSString+UKResident.h"
+#import "NSDateFormatter+UKResident.h"
 
 @implementation UKTripTableVC
 
@@ -50,13 +51,40 @@
 	if (nil != cell)
 	{
 		Trip *trip=[self.fetchedResultsController objectAtIndexPath:indexPath];
-		cell.textLabel.text = trip.destination;
-		NSInteger tripDays = [trip.startDate numberOfDaysUntil:trip.endDate];
-		cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ — %@ (%ld %@)",
+		
+		NSInteger startMonthOfYear = [trip.startDate monthOfYear];
+		NSInteger endMonthOfYear = [trip.endDate monthOfYear];
+		
+		NSString *monthTitle;
+		if (startMonthOfYear != endMonthOfYear)
+		{
+			monthTitle = [NSString stringWithFormat: @"%@ — %@ %i",[[[NSDateFormatter customDateFormatter] standaloneMonthSymbols] objectAtIndex:(startMonthOfYear - 1)], [[[NSDateFormatter customDateFormatter] standaloneMonthSymbols] objectAtIndex:(endMonthOfYear - 1)], (int)[trip.endDate yearComponent]];
+		}
+		else
+		{
+			monthTitle = [NSString stringWithFormat: @"%@ %i",[[[NSDateFormatter customDateFormatter] standaloneMonthSymbols] objectAtIndex:(startMonthOfYear - 1)], (int)[trip.startDate yearComponent]];
+		}
+
+		cell.textLabel.text = [NSString stringWithFormat:@"%@ (%@)", trip.destination, monthTitle];
+		
+		NSInteger tripDays = 1 + [trip.startDate numberOfDaysUntil:trip.endDate];
+		cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ — %@ (%i %@)",
 									 [trip.startDate localizedStringWithDateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterNoStyle],
 									 [trip.endDate localizedStringWithDateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterNoStyle],
-									 tripDays,
+									 (int)tripDays,
 									 [NSString russianStringFor1:@"день" for2to4:@"дня" for5up:@"дней" withValue:tripDays]];
+		if (NSOrderedAscending == [[NSDate date] compare:trip.startDate])
+		{
+			[cell.imageView setImage:[UIImage imageNamed:@"tripTablePlaneUp"]];
+		}
+		else if (NSOrderedAscending == [trip.endDate compare:[NSDate date]])
+		{
+			[cell.imageView setImage:[UIImage imageNamed:@"tripTablePlaneDown"]];
+		}
+		else
+		{
+			[cell.imageView setImage:[UIImage imageNamed:@"tripTablePlaneHorizontal"]];
+		}
 	}
 	
 	
