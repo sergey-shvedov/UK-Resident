@@ -9,8 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @class User;
+@class NSManagedObjectContext;
 
 @interface UKLibraryAPI : NSObject
+
+@property (nonatomic, strong, readonly) NSManagedObjectContext *expenciveFetchContext;
 
 @property (nonatomic, strong) NSCalendar *customCalendar;
 @property (nonatomic, strong) NSArray *testTrips;
@@ -24,6 +27,8 @@
 - (NSArray *)arrayWithTripsBetweenStartDate:(NSDate *)aStartBorderDate andEndDate:(NSDate *)anEndBorderDate;
 - (NSInteger)numberOfTripDaysBetweenStartDate:(NSDate *)aStartBorderDate andEndDate:(NSDate *)anEndBorderDate andCountArrivalAndDepartureDays:(BOOL)aNeedCountArrivalDays;
 - (NSInteger)numberOfLigalInvestDaysFromDate:(NSDate *)aDate withBoundaryDatesStatus:(BOOL)aBoundaryDatesStatus;
+- (NSDate *)nearestDateWithRequiredTripDays:(NSInteger)aRequiredTripDaysNumber fromDate:(NSDate *)aDate withBoundaryDatesStatus:(BOOL)aBoundaryDatesStatus;
 - (void)logAllData;
+- (void)saveContext;
 
 @end

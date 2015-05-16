@@ -92,9 +92,8 @@
 //		self.usersByTrip=newSet;
 		
 		[self updateTrip:newTrip];
-		
-		NSError *error;
-		[aContext save:&error];
+	
+		[library saveContext];
 		
 //		NSError *error;
 //		[self.saveContext save:&error]; //SAVE
@@ -129,15 +128,13 @@
 - (void)deleteTrip:(Trip *)aTrip InContext:(NSManagedObjectContext *)aContext //DELETE
 {
 	[aContext deleteObject:aTrip];
-	NSError *error;
-	[aContext save:&error];
+	[[UKLibraryAPI sharedInstance] saveContext];
 }
 
 - (void)updateDaysWithTrip:(Trip *)aTrip inContext:(NSManagedObjectContext *)aContext
 {
 	[self updateTrip:aTrip];
-	NSError *error;
-	[aContext save:&error];
+	[[UKLibraryAPI sharedInstance] saveContext];
 }
 
 

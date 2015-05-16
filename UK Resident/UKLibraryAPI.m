@@ -21,6 +21,8 @@
 
 @implementation UKLibraryAPI
 
+@synthesize expenciveFetchContext = _expenciveFetchContext;
+
 + (UKLibraryAPI *)sharedInstance
 {
 	static UKLibraryAPI *_sharedInstance = nil;
@@ -60,6 +62,20 @@
 	return _managedObjectContext;
 }
 
+- (NSManagedObjectContext *)expenciveFetchContext
+{
+	if (nil == _expenciveFetchContext)
+	{
+		if (nil != self.managedObjectContext)
+		{
+			NSManagedObjectContext *fetchContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+			[fetchContext setParentContext:self.managedObjectContext];
+			_expenciveFetchContext = fetchContext;
+		}
+	}
+	return _expenciveFetchContext;
+}
+
 - (NSDate *)currentInitDate
 {
 	return self.currentUser.establishedDate;
@@ -68,8 +84,7 @@
 - (void)setCurrentInitDate:(NSDate *)currentInitDate
 {
 	self.currentUser.establishedDate = currentInitDate;
-	NSError *error;
-	[self.managedObjectContext save:&error];
+	[self saveContext];
 }
 
 - (BOOL)isATripDate:(NSDate *)aDate
@@ -209,6 +224,26 @@
 	return result;
 }
 
+- (NSDate *)nearestDateWithRequiredTripDays:(NSInteger)aRequiredTripDaysNumber fromDate:(NSDate *)aDate withBoundaryDatesStatus:(BOOL)aBoundaryDatesStatus
+{
+	NSDate *result = 0;
+	
+	if (aRequiredTripDaysNumber > 90) aRequiredTripDaysNumber = 90;
+	
+	NSInteger deltaDays = 0;
+	
+	while ([self numberOfLigalInvestDaysFromDate:[aDate moveDay:deltaDays] withBoundaryDatesStatus:aBoundaryDatesStatus] < aRequiredTripDaysNumber)
+	{
+		
+		
+		deltaDays++;
+	}
+	
+	result = [aDate moveDay:deltaDays];
+	
+	return result;
+}
+
 - (void)logAllData
 {
 	NSFetchRequest *userRequest = [NSFetchRequest fetchRequestWithEntityName:@"User"];
@@ -239,6 +274,27 @@
 	{
 		NSLog(@"-----------------------------------------------------");
 		NSLog(@"Trip: %@ \nDates: %@ – %@ \ntripsByUser: %i", trip.destination, trip.startDate, trip.endDate, (int)[trip.tripsByUser count]);
+	}
+}
+
+- (void)saveContext
+{
+	NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
+	if (managedObjectContext != nil) {
+		NSError *error = nil;
+		if ([managedObjectContext hasChanges])
+		{
+			if (YES == [managedObjectContext save:&error])
+			{
+				[self.expenciveFetchContext performBlock:^{
+					[self.expenciveFetchContext reset];
+				}];
+			}
+			else
+			{
+				NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+			}
+		}
 	}
 }
 

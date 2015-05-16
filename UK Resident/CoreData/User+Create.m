@@ -78,8 +78,7 @@
 		library.currentUser = nil;
 	}
 	[aContext deleteObject:anUser];
-	NSError *error;
-	[aContext save:&error];
+	[library saveContext];
 }
 
 @end

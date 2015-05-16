@@ -32,6 +32,9 @@
 
 @property (weak, nonatomic) IBOutlet UIStepper *fullBlock2Stepper;
 @property (weak, nonatomic) IBOutlet UILabel *fullBlock2StepperLabel;
+@property (weak, nonatomic) IBOutlet UILabel *secondFullDayDateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *secondFullMonthDateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *secondFullDescriptionLabel;
 
 
 @end
@@ -143,6 +146,10 @@
 	[self.firstFullTripDatesLabel setText:[NSString stringWithFormat:@"%@ — %@",
 										   [self.date localizedStringWithDateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterNoStyle],
 										   [[self.date moveDay:(ligalInvestDays + delta)] localizedStringWithDateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterNoStyle]]];
+	
+	NSDate *searchDate = [library nearestDateWithRequiredTripDays:self.fullBlock2Stepper.value fromDate:self.date withBoundaryDatesStatus:[NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus];
+	[self.secondFullDayDateLabel setText:[NSString stringWithFormat:@"%@", [searchDate localizedStringWithDateFormat:@"d MMMM"]]];
+	
 }
 
 - (void)updateСitizenData
@@ -153,6 +160,7 @@
 - (IBAction)fullBlockStepperChanged:(id)sender
 {
 	[self.fullBlock2StepperLabel setText:[NSString stringWithFormat:@"%i", (int)self.fullBlock2Stepper.value]];
+	[self updateСalculatedData];
 }
 
 - (IBAction)changedSelectedSegment:(id)sender
