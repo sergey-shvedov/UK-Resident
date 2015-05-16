@@ -98,7 +98,7 @@
 		8430EC2D1B04B33E00DC1959 /* NSUserDefaults+AccessoryMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+AccessoryMethods.m"; sourceTree = "<group>"; };
 		8430EC2F1B04EF1400DC1959 /* UserWithTrip+DeleteRules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UserWithTrip+DeleteRules.h"; path = "CoreData/UserWithTrip+DeleteRules.h"; sourceTree = "<group>"; };
 		8430EC301B04EF1400DC1959 /* UserWithTrip+DeleteRules.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UserWithTrip+DeleteRules.m"; path = "CoreData/UserWithTrip+DeleteRules.m"; sourceTree = "<group>"; };
-		845204851AEA4AD600E535FD /* uk-resident.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "uk-resident.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		845204851AEA4AD600E535FD /* UK Resident.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UK Resident.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		845204891AEA4AD600E535FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8452048A1AEA4AD600E535FD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8452048C1AEA4AD600E535FD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -230,7 +230,7 @@
 		845204861AEA4AD600E535FD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				845204851AEA4AD600E535FD /* uk-resident.app */,
+				845204851AEA4AD600E535FD /* UK Resident.app */,
 				845204A11AEA4AD600E535FD /* UK ResidentTests.xctest */,
 			);
 			name = Products;
@@ -416,7 +416,7 @@
 			);
 			name = "UK Resident";
 			productName = "UK Resident";
-			productReference = 845204851AEA4AD600E535FD /* uk-resident.app */;
+			productReference = 845204851AEA4AD600E535FD /* UK Resident.app */;
 			productType = "com.apple.product-type.application";
 		};
 		845204A01AEA4AD600E535FD /* UK ResidentTests */ = {
@@ -674,7 +674,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "UK Resident/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "uk-resident";
+				PRODUCT_NAME = "UK Resident";
 				PROVISIONING_PROFILE = "87349b25-d9ff-4418-83ea-048364745020";
 			};
 			name = Debug;
@@ -687,7 +687,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				INFOPLIST_FILE = "UK Resident/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "uk-resident";
+				PRODUCT_NAME = "UK Resident";
 				PROVISIONING_PROFILE = "87349b25-d9ff-4418-83ea-048364745020";
 			};
 			name = Release;

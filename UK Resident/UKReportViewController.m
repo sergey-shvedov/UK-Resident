@@ -58,7 +58,7 @@
 	if (nil == library.currentInitDate)
 	{
 		library.isInitDateSetted = NO;
-		library.currentInitDate = [[NSDate date] normalization];
+		//library.currentInitDate = [[NSDate date] normalization];
 	}
 	else
 	{

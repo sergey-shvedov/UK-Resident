@@ -174,7 +174,7 @@
 		if ([[segue destinationViewController] isKindOfClass:[UKReportTopInitialDatePopoverVC class]])
 		{
 			UKReportTopInitialDatePopoverVC *popover = (UKReportTopInitialDatePopoverVC *)[segue destinationViewController];
-			popover.initialDate = self.initialDate;
+			popover.initialDate = (self.initialDate != nil) ? self.initialDate : [NSDate date];
 		}
 	}
 }
