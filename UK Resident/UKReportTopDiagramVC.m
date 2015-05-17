@@ -76,6 +76,7 @@
 		{
 			_initialDate = [NSDate date];
 		}
+		self.initialYear = [_initialDate yearComponent];
 	}
 	return _initialDate;
 }

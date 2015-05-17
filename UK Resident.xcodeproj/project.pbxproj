@@ -53,6 +53,7 @@
 		847F4C2E1AF5543F00831F11 /* FormButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 847F4C2D1AF5543F00831F11 /* FormButton.m */; };
 		847F4C311AF554A400831F11 /* UIColor+UKResident.m in Sources */ = {isa = PBXBuildFile; fileRef = 847F4C301AF554A400831F11 /* UIColor+UKResident.m */; };
 		847F4C341AF55FB400831F11 /* UKTripFormTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847F4C331AF55FB400831F11 /* UKTripFormTableViewController.m */; };
+		849601741B08B43F00CEA0E7 /* WarningTrip.m in Sources */ = {isa = PBXBuildFile; fileRef = 849601731B08B43F00CEA0E7 /* WarningTrip.m */; };
 		84CA158D1AFCD9590065044F /* GraphRoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CA158C1AFCD9590065044F /* GraphRoundView.m */; };
 /* End PBXBuildFile section */
 
@@ -75,7 +76,6 @@
 		8430EBF81B01630D00DC1959 /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTableViewController.m; sourceTree = "<group>"; };
 		8430EBFA1B01639700DC1959 /* UKTripTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UKTripTableVC.h; sourceTree = "<group>"; };
 		8430EBFB1B01639700DC1959 /* UKTripTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKTripTableVC.m; sourceTree = "<group>"; };
-		8430EBFD1B01F51800DC1959 /* UKDatabaseAvailability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UKDatabaseAvailability.h; sourceTree = "<group>"; };
 		8430EC0A1B01FABD00DC1959 /* Trip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Trip.h; path = CoreData/Trip.h; sourceTree = "<group>"; };
 		8430EC0B1B01FABD00DC1959 /* Trip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Trip.m; path = CoreData/Trip.m; sourceTree = "<group>"; };
 		8430EC0D1B01FABD00DC1959 /* UserWithTrip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserWithTrip.h; path = CoreData/UserWithTrip.h; sourceTree = "<group>"; };
@@ -158,6 +158,9 @@
 		847F4C301AF554A400831F11 /* UIColor+UKResident.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+UKResident.m"; sourceTree = "<group>"; };
 		847F4C321AF55FB400831F11 /* UKTripFormTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UKTripFormTableViewController.h; sourceTree = "<group>"; };
 		847F4C331AF55FB400831F11 /* UKTripFormTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKTripFormTableViewController.m; sourceTree = "<group>"; };
+		849601711B089B7D00CEA0E7 /* UKNotifications.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UKNotifications.h; sourceTree = "<group>"; };
+		849601721B08B43F00CEA0E7 /* WarningTrip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WarningTrip.h; sourceTree = "<group>"; };
+		849601731B08B43F00CEA0E7 /* WarningTrip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WarningTrip.m; sourceTree = "<group>"; };
 		84CA158B1AFCD9590065044F /* GraphRoundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphRoundView.h; sourceTree = "<group>"; };
 		84CA158C1AFCD9590065044F /* GraphRoundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphRoundView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -189,6 +192,8 @@
 				8430EC111B01FAF400DC1959 /* Trip+Create.m */,
 				8430EC131B02253D00DC1959 /* TempTrip.h */,
 				8430EC141B02253D00DC1959 /* TempTrip.m */,
+				849601721B08B43F00CEA0E7 /* WarningTrip.h */,
+				849601731B08B43F00CEA0E7 /* WarningTrip.m */,
 				8430EC0D1B01FABD00DC1959 /* UserWithTrip.h */,
 				8430EC0E1B01FABD00DC1959 /* UserWithTrip.m */,
 				8430EC2F1B04EF1400DC1959 /* UserWithTrip+DeleteRules.h */,
@@ -254,9 +259,9 @@
 		845204881AEA4AD600E535FD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				849601711B089B7D00CEA0E7 /* UKNotifications.h */,
 				8452048C1AEA4AD600E535FD /* AppDelegate.h */,
 				8452048D1AEA4AD600E535FD /* AppDelegate.m */,
-				8430EBFD1B01F51800DC1959 /* UKDatabaseAvailability.h */,
 				8452048F1AEA4AD600E535FD /* UK_Resident.xcdatamodeld */,
 				845204891AEA4AD600E535FD /* Info.plist */,
 				8452048A1AEA4AD600E535FD /* main.m */,
@@ -501,6 +506,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8452048E1AEA4AD600E535FD /* AppDelegate.m in Sources */,
+				849601741B08B43F00CEA0E7 /* WarningTrip.m in Sources */,
 				8452048B1AEA4AD600E535FD /* main.m in Sources */,
 				845204911AEA4AD600E535FD /* UK_Resident.xcdatamodeld in Sources */,
 				8430EC211B03CDA400DC1959 /* UKReportTopInitialDatePopoverVC.m in Sources */,

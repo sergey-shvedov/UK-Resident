@@ -7,6 +7,7 @@
 //
 
 #import "UKCalendarTableViewController.h"
+#import "UKNotifications.h"
 #import "UKReportViewController.h"
 #import "UKCalendarWeekCell.h"
 #import "UKCalendarMonthCell.h"
@@ -37,6 +38,15 @@
 	self.todayDate = [[NSDate date] normalization];
 	self.topYear = [self.todayDate yearComponent];
 	self.currentCenter = -50;
+	
+	NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+	[center addObserver:self selector: @selector(updateUI) name: UKNotificationNeedUpdateUI object: nil];
+}
+
+- (void)dealloc
+{
+	NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+	[center removeObserver:self];
 }
 
 - (void)setTopYear:(NSInteger)topYear
@@ -60,6 +70,11 @@
 		_testTrips = [[NSArray alloc] initWithObjects:array1, array2, array3, array4, array5, nil];
 	}
 	return _testTrips;
+}
+
+- (void)updateUI
+{
+	[self.tableView reloadData];
 }
 
 - (void)calendarTableViewWillRecenterTo:(NSInteger)aRowNumber

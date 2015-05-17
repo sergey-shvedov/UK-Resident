@@ -7,6 +7,7 @@
 //
 
 #import "UKReportBottomCVC.h"
+#import "UKLibraryAPI.h"
 #import "NSUserDefaults+AccessoryMethods.h"
 
 @interface UKReportBottomCVC ()
@@ -66,6 +67,7 @@
 			break;
 	}
 	[self updateUI];
+	[[UKLibraryAPI sharedInstance] sendNotificationNeedUpdateReportView];
 }
 
 @end

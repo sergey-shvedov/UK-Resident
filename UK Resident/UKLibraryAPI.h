@@ -22,16 +22,26 @@
 @property (nonatomic, strong) NSDate *currentInitDate;
 @property (nonatomic, assign) BOOL isInitDateSetted;
 
+@property (nonatomic, strong, readonly) NSArray *warningInvestTrips;
+@property (nonatomic, strong, readonly) NSArray *warningCitizenTrips;
+
 + (UKLibraryAPI *)sharedInstance;
 
 - (BOOL)isATripDate:(NSDate *)aDate inContext:(NSManagedObjectContext *)aContext;
+- (BOOL)isAWarningDate:(NSDate *)aDate inContext:(NSManagedObjectContext *)aContext;
 - (NSArray *)arrayWithTripsBetweenStartDate:(NSDate *)aStartBorderDate andEndDate:(NSDate *)anEndBorderDate inContext:(NSManagedObjectContext *)aContext;
 - (NSInteger)numberOfTripDaysBetweenStartDate:(NSDate *)aStartBorderDate andEndDate:(NSDate *)anEndBorderDate andCountArrivalAndDepartureDays:(BOOL)aNeedCountArrivalDays inContext:(NSManagedObjectContext *)aContext;
+
 - (NSInteger)investNumberOfLigalDaysFromDate:(NSDate *)aDate withBoundaryDatesStatus:(BOOL)aBoundaryDatesStatus inContext:(NSManagedObjectContext *)aContext;
 - (NSDate *)investNearestDateWithRequiredTripDays:(NSInteger)aRequiredTripDaysNumber fromDate:(NSDate *)aDate withBoundaryDatesStatus:(BOOL)aBoundaryDatesStatus inContext:(NSManagedObjectContext *)aContext;
 - (NSInteger)citizenNumberOfLigalDaysFromDate:(NSDate *)aDate withBoundaryDatesStatus:(BOOL)aBoundaryDatesStatus inContext:(NSManagedObjectContext *)aContext;
 - (NSDate *)citizenNearestDateWithRequiredTripDays:(NSInteger)aRequiredTripDaysNumber fromDate:(NSDate *)aDate withBoundaryDatesStatus:(BOOL)aBoundaryDatesStatus inContext:(NSManagedObjectContext *)aContext;
+
 - (void)logAllData;
 - (void)saveContext;
+
+- (void)sendNotificationTripsChanged;
+- (void)sendNotificationNeedUpdateUI;
+- (void)sendNotificationNeedUpdateReportView;
 
 @end

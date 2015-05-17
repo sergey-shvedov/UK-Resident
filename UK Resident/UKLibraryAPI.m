@@ -8,15 +8,20 @@
 
 #import "UKLibraryAPI.h"
 #import "AppDelegate.h"
+#import "UKNotifications.h"
 #import "Trip.h"
 #import "User+Create.h"
 #import "UserWithTrip.h"
 #import "NSDate+UKResident.h"
+#import "NSUserDefaults+AccessoryMethods.h"
 
 @interface UKLibraryAPI ()
 
 @property (nonatomic, strong) NSManagedObjectContext *expenciveFetchContext;
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+
+@property (nonatomic, strong, readwrite) NSArray *warningInvestTrips;
+@property (nonatomic, strong, readwrite) NSArray *warningCitizenTrips;
 
 @end
 
@@ -88,6 +93,26 @@
 	[self saveContext];
 }
 
+- (NSArray *)warningInvestTrips
+{
+	if (nil == _warningInvestTrips)
+	{
+		_warningInvestTrips = [NSArray array];
+		[self reCalculateWarningTrips];
+	}
+	return _warningInvestTrips;
+}
+
+- (NSArray *)warningCitizenTrips
+{
+	if (nil == _warningCitizenTrips)
+	{
+		_warningCitizenTrips = [NSArray array];
+		[self reCalculateWarningTrips];
+	}
+	return _warningCitizenTrips;
+}
+
 - (BOOL)isATripDate:(NSDate *)aDate inContext:(NSManagedObjectContext *)aContext
 {
 	BOOL result = NO;
@@ -99,6 +124,12 @@
 	NSArray *trips = [aContext executeFetchRequest:request error:&error];
 	if ([trips count] > 0) result = YES;
 
+	return result;
+}
+
+- (BOOL)isAWarningDate:(NSDate *)aDate inContext:(NSManagedObjectContext *)aContext
+{
+	BOOL result = NO;
 	return result;
 }
 
@@ -313,6 +344,62 @@
 	return result;
 }
 
+- (void)sendNotificationTripsChanged
+{
+	[self sendNotificationNeedUpdateUI];
+	[self reCalculateWarningTrips];
+}
+
+- (void)sendNotificationNeedUpdateUI
+{
+	NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+	[center postNotificationName:UKNotificationNeedUpdateUI object:self];
+	[self sendNotificationNeedUpdateReportView];
+}
+
+- (void)sendNotificationNeedUpdateReportView
+{
+	NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+	[center postNotificationName:UKNotificationNeedUpdateReportView object:self];
+}
+
+- (void)sendNotificationWarningCalculationsStarted
+{
+	NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+	[center postNotificationName:UKNotificationWarningCalculationsStarted object:self];
+}
+
+- (void)reCalculateWarningTrips
+{
+	[self sendNotificationWarningCalculationsStarted];
+	
+	[self.expenciveFetchContext performBlock:^{
+	
+		NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Trip"];
+		request.predicate = [NSPredicate predicateWithFormat:@"ANY tripsByUser.whoTravel == %@", self.currentUser];
+		request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"startDate" ascending:NO selector:@selector(compare:)]];
+		NSError *error;
+		NSArray *trips = [self.expenciveFetchContext executeFetchRequest:request error:&error];
+		
+		NSMutableArray *warningInvestTrips = [NSMutableArray array];
+		for (Trip *trip in trips)
+		{
+			NSInteger delta = [NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus ? -1 : +1;
+			NSInteger numberOfLigalDays;
+			NSInteger investNumberOfLigalDays = [self investNumberOfLigalDaysFromDate:trip.startDate withBoundaryDatesStatus:[NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus inContext:self.expenciveFetchContext];
+			NSInteger citizenNumberOfLigalDays = [self citizenNumberOfLigalDaysFromDate:trip.startDate withBoundaryDatesStatus:[NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus inContext:self.expenciveFetchContext];
+		}
+		
+		
+		
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[self sendNotificationNeedUpdateUI];
+		});
+	}];
+	
+	
+}
+
 - (void)logAllData
 {
 	NSFetchRequest *userRequest = [NSFetchRequest fetchRequestWithEntityName:@"User"];
@@ -358,6 +445,7 @@
 				[self.expenciveFetchContext performBlock:^{
 					[self.expenciveFetchContext reset];
 				}];
+				[self sendNotificationTripsChanged];
 			}
 			else
 			{

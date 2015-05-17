@@ -93,7 +93,7 @@
 		
 		[self updateTrip:newTrip];
 	
-		[library saveContext];
+	
 		
 //		NSError *error;
 //		[self.saveContext save:&error]; //SAVE
@@ -123,6 +123,9 @@
 	trip.startDate = self.startDate;
 	trip.endDate = self.endDate;
 	trip.comment = self.comment;
+	
+	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
+	[library saveContext];
 }
 
 - (void)deleteTrip:(Trip *)aTrip InContext:(NSManagedObjectContext *)aContext //DELETE

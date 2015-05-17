@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "UKDatabaseAvailability.h"
 #import "Trip+Create.h"
 #import "UKLibraryAPI.h"
 #import "User+Create.h"
@@ -149,11 +148,5 @@
     }
 }
 
-- (void)sendNotificationToViewsWithContext:(NSManagedObjectContext *)context
-{
-	//Post Notification - all necessary settings are done - with my context
-	NSDictionary *userInfo=context ? @{UKDatabaseAvailabilityContext: context} : nil ;
-	[[NSNotificationCenter defaultCenter] postNotificationName:UKDatabaseAvailabilityNotification object:self userInfo:userInfo];
-}
 
 @end

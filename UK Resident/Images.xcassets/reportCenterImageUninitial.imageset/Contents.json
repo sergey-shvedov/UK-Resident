@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "reportCenterImageUninitial.png"
+      "filename" : "reportCenterImageUninitial2.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "reportCenterImageUninitial@2x.png"
+      "filename" : "reportCenterImageUninitial2@2x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "reportCenterImageUninitial@3x.png"
+      "filename" : "reportCenterImageUninitial2@3x.png"
     }
   ],
   "info" : {

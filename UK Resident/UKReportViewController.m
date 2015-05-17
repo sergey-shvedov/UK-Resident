@@ -8,6 +8,7 @@
 
 #import "UKReportViewController.h"
 #import "UKLibraryAPI.h"
+#import "UKNotifications.h"
 #import "UKReportTopCVC.h"
 #import "UKReportCenterCVC.h"
 #import "UKReportBottomCVC.h"
@@ -67,6 +68,15 @@
 	}
 	
 	self.date = [[NSDate date] normalization];
+	
+	NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+	[center addObserver:self selector: @selector(updateUI) name: UKNotificationNeedUpdateReportView object: nil];
+}
+
+- (void)dealloc
+{
+	NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+	[center removeObserver:self];
 }
 
 - (void)mountBarButtons
@@ -124,6 +134,7 @@
 	[self.bottomCVC setDate:self.date];
 	
 	[self updateNavigationBar];
+	[self.navigationController.tabBarItem setTitle:@"Отчет дня"];
 }
 
 - (void)updateNavigationBar

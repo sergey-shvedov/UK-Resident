@@ -8,7 +8,7 @@
 
 #import "UKTripViewController.h"
 #import "AppDelegate.h"
-#import "UKDatabaseAvailability.h"
+#import "UKNotifications.h"
 #import "UKTripTableVC.h"
 #import "UKTripAddFormViewController.h"
 #import "UKLibraryAPI.h"
@@ -27,6 +27,14 @@
 	[super viewDidLoad];
 	self.navigationController.tabBarItem.selectedImage = [UIImage imageNamed:@"tabBarIconTripSelected"];
 	[self updateUI];
+	NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+	[center addObserver:self selector: @selector(updateUI) name: UKNotificationNeedUpdateUI object: nil];
+}
+
+- (void)dealloc
+{
+	NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+	[center removeObserver:self];
 }
 
 - (void)updateUI
