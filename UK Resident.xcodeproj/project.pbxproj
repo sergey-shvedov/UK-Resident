@@ -55,6 +55,9 @@
 		847F4C341AF55FB400831F11 /* UKTripFormTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847F4C331AF55FB400831F11 /* UKTripFormTableViewController.m */; };
 		849601741B08B43F00CEA0E7 /* WarningTrip.m in Sources */ = {isa = PBXBuildFile; fileRef = 849601731B08B43F00CEA0E7 /* WarningTrip.m */; };
 		849601771B08CCE900CEA0E7 /* UKWarningNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849601761B08CCE900CEA0E7 /* UKWarningNavigationController.m */; };
+		849601791B08E9E600CEA0E7 /* UKWarningTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849601781B08E9E600CEA0E7 /* UKWarningTableHeaderView.xib */; };
+		8496017C1B08EB3900CEA0E7 /* UKWarningTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8496017B1B08EB3900CEA0E7 /* UKWarningTableVC.m */; };
+		8496017F1B08F5BF00CEA0E7 /* UKWarningTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8496017E1B08F5BF00CEA0E7 /* UKWarningTableHeaderView.m */; };
 		84CA158D1AFCD9590065044F /* GraphRoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CA158C1AFCD9590065044F /* GraphRoundView.m */; };
 /* End PBXBuildFile section */
 
@@ -164,6 +167,11 @@
 		849601731B08B43F00CEA0E7 /* WarningTrip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WarningTrip.m; sourceTree = "<group>"; };
 		849601751B08CCE900CEA0E7 /* UKWarningNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UKWarningNavigationController.h; sourceTree = "<group>"; };
 		849601761B08CCE900CEA0E7 /* UKWarningNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKWarningNavigationController.m; sourceTree = "<group>"; };
+		849601781B08E9E600CEA0E7 /* UKWarningTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UKWarningTableHeaderView.xib; sourceTree = "<group>"; };
+		8496017A1B08EB3900CEA0E7 /* UKWarningTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UKWarningTableVC.h; sourceTree = "<group>"; };
+		8496017B1B08EB3900CEA0E7 /* UKWarningTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKWarningTableVC.m; sourceTree = "<group>"; };
+		8496017D1B08F5BF00CEA0E7 /* UKWarningTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UKWarningTableHeaderView.h; sourceTree = "<group>"; };
+		8496017E1B08F5BF00CEA0E7 /* UKWarningTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKWarningTableHeaderView.m; sourceTree = "<group>"; };
 		84CA158B1AFCD9590065044F /* GraphRoundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphRoundView.h; sourceTree = "<group>"; };
 		84CA158C1AFCD9590065044F /* GraphRoundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphRoundView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -303,6 +311,9 @@
 		845204B21AEA4D9D00E535FD /* VIEW */ = {
 			isa = PBXGroup;
 			children = (
+				849601781B08E9E600CEA0E7 /* UKWarningTableHeaderView.xib */,
+				8496017D1B08F5BF00CEA0E7 /* UKWarningTableHeaderView.h */,
+				8496017E1B08F5BF00CEA0E7 /* UKWarningTableHeaderView.m */,
 				84CA158B1AFCD9590065044F /* GraphRoundView.h */,
 				84CA158C1AFCD9590065044F /* GraphRoundView.m */,
 				847F4C2C1AF5543F00831F11 /* FormButton.h */,
@@ -401,6 +412,8 @@
 		845204E81AF174CA00E535FD /* WARNING */ = {
 			isa = PBXGroup;
 			children = (
+				8496017A1B08EB3900CEA0E7 /* UKWarningTableVC.h */,
+				8496017B1B08EB3900CEA0E7 /* UKWarningTableVC.m */,
 				845204E21AF1747300E535FD /* UKWarningViewController.h */,
 				845204E31AF1747300E535FD /* UKWarningViewController.m */,
 				849601751B08CCE900CEA0E7 /* UKWarningNavigationController.h */,
@@ -493,6 +506,7 @@
 				845204971AEA4AD600E535FD /* Main.storyboard in Resources */,
 				8452049C1AEA4AD600E535FD /* LaunchScreen.xib in Resources */,
 				845204991AEA4AD600E535FD /* Images.xcassets in Resources */,
+				849601791B08E9E600CEA0E7 /* UKWarningTableHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,6 +528,7 @@
 				849601741B08B43F00CEA0E7 /* WarningTrip.m in Sources */,
 				8452048B1AEA4AD600E535FD /* main.m in Sources */,
 				845204911AEA4AD600E535FD /* UK_Resident.xcdatamodeld in Sources */,
+				8496017C1B08EB3900CEA0E7 /* UKWarningTableVC.m in Sources */,
 				8430EC211B03CDA400DC1959 /* UKReportTopInitialDatePopoverVC.m in Sources */,
 				845204E11AF1743F00E535FD /* UKTripViewController.m in Sources */,
 				847F4C2E1AF5543F00831F11 /* FormButton.m in Sources */,
@@ -554,6 +569,7 @@
 				845204DE1AF117BD00E535FD /* UKReportTopCVC.m in Sources */,
 				845204D21AF0F5E000E535FD /* UIButton+UKRecord.m in Sources */,
 				845204B91AEE270700E535FD /* UKCalendarWeekCell.m in Sources */,
+				8496017F1B08F5BF00CEA0E7 /* UKWarningTableHeaderView.m in Sources */,
 				8430EC0F1B01FABD00DC1959 /* UserWithTrip.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

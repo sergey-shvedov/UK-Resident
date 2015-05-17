@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 
 @class User;
+@class Trip;
 
 @interface UKLibraryAPI : NSObject
 
@@ -36,6 +37,7 @@
 - (NSDate *)investNearestDateWithRequiredTripDays:(NSInteger)aRequiredTripDaysNumber fromDate:(NSDate *)aDate withBoundaryDatesStatus:(BOOL)aBoundaryDatesStatus inContext:(NSManagedObjectContext *)aContext;
 - (NSInteger)citizenNumberOfLigalDaysFromDate:(NSDate *)aDate withBoundaryDatesStatus:(BOOL)aBoundaryDatesStatus inContext:(NSManagedObjectContext *)aContext;
 - (NSDate *)citizenNearestDateWithRequiredTripDays:(NSInteger)aRequiredTripDaysNumber fromDate:(NSDate *)aDate withBoundaryDatesStatus:(BOOL)aBoundaryDatesStatus inContext:(NSManagedObjectContext *)aContext;
+- (Trip *)tripWithStartDate:(NSDate *)aStartDate inContext:(NSManagedObjectContext *)aContext;
 
 - (void)logAllData;
 - (void)saveContext;

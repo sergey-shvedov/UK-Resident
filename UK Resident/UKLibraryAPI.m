@@ -404,7 +404,7 @@
 				WarningTrip *warningTrip = [[WarningTrip alloc] init];
 				warningTrip.startDate = trip.startDate;
 				warningTrip.endDate = trip.endDate;
-				warningTrip.warningDate = [trip.startDate moveDay:investNumberOfLigalDays];
+				warningTrip.warningDate = (investNumberOfLigalDays > 0) ? [trip.startDate moveDay:investNumberOfLigalDays] : trip.startDate;
 				[warningInvestTrips addObject:warningTrip];
 			}
 			
@@ -415,7 +415,7 @@
 				WarningTrip *warningTrip = [[WarningTrip alloc] init];
 				warningTrip.startDate = trip.startDate;
 				warningTrip.endDate = trip.endDate;
-				warningTrip.warningDate = [trip.startDate moveDay:citizenNumberOfLigalDays];
+				warningTrip.warningDate = (citizenNumberOfLigalDays > 0) ? [trip.startDate moveDay:citizenNumberOfLigalDays] : trip.startDate;
 				[warningCitizenTrips addObject:warningTrip];
 			}
 		}
@@ -430,8 +430,20 @@
 			[center postNotificationName:UKNotificationWarningTabNeedUpdate object:self userInfo:dictionary];
 		});
 	}];
+}
+
+- (Trip *)tripWithStartDate:(NSDate *)aStartDate inContext:(NSManagedObjectContext *)aContext
+{
+	Trip *trip;
 	
+	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Trip"];
+	request.predicate = [NSPredicate predicateWithFormat:@"(startDate >= %@) AND (startDate <= %@) AND (ANY tripsByUser.whoTravel == %@)", [aStartDate startOfDay], [aStartDate endOfDay], self.currentUser];
+	request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"startDate" ascending:NO selector:@selector(compare:)]];
+	NSError *error;
+	NSArray *trips = [self.managedObjectContext executeFetchRequest:request error:&error];
+	trip = [trips firstObject];
 	
+	return trip;
 }
 
 - (void)logAllData
