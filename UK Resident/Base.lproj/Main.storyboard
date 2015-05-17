@@ -828,13 +828,14 @@
         <!--Нарушения-->
         <scene sceneID="VCb-Cg-TgH">
             <objects>
-                <navigationController id="iv1-A8-NZP" sceneMemberID="viewController">
+                <navigationController id="iv1-A8-NZP" customClass="UKWarningNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Нарушения" image="tabBarIconWarning" id="281-go-mX2"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7hY-Sr-jjt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
+                        <outlet property="tabBarItem" destination="281-go-mX2" id="LSp-sY-z63"/>
                         <segue destination="H84-Wg-LIV" kind="relationship" relationship="rootViewController" id="QYv-e1-qAi"/>
                     </connections>
                 </navigationController>

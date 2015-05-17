@@ -43,6 +43,7 @@
 		
 		NSMutableArray *array = [[NSMutableArray alloc] init];
 		NSMutableArray *trips = [[NSMutableArray alloc] init];
+		NSMutableArray *warnings = [[NSMutableArray alloc] init];
 		
 		for (int i = 2; i <= 8; i++)
 		{
@@ -62,15 +63,26 @@
 				{
 					[trips addObject:[NSNull null]];
 				}
+				
+				if ([self isAWarningDate:searchDate])
+				{
+					[warnings addObject:@(1)];
+				}
+				else
+				{
+					[warnings addObject:[NSNull null]];
+				}
 			}
 			else
 			{
 				[array addObject:[NSNull null]];
 				[trips addObject:[NSNull null]];
+				[warnings addObject:[NSNull null]];
 			}
 			
 			self.days = array;
 			self.tripDays = trips;
+			self.warningDays = warnings;
 		}
 	}
 	
@@ -83,6 +95,10 @@
 	return [library isATripDate:aDate inContext:library.managedObjectContext];
 }
 
-
+- (BOOL)isAWarningDate:(NSDate *)aDate
+{
+	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
+	return [library isAWarningDate:aDate];
+}
 
 @end

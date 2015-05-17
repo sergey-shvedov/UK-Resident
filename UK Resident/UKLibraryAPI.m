@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "UKNotifications.h"
 #import "Trip.h"
+#import "WarningTrip.h"
 #import "User+Create.h"
 #import "UserWithTrip.h"
 #import "NSDate+UKResident.h"
@@ -127,9 +128,17 @@
 	return result;
 }
 
-- (BOOL)isAWarningDate:(NSDate *)aDate inContext:(NSManagedObjectContext *)aContext
+- (BOOL)isAWarningDate:(NSDate *)aDate
 {
 	BOOL result = NO;
+	
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(warningDate <= %@) AND (endDate >= %@)", [aDate endOfDay], [aDate startOfDay]];
+	NSArray *filteredArray = [self.warningInvestTrips filteredArrayUsingPredicate:predicate];
+	if ([filteredArray count])
+	{
+		result = YES;
+	}
+	
 	return result;
 }
 
@@ -354,13 +363,12 @@
 {
 	NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
 	[center postNotificationName:UKNotificationNeedUpdateUI object:self];
-	[self sendNotificationNeedUpdateReportView];
+	[center postNotificationName:UKNotificationNeedUpdateReportView object:self];
 }
 
 - (void)sendNotificationNeedUpdateReportView
 {
-	NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-	[center postNotificationName:UKNotificationNeedUpdateReportView object:self];
+	[self sendNotificationTripsChanged];
 }
 
 - (void)sendNotificationWarningCalculationsStarted
@@ -382,18 +390,44 @@
 		NSArray *trips = [self.expenciveFetchContext executeFetchRequest:request error:&error];
 		
 		NSMutableArray *warningInvestTrips = [NSMutableArray array];
+		NSMutableArray *warningCitizenTrips = [NSMutableArray array];
 		for (Trip *trip in trips)
 		{
-			NSInteger delta = [NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus ? -1 : +1;
-			NSInteger numberOfLigalDays;
+			//NSInteger delta = [NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus ? -1 : +1;
+			//NSInteger numberOfLigalDays;
+			NSInteger numberOfTripDays = [trip.startDate numberOfDaysBetween:trip.endDate includedBorderDates:[NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus];
+			
 			NSInteger investNumberOfLigalDays = [self investNumberOfLigalDaysFromDate:trip.startDate withBoundaryDatesStatus:[NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus inContext:self.expenciveFetchContext];
+			
+			if (investNumberOfLigalDays < numberOfTripDays)
+			{
+				WarningTrip *warningTrip = [[WarningTrip alloc] init];
+				warningTrip.startDate = trip.startDate;
+				warningTrip.endDate = trip.endDate;
+				warningTrip.warningDate = [trip.startDate moveDay:investNumberOfLigalDays];
+				[warningInvestTrips addObject:warningTrip];
+			}
+			
 			NSInteger citizenNumberOfLigalDays = [self citizenNumberOfLigalDaysFromDate:trip.startDate withBoundaryDatesStatus:[NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus inContext:self.expenciveFetchContext];
+			
+			if (citizenNumberOfLigalDays < numberOfTripDays)
+			{
+				WarningTrip *warningTrip = [[WarningTrip alloc] init];
+				warningTrip.startDate = trip.startDate;
+				warningTrip.endDate = trip.endDate;
+				warningTrip.warningDate = [trip.startDate moveDay:citizenNumberOfLigalDays];
+				[warningCitizenTrips addObject:warningTrip];
+			}
 		}
-		
-		
-		
+		self.warningInvestTrips = warningInvestTrips;
+		self.warningCitizenTrips = warningCitizenTrips;
+		NSNumber *totalWarnings = [NSNumber numberWithInteger:([warningInvestTrips count] + [warningCitizenTrips count])];
+		NSDictionary *dictionary = [NSDictionary dictionaryWithObject:totalWarnings forKey:@"totalWarnings"];
 		dispatch_async(dispatch_get_main_queue(), ^{
 			[self sendNotificationNeedUpdateUI];
+			
+			NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+			[center postNotificationName:UKNotificationWarningTabNeedUpdate object:self userInfo:dictionary];
 		});
 	}];
 	

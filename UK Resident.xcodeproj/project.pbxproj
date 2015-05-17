@@ -54,6 +54,7 @@
 		847F4C311AF554A400831F11 /* UIColor+UKResident.m in Sources */ = {isa = PBXBuildFile; fileRef = 847F4C301AF554A400831F11 /* UIColor+UKResident.m */; };
 		847F4C341AF55FB400831F11 /* UKTripFormTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847F4C331AF55FB400831F11 /* UKTripFormTableViewController.m */; };
 		849601741B08B43F00CEA0E7 /* WarningTrip.m in Sources */ = {isa = PBXBuildFile; fileRef = 849601731B08B43F00CEA0E7 /* WarningTrip.m */; };
+		849601771B08CCE900CEA0E7 /* UKWarningNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849601761B08CCE900CEA0E7 /* UKWarningNavigationController.m */; };
 		84CA158D1AFCD9590065044F /* GraphRoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CA158C1AFCD9590065044F /* GraphRoundView.m */; };
 /* End PBXBuildFile section */
 
@@ -161,6 +162,8 @@
 		849601711B089B7D00CEA0E7 /* UKNotifications.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UKNotifications.h; sourceTree = "<group>"; };
 		849601721B08B43F00CEA0E7 /* WarningTrip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WarningTrip.h; sourceTree = "<group>"; };
 		849601731B08B43F00CEA0E7 /* WarningTrip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WarningTrip.m; sourceTree = "<group>"; };
+		849601751B08CCE900CEA0E7 /* UKWarningNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UKWarningNavigationController.h; sourceTree = "<group>"; };
+		849601761B08CCE900CEA0E7 /* UKWarningNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKWarningNavigationController.m; sourceTree = "<group>"; };
 		84CA158B1AFCD9590065044F /* GraphRoundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphRoundView.h; sourceTree = "<group>"; };
 		84CA158C1AFCD9590065044F /* GraphRoundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphRoundView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -400,6 +403,8 @@
 			children = (
 				845204E21AF1747300E535FD /* UKWarningViewController.h */,
 				845204E31AF1747300E535FD /* UKWarningViewController.m */,
+				849601751B08CCE900CEA0E7 /* UKWarningNavigationController.h */,
+				849601761B08CCE900CEA0E7 /* UKWarningNavigationController.m */,
 			);
 			name = WARNING;
 			sourceTree = "<group>";
@@ -537,6 +542,7 @@
 				8430EC311B04EF1400DC1959 /* UserWithTrip+DeleteRules.m in Sources */,
 				8430EBFC1B01639700DC1959 /* UKTripTableVC.m in Sources */,
 				847F4C281AF5311500831F11 /* CALayer+RuntimeAttributes.m in Sources */,
+				849601771B08CCE900CEA0E7 /* UKWarningNavigationController.m in Sources */,
 				845204D51AF0FFD500E535FD /* UKReportViewController.m in Sources */,
 				84CA158D1AFCD9590065044F /* GraphRoundView.m in Sources */,
 				845204C61AEF004900E535FD /* UKCalendarWeek.m in Sources */,

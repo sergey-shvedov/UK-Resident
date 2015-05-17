@@ -103,6 +103,11 @@
 	return [UIColor colorWithRed:170.0/255.0 green:170.0/255.0 blue:170.0/255.0 alpha:1.0];
 }
 
++ (UIColor *)colorCalendarWarningDay
+{
+	return [UIColor colorWithRed:227.0/255.0 green:6.0/255.0 blue:19.0/255.0 alpha:1.0];
+}
+
 ////////////////////////////////////////////////
 
 + (UIColor *)colorLeftGraphMain

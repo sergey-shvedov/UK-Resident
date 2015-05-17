@@ -31,6 +31,7 @@
 
 + (UIColor *)colorCalendarWorkDay;
 + (UIColor *)colorCalendarWeekend;
++ (UIColor *)colorCalendarWarningDay;
 
 + (UIColor *)colorLeftGraphMain;
 + (UIColor *)colorLeftGraphBackground;

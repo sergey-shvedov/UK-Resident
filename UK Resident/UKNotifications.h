@@ -13,5 +13,6 @@
 #define UKNotificationNeedUpdateUI @"UKNotificationNeedUpdateUI"
 #define UKNotificationNeedUpdateReportView @"NotificationNeedUpdateReportView"
 #define UKNotificationWarningCalculationsStarted @"UKNotificationWarningCalculationsStarted"
+#define UKNotificationWarningTabNeedUpdate @"UKNotificationWarningTabNeedUpdate"
 
 #endif

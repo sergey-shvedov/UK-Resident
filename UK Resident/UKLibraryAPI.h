@@ -28,7 +28,7 @@
 + (UKLibraryAPI *)sharedInstance;
 
 - (BOOL)isATripDate:(NSDate *)aDate inContext:(NSManagedObjectContext *)aContext;
-- (BOOL)isAWarningDate:(NSDate *)aDate inContext:(NSManagedObjectContext *)aContext;
+- (BOOL)isAWarningDate:(NSDate *)aDate;
 - (NSArray *)arrayWithTripsBetweenStartDate:(NSDate *)aStartBorderDate andEndDate:(NSDate *)anEndBorderDate inContext:(NSManagedObjectContext *)aContext;
 - (NSInteger)numberOfTripDaysBetweenStartDate:(NSDate *)aStartBorderDate andEndDate:(NSDate *)anEndBorderDate andCountArrivalAndDepartureDays:(BOOL)aNeedCountArrivalDays inContext:(NSManagedObjectContext *)aContext;
 
