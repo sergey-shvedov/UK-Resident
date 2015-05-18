@@ -89,6 +89,10 @@
 	[leftButton setTitle:@"01.05.2015" forState:UIControlStateNormal];
 	[leftButton.titleLabel setFont:[UIFont systemFontOfSize:17]];
 	[leftButton sizeToFit];
+	
+	leftButton.titleEdgeInsets = UIEdgeInsetsMake(0, -11, 0, 11);
+	leftButton.imageEdgeInsets = UIEdgeInsetsMake(0, -12, 0, 12);
+	
 	[leftButtonView addSubview:leftButton];
 	
 	UIBarButtonItem *leftBarButton = [[UIBarButtonItem alloc]initWithCustomView:leftButtonView];
@@ -107,7 +111,7 @@
 	[rightButton.titleLabel setFont:[UIFont systemFontOfSize:17]];
 	rightButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
 	//rightButton.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
-	rightButton.titleEdgeInsets = UIEdgeInsetsMake(0, -15, 0, 15);
+	rightButton.titleEdgeInsets = UIEdgeInsetsMake(0, -17, 0, 17);
 	rightButton.imageEdgeInsets = UIEdgeInsetsMake(0, 97, 0, -97);
 	
 	[rightButton sizeToFit];

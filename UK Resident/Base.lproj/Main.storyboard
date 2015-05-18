@@ -66,7 +66,8 @@
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vYA-nG-Ui6">
                                         <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                        <string key="text">Добавьте завершенные и предстоящие поездки за пределы территории UK</string>
+                                        <string key="text">Добавьте завершенные и предстоящие 
+поездки за пределы территории UK</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.74509803921568629" green="0.74509803921568629" blue="0.74509803921568629" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -88,10 +89,10 @@
                                     <mask key="constraints">
                                         <exclude reference="6W9-PR-pES"/>
                                         <exclude reference="pbC-1G-Jqh"/>
-                                        <exclude reference="cXv-it-Evr"/>
-                                        <exclude reference="uMc-ez-9FN"/>
                                         <exclude reference="E05-yu-5kb"/>
                                         <exclude reference="Q5n-SH-sYl"/>
+                                        <exclude reference="cXv-it-Evr"/>
+                                        <exclude reference="uMc-ez-9FN"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=regular">
@@ -102,10 +103,10 @@
                                     <mask key="constraints">
                                         <include reference="6W9-PR-pES"/>
                                         <include reference="pbC-1G-Jqh"/>
-                                        <include reference="cXv-it-Evr"/>
-                                        <include reference="uMc-ez-9FN"/>
                                         <include reference="E05-yu-5kb"/>
                                         <include reference="Q5n-SH-sYl"/>
+                                        <include reference="cXv-it-Evr"/>
+                                        <include reference="uMc-ez-9FN"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -159,14 +160,14 @@
                                 <exclude reference="zQe-TO-btb"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="7DJ-NN-TVN"/>
+                                <exclude reference="lOc-ce-2MT"/>
+                                <exclude reference="uUr-jR-EZH"/>
                                 <exclude reference="Lqw-XQ-sEV"/>
                                 <exclude reference="TiS-Nk-uD3"/>
                                 <exclude reference="ppB-l7-RMl"/>
                                 <exclude reference="9cE-yX-54j"/>
                                 <exclude reference="jzs-XP-VDT"/>
-                                <exclude reference="7DJ-NN-TVN"/>
-                                <exclude reference="lOc-ce-2MT"/>
-                                <exclude reference="uUr-jR-EZH"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
@@ -176,14 +177,14 @@
                                 <include reference="zQe-TO-btb"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="7DJ-NN-TVN"/>
+                                <include reference="lOc-ce-2MT"/>
+                                <include reference="uUr-jR-EZH"/>
                                 <include reference="Lqw-XQ-sEV"/>
                                 <include reference="TiS-Nk-uD3"/>
                                 <include reference="ppB-l7-RMl"/>
                                 <include reference="9cE-yX-54j"/>
                                 <include reference="jzs-XP-VDT"/>
-                                <include reference="7DJ-NN-TVN"/>
-                                <include reference="lOc-ce-2MT"/>
-                                <include reference="uUr-jR-EZH"/>
                             </mask>
                         </variation>
                     </view>
