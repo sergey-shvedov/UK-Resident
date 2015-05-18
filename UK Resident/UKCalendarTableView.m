@@ -15,7 +15,7 @@
 	self = [super initWithCoder:aDecoder];
 	if (nil != self)
 	{
-		self.contentSize = CGSizeMake(self.frame.size.width, 5000);
+		self.contentSize = CGSizeMake(self.frame.size.width, 50000);
 		self.contentInset = UIEdgeInsetsMake(1000., 0., 1000., 0.);
 	}
 	
