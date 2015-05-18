@@ -31,5 +31,23 @@
 
 + (UIColor *)colorCalendarWorkDay;
 + (UIColor *)colorCalendarWeekend;
++ (UIColor *)colorCalendarWarningDay;
+
++ (UIColor *)colorDiagramTripView;
++ (UIColor *)colorDiagramWarningView;
+
++ (UIColor *)colorLeftGraphMain;
++ (UIColor *)colorLeftGraphBackground;
++ (UIColor *)colorRightGraphMain;
++ (UIColor *)colorRightGraphBackground;
+
++ (UIColor *)colorInitialButtonSetted;
++ (UIColor *)colorInitialButton;
+
++ (UIColor *)colorReportCenterBackground;
++ (UIColor *)colorReportCenterBackgroundWarning;
++ (UIColor *)colorReportCenterText;
++ (UIColor *)colorReportCenterTextWarning;
+
 
 @end

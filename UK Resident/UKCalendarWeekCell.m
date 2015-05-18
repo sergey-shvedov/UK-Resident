@@ -74,6 +74,11 @@
 				[button setBackgroundImage:[UIImage imageNamed:@"calendarCellTripLine"] forState:UIControlStateNormal];
 			}
 		}
+		
+		if ( (nil != [self.week.warningDays objectAtIndex:i]) && (YES == [[self.week.warningDays objectAtIndex:i] isKindOfClass:[NSNumber class]]) )
+		{
+			[button setTitleColor:[UIColor colorCalendarWarningDay] forState:UIControlStateNormal];
+		}
 	}
 }
 @end

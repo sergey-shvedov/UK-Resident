@@ -8,15 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "FormButton.h"
-
-@protocol UKTripAddFormViewControllerDelegate <NSObject>
-
-- (void)appearButtons;
-- (void)dismissButtons;
-
-@end
+#import "Trip.h"
+#import "TempTrip.h"
 
 @interface UKTripAddFormViewController : UIViewController
+
+@property (strong,nonatomic) NSManagedObjectContext *managedObjectContext;
+//@property (strong,nonatomic) User *userEditingTrip;
+@property (strong,nonatomic) Trip *trip;
+@property (strong,nonatomic) TempTrip *editingTrip;
 
 @property BOOL isCreating;
 @property (strong,nonatomic) FormButton *buttonOk;

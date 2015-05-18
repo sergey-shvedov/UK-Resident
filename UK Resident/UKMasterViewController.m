@@ -8,6 +8,7 @@
 
 #import "UKMasterViewController.h"
 #import "UKCalendarTableViewController.h"
+#import "UKLibraryAPI.h"
 
 @interface UKMasterViewController ()
 
@@ -33,6 +34,12 @@
 	NSDictionary *userInfo = notification.userInfo;
 	NSNumber *number = [userInfo objectForKey:@"topYear"];
 	self.labelTopYear.text = [NSString stringWithFormat:@"%@", number];
+}
+
+- (IBAction)callUserPopover:(id)sender
+{
+	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
+	[library logAllData];
 }
 
 @end

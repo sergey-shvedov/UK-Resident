@@ -103,4 +103,77 @@
 	return [UIColor colorWithRed:170.0/255.0 green:170.0/255.0 blue:170.0/255.0 alpha:1.0];
 }
 
++ (UIColor *)colorCalendarWarningDay
+{
+	return [UIColor colorWithRed:227.0/255.0 green:6.0/255.0 blue:19.0/255.0 alpha:1.0];
+}
+
+////////////////////////////////////////////////
+
++ (UIColor *)colorDiagramTripView
+{
+	return [UIColor colorWithRed:76/255. green:217/255. blue:99/255. alpha:1.0];
+}
+
++ (UIColor *)colorDiagramWarningView
+{
+	return [UIColor colorWithRed:255.0/255.0 green:34.0/255.0 blue:34.0/255.0 alpha:0.8];
+}
+
+////////////////////////////////////////////////
+
++ (UIColor *)colorLeftGraphMain
+{
+	return [UIColor colorWithRed:67.0/255.0 green:213.0/255.0 blue:81.0/255.0 alpha:1.0];
+}
+
++ (UIColor *)colorLeftGraphBackground
+{
+	return [UIColor colorWithRed:42.0/255.0 green:135.0/255.0 blue:195.0/255.0 alpha:1.0];
+}
+
++ (UIColor *)colorRightGraphMain
+{
+	return [UIColor whiteColor];
+}
+
++ (UIColor *)colorRightGraphBackground
+{
+	return [UIColor colorWithRed:44.0/255.0 green:153.0/255.0 blue:215.0/255.0 alpha:1.0];
+}
+
+////////////////////////////////////////////////
+
++ (UIColor *)colorInitialButtonSetted
+{
+	return [UIColor colorWithRed:88.0/255.0 green:185.0/255.0 blue:255.0/255.0 alpha:1.0];
+}
+
++ (UIColor *)colorInitialButton
+{
+	return [UIColor whiteColor];
+}
+
+////////////////////////////////////////////////
+
++ (UIColor *)colorReportCenterBackground
+{
+	return [UIColor colorWithRed:63.0/255.0 green:169.0/255.0 blue:245.0/255.0 alpha:0.33];
+}
+
++ (UIColor *)colorReportCenterBackgroundWarning
+{
+	return [UIColor colorWithRed:255.0/255.0 green:34.0/255.0 blue:34.0/255.0 alpha:0.33];
+}
+
++ (UIColor *)colorReportCenterText
+{
+	return [UIColor colorWithRed:44.0/255.0 green:65.0/255.0 blue:143.0/255.0 alpha:1.0];
+}
+
++ (UIColor *)colorReportCenterTextWarning
+{
+	return [UIColor colorWithRed:227.0/255.0 green:6.0/255.0 blue:19.0/255.0 alpha:1.0];
+}
+
 @end

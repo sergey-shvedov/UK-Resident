@@ -9,6 +9,7 @@
 #import "UKCalendarWeek.h"
 #import "NSDate+UKResident.h"
 #import "UKLibraryAPI.h"
+#import "AppDelegate.h"
 
 @interface UKCalendarWeek ()
 
@@ -42,6 +43,7 @@
 		
 		NSMutableArray *array = [[NSMutableArray alloc] init];
 		NSMutableArray *trips = [[NSMutableArray alloc] init];
+		NSMutableArray *warnings = [[NSMutableArray alloc] init];
 		
 		for (int i = 2; i <= 8; i++)
 		{
@@ -61,15 +63,26 @@
 				{
 					[trips addObject:[NSNull null]];
 				}
+				
+				if ([self isAWarningDate:searchDate])
+				{
+					[warnings addObject:@(1)];
+				}
+				else
+				{
+					[warnings addObject:[NSNull null]];
+				}
 			}
 			else
 			{
 				[array addObject:[NSNull null]];
 				[trips addObject:[NSNull null]];
+				[warnings addObject:[NSNull null]];
 			}
 			
 			self.days = array;
 			self.tripDays = trips;
+			self.warningDays = warnings;
 		}
 	}
 	
@@ -78,24 +91,14 @@
 
 - (BOOL)isATripDate:(NSDate *)aDate
 {
-	BOOL result = NO;
-	
 	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
-	
-	for (NSArray *trip in library.testTrips)
-	{
-		NSDate *startTrip = (NSDate *)[trip objectAtIndex:0];
-		NSDate *endTrip = (NSDate *)[trip objectAtIndex:1];
-		if ((NSOrderedAscending == [startTrip compare:aDate]) && (NSOrderedAscending == [aDate compare:endTrip]))
-		{
-			result = YES;
-			break;
-		}
-	}
-	
-	return result;
+	return [library isATripDate:aDate inContext:library.managedObjectContext];
 }
 
-
+- (BOOL)isAWarningDate:(NSDate *)aDate
+{
+	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
+	return [library isAWarningDate:aDate];
+}
 
 @end

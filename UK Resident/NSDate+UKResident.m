@@ -95,9 +95,31 @@
 
 - (NSInteger)numberOfDaysUntil:(NSDate *)aDate
 {
-	NSDateComponents *components = [[NSDate customCalendar] components:NSCalendarUnitDay fromDate:self toDate:aDate options:0];
+	NSDate *fromDate;
+	NSDate *toDate;
+	
+	NSCalendar *calendar = [NSDate customCalendar];
+	[calendar rangeOfUnit:NSCalendarUnitDay startDate:&fromDate interval:NULL forDate:self];
+	[calendar rangeOfUnit:NSCalendarUnitDay startDate:&toDate interval:NULL forDate:aDate];
+	
+	NSDateComponents *components = [calendar components:NSCalendarUnitDay fromDate:fromDate toDate:toDate options:0];;
 	return [components day];
 }
+
+- (NSInteger)numberOfDaysBetween:(NSDate *)aDate includedBorderDates:(BOOL)aNeedIncludeBorderDates
+{
+	NSDate *startDate = self;
+	NSDate *endDate = aDate;
+	if (NSOrderedAscending == [endDate compare:startDate])
+	{
+		startDate = aDate;
+		endDate = self;
+	}
+
+	NSInteger delta = aNeedIncludeBorderDates ? 1 : -1;
+	return [startDate numberOfDaysUntil:endDate] + delta;
+}
+
 
 - (NSDate *)normalization
 {
@@ -105,6 +127,58 @@
 	NSCalendar *calendar = [NSDate customCalendar];
 	NSDateComponents *components = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour) fromDate:self];
 	[components setHour:12];
+	date = [calendar dateFromComponents:components];
+	return date;
+}
+
+- (NSDate *)startOfDay
+{
+	NSDate *date = nil;
+	NSCalendar *calendar = [NSDate customCalendar];
+	NSDateComponents *components = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond) fromDate:self];
+	[components setHour:0];
+	[components setMinute:0];
+	[components setSecond:0];
+	date = [calendar dateFromComponents:components];
+	return date;
+}
+
+- (NSDate *)endOfDay
+{
+	NSDate *date = nil;
+	NSCalendar *calendar = [NSDate customCalendar];
+	NSDateComponents *components = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond) fromDate:self];
+	[components setHour:23];
+	[components setMinute:59];
+	[components setSecond:59];
+	date = [calendar dateFromComponents:components];
+	return date;
+}
+
+- (NSDate *)startOfYear
+{
+	NSDate *date = nil;
+	NSCalendar *calendar = [NSDate customCalendar];
+	NSDateComponents *components = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond) fromDate:self];
+	[components setMonth:1];
+	[components setDay:1];
+	[components setHour:0];
+	[components setMinute:0];
+	[components setSecond:0];
+	date = [calendar dateFromComponents:components];
+	return date;
+}
+
+- (NSDate *)endOfYear
+{
+	NSDate *date = nil;
+	NSCalendar *calendar = [NSDate customCalendar];
+	NSDateComponents *components = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond) fromDate:self];
+	[components setMonth:12];
+	[components setDay:31];
+	[components setHour:23];
+	[components setMinute:59];
+	[components setSecond:59];
 	date = [calendar dateFromComponents:components];
 	return date;
 }

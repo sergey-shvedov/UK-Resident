@@ -7,6 +7,8 @@
 //
 
 #import "UKReportViewController.h"
+#import "UKLibraryAPI.h"
+#import "UKNotifications.h"
 #import "UKReportTopCVC.h"
 #import "UKReportCenterCVC.h"
 #import "UKReportBottomCVC.h"
@@ -52,8 +54,29 @@
 	self.navigationController.tabBarItem.selectedImage = [UIImage imageNamed:@"tabBarIconReportSelected"];
 	[self mountBarButtons];
 	
+	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
+	
+	if (nil == library.currentInitDate)
+	{
+		library.isInitDateSetted = NO;
+		//library.currentInitDate = [[NSDate date] normalization];
+	}
+	else
+	{
+		library.isInitDateSetted = YES;
+		library.currentInitDate = library.currentInitDate;
+	}
+	
 	self.date = [[NSDate date] normalization];
-	//[self updateUI];
+	
+	NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+	[center addObserver:self selector: @selector(updateUI) name: UKNotificationNeedUpdateReportView object: nil];
+}
+
+- (void)dealloc
+{
+	NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+	[center removeObserver:self];
 }
 
 - (void)mountBarButtons
@@ -66,6 +89,10 @@
 	[leftButton setTitle:@"01.05.2015" forState:UIControlStateNormal];
 	[leftButton.titleLabel setFont:[UIFont systemFontOfSize:17]];
 	[leftButton sizeToFit];
+	
+	leftButton.titleEdgeInsets = UIEdgeInsetsMake(0, -11, 0, 11);
+	leftButton.imageEdgeInsets = UIEdgeInsetsMake(0, -12, 0, 12);
+	
 	[leftButtonView addSubview:leftButton];
 	
 	UIBarButtonItem *leftBarButton = [[UIBarButtonItem alloc]initWithCustomView:leftButtonView];
@@ -84,7 +111,7 @@
 	[rightButton.titleLabel setFont:[UIFont systemFontOfSize:17]];
 	rightButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
 	//rightButton.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
-	rightButton.titleEdgeInsets = UIEdgeInsetsMake(0, -15, 0, 15);
+	rightButton.titleEdgeInsets = UIEdgeInsetsMake(0, -17, 0, 17);
 	rightButton.imageEdgeInsets = UIEdgeInsetsMake(0, 97, 0, -97);
 	
 	[rightButton sizeToFit];
@@ -111,6 +138,7 @@
 	[self.bottomCVC setDate:self.date];
 	
 	[self updateNavigationBar];
+	[self.navigationController.tabBarItem setTitle:@"Отчет дня"];
 }
 
 - (void)updateNavigationBar

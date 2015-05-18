@@ -8,13 +8,16 @@
 
 #import "UKReportTopDiagramVC.h"
 #import "NSDate+UKResident.h"
+#import "UIColor+UKResident.h"
+#import "UKLibraryAPI.h"
+#import "Trip.h"
+#import "WarningTrip.h"
 
 @interface UKReportTopDiagramVC ()
 
 @property (nonatomic, weak) IBOutlet UIImageView *background;
-@property (nonatomic, weak) IBOutlet UILabel *yearLabelTop;
-@property (nonatomic, weak) IBOutlet UILabel *yearLabelBottom;
 @property (nonatomic, weak) IBOutlet UIView *drawingView;
+@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *yearLabels;
 
 @property (nonatomic, strong) UIImageView *todayIcon;
 @property (nonatomic, strong) UIImageView *yearBorderTop;
@@ -25,10 +28,13 @@
 @property (nonatomic, strong) NSMutableArray *shadingViews;
 @property (nonatomic, strong) NSMutableArray *lightingViews;
 @property (nonatomic, strong) NSMutableArray *tripsViews;
+@property (nonatomic, strong) NSMutableArray *warningViews;
 
 @end
 
 @implementation UKReportTopDiagramVC
+
+@synthesize initialDate = _initialDate;
 
 - (void)viewDidLoad
 {
@@ -37,7 +43,8 @@
 	self.shadingViews = [[NSMutableArray alloc] init];
 	self.lightingViews = [[NSMutableArray alloc] init];
 	self.tripsViews = [[NSMutableArray alloc] init];
-	self.initialDate = [NSDate dateWithTimeIntervalSinceReferenceDate:14*370*24*60*60];
+	self.warningViews = [[NSMutableArray alloc] init];
+	//self.initialDate = [UKLibraryAPI sharedInstance].currentInitDate;
 	self.date = [NSDate date];
 	[self mountDiagramIcons];
 	[self updateUI];
@@ -58,6 +65,24 @@
 {
 	_initialDate = initialDate;
 	self.initialYear = [initialDate yearComponent];
+	[self updateUI];
+}
+
+- (NSDate *)initialDate
+{
+	if (nil == _initialDate)
+	{
+		if (nil != [UKLibraryAPI sharedInstance].currentInitDate)
+		{
+			_initialDate = [UKLibraryAPI sharedInstance].currentInitDate;
+		}
+		else
+		{
+			_initialDate = [NSDate date];
+		}
+		self.initialYear = [_initialDate yearComponent];
+	}
+	return _initialDate;
 }
 
 - (void)mountDiagramIcons
@@ -89,8 +114,6 @@
 
 	[self.view addSubview:initialDateLabel];
 	self.initialDateLabel = initialDateLabel;
-	
-	
 }
 
 - (void)updateUI
@@ -99,7 +122,8 @@
 	self.yearBorderBottom.center = [self pointForDate:self.initialDate withXDelra:5];
 	self.yearBorderTop.center = [self pointForDate:[self.initialDate moveYear:5] withXDelra:-5];
 	[self createShadingOutsideBordings];
-	[self createTestTripsViews];
+	[self createTripsViews];
+	[self createWarningViews];
 	[self createLightingForVisaYear];
 	
 	[self.initialDateLabel setText:[self.initialDate localizedStringWithDateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterNoStyle]];
@@ -107,8 +131,11 @@
 	CGRect initialDateLabelFrame = [self changeFrame:self.initialDateLabel.frame forDate:self.initialDate withXDelra:32];
 	initialDateLabelFrame.origin.y = 140;
 	[self.initialDateLabel setFrame:initialDateLabelFrame];
-	[self.yearLabelBottom setText:[self.initialDate localizedStringWithDateFormat:@"YYYY"]];
-	[self.yearLabelTop setText:[[self.initialDate moveYear:5] localizedStringWithDateFormat:@"YYYY"]];
+	
+	for (UILabel *yearLabel in self.yearLabels)
+	{
+		[yearLabel setText:[[self.initialDate moveYear:yearLabel.tag] localizedStringWithDateFormat:@"YYYY"]];
+	}
 	
 	[self reorderViews];
 }
@@ -158,7 +185,7 @@
 	}
 }
 
-- (void)createTestTripsViews
+- (void)createTripsViews
 {
 	for (UIView *view in self.tripsViews)
 	{
@@ -166,20 +193,53 @@
 	}
 	[self.tripsViews removeAllObjects];
 	
-	//test creating
+	NSDate *startGraphDate = [self.initialDate startOfYear];
+	NSDate *endGraphDate = [[self.initialDate moveYear:5] endOfYear];
+	
+	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
+	NSArray *trips = [library arrayWithTripsBetweenStartDate:startGraphDate andEndDate:endGraphDate inContext:library.managedObjectContext];
+	
 	NSDate *initialBorder = [NSDate dateWithDay:1 month:1 andYear:[self.initialDate yearComponent]];
 	NSDate *finalBorder = [NSDate dateWithDay:31 month:12 andYear:[[self.initialDate moveYear:5] yearComponent]];
-	UIColor *color = [UIColor colorWithRed:76/255. green:217/255. blue:99/255. alpha:1.];
+	UIColor *color = [UIColor colorDiagramTripView];
 	CGFloat height = 12;
-	[self.tripsViews addObjectsFromArray:[self createViewsWithStartDate:[NSDate dateFromMyString:@"10-04-2016"] andEndDate:[NSDate dateFromMyString:@"05-05-2016"] withInitialBorderDate:initialBorder andFinalBorderDate:finalBorder withHeight:height andColor:color]];
-	[self.tripsViews addObjectsFromArray:[self createViewsWithStartDate:[NSDate dateFromMyString:@"20-05-2017"] andEndDate:[NSDate dateFromMyString:@"29-07-2017"] withInitialBorderDate:initialBorder andFinalBorderDate:finalBorder withHeight:height andColor:color]];
-	[self.tripsViews addObjectsFromArray:[self createViewsWithStartDate:[NSDate dateFromMyString:@"03-12-2017"] andEndDate:[NSDate dateFromMyString:@"12-02-2018"] withInitialBorderDate:initialBorder andFinalBorderDate:finalBorder withHeight:height andColor:color]];
-	[self.tripsViews addObjectsFromArray:[self createViewsWithStartDate:[NSDate dateFromMyString:@"15-03-2018"] andEndDate:[NSDate dateFromMyString:@"23-05-2018"] withInitialBorderDate:initialBorder andFinalBorderDate:finalBorder withHeight:height andColor:color]];
-	[self.tripsViews addObjectsFromArray:[self createViewsWithStartDate:[NSDate dateFromMyString:@"07-10-2018"] andEndDate:[NSDate dateFromMyString:@"23-11-2018"] withInitialBorderDate:initialBorder andFinalBorderDate:finalBorder withHeight:height andColor:color]];
-	[self.tripsViews addObjectsFromArray:[self createViewsWithStartDate:[NSDate dateFromMyString:@"25-08-2019"] andEndDate:[NSDate dateFromMyString:@"17-11-2019"] withInitialBorderDate:initialBorder andFinalBorderDate:finalBorder withHeight:height andColor:color]];
 	
+	for (Trip *trip in trips)
+	{
+		[self.tripsViews addObjectsFromArray:[self createViewsWithStartDate:trip.startDate andEndDate:trip.endDate withInitialBorderDate:initialBorder andFinalBorderDate:finalBorder withHeight:height andColor:color]];
+	}
 	
 	for (UIView *view in self.tripsViews)
+	{
+		[self.drawingView addSubview:view];
+	}
+}
+
+- (void)createWarningViews
+{
+	for (UIView *view in self.warningViews)
+	{
+		[view removeFromSuperview];
+	}
+	[self.warningViews removeAllObjects];
+	
+	NSDate *startGraphDate = [self.initialDate startOfYear];
+	NSDate *endGraphDate = [[self.initialDate moveYear:5] endOfYear];
+	
+	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
+	NSArray *warnings = [library arrayWithWarningsBetweenStartDate:startGraphDate andEndDate:endGraphDate];
+	
+	NSDate *initialBorder = [NSDate dateWithDay:1 month:1 andYear:[self.initialDate yearComponent]];
+	NSDate *finalBorder = [NSDate dateWithDay:31 month:12 andYear:[[self.initialDate moveYear:5] yearComponent]];
+	UIColor *color = [UIColor colorDiagramWarningView];
+	CGFloat height = 12;
+	
+	for (WarningTrip *warning in warnings)
+	{
+		[self.warningViews addObjectsFromArray:[self createViewsWithStartDate:warning.warningDate andEndDate:warning.endDate withInitialBorderDate:initialBorder andFinalBorderDate:finalBorder withHeight:height andColor:color]];
+	}
+	
+	for (UIView *view in self.warningViews)
 	{
 		[self.drawingView addSubview:view];
 	}
