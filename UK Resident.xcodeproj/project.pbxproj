@@ -703,7 +703,7 @@
 				INFOPLIST_FILE = "UK Resident/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "UK Resident";
-				PROVISIONING_PROFILE = "87349b25-d9ff-4418-83ea-048364745020";
+				PROVISIONING_PROFILE = "424b8f22-6ff4-4e6c-b22f-3121e0caab7b";
 			};
 			name = Debug;
 		};
@@ -711,12 +711,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Sergey Shvedov (YHHUWZGPYT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Sergey Shvedov (YHHUWZGPYT)";
 				INFOPLIST_FILE = "UK Resident/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "UK Resident";
-				PROVISIONING_PROFILE = "87349b25-d9ff-4418-83ea-048364745020";
+				PROVISIONING_PROFILE = "424b8f22-6ff4-4e6c-b22f-3121e0caab7b";
 			};
 			name = Release;
 		};
