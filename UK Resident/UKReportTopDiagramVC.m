@@ -8,8 +8,10 @@
 
 #import "UKReportTopDiagramVC.h"
 #import "NSDate+UKResident.h"
+#import "UIColor+UKResident.h"
 #import "UKLibraryAPI.h"
 #import "Trip.h"
+#import "WarningTrip.h"
 
 @interface UKReportTopDiagramVC ()
 
@@ -26,6 +28,7 @@
 @property (nonatomic, strong) NSMutableArray *shadingViews;
 @property (nonatomic, strong) NSMutableArray *lightingViews;
 @property (nonatomic, strong) NSMutableArray *tripsViews;
+@property (nonatomic, strong) NSMutableArray *warningViews;
 
 @end
 
@@ -40,6 +43,7 @@
 	self.shadingViews = [[NSMutableArray alloc] init];
 	self.lightingViews = [[NSMutableArray alloc] init];
 	self.tripsViews = [[NSMutableArray alloc] init];
+	self.warningViews = [[NSMutableArray alloc] init];
 	//self.initialDate = [UKLibraryAPI sharedInstance].currentInitDate;
 	self.date = [NSDate date];
 	[self mountDiagramIcons];
@@ -119,6 +123,7 @@
 	self.yearBorderTop.center = [self pointForDate:[self.initialDate moveYear:5] withXDelra:-5];
 	[self createShadingOutsideBordings];
 	[self createTripsViews];
+	[self createWarningViews];
 	[self createLightingForVisaYear];
 	
 	[self.initialDateLabel setText:[self.initialDate localizedStringWithDateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterNoStyle]];
@@ -196,7 +201,7 @@
 	
 	NSDate *initialBorder = [NSDate dateWithDay:1 month:1 andYear:[self.initialDate yearComponent]];
 	NSDate *finalBorder = [NSDate dateWithDay:31 month:12 andYear:[[self.initialDate moveYear:5] yearComponent]];
-	UIColor *color = [UIColor colorWithRed:76/255. green:217/255. blue:99/255. alpha:1.];
+	UIColor *color = [UIColor colorDiagramTripView];
 	CGFloat height = 12;
 	
 	for (Trip *trip in trips)
@@ -205,6 +210,36 @@
 	}
 	
 	for (UIView *view in self.tripsViews)
+	{
+		[self.drawingView addSubview:view];
+	}
+}
+
+- (void)createWarningViews
+{
+	for (UIView *view in self.warningViews)
+	{
+		[view removeFromSuperview];
+	}
+	[self.warningViews removeAllObjects];
+	
+	NSDate *startGraphDate = [self.initialDate startOfYear];
+	NSDate *endGraphDate = [[self.initialDate moveYear:5] endOfYear];
+	
+	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
+	NSArray *warnings = [library arrayWithWarningsBetweenStartDate:startGraphDate andEndDate:endGraphDate];
+	
+	NSDate *initialBorder = [NSDate dateWithDay:1 month:1 andYear:[self.initialDate yearComponent]];
+	NSDate *finalBorder = [NSDate dateWithDay:31 month:12 andYear:[[self.initialDate moveYear:5] yearComponent]];
+	UIColor *color = [UIColor colorDiagramWarningView];
+	CGFloat height = 12;
+	
+	for (WarningTrip *warning in warnings)
+	{
+		[self.warningViews addObjectsFromArray:[self createViewsWithStartDate:warning.warningDate andEndDate:warning.endDate withInitialBorderDate:initialBorder andFinalBorderDate:finalBorder withHeight:height andColor:color]];
+	}
+	
+	for (UIView *view in self.warningViews)
 	{
 		[self.drawingView addSubview:view];
 	}

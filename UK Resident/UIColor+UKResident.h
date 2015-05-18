@@ -33,6 +33,9 @@
 + (UIColor *)colorCalendarWeekend;
 + (UIColor *)colorCalendarWarningDay;
 
++ (UIColor *)colorDiagramTripView;
++ (UIColor *)colorDiagramWarningView;
+
 + (UIColor *)colorLeftGraphMain;
 + (UIColor *)colorLeftGraphBackground;
 + (UIColor *)colorRightGraphMain;

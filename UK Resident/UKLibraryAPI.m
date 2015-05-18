@@ -144,6 +144,8 @@
 
 - (NSArray *)arrayWithTripsBetweenStartDate:(NSDate *)aStartBorderDate andEndDate:(NSDate *)anEndBorderDate inContext:(NSManagedObjectContext *)aContext
 {
+	aStartBorderDate = [aStartBorderDate startOfDay];
+	anEndBorderDate = [anEndBorderDate endOfDay];
 	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Trip"];
 	request.predicate = [NSPredicate predicateWithFormat:@"((startDate <= %@) AND (endDate >= %@)) OR ((startDate >= %@) AND (endDate <= %@)) OR ((startDate <= %@) AND (endDate >= %@))",
 						 aStartBorderDate, aStartBorderDate,
@@ -154,6 +156,18 @@
 	NSError *error;
 	NSArray *trips = [aContext executeFetchRequest:request error:&error];
 	return trips;
+}
+
+- (NSArray *)arrayWithWarningsBetweenStartDate:(NSDate *)aStartBorderDate andEndDate:(NSDate *)anEndBorderDate
+{
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"((warningDate <= %@) AND (endDate >= %@)) OR ((warningDate >= %@) AND (endDate <= %@)) OR ((warningDate <= %@) AND (endDate >= %@))",
+							  aStartBorderDate, aStartBorderDate,
+							  aStartBorderDate, anEndBorderDate,
+							  anEndBorderDate, anEndBorderDate
+							  ];
+	NSArray *filteredArray = [self.warningInvestTrips filteredArrayUsingPredicate:predicate];
+	
+	return filteredArray;
 }
 
 - (NSInteger)numberOfTripDaysBetweenStartDate:(NSDate *)aStartBorderDate andEndDate:(NSDate *)anEndBorderDate andCountArrivalAndDepartureDays:(BOOL)aNeedCountArrivalDays inContext:(NSManagedObjectContext *)aContext
@@ -171,6 +185,10 @@
 		else if (NSOrderedAscending == [trip.startDate compare:aStartBorderDate])
 		{
 			result += [aStartBorderDate numberOfDaysBetween:trip.endDate includedBorderDates:YES] - minusDay;
+		}
+		else if ([anEndBorderDate isTheSameDayWith:trip.endDate])
+		{
+			result += [trip.startDate numberOfDaysBetween:trip.endDate includedBorderDates:aNeedCountArrivalDays];
 		}
 		else if (NSOrderedAscending == [anEndBorderDate compare:trip.endDate])
 		{
@@ -298,7 +316,7 @@
 	{
 		if (mainNumber == 90)
 		{
-			result = 90;
+			result = 0;
 		}
 		else
 		{
@@ -393,11 +411,11 @@
 		NSMutableArray *warningCitizenTrips = [NSMutableArray array];
 		for (Trip *trip in trips)
 		{
-			//NSInteger delta = [NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus ? -1 : +1;
+			NSInteger delta = [NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus ? -1 : +1;
 			//NSInteger numberOfLigalDays;
 			NSInteger numberOfTripDays = [trip.startDate numberOfDaysBetween:trip.endDate includedBorderDates:[NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus];
 			
-			NSInteger investNumberOfLigalDays = [self investNumberOfLigalDaysFromDate:trip.startDate withBoundaryDatesStatus:[NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus inContext:self.expenciveFetchContext];
+			NSInteger investNumberOfLigalDays = [self investNumberOfLigalDaysFromDate:trip.startDate withBoundaryDatesStatus:[NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus inContext:self.expenciveFetchContext] + 1;
 			
 			if (investNumberOfLigalDays < numberOfTripDays)
 			{
@@ -408,7 +426,7 @@
 				[warningInvestTrips addObject:warningTrip];
 			}
 			
-			NSInteger citizenNumberOfLigalDays = [self citizenNumberOfLigalDaysFromDate:trip.startDate withBoundaryDatesStatus:[NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus inContext:self.expenciveFetchContext];
+			NSInteger citizenNumberOfLigalDays = [self citizenNumberOfLigalDaysFromDate:trip.startDate withBoundaryDatesStatus:[NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus inContext:self.expenciveFetchContext] + 1;
 			
 			if (citizenNumberOfLigalDays < numberOfTripDays)
 			{

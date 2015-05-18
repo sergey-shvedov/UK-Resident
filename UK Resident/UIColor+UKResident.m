@@ -110,6 +110,18 @@
 
 ////////////////////////////////////////////////
 
++ (UIColor *)colorDiagramTripView
+{
+	return [UIColor colorWithRed:76/255. green:217/255. blue:99/255. alpha:1.0];
+}
+
++ (UIColor *)colorDiagramWarningView
+{
+	return [UIColor colorWithRed:255.0/255.0 green:34.0/255.0 blue:34.0/255.0 alpha:0.8];
+}
+
+////////////////////////////////////////////////
+
 + (UIColor *)colorLeftGraphMain
 {
 	return [UIColor colorWithRed:67.0/255.0 green:213.0/255.0 blue:81.0/255.0 alpha:1.0];

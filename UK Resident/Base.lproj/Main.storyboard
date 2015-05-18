@@ -785,7 +785,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fq7-Gx-FaL">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fq7-Gx-FaL">
                                 <rect key="frame" x="225" y="225" width="150" height="150"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="warningOkIcon" translatesAutoresizingMaskIntoConstraints="NO" id="OxA-6N-oaC">
@@ -799,6 +799,10 @@
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="T16-Ty-QKT"/>
+                                    <constraint firstAttribute="height" constant="150" id="j4y-3o-qk0"/>
+                                </constraints>
                                 <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="225" y="325" width="150" height="150"/>
                                 </variation>
@@ -813,6 +817,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="IWz-Eg-iAL" secondAttribute="trailing" constant="40" id="11P-m0-BJa"/>
+                            <constraint firstAttribute="centerY" secondItem="fq7-Gx-FaL" secondAttribute="centerY" id="6eh-YU-Ntg"/>
+                            <constraint firstAttribute="centerX" secondItem="fq7-Gx-FaL" secondAttribute="centerX" id="8uT-jz-vuQ"/>
                             <constraint firstAttribute="trailing" secondItem="IWz-Eg-iAL" secondAttribute="trailing" id="D6L-7w-6YU"/>
                             <constraint firstItem="IWz-Eg-iAL" firstAttribute="leading" secondItem="JCe-iV-G2A" secondAttribute="leading" id="Gc1-8o-kwk"/>
                             <constraint firstItem="IWz-Eg-iAL" firstAttribute="top" secondItem="JCe-iV-G2A" secondAttribute="top" id="f3m-vy-uNG"/>

@@ -139,6 +139,25 @@
 {
 	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
 	NSInteger delta = [NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus ? -1 : +1;
+	
+	switch ([NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus)
+	{
+		case kUKRecentBoundaryDatesStatusExcept:
+			delta = +1;
+			break;
+			
+		case kUKRecentBoundaryDatesStatusCount:
+			delta = -1;
+			if ([library isATripDate:self.date inContext:library.managedObjectContext])
+			{
+				delta = 0;
+			}
+			break;
+			
+		default:
+			break;
+	}
+	
 	NSInteger numberOfLigalDays;
 	NSInteger investNumberOfLigalDays = [library investNumberOfLigalDaysFromDate:self.date withBoundaryDatesStatus:[NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus inContext:library.managedObjectContext];
 	NSInteger citizenNumberOfLigalDays = [library citizenNumberOfLigalDaysFromDate:self.date withBoundaryDatesStatus:[NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus inContext:library.managedObjectContext];

@@ -31,7 +31,14 @@
 		newValue = [(NSNumber *)[dictionary objectForKey:@"totalWarnings"] integerValue];
 	}
 	
-	[self.tabBarItem setBadgeValue:[NSString stringWithFormat:@"%i", (int)newValue]];
+	if (0 == newValue)
+	{
+		[self.tabBarItem setBadgeValue:nil];
+	}
+	else
+	{
+		[self.tabBarItem setBadgeValue:[NSString stringWithFormat:@"%i", (int)newValue]];
+	}
 }
 
 - (void)dealloc

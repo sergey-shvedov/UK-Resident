@@ -133,6 +133,7 @@ typedef NS_ENUM(NSInteger, UKWarningType)
 	
 	if (nil != warningTrip)
 	{
+
 		Trip *trip = [library tripWithStartDate:warningTrip.startDate inContext:library.managedObjectContext];
 		if (nil != trip)
 		{
@@ -148,6 +149,7 @@ typedef NS_ENUM(NSInteger, UKWarningType)
 			NSString *tripDaysCountString = [NSString stringWithFormat:@"(%i %@)",
 											 (int)tripDays,
 											 [NSString russianStringFor1:@"день" for2to4:@"дня" for5up:@"дней" withValue:tripDays]];
+			#pragma unused(tripDaysCountString)
 			NSString *title = [NSString stringWithFormat:@"%@: %@", trip.destination, tripDaysString];
 			NSString *details = [NSString stringWithFormat:@"%@", overDaysString];
 			[cell.textLabel setText:title];
@@ -179,50 +181,5 @@ typedef NS_ENUM(NSInteger, UKWarningType)
 	
 	return type;
 }
-
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
