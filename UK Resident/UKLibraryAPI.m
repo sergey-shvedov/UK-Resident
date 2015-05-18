@@ -411,11 +411,11 @@
 		NSMutableArray *warningCitizenTrips = [NSMutableArray array];
 		for (Trip *trip in trips)
 		{
-			NSInteger delta = [NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus ? -1 : +1;
+			NSInteger delta = [NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus ? +1 : 0;
 			//NSInteger numberOfLigalDays;
 			NSInteger numberOfTripDays = [trip.startDate numberOfDaysBetween:trip.endDate includedBorderDates:[NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus];
 			
-			NSInteger investNumberOfLigalDays = [self investNumberOfLigalDaysFromDate:trip.startDate withBoundaryDatesStatus:[NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus inContext:self.expenciveFetchContext] + 1;
+			NSInteger investNumberOfLigalDays = [self investNumberOfLigalDaysFromDate:trip.startDate withBoundaryDatesStatus:[NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus inContext:self.expenciveFetchContext] + delta;
 			
 			if (investNumberOfLigalDays < numberOfTripDays)
 			{
@@ -426,7 +426,7 @@
 				[warningInvestTrips addObject:warningTrip];
 			}
 			
-			NSInteger citizenNumberOfLigalDays = [self citizenNumberOfLigalDaysFromDate:trip.startDate withBoundaryDatesStatus:[NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus inContext:self.expenciveFetchContext] + 1;
+			NSInteger citizenNumberOfLigalDays = [self citizenNumberOfLigalDaysFromDate:trip.startDate withBoundaryDatesStatus:[NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus inContext:self.expenciveFetchContext] + delta;
 			
 			if (citizenNumberOfLigalDays < numberOfTripDays)
 			{
