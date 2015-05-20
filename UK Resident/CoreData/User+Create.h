@@ -15,6 +15,7 @@
 + (User *)createNextUserinContext:(NSManagedObjectContext *)aContext;
 
 + (void)deleteUser:(User *)anUser inContext:(NSManagedObjectContext *)aContext;
-+ (void)editUserWithID:(NSInteger *)anUserID forName:(NSString *)aName andColorID:(NSInteger)aColorID inContext:(NSManagedObjectContext *)aContext;
++ (void)deleteUserWithID:(NSInteger)anUserID inContext:(NSManagedObjectContext *)aContext;
++ (void)editUserWithID:(NSInteger)anUserID forName:(NSString *)aName andColorID:(NSInteger)aColorID inContext:(NSManagedObjectContext *)aContext;
 
 @end

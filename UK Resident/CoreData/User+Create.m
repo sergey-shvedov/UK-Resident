@@ -43,7 +43,7 @@
 	User *result = nil;
 	
 	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"User"];
-	request.predicate = [NSPredicate predicateWithFormat:@"userID = %@", anUserID];
+	request.predicate = [NSPredicate predicateWithFormat:@"userID = %@", [NSNumber numberWithInteger:anUserID]];
 	NSError *error;
 	NSArray *users = [aContext executeFetchRequest:request error:&error];
 	
@@ -117,10 +117,23 @@
 	}
 }
 
-+ (void)editUserWithID:(NSInteger *)anUserID forName:(NSString *)aName andColorID:(NSInteger)aColorID inContext:(NSManagedObjectContext *)aContext
++ (void)deleteUserWithID:(NSInteger)anUserID inContext:(NSManagedObjectContext *)aContext
 {
 	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"User"];
-	request.predicate = [NSPredicate predicateWithFormat:@"userID = %@", anUserID];
+	request.predicate = [NSPredicate predicateWithFormat:@"userID = %@", [NSNumber numberWithInteger:anUserID]];
+	NSError *error;
+	NSArray *users = [aContext executeFetchRequest:request error:&error];
+	if ([users count])
+	{
+		User *user = (User *)[users firstObject];
+		[User deleteUser:user inContext:aContext];
+	}
+}
+
++ (void)editUserWithID:(NSInteger)anUserID forName:(NSString *)aName andColorID:(NSInteger)aColorID inContext:(NSManagedObjectContext *)aContext
+{
+	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"User"];
+	request.predicate = [NSPredicate predicateWithFormat:@"userID = %@", [NSNumber numberWithInteger:anUserID]];
 	NSError *error;
 	NSArray *users = [aContext executeFetchRequest:request error:&error];
 	if ([users count])
@@ -129,6 +142,7 @@
 		user.name = aName;
 		user.colorID = [NSNumber numberWithInteger:aColorID];
 	}
+	[[UKLibraryAPI sharedInstance] saveContext];
 }
 
 

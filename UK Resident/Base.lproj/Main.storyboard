@@ -1142,7 +1142,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="applyButton:" destination="ji7-OB-Sc3" eventType="touchUpInside" id="Nwh-sV-rZE"/>
+                                    <action selector="tapedSaveButton:" destination="uGb-r3-mwI" eventType="touchUpInside" id="A65-Pp-oce"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1160,7 +1160,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="epi-XH-E6R">
-                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="b5s-qa-08M"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="b5s-qa-08M">
+                            <connections>
+                                <action selector="tapedDeleteButton:" destination="uGb-r3-mwI" id="ViN-u6-Fiy"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="backgroundForSegment" destination="rdn-9m-ika" id="0uv-co-quL"/>

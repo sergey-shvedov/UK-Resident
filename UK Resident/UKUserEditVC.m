@@ -8,10 +8,12 @@
 
 #import "UKUserEditVC.h"
 #import "UIColor+UKResident.h"
+#import "User+Create.h"
+#import "UKLibraryAPI.h"
 
 CGFloat const kUKHeightOfSegmentRoundView = 14.;
 
-@interface UKUserEditVC ()
+@interface UKUserEditVC ()<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *backgroundForSegment;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segment;
@@ -26,6 +28,8 @@ CGFloat const kUKHeightOfSegmentRoundView = 14.;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+	
+	self.nameTextField.delegate = self;
 	
 	if (YES == self.isCreating)
 	{
@@ -52,11 +56,49 @@ CGFloat const kUKHeightOfSegmentRoundView = 14.;
 	
 }
 
+#pragma mark - UITextFieldDelegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+	[textField resignFirstResponder];
+	return YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+	self.name = self.nameTextField.text;
+}
+
+#pragma mark -
+
 - (IBAction)changedSegmentValue:(id)sender
 {
 	NSInteger selectedIndex = self.segment.selectedSegmentIndex;
 	[self.segment setTintColor:[UIColor colorWithColorID:selectedIndex withAlpha:1.]];
 	self.colorID = selectedIndex;
+}
+
+- (IBAction)tapedSaveButton:(id)sender
+{
+	[self.nameTextField endEditing:YES];
+	[self.navigationController popViewControllerAnimated:YES];
+	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
+	if (self.isCreating)
+	{
+		User *user = [User createNextUserinContext:library.managedObjectContext];
+		user.name = self.name;
+		user.colorID = [NSNumber numberWithInteger:self.colorID];
+	}
+	else
+	{
+		[User editUserWithID:self.userID forName:self.name andColorID:self.colorID inContext:library.managedObjectContext];
+	}
+}
+
+- (IBAction)tapedDeleteButton:(id)sender
+{
+	[self.navigationController popViewControllerAnimated:YES];
+	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
+	[User deleteUserWithID:self.userID inContext:library.managedObjectContext];
 }
 
 
