@@ -117,7 +117,7 @@
 }
 
 - (void)updateUI
-{
+{	
 	self.todayIcon.center = [self pointForDate:self.date];
 	self.yearBorderBottom.center = [self pointForDate:self.initialDate withXDelra:5];
 	self.yearBorderTop.center = [self pointForDate:[self.initialDate moveYear:5] withXDelra:-5];

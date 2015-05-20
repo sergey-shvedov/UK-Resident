@@ -79,6 +79,11 @@
 	else
 	{
 		[self.diagramVC.view setHidden:NO];
+		if (NO == [self.diagramVC.initialDate isTheSameDayWith:self.initialDate])
+		{
+			self.diagramVC.initialDate = self.initialDate;
+		}
+		
 		[self.initialBigArrowView setHidden:YES];
 		[self.initialDateButton setTintColor:[UIColor colorInitialButtonSetted]];
 		[self.initialDateButton setTitleColor:[UIColor colorInitialButtonSetted] forState:UIControlStateNormal];

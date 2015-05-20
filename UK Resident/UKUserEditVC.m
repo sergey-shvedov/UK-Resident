@@ -9,9 +9,10 @@
 #import "UKUserEditVC.h"
 #import "UIColor+UKResident.h"
 #import "User+Create.h"
+#import "CALayer+RuntimeAttributes.h"
 #import "UKLibraryAPI.h"
 
-CGFloat const kUKHeightOfSegmentRoundView = 14.;
+CGFloat const kUKHeightOfSegmentRoundView = 12.;
 
 @interface UKUserEditVC ()<UITextFieldDelegate>
 
@@ -20,6 +21,7 @@ CGFloat const kUKHeightOfSegmentRoundView = 14.;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *trashBarIcon;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
+@property (weak, nonatomic) IBOutlet UIView *borderTextView;
 
 @end
 
@@ -38,6 +40,7 @@ CGFloat const kUKHeightOfSegmentRoundView = 14.;
 	}
 	[self.segment setSelectedSegmentIndex:self.colorID];
 	[self.segment setTintColor:[UIColor colorWithColorID:self.colorID withAlpha:1.]];
+	[self.borderTextView.layer setBorderUIColor:[UIColor colorWithColorID:self.colorID withAlpha:0.5]];
 	[self.nameTextField setText:self.name];
 	
 	NSInteger numberOfSegments = self.segment.numberOfSegments;
@@ -74,6 +77,7 @@ CGFloat const kUKHeightOfSegmentRoundView = 14.;
 {
 	NSInteger selectedIndex = self.segment.selectedSegmentIndex;
 	[self.segment setTintColor:[UIColor colorWithColorID:selectedIndex withAlpha:1.]];
+	[self.borderTextView.layer setBorderUIColor:[UIColor colorWithColorID:selectedIndex withAlpha:0.5]];
 	self.colorID = selectedIndex;
 }
 
@@ -96,9 +100,18 @@ CGFloat const kUKHeightOfSegmentRoundView = 14.;
 
 - (IBAction)tapedDeleteButton:(id)sender
 {
-	[self.navigationController popViewControllerAnimated:YES];
-	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
-	[User deleteUserWithID:self.userID inContext:library.managedObjectContext];
+	UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Удаление" message:@"Вы уверены, что хотите удалить этого путешественника а также все его поездки?" delegate:self cancelButtonTitle:@"Нет" otherButtonTitles:@"Да", nil];
+	[alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+	if ([alertView.title isEqualToString:@"Удаление"] && (1 == buttonIndex))
+	{
+		UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
+		[User deleteUserWithID:self.userID inContext:library.managedObjectContext];
+		[self.navigationController popViewControllerAnimated:YES];
+	}
 }
 
 

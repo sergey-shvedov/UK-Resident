@@ -64,7 +64,7 @@
 	else
 	{
 		library.isInitDateSetted = YES;
-		library.currentInitDate = library.currentInitDate;
+		//library.currentInitDate = library.currentInitDate;
 	}
 	
 	self.date = [[NSDate date] normalization];
@@ -133,6 +133,18 @@
 
 - (void)updateUI
 {
+	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
+	
+	if (nil == library.currentInitDate)
+	{
+		library.isInitDateSetted = NO;
+		//library.currentInitDate = [[NSDate date] normalization];
+	}
+	else
+	{
+		library.isInitDateSetted = YES;
+	}
+	
 	[self.topCVC setDate:self.date];
 	[self.centerCVC setDate:self.date];
 	[self.bottomCVC setDate:self.date];

@@ -94,6 +94,12 @@
 	[self saveContext];
 }
 
+- (void)setCurrentUser:(User *)currentUser
+{
+	_currentUser = currentUser;
+	[[NSUserDefaults standardUserDefaults] setUserID:[currentUser.userID integerValue]];
+}
+
 - (NSArray *)warningInvestTrips
 {
 	if (nil == _warningInvestTrips)
@@ -502,8 +508,8 @@
 	NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
 	if (managedObjectContext != nil) {
 		NSError *error = nil;
-		if ([managedObjectContext hasChanges])
-		{
+//		if ([managedObjectContext hasChanges])
+//		{
 			if (YES == [managedObjectContext save:&error])
 			{
 				[self.expenciveFetchContext performBlock:^{
@@ -515,7 +521,7 @@
 			{
 				NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
 			}
-		}
+//		}
 	}
 }
 

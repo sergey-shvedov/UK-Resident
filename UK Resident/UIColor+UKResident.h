@@ -52,4 +52,6 @@
 + (UIColor *)colorWithColorID:(NSInteger)aColorID;
 + (UIColor *)colorWithColorID:(NSInteger)aColorID withAlpha:(CGFloat)anAlpha;
 
++ (UIColor *)colorUserPopoverSelection;
+
 @end

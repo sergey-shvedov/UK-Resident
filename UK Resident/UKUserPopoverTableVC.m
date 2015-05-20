@@ -46,7 +46,7 @@
 		User *user=[self.fetchedResultsController objectAtIndexPath:indexPath];
 		
 		UIView *bgColorView = [[UIView alloc] init];
-		[bgColorView setBackgroundColor:[UIColor yellowColor]];
+		[bgColorView setBackgroundColor:[UIColor colorUserPopoverSelection]];
 		[cell setSelectedBackgroundView:bgColorView];
 		
 		[cell placeTitle:user.name];
@@ -63,6 +63,13 @@
 	return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	User *user =[self.fetchedResultsController objectAtIndexPath:indexPath];
+	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
+	library.currentUser = user;
+	[library sendNotificationTripsChanged];
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
