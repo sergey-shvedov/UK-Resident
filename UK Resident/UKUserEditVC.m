@@ -41,7 +41,10 @@ CGFloat const kUKHeightOfSegmentRoundView = 12.;
 	[self.segment setSelectedSegmentIndex:self.colorID];
 	[self.segment setTintColor:[UIColor colorWithColorID:self.colorID withAlpha:1.]];
 	[self.borderTextView.layer setBorderUIColor:[UIColor colorWithColorID:self.colorID withAlpha:0.5]];
-	[self.nameTextField setText:self.name];
+	if (![self.name isEqualToString:@"Traveler"] || ![self.name isEqualToString:@""] )
+	{
+		[self.nameTextField setText:self.name];
+	}
 	
 	NSInteger numberOfSegments = self.segment.numberOfSegments;
 	CGFloat deltaX = self.backgroundForSegment.bounds.size.width / numberOfSegments;
@@ -84,7 +87,12 @@ CGFloat const kUKHeightOfSegmentRoundView = 12.;
 - (IBAction)tapedSaveButton:(id)sender
 {
 	[self.nameTextField endEditing:YES];
-	[self.navigationController popViewControllerAnimated:YES];
+	
+	if ([self.name isEqualToString:@""] || nil == self.name)
+	{
+		self.name = @"Traveler";
+	}
+	
 	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
 	if (self.isCreating)
 	{
@@ -96,6 +104,7 @@ CGFloat const kUKHeightOfSegmentRoundView = 12.;
 	{
 		[User editUserWithID:self.userID forName:self.name andColorID:self.colorID inContext:library.managedObjectContext];
 	}
+	[self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)tapedDeleteButton:(id)sender

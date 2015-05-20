@@ -13,6 +13,7 @@
 #import "NSDate+UKResident.h"
 #import "NSString+UKResident.h"
 #import "NSDateFormatter+UKResident.h"
+#import "UKNotifications.h"
 
 @implementation UKTripTableVC
 
@@ -27,6 +28,32 @@
 	request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"startDate" ascending:NO selector:@selector(compare:)]];
 	
 	self.fetchedResultsController = [[NSFetchedResultsController alloc]initWithFetchRequest:request managedObjectContext:managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+}
+
+- (void)viewDidLoad
+{
+	[super viewDidLoad];
+	NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+	[center addObserver:self selector: @selector(updateUI) name: UKNotificationNeedUpdateUI object: nil];
+}
+
+- (void)dealloc
+{
+	NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+	[center removeObserver:self];
+}
+
+- (void)updateUI
+{
+	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
+	
+	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Trip"];
+	request.predicate = [NSPredicate predicateWithFormat:@"ANY tripsByUser.whoTravel == %@", library.currentUser];
+	request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"startDate" ascending:NO selector:@selector(compare:)]];
+	
+	self.fetchedResultsController = [[NSFetchedResultsController alloc]initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+	
+	[self.tableView reloadData];
 }
 
 #pragma mark - Deselecting

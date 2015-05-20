@@ -125,7 +125,7 @@
 	BOOL result = NO;
 	
 	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Trip"];
-	request.predicate = [NSPredicate predicateWithFormat:@"(startDate <= %@) AND (endDate >= %@)", [aDate endOfDay], [aDate startOfDay]];
+	request.predicate = [NSPredicate predicateWithFormat:@"(ANY tripsByUser.whoTravel == %@) AND (startDate <= %@) AND (endDate >= %@)", self.currentUser, [aDate endOfDay], [aDate startOfDay]];
 	
 	NSError *error;
 	NSArray *trips = [aContext executeFetchRequest:request error:&error];
@@ -138,7 +138,7 @@
 {
 	BOOL result = NO;
 	
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(warningDate <= %@) AND (endDate >= %@)", [aDate endOfDay], [aDate startOfDay]];
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(warningDate <= %@) AND (endDate >= %@)",[aDate endOfDay], [aDate startOfDay]];
 	NSArray *filteredArray = [self.warningInvestTrips filteredArrayUsingPredicate:predicate];
 	if ([filteredArray count])
 	{
@@ -153,7 +153,8 @@
 	aStartBorderDate = [aStartBorderDate startOfDay];
 	anEndBorderDate = [anEndBorderDate endOfDay];
 	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Trip"];
-	request.predicate = [NSPredicate predicateWithFormat:@"((startDate <= %@) AND (endDate >= %@)) OR ((startDate >= %@) AND (endDate <= %@)) OR ((startDate <= %@) AND (endDate >= %@))",
+	request.predicate = [NSPredicate predicateWithFormat:@"(ANY tripsByUser.whoTravel == %@) AND (((startDate <= %@) AND (endDate >= %@)) OR ((startDate >= %@) AND (endDate <= %@)) OR ((startDate <= %@) AND (endDate >= %@)))",
+						 self.currentUser,
 						 aStartBorderDate, aStartBorderDate,
 						 aStartBorderDate, anEndBorderDate,
 						 anEndBorderDate, anEndBorderDate
