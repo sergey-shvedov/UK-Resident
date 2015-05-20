@@ -8,6 +8,7 @@
 
 #import "UKMasterViewController.h"
 #import "UKCalendarTableViewController.h"
+#import "UKUserPopoverTableVC.h"
 #import "UKLibraryAPI.h"
 
 @interface UKMasterViewController ()
@@ -40,6 +41,23 @@
 {
 	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
 	[library logAllData];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+	if ([segue.identifier isEqualToString:@"User Popover"])
+	{
+		if ([[segue destinationViewController] isKindOfClass:[UINavigationController class]])
+		{
+			UINavigationController *navController = (UINavigationController *)[segue destinationViewController];
+			if ([[navController.viewControllers firstObject] isKindOfClass:[UKUserPopoverTableVC class]])
+			{
+				UKUserPopoverTableVC *popover = (UKUserPopoverTableVC *)[navController.viewControllers firstObject];
+				UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
+				popover.managedObjectContext = library.managedObjectContext;
+			}
+		}
+	}
 }
 
 @end
