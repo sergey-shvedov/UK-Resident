@@ -473,7 +473,7 @@
 	for (User *user in users)
 	{
 		NSLog(@"=====================================================");
-		NSLog(@"User: %@ \nestablishedDate: %@ \nuserByTrip: %i", user.userID, user.establishedDate, (int)[user.userByTrip count]);
+		NSLog(@"User: %@ Name: %@ \nestablishedDate: %@ \nuserByTrip: %i", user.userID, user.name, user.establishedDate, (int)[user.userByTrip count]);
 	}
 	
 	NSFetchRequest *userWithTripRequest = [NSFetchRequest fetchRequestWithEntityName:@"UserWithTrip"];

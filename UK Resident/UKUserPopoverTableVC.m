@@ -26,7 +26,7 @@
 	//UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
 	
 	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"User"];
-	request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"userID" ascending:NO selector:@selector(compare:)]];
+	request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"userID" ascending:YES selector:@selector(compare:)]];
 	
 	self.fetchedResultsController = [[NSFetchedResultsController alloc]initWithFetchRequest:request managedObjectContext:managedObjectContext sectionNameKeyPath:nil cacheName:nil];
 }

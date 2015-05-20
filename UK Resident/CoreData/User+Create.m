@@ -91,6 +91,7 @@
 	user.colorID = @0;
 	[[UKLibraryAPI sharedInstance] saveContext];
 	result = user;
+	[[UKLibraryAPI sharedInstance] logAllData];
 	
 	return result;
 }
@@ -98,6 +99,7 @@
 + (void)deleteUser:(User *)anUser inContext:(NSManagedObjectContext *)aContext
 {
 	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
+	[library logAllData];
 	BOOL needUpdate = NO;
 	NSInteger previusID = 0;
 	if (YES == [library.currentUser isEqual:anUser])
@@ -107,6 +109,17 @@
 		library.currentUser = nil;
 		needUpdate = YES;
 	}
+	
+	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"User"];
+	request.predicate = [NSPredicate predicateWithFormat:@"userID > %@", anUser.userID];
+	NSError *error;
+	NSArray *users = [aContext executeFetchRequest:request error:&error];
+	
+	for (User *user in users)
+	{
+		user.userID = [NSNumber numberWithInteger:([user.userID integerValue] - 1)];
+	}
+	
 	[aContext deleteObject:anUser];
 	[library saveContext];
 	
