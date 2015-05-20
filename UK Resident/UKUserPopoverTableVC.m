@@ -11,6 +11,7 @@
 #import "UKUserEditVC.h"
 #import "UKUserTableCell.h"
 #import "User.h"
+#import "UIColor+UKResident.h"
 
 @interface UKUserPopoverTableVC ()
 
@@ -30,6 +31,12 @@
 	self.fetchedResultsController = [[NSFetchedResultsController alloc]initWithFetchRequest:request managedObjectContext:managedObjectContext sectionNameKeyPath:nil cacheName:nil];
 }
 
+- (void)viewDidLoad
+{
+	[super viewDidLoad];
+	[self setClearsSelectionOnViewWillAppear:NO];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	UKUserTableCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"User Cell"];
@@ -43,7 +50,14 @@
 		[cell setSelectedBackgroundView:bgColorView];
 		
 		[cell placeTitle:user.name];
-		[cell placeIconColor:[UIColor blueColor]];
+		[cell placeIconColor:[UIColor colorWithColorID:[user.colorID integerValue]]];
+		[cell placeTagToDelailButton:indexPath.row];
+		
+		UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
+		if ([library.currentUser.userID isEqualToNumber:user.userID])
+		{
+			[self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+		}
 	}
 	
 	return cell;
@@ -60,6 +74,26 @@
 			userVC.isCreating = YES;
 			userVC.name = @"";
 			userVC.colorID = 0;
+			userVC.userID = 0;
+		}
+	}
+	else if ([segue.identifier isEqualToString:@"Edit User"])
+	{
+		if ([segue.destinationViewController isKindOfClass:[UKUserEditVC class]])
+		{
+			UKUserEditVC *userVC = (UKUserEditVC *)segue.destinationViewController;
+			
+			if ([sender isKindOfClass:[UIButton class]])
+			{
+				NSInteger tagNumber = ((UIButton *)sender).tag;
+				
+				User *user =[self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForRow:tagNumber inSection:0]];
+				
+				userVC.isCreating = NO;
+				userVC.name = user.name;
+				userVC.colorID = [user.colorID integerValue];
+				userVC.userID = [user.userID integerValue];
+			}
 		}
 	}
 }

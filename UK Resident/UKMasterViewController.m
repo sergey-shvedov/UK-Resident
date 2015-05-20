@@ -10,10 +10,15 @@
 #import "UKCalendarTableViewController.h"
 #import "UKUserPopoverTableVC.h"
 #import "UKLibraryAPI.h"
+#import "User.h"
+#import "UIColor+UKResident.h"
+#import "UKNotifications.h"
 
 @interface UKMasterViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *labelTopYear;
+@property (weak, nonatomic) IBOutlet UIButton *userPopoverButton;
+@property (weak, nonatomic) IBOutlet UIView *userIconBackground;
 
 @end
 
@@ -23,11 +28,23 @@
 {
 	[super viewDidLoad];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveTestNotification:) name:@"TopYearChangedNotification" object:nil];
+	[self updateUI];
+	NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+	[center addObserver:self selector: @selector(updateUI) name: UKNotificationNeedUpdateUI object: nil];
 }
 
 - (void)dealloc
 {
-	[[NSNotificationCenter defaultCenter] removeObserver:self];
+	NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+	[center removeObserver:self];
+}
+
+- (void)updateUI
+{
+	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
+	User *user = library.currentUser;
+	[self.userPopoverButton setTitle:user.name forState:UIControlStateNormal];
+	[self.userIconBackground setBackgroundColor:[UIColor colorWithColorID:[user.colorID integerValue]]];
 }
 
 - (void) receiveTestNotification:(NSNotification *) notification

@@ -12,8 +12,9 @@
 
 + (User *)firstUserInContext:(NSManagedObjectContext *)context;
 + (User *)userWithID:(NSUInteger)anUserID inContext:(NSManagedObjectContext *)aContext;
-//+ (User *)createNextUserinContext:(NSManagedObjectContext *)context;
++ (User *)createNextUserinContext:(NSManagedObjectContext *)aContext;
 
 + (void)deleteUser:(User *)anUser inContext:(NSManagedObjectContext *)aContext;
++ (void)editUserWithID:(NSInteger *)anUserID forName:(NSString *)aName andColorID:(NSInteger)aColorID inContext:(NSManagedObjectContext *)aContext;
 
 @end

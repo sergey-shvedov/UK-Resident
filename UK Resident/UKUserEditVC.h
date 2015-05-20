@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, assign) NSInteger colorID;
+@property (nonatomic, assign) NSInteger userID;
 @property (nonatomic, assign) BOOL isCreating;
 
 @end

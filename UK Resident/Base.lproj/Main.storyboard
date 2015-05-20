@@ -1486,9 +1486,6 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P3o-M9-FkC" id="jwV-dT-zHt">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BwF-dO-iqv">
-                                            <rect key="frame" x="270" y="8" width="22" height="22"/>
-                                        </button>
                                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GtE-Bg-JKK">
                                             <rect key="frame" x="24" y="10" width="40" height="40"/>
                                             <subviews>
@@ -1504,14 +1501,23 @@
                                             </userDefinedRuntimeAttributes>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TUA-jo-xvY">
-                                            <rect key="frame" x="72" y="19" width="179" height="21"/>
+                                            <rect key="frame" x="75" y="19" width="179" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BwF-dO-iqv">
+                                            <rect key="frame" x="232" y="8" width="60" height="44"/>
+                                            <inset key="imageEdgeInsets" minX="15" minY="0.0" maxX="-15" maxY="0.0"/>
+                                            <state key="normal" image="disclosure_grey"/>
+                                            <connections>
+                                                <segue destination="uGb-r3-mwI" kind="show" identifier="Edit User" id="UAS-cN-FvC"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="detailButton" destination="BwF-dO-iqv" id="hCJ-Vc-yTL"/>
                                     <outlet property="iconBackgroundView" destination="GtE-Bg-JKK" id="uTW-KV-8WV"/>
                                     <outlet property="title" destination="TUA-jo-xvY" id="yld-gw-TYj"/>
                                 </connections>
@@ -1639,6 +1645,8 @@
                     </view>
                     <connections>
                         <outlet property="labelTopYear" destination="tAe-b9-zXy" id="gUN-Z2-XdN"/>
+                        <outlet property="userIconBackground" destination="78J-BM-Bgm" id="JKL-gI-jzg"/>
+                        <outlet property="userPopoverButton" destination="PET-Hc-tYK" id="AXS-yT-myD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kfe-bm-c4U" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3670,6 +3678,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="disclosure_grey" width="8" height="13"/>
         <image name="reportCenterFullPlane" width="60" height="60"/>
         <image name="reportCenterImageUninitial" width="640" height="160"/>
         <image name="reportCenterPlaneSmall" width="26" height="13"/>
@@ -3696,6 +3705,7 @@
         <image name="warningOkIcon" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="OfS-jO-Ier"/>
         <segue reference="wyX-WE-Wmu"/>
     </inferredMetricsTieBreakers>
 </document>

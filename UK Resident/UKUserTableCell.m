@@ -12,6 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView *iconBackgroundView;
 @property (weak, nonatomic) IBOutlet UILabel *title;
+@property (weak, nonatomic) IBOutlet UIButton *detailButton;
 
 @property (strong, nonatomic) UIColor *iconBackgroundColor;
 
@@ -40,6 +41,11 @@
 {
 	self.iconBackgroundColor = aColor;
 	[self.iconBackgroundView setBackgroundColor:aColor];
+}
+
+- (void)placeTagToDelailButton:(NSInteger)aButtonTag
+{
+	[self.detailButton setTag:aButtonTag];
 }
 
 @end

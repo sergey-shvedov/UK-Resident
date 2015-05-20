@@ -12,5 +12,6 @@
 
 - (void)placeTitle:(NSString *)aTitle;
 - (void)placeIconColor:(UIColor *)aColor;
+- (void)placeTagToDelailButton:(NSInteger)aButtonTag;
 
 @end
