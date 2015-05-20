@@ -60,6 +60,7 @@
 		8496017F1B08F5BF00CEA0E7 /* UKWarningTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8496017E1B08F5BF00CEA0E7 /* UKWarningTableHeaderView.m */; };
 		84B8EAD51B0CB8D100B1C1FC /* UKUserPopoverTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B8EAD41B0CB8D100B1C1FC /* UKUserPopoverTableVC.m */; };
 		84B8EAD81B0CC29600B1C1FC /* UKUserTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B8EAD71B0CC29600B1C1FC /* UKUserTableCell.m */; };
+		84B8EADB1B0CF50D00B1C1FC /* UKUserEditVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B8EADA1B0CF50D00B1C1FC /* UKUserEditVC.m */; };
 		84CA158D1AFCD9590065044F /* GraphRoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CA158C1AFCD9590065044F /* GraphRoundView.m */; };
 /* End PBXBuildFile section */
 
@@ -178,6 +179,8 @@
 		84B8EAD41B0CB8D100B1C1FC /* UKUserPopoverTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKUserPopoverTableVC.m; sourceTree = "<group>"; };
 		84B8EAD61B0CC29600B1C1FC /* UKUserTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UKUserTableCell.h; sourceTree = "<group>"; };
 		84B8EAD71B0CC29600B1C1FC /* UKUserTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKUserTableCell.m; sourceTree = "<group>"; };
+		84B8EAD91B0CF50D00B1C1FC /* UKUserEditVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UKUserEditVC.h; sourceTree = "<group>"; };
+		84B8EADA1B0CF50D00B1C1FC /* UKUserEditVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKUserEditVC.m; sourceTree = "<group>"; };
 		84CA158B1AFCD9590065044F /* GraphRoundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphRoundView.h; sourceTree = "<group>"; };
 		84CA158C1AFCD9590065044F /* GraphRoundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphRoundView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -395,6 +398,8 @@
 		845204E61AF174A500E535FD /* CALENDAR */ = {
 			isa = PBXGroup;
 			children = (
+				84B8EAD91B0CF50D00B1C1FC /* UKUserEditVC.h */,
+				84B8EADA1B0CF50D00B1C1FC /* UKUserEditVC.m */,
 				84B8EAD31B0CB8D100B1C1FC /* UKUserPopoverTableVC.h */,
 				84B8EAD41B0CB8D100B1C1FC /* UKUserPopoverTableVC.m */,
 				845204CD1AF03CA800E535FD /* UKMasterViewController.h */,
@@ -573,6 +578,7 @@
 				845204D51AF0FFD500E535FD /* UKReportViewController.m in Sources */,
 				84CA158D1AFCD9590065044F /* GraphRoundView.m in Sources */,
 				845204C61AEF004900E535FD /* UKCalendarWeek.m in Sources */,
+				84B8EADB1B0CF50D00B1C1FC /* UKUserEditVC.m in Sources */,
 				845204C91AEFD3BB00E535FD /* UKCalendarMonthCell.m in Sources */,
 				8430EBF21B015AE100DC1959 /* User+Create.m in Sources */,
 				845204CF1AF03CA800E535FD /* UKMasterViewController.m in Sources */,

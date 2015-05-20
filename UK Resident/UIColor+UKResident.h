@@ -49,5 +49,7 @@
 + (UIColor *)colorReportCenterText;
 + (UIColor *)colorReportCenterTextWarning;
 
++ (UIColor *)colorWithColorID:(NSInteger)aColorID;
++ (UIColor *)colorWithColorID:(NSInteger)aColorID withAlpha:(CGFloat)anAlpha;
 
 @end

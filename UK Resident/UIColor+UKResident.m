@@ -8,6 +8,15 @@
 
 #import "UIColor+UKResident.h"
 
+typedef NS_ENUM(NSInteger, UKUserColors)
+{
+	kUKUserColorBlue = 0,
+	kUKUserColorRed,
+	kUKUserColorYellow,
+	kUKUserColorGreen,
+	kUKUserColorPurple,
+};
+
 @implementation UIColor (UKResident)
 
 + (UIColor *)colorNeedEdit
@@ -174,6 +183,42 @@
 + (UIColor *)colorReportCenterTextWarning
 {
 	return [UIColor colorWithRed:227.0/255.0 green:6.0/255.0 blue:19.0/255.0 alpha:1.0];
+}
+
+////////////////////////////////////////////////
+
++ (UIColor *)colorWithColorID:(NSInteger)aColorID
+{
+	return [self colorWithColorID:aColorID withAlpha:0.7];
+}
+
++ (UIColor *)colorWithColorID:(NSInteger)aColorID withAlpha:(CGFloat)anAlpha
+{
+	UIColor *result = [UIColor whiteColor];
+	
+	aColorID = aColorID % 5;
+	switch (aColorID)
+	{
+		case kUKUserColorBlue:
+			result = [UIColor colorWithRed:29.0/255.0 green:98.0/255.0 blue:240.0/255.0 alpha:anAlpha];
+			break;
+		case kUKUserColorRed:
+			result = [UIColor colorWithRed:255.0/255.0 green:42.0/255.0 blue:104.0/255.0 alpha:anAlpha];
+			break;
+		case kUKUserColorYellow:
+			result = [UIColor colorWithRed:255.0/255.0 green:205.0/255.0 blue:2.0/255.0 alpha:anAlpha];
+			break;
+		case kUKUserColorGreen:
+			result = [UIColor colorWithRed:11.0/255.0 green:211.0/255.0 blue:24.0/255.0 alpha:anAlpha];
+			break;
+		case kUKUserColorPurple:
+			result = [UIColor colorWithRed:198.0/255.0 green:67.0/255.0 blue:252.0/255.0 alpha:anAlpha];
+			break;
+		default:
+			break;
+	}
+	
+	return result;
 }
 
 @end

@@ -8,6 +8,7 @@
 
 #import "UKUserPopoverTableVC.h"
 #import "UKLibraryAPI.h"
+#import "UKUserEditVC.h"
 #import "UKUserTableCell.h"
 #import "User.h"
 
@@ -46,6 +47,21 @@
 	}
 	
 	return cell;
+}
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+	if ([segue.identifier isEqualToString:@"Add User"])
+	{
+		if ([segue.destinationViewController isKindOfClass:[UKUserEditVC class]])
+		{
+			UKUserEditVC *userVC = (UKUserEditVC *)segue.destinationViewController;
+			userVC.isCreating = YES;
+			userVC.name = @"";
+			userVC.colorID = 0;
+		}
+	}
 }
 
 @end

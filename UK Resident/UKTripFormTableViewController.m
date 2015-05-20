@@ -135,7 +135,7 @@
 	// TODO: Attachment
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
 	[self.delegate dismissButtons];
 	

@@ -1073,6 +1073,107 @@
             </objects>
             <point key="canvasLocation" x="365" y="944"/>
         </scene>
+        <!--User EditVC-->
+        <scene sceneID="0MD-lD-b1P">
+            <objects>
+                <viewController id="uGb-r3-mwI" customClass="UKUserEditVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fFc-nm-0tS"/>
+                        <viewControllerLayoutGuide type="bottom" id="iVH-tM-P3I"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2Oa-eH-qLM">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i4Y-cs-vQf">
+                                <rect key="frame" x="25" y="84" width="250" height="50"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Имя" textAlignment="center" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="6db-9p-DoY">
+                                        <rect key="frame" x="8" y="8" width="234" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="6db-9p-DoY" secondAttribute="trailing" constant="8" id="TXo-Zb-PDc"/>
+                                    <constraint firstAttribute="width" constant="250" id="e6Z-pP-akl"/>
+                                    <constraint firstAttribute="height" constant="50" id="j39-bd-CxF"/>
+                                    <constraint firstAttribute="centerY" secondItem="6db-9p-DoY" secondAttribute="centerY" id="lFR-NA-dBZ"/>
+                                    <constraint firstItem="6db-9p-DoY" firstAttribute="leading" secondItem="i4Y-cs-vQf" secondAttribute="leading" constant="8" id="oqf-B6-TYy"/>
+                                    <constraint firstAttribute="centerX" secondItem="6db-9p-DoY" secondAttribute="centerX" id="pkw-6i-a5y"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
+                                        <color key="value" red="0.72549019609999998" green="0.87058823529999996" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rdn-9m-ika" userLabel="SegmentBackground">
+                                <rect key="frame" x="50" y="159" width="200" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="OgL-03-qXC"/>
+                                    <constraint firstAttribute="width" constant="200" id="zV1-kr-0NS"/>
+                                </constraints>
+                            </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="jse-Bv-2s6">
+                                <rect key="frame" x="50" y="165" width="200" height="29"/>
+                                <segments>
+                                    <segment title=""/>
+                                    <segment title=""/>
+                                    <segment title=""/>
+                                    <segment title=""/>
+                                    <segment title=""/>
+                                </segments>
+                                <connections>
+                                    <action selector="changedSegmentValue:" destination="uGb-r3-mwI" eventType="valueChanged" id="k2f-fn-P8C"/>
+                                </connections>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4gR-ta-psR">
+                                <rect key="frame" x="95" y="239" width="110" height="39"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Сохранить">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="applyButton:" destination="ji7-OB-Sc3" eventType="touchUpInside" id="Nwh-sV-rZE"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rdn-9m-ika" firstAttribute="top" secondItem="i4Y-cs-vQf" secondAttribute="bottom" constant="25" id="0J1-0l-Cos"/>
+                            <constraint firstAttribute="centerX" secondItem="i4Y-cs-vQf" secondAttribute="centerX" id="1yV-g2-dCH"/>
+                            <constraint firstItem="rdn-9m-ika" firstAttribute="width" secondItem="jse-Bv-2s6" secondAttribute="width" id="7Gn-c1-wLm"/>
+                            <constraint firstAttribute="centerX" secondItem="4gR-ta-psR" secondAttribute="centerX" id="dT9-Fs-LDe"/>
+                            <constraint firstItem="4gR-ta-psR" firstAttribute="top" secondItem="rdn-9m-ika" secondAttribute="bottom" constant="40" id="f0z-2X-wX7"/>
+                            <constraint firstItem="rdn-9m-ika" firstAttribute="centerX" secondItem="jse-Bv-2s6" secondAttribute="centerX" id="qd3-Yx-q8p"/>
+                            <constraint firstItem="rdn-9m-ika" firstAttribute="centerY" secondItem="jse-Bv-2s6" secondAttribute="centerY" id="rUD-4N-vCT"/>
+                            <constraint firstAttribute="centerX" secondItem="rdn-9m-ika" secondAttribute="centerX" id="uxd-dQ-U0L"/>
+                            <constraint firstItem="i4Y-cs-vQf" firstAttribute="top" secondItem="fFc-nm-0tS" secondAttribute="bottom" constant="40" id="z4Q-RU-mUO"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="epi-XH-E6R">
+                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="b5s-qa-08M"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="backgroundForSegment" destination="rdn-9m-ika" id="0uv-co-quL"/>
+                        <outlet property="nameTextField" destination="6db-9p-DoY" id="NxB-R9-vbB"/>
+                        <outlet property="saveButton" destination="4gR-ta-psR" id="j0R-A4-0SM"/>
+                        <outlet property="segment" destination="jse-Bv-2s6" id="Wmt-2J-6kz"/>
+                        <outlet property="trashBarIcon" destination="b5s-qa-08M" id="O3u-DB-45S"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yh2-rU-88v" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1797" y="-852"/>
+        </scene>
         <!--Calendar Table View Controller-->
         <scene sceneID="iHy-UN-FcW">
             <objects>
@@ -1422,7 +1523,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Путешественники" id="vYN-qh-jKP">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="QpR-Oo-B9y"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="QpR-Oo-B9y">
+                            <connections>
+                                <segue destination="uGb-r3-mwI" kind="show" identifier="Add User" id="OfS-jO-Ier"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hp2-sw-rxU" userLabel="First Responder" sceneMemberID="firstResponder"/>
