@@ -38,12 +38,12 @@
 	{
 		case kUKRecentBoundaryDatesStatusExcept:
 			[self.switcher setOn:kUKRecentBoundaryDatesStatusExcept];
-			[self.switchLabel setText:@"Дни улета и прилета не учитываются как дни присутствия в UK"];
+			[self.switchLabel setText:@"Дни улета и прилета считатаются днями присутствия в UK"];
 			break;
 			
 		case kUKRecentBoundaryDatesStatusCount:
 			[self.switcher setOn:kUKRecentBoundaryDatesStatusCount];
-			[self.switchLabel setText:@"Дни улета и прилета считатаются днями присутствия в UK"];
+			[self.switchLabel setText:@"Дни улета и прилета не учитываются как дни присутствия в UK"];
 			break;
 			
 		default:
