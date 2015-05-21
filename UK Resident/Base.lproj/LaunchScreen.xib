@@ -2,40 +2,95 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+            <rect key="frame" x="0.0" y="0.0" width="737" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Copyright (c) 2015 Administrator. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="8ie-xW-0ye">
-                    <rect key="frame" x="20" y="439" width="441" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchBackground" translatesAutoresizingMaskIntoConstraints="NO" id="ncX-hf-DRZ">
+                    <rect key="frame" x="0.0" y="0.0" width="737" height="480"/>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hUa-NO-djn">
+                    <rect key="frame" x="0.0" y="0.0" width="63" height="327"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="63" id="Lc5-m4-mrf"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vZ0-Z1-ZAC">
+                    <rect key="frame" x="0.0" y="327" width="118" height="153"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="118" id="IoJ-8W-VSq"/>
+                    </constraints>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchBigLogo" translatesAutoresizingMaskIntoConstraints="NO" id="i2g-RT-rbW">
+                    <rect key="frame" x="0.0" y="-373" width="780" height="700"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="700" id="c2I-Sw-PHQ"/>
+                        <constraint firstAttribute="width" constant="780" id="lw3-sW-eeg"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UK Resident" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pau-Ci-B3C">
+                    <rect key="frame" x="406" y="273" width="243" height="54"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="45"/>
+                    <color key="textColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UK Resident 0.1.2" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="kId-c2-rCX">
-                    <rect key="frame" x="20" y="140" width="441" height="43"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version 1.0.0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="8ie-xW-0ye">
+                    <rect key="frame" x="662" y="306" width="73" height="15"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="kId-c2-rCX" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="bottom" multiplier="1/3" constant="1" id="5cJ-9S-tgC"/>
-                <constraint firstAttribute="centerX" secondItem="kId-c2-rCX" secondAttribute="centerX" id="Koa-jz-hwk"/>
+                <constraint firstAttribute="trailing" secondItem="ncX-hf-DRZ" secondAttribute="trailing" id="8MD-NA-wQP"/>
+                <constraint firstItem="8ie-xW-0ye" firstAttribute="bottom" secondItem="pau-Ci-B3C" secondAttribute="bottom" constant="-6" id="8NF-IJ-r49"/>
+                <constraint firstItem="ncX-hf-DRZ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="FQq-cd-bRf"/>
+                <constraint firstItem="8ie-xW-0ye" firstAttribute="top" secondItem="pau-Ci-B3C" secondAttribute="bottom" constant="4" id="Fsk-no-Vtf"/>
+                <constraint firstItem="8ie-xW-0ye" firstAttribute="leading" secondItem="pau-Ci-B3C" secondAttribute="leading" id="Iy7-qW-ext"/>
                 <constraint firstAttribute="bottom" secondItem="8ie-xW-0ye" secondAttribute="bottom" constant="20" id="Kzo-t9-V3l"/>
                 <constraint firstItem="8ie-xW-0ye" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" symbolic="YES" id="MfP-vx-nX0"/>
+                <constraint firstItem="pau-Ci-B3C" firstAttribute="leading" secondItem="i2g-RT-rbW" secondAttribute="trailing" constant="-374" id="NIk-cE-QBz"/>
+                <constraint firstItem="vZ0-Z1-ZAC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="RrY-7W-unP"/>
+                <constraint firstItem="ncX-hf-DRZ" firstAttribute="leading" secondItem="i2g-RT-rbW" secondAttribute="leading" id="SbB-Ty-vPh"/>
                 <constraint firstAttribute="centerX" secondItem="8ie-xW-0ye" secondAttribute="centerX" id="ZEH-qu-HZ9"/>
-                <constraint firstItem="kId-c2-rCX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" symbolic="YES" id="fvb-Df-36g"/>
+                <constraint firstAttribute="bottom" secondItem="ncX-hf-DRZ" secondAttribute="bottom" id="Zwi-Nh-juE"/>
+                <constraint firstItem="vZ0-Z1-ZAC" firstAttribute="top" secondItem="hUa-NO-djn" secondAttribute="bottom" id="ad2-6b-gof"/>
+                <constraint firstItem="ncX-hf-DRZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="hEd-St-iFe"/>
+                <constraint firstItem="hUa-NO-djn" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="jjl-vk-BhD"/>
+                <constraint firstItem="vZ0-Z1-ZAC" firstAttribute="top" secondItem="i2g-RT-rbW" secondAttribute="bottom" id="k5f-pU-G4e"/>
+                <constraint firstAttribute="bottom" secondItem="vZ0-Z1-ZAC" secondAttribute="bottom" id="pHD-GJ-y9Y"/>
+                <constraint firstItem="hUa-NO-djn" firstAttribute="height" secondItem="vZ0-Z1-ZAC" secondAttribute="height" multiplier="1:0.47" id="rUb-RO-AM9"/>
+                <constraint firstItem="i2g-RT-rbW" firstAttribute="bottom" secondItem="pau-Ci-B3C" secondAttribute="bottom" id="v6p-zo-uGD"/>
+                <constraint firstItem="hUa-NO-djn" firstAttribute="width" secondItem="vZ0-Z1-ZAC" secondAttribute="height" multiplier="21:58" id="vBA-gM-cZv"/>
+                <constraint firstItem="8ie-xW-0ye" firstAttribute="leading" secondItem="pau-Ci-B3C" secondAttribute="trailing" constant="13" id="yyZ-iX-EiW"/>
+                <constraint firstItem="hUa-NO-djn" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="zsc-Sr-3fz"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="548" y="455"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="vBA-gM-cZv"/>
+                    <exclude reference="Fsk-no-Vtf"/>
+                    <exclude reference="Iy7-qW-ext"/>
+                    <exclude reference="Kzo-t9-V3l"/>
+                    <exclude reference="MfP-vx-nX0"/>
+                    <exclude reference="ZEH-qu-HZ9"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="676.5" y="455"/>
         </view>
     </objects>
+    <resources>
+        <image name="launchBackground" width="1" height="470"/>
+        <image name="launchBigLogo" width="780" height="700"/>
+    </resources>
 </document>
