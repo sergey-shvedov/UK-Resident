@@ -159,8 +159,10 @@
 	}
 	
 	NSInteger numberOfLigalDays;
-	NSInteger investNumberOfLigalDays = [library investNumberOfLigalDaysFromDate:self.date withBoundaryDatesStatus:[NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus inContext:library.managedObjectContext];
-	NSInteger citizenNumberOfLigalDays = [library citizenNumberOfLigalDaysFromDate:self.date withBoundaryDatesStatus:[NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus inContext:library.managedObjectContext];
+	
+	NSInteger investNumberOfLigalDays = [library numberOfLigalDaysWithMaximum:180 FromDate:self.date withBoundaryDatesStatus:[NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus inContext:library.managedObjectContext];
+	
+	NSInteger citizenNumberOfLigalDays = [library numberOfLigalDaysWithMaximum:90 FromDate:self.date withBoundaryDatesStatus:[NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus inContext:library.managedObjectContext];
 
 	switch ([NSUserDefaults standardUserDefaults].displayCheckType)
 	{
@@ -178,9 +180,8 @@
 	
 	if (numberOfLigalDays >= 0)
 	{
-		NSString *firstDescription = [NSString stringWithFormat:@"С %@ можно совершить поездку\nдо %@ (на %i %@).",
+		NSString *firstDescription = [NSString stringWithFormat:@"На %@ максимальное количество дней,\n возможных для отсутствия — %i %@).",
 									  [self.date localizedStringWithDateFormat:@"d MMMM"],
-									  [[self.date moveDay:(numberOfLigalDays + delta)] localizedStringWithDateFormat:@"d MMMM"],
 									  (int)numberOfLigalDays,
 									  [NSString russianStringFor1:@"день" for2to4:@"дня" for5up:@"дней" withValue:numberOfLigalDays]];
 		

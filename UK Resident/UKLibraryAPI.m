@@ -210,82 +210,71 @@
 	return result;
 }
 
-- (NSInteger)investNumberOfLigalDaysFromDate:(NSDate *)aDate withBoundaryDatesStatus:(BOOL)aBoundaryDatesStatus inContext:(NSManagedObjectContext *)aContext
+#pragma mark - Legal Days Calculations
+
+- (NSInteger)numberOfLigalDaysWithMaximum:(NSInteger)aMaximumOfDays FromDate:(NSDate *)aDate withBoundaryDatesStatus:(BOOL)aBoundaryDatesStatus inContext:(NSManagedObjectContext *)aContext
 {
 	NSInteger result = 0;
 	NSDate *startDate = [[aDate moveYear:-1] moveDay:+1];
 	if (NSOrderedAscending == [startDate compare:self.currentInitDate]) startDate = self.currentInitDate;
 	NSInteger mainNumber = [self numberOfTripDaysBetweenStartDate:startDate andEndDate:aDate andCountArrivalAndDepartureDays:aBoundaryDatesStatus inContext:aContext];
-	if (mainNumber > 180)
+	if (mainNumber > aMaximumOfDays)
 	{
-		result = 180 - mainNumber;
+		result = aMaximumOfDays - mainNumber;
 	}
 	else
 	{
-		if (mainNumber <= 90)
+		if (mainNumber == aMaximumOfDays)
 		{
-			result = 90;
+			result = 0;
 		}
 		else
 		{
 			NSDate *movedDate = aDate;
 			
-			if(0)
+			for (result = 0 ; result < aMaximumOfDays; result++)
 			{
-				result = 1;
-				for (result = 1 ; result < 90; result++)
-				{
-					movedDate = [aDate moveDay:result];
-					startDate = [[movedDate moveYear:-1] moveDay:+1];
-					if (NSOrderedAscending == [startDate compare:self.currentInitDate]) startDate = self.currentInitDate;
-					if (result + [self numberOfTripDaysBetweenStartDate:startDate andEndDate:aDate andCountArrivalAndDepartureDays:aBoundaryDatesStatus inContext:aContext] >= 180)
-					{
-						break;
-					}
-				}
-			}
-			else
-			{
-				for (result = 0 ; result < 90; result++)
-				{
-					movedDate = [aDate moveDay:result];
-					startDate = [[movedDate moveYear:-1] moveDay:+1];
-					if (NSOrderedAscending == [startDate compare:self.currentInitDate]) startDate = self.currentInitDate;
-					
-					NSInteger tripDaysFromMovedDate = [self numberOfTripDaysBetweenStartDate:startDate andEndDate:aDate andCountArrivalAndDepartureDays:aBoundaryDatesStatus inContext:aContext];
-					
-					NSInteger delta = 180 - tripDaysFromMovedDate - result;
-					
-					if (delta > 5)
-					{
-						result += delta - 1;
-						if (result > 90)
-						{
-							result = 90;
-							break;
-						}
-					}
-					else if (result + tripDaysFromMovedDate >= 180)
-					{
-						break;
-					}
-				}
+				movedDate = [aDate moveDay:result];
+				startDate = [[movedDate moveYear:-1] moveDay:+1];
+				if (NSOrderedAscending == [startDate compare:self.currentInitDate]) startDate = self.currentInitDate;
 				
-//				if (0)
-//				{
-//					while ((result < 90) && (mainNumber < 180))
-//					{
-//						result = 180 - mainNumber;
-//						movedDate = [aDate moveDay:result];
-//						startDate = [[movedDate moveYear:-1] moveDay:+1];
-//						if (NSOrderedAscending == [startDate compare:self.currentInitDate]) startDate = self.currentInitDate;
-//						mainNumber = result + [self numberOfTripDaysBetweenStartDate:startDate andEndDate:aDate andCountArrivalAndDepartureDays:aBoundaryDatesStatus];
-//					}
-//				}
+				NSInteger tripDaysFromMovedDate = [self numberOfTripDaysBetweenStartDate:startDate andEndDate:aDate andCountArrivalAndDepartureDays:aBoundaryDatesStatus inContext:aContext];
+				
+				NSInteger delta = aMaximumOfDays - tripDaysFromMovedDate - result;
+				
+				if (delta > 5)
+				{
+					result += delta - 1;
+					if (result > aMaximumOfDays)
+					{
+						result = aMaximumOfDays;
+						break;
+					}
+				}
+				else if (result + tripDaysFromMovedDate >= aMaximumOfDays)
+				{
+					break;
+				}
 			}
-			
 		}
 	}
+	
+	return result;
+}
+
+- (NSInteger)investNumberOfLigalDaysFromDate:(NSDate *)aDate withBoundaryDatesStatus:(BOOL)aBoundaryDatesStatus inContext:(NSManagedObjectContext *)aContext
+{
+	return [self numberOfLigalDaysWithMaximum:180 FromDate:aDate withBoundaryDatesStatus:aBoundaryDatesStatus inContext:aContext];
+}
+
+- (NSInteger)investNumberOfDaysFromDate:(NSDate *)aDate withBoundaryDatesStatus:(BOOL)aBoundaryDatesStatus inContext:(NSManagedObjectContext *)aContext
+{
+	NSInteger result = 0;
+	NSDate *startDate = [[aDate moveYear:-1] moveDay:+1];
+	if (NSOrderedAscending == [startDate compare:self.currentInitDate]) startDate = self.currentInitDate;
+	NSInteger mainNumber = [self numberOfTripDaysBetweenStartDate:startDate andEndDate:aDate andCountArrivalAndDepartureDays:aBoundaryDatesStatus inContext:aContext];
+	
+	result = 180 - mainNumber;
 	
 	return result;
 }
@@ -311,50 +300,16 @@
 
 - (NSInteger)citizenNumberOfLigalDaysFromDate:(NSDate *)aDate withBoundaryDatesStatus:(BOOL)aBoundaryDatesStatus inContext:(NSManagedObjectContext *)aContext
 {
+	return [self numberOfLigalDaysWithMaximum:90 FromDate:aDate withBoundaryDatesStatus:aBoundaryDatesStatus inContext:aContext];
+}
+
+- (NSInteger)citizenNumberOfDaysFromDate:(NSDate *)aDate withBoundaryDatesStatus:(BOOL)aBoundaryDatesStatus inContext:(NSManagedObjectContext *)aContext
+{
 	NSInteger result = 0;
 	NSDate *startDate = [[aDate moveYear:-1] moveDay:+1];
 	if (NSOrderedAscending == [startDate compare:self.currentInitDate]) startDate = self.currentInitDate;
 	NSInteger mainNumber = [self numberOfTripDaysBetweenStartDate:startDate andEndDate:aDate andCountArrivalAndDepartureDays:aBoundaryDatesStatus inContext:aContext];
-	if (mainNumber > 90)
-	{
-		result = 90 - mainNumber;
-	}
-	else
-	{
-		if (mainNumber == 90)
-		{
-			result = 0;
-		}
-		else
-		{
-			NSDate *movedDate = aDate;
-			
-			for (result = 0 ; result < 90; result++)
-			{
-				movedDate = [aDate moveDay:result];
-				startDate = [[movedDate moveYear:-1] moveDay:+1];
-				if (NSOrderedAscending == [startDate compare:self.currentInitDate]) startDate = self.currentInitDate;
-				
-				NSInteger tripDaysFromMovedDate = [self numberOfTripDaysBetweenStartDate:startDate andEndDate:aDate andCountArrivalAndDepartureDays:aBoundaryDatesStatus inContext:aContext];
-				
-				NSInteger delta = 90 - tripDaysFromMovedDate - result;
-				
-				if (delta > 5)
-				{
-					result += delta - 1;
-					if (result > 90)
-					{
-						result = 90;
-						break;
-					}
-				}
-				else if (result + tripDaysFromMovedDate >= 90)
-				{
-					break;
-				}
-			}
-		}
-	}
+	result = 90 - mainNumber;
 	
 	return result;
 }

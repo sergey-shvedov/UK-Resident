@@ -2366,31 +2366,31 @@
                                 <exclude reference="abB-vn-8gf"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="LK1-7T-h5n"/>
+                                <exclude reference="bUe-sM-CbX"/>
+                                <exclude reference="eV5-gS-Ecs"/>
+                                <exclude reference="opS-HC-lNT"/>
+                                <exclude reference="SPz-c7-vQh"/>
+                                <exclude reference="7zr-9F-dDa"/>
+                                <exclude reference="R50-jr-7AS"/>
+                                <exclude reference="tEp-TD-GRK"/>
+                                <exclude reference="0Hz-XD-pfz"/>
+                                <exclude reference="wyu-aC-NAn"/>
+                                <exclude reference="C7K-pd-hpP"/>
+                                <exclude reference="CXA-rN-LEx"/>
+                                <exclude reference="gm8-64-XgY"/>
                                 <exclude reference="GYj-Fc-fVf"/>
                                 <exclude reference="IT3-e4-gk0"/>
                                 <exclude reference="JMl-tp-FcX"/>
                                 <exclude reference="Y4f-3T-RpI"/>
                                 <exclude reference="eQO-7o-apx"/>
                                 <exclude reference="yyl-3a-Ubg"/>
-                                <exclude reference="G2T-ft-n4B"/>
-                                <exclude reference="TId-2z-ymd"/>
-                                <exclude reference="C7K-pd-hpP"/>
-                                <exclude reference="CXA-rN-LEx"/>
-                                <exclude reference="gm8-64-XgY"/>
                                 <exclude reference="39l-uO-Tff"/>
                                 <exclude reference="r7e-Qh-fbb"/>
                                 <exclude reference="A2g-9r-3Nq"/>
                                 <exclude reference="kc1-Zc-01z"/>
-                                <exclude reference="0Hz-XD-pfz"/>
-                                <exclude reference="wyu-aC-NAn"/>
-                                <exclude reference="eV5-gS-Ecs"/>
-                                <exclude reference="opS-HC-lNT"/>
-                                <exclude reference="LK1-7T-h5n"/>
-                                <exclude reference="bUe-sM-CbX"/>
-                                <exclude reference="7zr-9F-dDa"/>
-                                <exclude reference="R50-jr-7AS"/>
-                                <exclude reference="tEp-TD-GRK"/>
-                                <exclude reference="SPz-c7-vQh"/>
+                                <exclude reference="G2T-ft-n4B"/>
+                                <exclude reference="TId-2z-ymd"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
@@ -2406,31 +2406,31 @@
                                 <include reference="abB-vn-8gf"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="LK1-7T-h5n"/>
+                                <include reference="bUe-sM-CbX"/>
+                                <include reference="eV5-gS-Ecs"/>
+                                <include reference="opS-HC-lNT"/>
+                                <include reference="SPz-c7-vQh"/>
+                                <include reference="7zr-9F-dDa"/>
+                                <include reference="R50-jr-7AS"/>
+                                <include reference="tEp-TD-GRK"/>
+                                <include reference="0Hz-XD-pfz"/>
+                                <include reference="wyu-aC-NAn"/>
+                                <include reference="C7K-pd-hpP"/>
+                                <include reference="CXA-rN-LEx"/>
+                                <include reference="gm8-64-XgY"/>
                                 <exclude reference="GYj-Fc-fVf"/>
                                 <exclude reference="IT3-e4-gk0"/>
                                 <exclude reference="JMl-tp-FcX"/>
                                 <include reference="Y4f-3T-RpI"/>
                                 <include reference="eQO-7o-apx"/>
                                 <include reference="yyl-3a-Ubg"/>
-                                <include reference="G2T-ft-n4B"/>
-                                <include reference="TId-2z-ymd"/>
-                                <include reference="C7K-pd-hpP"/>
-                                <include reference="CXA-rN-LEx"/>
-                                <include reference="gm8-64-XgY"/>
                                 <include reference="39l-uO-Tff"/>
                                 <include reference="r7e-Qh-fbb"/>
                                 <include reference="A2g-9r-3Nq"/>
                                 <include reference="kc1-Zc-01z"/>
-                                <include reference="0Hz-XD-pfz"/>
-                                <include reference="wyu-aC-NAn"/>
-                                <include reference="eV5-gS-Ecs"/>
-                                <include reference="opS-HC-lNT"/>
-                                <include reference="LK1-7T-h5n"/>
-                                <include reference="bUe-sM-CbX"/>
-                                <include reference="7zr-9F-dDa"/>
-                                <include reference="R50-jr-7AS"/>
-                                <include reference="tEp-TD-GRK"/>
-                                <include reference="SPz-c7-vQh"/>
+                                <include reference="G2T-ft-n4B"/>
+                                <include reference="TId-2z-ymd"/>
                             </mask>
                         </variation>
                     </view>
@@ -2502,13 +2502,13 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G2U-Qv-hr5" userLabel="MainView" customClass="UKReportCenterMainView">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                                 <subviews>
-                                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hUQ-MQ-lOK">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hUQ-MQ-lOK">
                                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RFh-Il-A0F">
                                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="86" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="iIj-3E-vWb">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="125" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="iIj-3E-vWb">
                                                                         <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="50" id="koG-dd-abz"/>
@@ -2558,7 +2558,7 @@
                                                                         <variation key="heightClass=regular-widthClass=regular" constant="1"/>
                                                                     </constraint>
                                                                     <constraint firstItem="iIj-3E-vWb" firstAttribute="leading" secondItem="RFh-Il-A0F" secondAttribute="leading" constant="8" id="Mnm-d7-TYm">
-                                                                        <variation key="heightClass=regular-widthClass=regular" constant="12"/>
+                                                                        <variation key="heightClass=regular-widthClass=regular" constant="6"/>
                                                                     </constraint>
                                                                     <constraint firstItem="KHV-gL-GhB" firstAttribute="leading" secondItem="iIj-3E-vWb" secondAttribute="trailing" constant="3" id="RgA-wn-cvB">
                                                                         <variation key="heightClass=regular-widthClass=regular" constant="5"/>
@@ -2669,7 +2669,7 @@
                                                             </mask>
                                                         </variation>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RlN-cg-89w">
+                                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RlN-cg-89w">
                                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RWa-6y-r9z">
