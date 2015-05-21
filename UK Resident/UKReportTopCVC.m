@@ -15,6 +15,7 @@
 #import "NSDate+UKResident.h"
 #import "UIColor+UKResident.h"
 #import "NSString+UKResident.h"
+#import "NSDateFormatter+UKResident.h"
 
 @interface UKReportTopCVC ()
 
@@ -22,6 +23,8 @@
 @property (weak, nonatomic) IBOutlet UIView *initialBigArrowView;
 @property (weak, nonatomic) IBOutlet UIView *generalGraphView;
 @property (weak, nonatomic) IBOutlet UILabel *generalGraphReplaceLabel;
+@property (weak, nonatomic) IBOutlet UIView *topMonthLabelsView;
+
 
 @property (weak, nonatomic) IBOutlet UILabel *dayLabel;
 @property (weak, nonatomic) IBOutlet UILabel *monthLabel;
@@ -44,7 +47,19 @@
 
 - (void)viewDidLoad
 {
-
+	CGFloat xPoint = 32;
+	CGFloat xDelta = 43;
+	for (int i = 0; i < 12; i++)
+	{
+		UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(xPoint + i * xDelta, 0., xDelta, 20)];
+		[label setTextColor:[UIColor whiteColor]];
+		[label setFont:[UIFont systemFontOfSize:10]];
+		[label setText:[[[NSDateFormatter customDateFormatter] shortStandaloneMonthSymbols] objectAtIndex:i]];
+		[label setTextAlignment:NSTextAlignmentCenter];
+		[self.topMonthLabelsView addSubview:label];
+	}
+	//[self.monthLabel setText:[self.date localizedStringWithDateFormat:@"MMMM"]];
+	
 }
 
 - (void)setDate:(NSDate *)date
