@@ -160,9 +160,9 @@
 	
 	NSInteger numberOfLigalDays;
 	
-	NSInteger investNumberOfLigalDays = [library numberOfLigalDaysWithMaximum:180 FromDate:self.date withBoundaryDatesStatus:[NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus inContext:library.managedObjectContext];
+	NSInteger investNumberOfLigalDays = [library investNumberOfLigalDaysFromDate:self.date withBoundaryDatesStatus:[NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus inContext:library.managedObjectContext];
 	
-	NSInteger citizenNumberOfLigalDays = [library numberOfLigalDaysWithMaximum:90 FromDate:self.date withBoundaryDatesStatus:[NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus inContext:library.managedObjectContext];
+	NSInteger citizenNumberOfLigalDays = [library citizenNumberOfLigalDaysFromDate:self.date withBoundaryDatesStatus:[NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus inContext:library.managedObjectContext];
 
 	switch ([NSUserDefaults standardUserDefaults].displayCheckType)
 	{

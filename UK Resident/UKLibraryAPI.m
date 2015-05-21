@@ -212,12 +212,12 @@
 
 #pragma mark - Legal Days Calculations
 
-- (NSInteger)numberOfLigalDaysWithMaximum:(NSInteger)aMaximumOfDays FromDate:(NSDate *)aDate withBoundaryDatesStatus:(BOOL)aBoundaryDatesStatus inContext:(NSManagedObjectContext *)aContext
+- (NSInteger)numberOfLigalDaysWithMaximum:(NSInteger)aMaximumOfDays FromDate:(NSDate *)aDate withBoundaryDatesStatus:(BOOL)aBoundaryDatesStatus andExceptCurrentTrip:(BOOL)anExceptCurrentTrip inContext:(NSManagedObjectContext *)aContext
 {
 	NSInteger result = 0;
 	NSDate *startDate = [[aDate moveYear:-1] moveDay:+1];
 	if (NSOrderedAscending == [startDate compare:self.currentInitDate]) startDate = self.currentInitDate;
-	NSInteger mainNumber = [self numberOfTripDaysBetweenStartDate:startDate andEndDate:aDate andCountArrivalAndDepartureDays:aBoundaryDatesStatus inContext:aContext];
+	NSInteger mainNumber = [self numberOfTripDaysBetweenStartDate:startDate andEndDate:[aDate moveDay:(anExceptCurrentTrip * (-1))] andCountArrivalAndDepartureDays:aBoundaryDatesStatus inContext:aContext];
 	if (mainNumber > aMaximumOfDays)
 	{
 		result = aMaximumOfDays - mainNumber;
@@ -238,7 +238,7 @@
 				startDate = [[movedDate moveYear:-1] moveDay:+1];
 				if (NSOrderedAscending == [startDate compare:self.currentInitDate]) startDate = self.currentInitDate;
 				
-				NSInteger tripDaysFromMovedDate = [self numberOfTripDaysBetweenStartDate:startDate andEndDate:aDate andCountArrivalAndDepartureDays:aBoundaryDatesStatus inContext:aContext];
+				NSInteger tripDaysFromMovedDate = [self numberOfTripDaysBetweenStartDate:startDate andEndDate:[aDate moveDay:(anExceptCurrentTrip * (-1))] andCountArrivalAndDepartureDays:aBoundaryDatesStatus inContext:aContext];
 				
 				NSInteger delta = aMaximumOfDays - tripDaysFromMovedDate - result;
 				
@@ -259,7 +259,14 @@
 		}
 	}
 	
+	NSLog(@"%i| Date: %@ - mainNumber: %i", (int)aMaximumOfDays, aDate, (int)mainNumber);
+	
 	return result;
+}
+
+- (NSInteger)numberOfLigalDaysWithMaximum:(NSInteger)aMaximumOfDays FromDate:(NSDate *)aDate withBoundaryDatesStatus:(BOOL)aBoundaryDatesStatus inContext:(NSManagedObjectContext *)aContext
+{
+	return [self numberOfLigalDaysWithMaximum:aMaximumOfDays FromDate:aDate withBoundaryDatesStatus:aBoundaryDatesStatus andExceptCurrentTrip:NO inContext:aContext];
 }
 
 - (NSInteger)investNumberOfLigalDaysFromDate:(NSDate *)aDate withBoundaryDatesStatus:(BOOL)aBoundaryDatesStatus inContext:(NSManagedObjectContext *)aContext
@@ -377,10 +384,12 @@
 			//NSInteger numberOfLigalDays;
 			NSInteger numberOfTripDays = [trip.startDate numberOfDaysBetween:trip.endDate includedBorderDates:[NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus];
 			
-			NSInteger investNumberOfLigalDays = [self investNumberOfLigalDaysFromDate:trip.startDate withBoundaryDatesStatus:[NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus inContext:self.expenciveFetchContext] + delta;
+			NSInteger investNumberOfLigalDays = [self numberOfLigalDaysWithMaximum:180 FromDate:trip.startDate withBoundaryDatesStatus:[NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus andExceptCurrentTrip:YES inContext:self.expenciveFetchContext] + delta;
 			
 			if (investNumberOfLigalDays < numberOfTripDays)
 			{
+				NSLog(@"Warning calculation: numberOfTripDays: %i investNumberOfLigalDays: %i", (int)numberOfTripDays, (int)investNumberOfLigalDays);
+				
 				WarningTrip *warningTrip = [[WarningTrip alloc] init];
 				warningTrip.startDate = trip.startDate;
 				warningTrip.endDate = trip.endDate;
@@ -388,7 +397,7 @@
 				[warningInvestTrips addObject:warningTrip];
 			}
 			
-			NSInteger citizenNumberOfLigalDays = [self citizenNumberOfLigalDaysFromDate:trip.startDate withBoundaryDatesStatus:[NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus inContext:self.expenciveFetchContext] + delta;
+			NSInteger citizenNumberOfLigalDays = [self numberOfLigalDaysWithMaximum:90 FromDate:trip.startDate withBoundaryDatesStatus:[NSUserDefaults standardUserDefaults].displayBoundaryDatesStatus andExceptCurrentTrip:YES inContext:self.expenciveFetchContext] + delta;
 			
 			if (citizenNumberOfLigalDays < numberOfTripDays)
 			{
