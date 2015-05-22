@@ -12,30 +12,83 @@
 @interface TripFormAttachmentVC ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIPopoverControllerDelegate>
 
 @property (nonatomic, strong) UIPopoverController *popover;
+@property (nonatomic, strong) UIImagePickerController *imagePicker;
 
 @end
 
 @implementation TripFormAttachmentVC
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+	
+	UIBarButtonItem *btnPhoto = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:self action:@selector(tappedPhotoButton:)];
+	UIBarButtonItem *btnLibrary = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(tappedLibraryButton:)];
+	[self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:btnLibrary, btnPhoto, nil]];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)tappedPhotoButton:(id)sender
+{
+	if ([sender isKindOfClass:[UIBarButtonItem class]])
+	{
+		UIBarButtonItem *item = (UIBarButtonItem *)sender;
+		
+		UIImagePickerController *pickerController = [[UIImagePickerController alloc] init];
+		pickerController.delegate = self;
+		pickerController.modalPresentationStyle = UIModalPresentationFullScreen;
+		
+		if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
+		{
+			pickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+			
+			NSString *desired = (NSString *)kUTTypeImage;
+			if ([[UIImagePickerController availableMediaTypesForSourceType:pickerController.sourceType] containsObject:desired])
+			{
+				pickerController.mediaTypes = @[desired];
+				
+				[self presentViewController:pickerController animated:YES completion:^{}];
+				self.imagePicker = pickerController;
+			}
+			else
+			{
+				//fail
+			}
+		}
+	}
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)tappedLibraryButton:(id)sender
+{
+	if ([sender isKindOfClass:[UIBarButtonItem class]])
+	{
+		UIBarButtonItem *item = (UIBarButtonItem *)sender;
+		
+		UIImagePickerController *pickerController = [[UIImagePickerController alloc] init];
+		pickerController.delegate = self;
+		
+		if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
+		{
+			pickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+			
+			NSString *desired = (NSString *)kUTTypeImage;
+			if ([[UIImagePickerController availableMediaTypesForSourceType:pickerController.sourceType] containsObject:desired])
+			{
+				pickerController.mediaTypes = @[desired];
+				
+				if(!self.popover)
+				{
+					self.popover = [[UIPopoverController alloc] initWithContentViewController:pickerController];
+					self.popover.delegate = self;
+					[self.popover presentPopoverFromBarButtonItem:item permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+				}
+			}
+			else
+			{
+				//fail
+			}
+		}
+	}
 }
-*/
 
 - (IBAction)tappedAddButton:(id)sender
 {
@@ -71,16 +124,28 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-	[self.popover dismissPopoverAnimated:YES];
-	[self resetPopover];
-	//[self dismissViewControllerAnimated:YES completion:^{}];
+	if (picker.sourceType == UIImagePickerControllerSourceTypePhotoLibrary)
+	{
+		[self.popover dismissPopoverAnimated:YES];
+		[self resetPopover];
+	}
+	else if (picker.sourceType == UIImagePickerControllerSourceTypeCamera)
+	{
+		[self dismissViewControllerAnimated:YES completion:^{}];
+	}
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
-	[self.popover dismissPopoverAnimated:YES];
-	[self resetPopover];
-	//[self dismissViewControllerAnimated:YES completion:^{}];
+	if (picker.sourceType == UIImagePickerControllerSourceTypePhotoLibrary)
+	{
+		[self.popover dismissPopoverAnimated:YES];
+		[self resetPopover];
+	}
+	else if (picker.sourceType == UIImagePickerControllerSourceTypeCamera)
+	{
+		[self dismissViewControllerAnimated:YES completion:^{}];
+	}
 }
 
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController

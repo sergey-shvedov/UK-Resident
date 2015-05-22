@@ -505,13 +505,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Вложение" id="dHb-78-TT0">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="IR0-5l-dws">
-                            <connections>
-                                <action selector="tappedAddButton:" destination="etf-QK-Apg" id="apb-Mh-9bT"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Вложение" id="dHb-78-TT0"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vKD-Fw-ipd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
