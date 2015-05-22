@@ -37,7 +37,7 @@
 	self.calendarTableView.agent = self;
 	self.todayDate = [[NSDate date] normalization];
 	self.topYear = [self.todayDate yearComponent];
-	self.currentCenter = -50;
+	self.currentCenter = -105;
 	
 	NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
 	[center addObserver:self selector: @selector(updateUI) name: UKNotificationNeedUpdateUI object: nil];
