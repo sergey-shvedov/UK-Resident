@@ -180,7 +180,7 @@
 	
 	if (numberOfLigalDays >= 0)
 	{
-		NSString *firstDescription = [NSString stringWithFormat:@"На %@ максимальное количество дней,\n возможных для отсутствия — %i %@).",
+		NSString *firstDescription = [NSString stringWithFormat:@"На %@ максимальное количество дней,\n возможных для отсутствия — %i %@.",
 									  [self.date localizedStringWithDateFormat:@"d MMMM"],
 									  (int)numberOfLigalDays,
 									  [NSString russianStringFor1:@"день" for2to4:@"дня" for5up:@"дней" withValue:numberOfLigalDays]];
@@ -267,7 +267,7 @@
 			NSString *secondDescription = [NSString stringWithFormat:@"На %i %@ можно запланировать поездку\nс %@.",
 										   (int)self.fullBlock2Stepper.value,
 										   [NSString russianStringFor1:@"день" for2to4:@"дня" for5up:@"дней" withValue:self.fullBlock2Stepper.value],
-										   [searchDate localizedStringWithDateFormat:@"d MMMM"]];
+										   [searchDate localizedStringWithDateFormat:@"d MMMM y"]];
 			
 			[self.secondFullDayDateLabel setText:[NSString stringWithFormat:@"%@", [searchDate localizedStringWithDateFormat:@"d"]]];
 			[self.secondFullMonthDateLabel setText:[NSString stringWithFormat:@"%@", [searchDate localizedStringWithDateFormat:@"MMMM"]]];

@@ -2502,7 +2502,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G2U-Qv-hr5" userLabel="MainView" customClass="UKReportCenterMainView">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hUQ-MQ-lOK">
+                                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hUQ-MQ-lOK">
                                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RFh-Il-A0F">
@@ -2669,7 +2669,7 @@
                                                             </mask>
                                                         </variation>
                                                     </view>
-                                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RlN-cg-89w">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RlN-cg-89w">
                                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RWa-6y-r9z">
@@ -3016,7 +3016,7 @@
                                                                         <variation key="heightClass=regular-widthClass=regular" constant="-8"/>
                                                                     </constraint>
                                                                     <constraint firstItem="xnK-ra-2eA" firstAttribute="top" secondItem="o6e-07-hs8" secondAttribute="top" id="MTP-Xw-ac9"/>
-                                                                    <constraint firstItem="7us-vD-TSX" firstAttribute="leading" secondItem="o6e-07-hs8" secondAttribute="leading" constant="201" id="e57-F8-iut">
+                                                                    <constraint firstItem="7us-vD-TSX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="o6e-07-hs8" secondAttribute="leading" constant="201" id="e57-F8-iut">
                                                                         <variation key="heightClass=regular-widthClass=regular" constant="215"/>
                                                                     </constraint>
                                                                     <constraint firstItem="y4X-7b-xZJ" firstAttribute="leading" secondItem="tOV-p5-GJA" secondAttribute="leading" id="gBG-Ux-aMR"/>
@@ -3026,6 +3026,7 @@
                                                                     <constraint firstItem="tOV-p5-GJA" firstAttribute="leading" secondItem="xnK-ra-2eA" secondAttribute="trailing" constant="8" id="klg-mi-VIV">
                                                                         <variation key="heightClass=regular-widthClass=regular" constant="20"/>
                                                                     </constraint>
+                                                                    <constraint firstItem="7us-vD-TSX" firstAttribute="leading" secondItem="tOV-p5-GJA" secondAttribute="trailing" priority="750" constant="23" id="y4v-y4-ZZj"/>
                                                                     <constraint firstAttribute="height" constant="52" id="yn8-16-FNR">
                                                                         <variation key="heightClass=regular-widthClass=regular" constant="72"/>
                                                                     </constraint>
@@ -3040,14 +3041,15 @@
                                                                     <mask key="constraints">
                                                                         <exclude reference="J7G-fU-Mbz"/>
                                                                         <exclude reference="yn8-16-FNR"/>
-                                                                        <exclude reference="e57-F8-iut"/>
-                                                                        <exclude reference="jcW-wM-pTl"/>
+                                                                        <exclude reference="I32-lk-x6u"/>
+                                                                        <exclude reference="MTP-Xw-ac9"/>
                                                                         <exclude reference="L3T-9J-M7R"/>
                                                                         <exclude reference="klg-mi-VIV"/>
                                                                         <exclude reference="BIJ-hx-bf0"/>
                                                                         <exclude reference="gBG-Ux-aMR"/>
-                                                                        <exclude reference="I32-lk-x6u"/>
-                                                                        <exclude reference="MTP-Xw-ac9"/>
+                                                                        <exclude reference="e57-F8-iut"/>
+                                                                        <exclude reference="jcW-wM-pTl"/>
+                                                                        <exclude reference="y4v-y4-ZZj"/>
                                                                     </mask>
                                                                 </variation>
                                                                 <variation key="heightClass=regular-widthClass=regular">
@@ -3060,14 +3062,15 @@
                                                                     <mask key="constraints">
                                                                         <include reference="J7G-fU-Mbz"/>
                                                                         <include reference="yn8-16-FNR"/>
-                                                                        <include reference="e57-F8-iut"/>
-                                                                        <include reference="jcW-wM-pTl"/>
+                                                                        <include reference="I32-lk-x6u"/>
+                                                                        <include reference="MTP-Xw-ac9"/>
                                                                         <include reference="L3T-9J-M7R"/>
                                                                         <include reference="klg-mi-VIV"/>
                                                                         <include reference="BIJ-hx-bf0"/>
                                                                         <include reference="gBG-Ux-aMR"/>
-                                                                        <include reference="I32-lk-x6u"/>
-                                                                        <include reference="MTP-Xw-ac9"/>
+                                                                        <include reference="e57-F8-iut"/>
+                                                                        <include reference="jcW-wM-pTl"/>
+                                                                        <include reference="y4v-y4-ZZj"/>
                                                                     </mask>
                                                                 </variation>
                                                             </view>
