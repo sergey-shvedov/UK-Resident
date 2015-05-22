@@ -7,8 +7,11 @@
 //
 
 #import "UKTripAddFormViewController.h"
+#import "UKLibraryAPI.h"
 #import "UKTripFormTableViewController.h"
 #import "FormButton.h"
+#import "NSDate+UKResident.h"
+#import "NSString+UKResident.h"
 
 #define BUTTON_APPEAR_DURATION 0.6
 
@@ -69,12 +72,19 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-	if ([alertView.title isEqualToString:@"Удаление"] && (1 == buttonIndex)) {
-		
+	if ([alertView.title isEqualToString:@"Удаление"] && (1 == buttonIndex))
+	{
 		[self.editingTrip deleteTrip:self.trip InContext:self.managedObjectContext];
-		
-		//[self updateTodayView];
-		//[self updateCalendarView];
+		[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
+	}
+	else if ([alertView.title isEqualToString:@"Превышение ограничения в 90 дней"] && (1 == buttonIndex))
+	{
+		[self.editingTrip insertNewTripInContext:self.managedObjectContext];
+		[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
+	}
+	else if ([alertView.title isEqualToString:@"Превышение ограничения в 90 дней!"] && (1 == buttonIndex))
+	{
+		[self.editingTrip updateDaysWithTrip:self.trip inContext:self.managedObjectContext];
 		[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
 	}
 	
@@ -84,7 +94,15 @@
 {
 	if (YES == self.editingTrip.isNeedToEdit)
 	{
-		UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Внимание!" message:@"Перед созданием нового путешествия необходимо заполнить все требуемые данные." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+		UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Внимание!" message:@"Перед созданием нового путешествия необходимо заполнить все требуемые данные." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+		[alert show];
+	}
+	else if (NO == [self isDurationOfEditTripAcceptably])
+	{
+		NSInteger tripDays = [self.editingTrip.startDate numberOfDaysBetween:self.editingTrip.endDate includedBorderDates:YES];
+		NSString *message = [NSString stringWithFormat:@"Длительности вашей поездки составляет %i %@. Вы уверены, что хотите создать это путешествие?",
+							 (int)tripDays, [NSString russianStringFor1:@"день" for2to4:@"дня" for5up:@"дней" withValue:tripDays]];
+		UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Превышение ограничения в 90 дней" message:message delegate:self cancelButtonTitle:@"Нет" otherButtonTitles:@"Да", nil];
 		[alert show];
 	}
 	else
@@ -97,11 +115,20 @@
 		[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
 	}
 }
+
 - (void)clickOKForSave:(id)sender
 {
 	if (self.editingTrip.isNeedToEdit)
 	{
-		UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Внимание!" message:@"Перед сохранением путешествия необходимо отредактировать отмеченные данные." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+		UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Внимание!" message:@"Перед сохранением путешествия необходимо отредактировать отмеченные данные." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+		[alert show];
+	}
+	else if (NO == [self isDurationOfEditTripAcceptably])
+	{
+		NSInteger tripDays = [self.editingTrip.startDate numberOfDaysBetween:self.editingTrip.endDate includedBorderDates:YES];
+		NSString *message = [NSString stringWithFormat:@"Длительности вашей поездки составляет %i %@. Вы уверены, что хотите сохранить это путешествие?",
+							 (int)tripDays, [NSString russianStringFor1:@"день" for2to4:@"дня" for5up:@"дней" withValue:tripDays]];
+		UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Превышение ограничения в 90 дней!" message:message delegate:self cancelButtonTitle:@"Нет" otherButtonTitles:@"Да", nil];
 		[alert show];
 	}
 	else
@@ -112,6 +139,20 @@
 		[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
 	}
 }
+
+- (BOOL)isDurationOfEditTripAcceptably
+{
+	BOOL result = YES;
+	
+	NSInteger maxDuration = 90;
+	if ([self.editingTrip.startDate numberOfDaysBetween:self.editingTrip.endDate includedBorderDates:YES] > maxDuration)
+	{
+		result = NO;
+	}
+	
+	return result;
+}
+
 - (void)clickCancel:(id)sender
 {
 	    [self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
