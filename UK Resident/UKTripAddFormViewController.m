@@ -97,6 +97,11 @@
 		UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Внимание!" message:@"Перед созданием нового путешествия необходимо заполнить все требуемые данные." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
 		[alert show];
 	}
+	else if (YES == [self isIntersectedWithOtherTrip])
+	{
+		UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Пересечение!" message:@"Создаваемая поездка не может пересекается с другими путешествиями. Измените даты." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+		[alert show];
+	}
 	else if (NO == [self isDurationOfEditTripAcceptably])
 	{
 		NSInteger tripDays = [self.editingTrip.startDate numberOfDaysBetween:self.editingTrip.endDate includedBorderDates:YES];
@@ -123,6 +128,11 @@
 		UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Внимание!" message:@"Перед сохранением путешествия необходимо отредактировать отмеченные данные." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
 		[alert show];
 	}
+	else if (YES == [self isIntersectedWithOtherTrip])
+	{
+		UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Пересечение!" message:@"Поездка не может пересекается с другими путешествиями. Измените даты." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+		[alert show];
+	}
 	else if (NO == [self isDurationOfEditTripAcceptably])
 	{
 		NSInteger tripDays = [self.editingTrip.startDate numberOfDaysBetween:self.editingTrip.endDate includedBorderDates:YES];
@@ -138,6 +148,19 @@
 //		[self updateCalendarView];
 		[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
 	}
+}
+
+- (BOOL)isIntersectedWithOtherTrip
+{
+	BOOL result = NO;
+	
+	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
+	if ([[library arrayWithTripsBetweenStartDate:self.editingTrip.startDate andEndDate:self.editingTrip.endDate inContext:self.managedObjectContext] count])
+	{
+		result = YES;
+	}
+	
+	return result;
 }
 
 - (BOOL)isDurationOfEditTripAcceptably
