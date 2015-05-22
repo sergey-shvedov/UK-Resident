@@ -85,6 +85,7 @@
 	if (NO == [UKLibraryAPI sharedInstance].isInitDateSetted)
 	{
 		[self.diagramVC.view setHidden:YES];
+		[self.topMonthLabelsView setHidden:YES];
 		[self.initialBigArrowView setHidden:NO];
 		[self.generalGraphView setHidden:YES];
 		[self.generalGraphReplaceLabel setHidden:YES];
@@ -94,6 +95,7 @@
 	else
 	{
 		[self.diagramVC.view setHidden:NO];
+		[self.topMonthLabelsView setHidden:NO];
 		if (NO == [self.diagramVC.initialDate isTheSameDayWith:self.initialDate])
 		{
 			self.diagramVC.initialDate = self.initialDate;
