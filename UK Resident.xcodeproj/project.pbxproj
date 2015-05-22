@@ -11,7 +11,6 @@
 		8430EBF21B015AE100DC1959 /* User+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 8430EBF11B015AE100DC1959 /* User+Create.m */; };
 		8430EBF91B01630D00DC1959 /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8430EBF81B01630D00DC1959 /* CoreDataTableViewController.m */; };
 		8430EBFC1B01639700DC1959 /* UKTripTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8430EBFB1B01639700DC1959 /* UKTripTableVC.m */; };
-		8430EC0C1B01FABD00DC1959 /* Trip.m in Sources */ = {isa = PBXBuildFile; fileRef = 8430EC0B1B01FABD00DC1959 /* Trip.m */; };
 		8430EC0F1B01FABD00DC1959 /* UserWithTrip.m in Sources */ = {isa = PBXBuildFile; fileRef = 8430EC0E1B01FABD00DC1959 /* UserWithTrip.m */; };
 		8430EC121B01FAF400DC1959 /* Trip+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 8430EC111B01FAF400DC1959 /* Trip+Create.m */; };
 		8430EC151B02253D00DC1959 /* TempTrip.m in Sources */ = {isa = PBXBuildFile; fileRef = 8430EC141B02253D00DC1959 /* TempTrip.m */; };
@@ -59,6 +58,8 @@
 		8496017C1B08EB3900CEA0E7 /* UKWarningTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8496017B1B08EB3900CEA0E7 /* UKWarningTableVC.m */; };
 		8496017F1B08F5BF00CEA0E7 /* UKWarningTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8496017E1B08F5BF00CEA0E7 /* UKWarningTableHeaderView.m */; };
 		84ADD5B11B0FBB7500117F6D /* TripFormAttachmentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ADD5B01B0FBB7500117F6D /* TripFormAttachmentVC.m */; };
+		84ADD5B41B0FDEBD00117F6D /* Trip.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ADD5B31B0FDEBD00117F6D /* Trip.m */; };
+		84ADD5B71B0FDEBE00117F6D /* AttachPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ADD5B61B0FDEBE00117F6D /* AttachPhoto.m */; };
 		84B8EAD51B0CB8D100B1C1FC /* UKUserPopoverTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B8EAD41B0CB8D100B1C1FC /* UKUserPopoverTableVC.m */; };
 		84B8EAD81B0CC29600B1C1FC /* UKUserTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B8EAD71B0CC29600B1C1FC /* UKUserTableCell.m */; };
 		84B8EADB1B0CF50D00B1C1FC /* UKUserEditVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B8EADA1B0CF50D00B1C1FC /* UKUserEditVC.m */; };
@@ -84,8 +85,6 @@
 		8430EBF81B01630D00DC1959 /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTableViewController.m; sourceTree = "<group>"; };
 		8430EBFA1B01639700DC1959 /* UKTripTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UKTripTableVC.h; sourceTree = "<group>"; };
 		8430EBFB1B01639700DC1959 /* UKTripTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKTripTableVC.m; sourceTree = "<group>"; };
-		8430EC0A1B01FABD00DC1959 /* Trip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Trip.h; path = CoreData/Trip.h; sourceTree = "<group>"; };
-		8430EC0B1B01FABD00DC1959 /* Trip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Trip.m; path = CoreData/Trip.m; sourceTree = "<group>"; };
 		8430EC0D1B01FABD00DC1959 /* UserWithTrip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserWithTrip.h; path = CoreData/UserWithTrip.h; sourceTree = "<group>"; };
 		8430EC0E1B01FABD00DC1959 /* UserWithTrip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserWithTrip.m; path = CoreData/UserWithTrip.m; sourceTree = "<group>"; };
 		8430EC101B01FAF400DC1959 /* Trip+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Trip+Create.h"; sourceTree = "<group>"; };
@@ -178,6 +177,10 @@
 		8496017E1B08F5BF00CEA0E7 /* UKWarningTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKWarningTableHeaderView.m; sourceTree = "<group>"; };
 		84ADD5AF1B0FBB7500117F6D /* TripFormAttachmentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripFormAttachmentVC.h; sourceTree = "<group>"; };
 		84ADD5B01B0FBB7500117F6D /* TripFormAttachmentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripFormAttachmentVC.m; sourceTree = "<group>"; };
+		84ADD5B21B0FDEBD00117F6D /* Trip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Trip.h; path = CoreData/Trip.h; sourceTree = "<group>"; };
+		84ADD5B31B0FDEBD00117F6D /* Trip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Trip.m; path = CoreData/Trip.m; sourceTree = "<group>"; };
+		84ADD5B51B0FDEBE00117F6D /* AttachPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AttachPhoto.h; path = CoreData/AttachPhoto.h; sourceTree = "<group>"; };
+		84ADD5B61B0FDEBE00117F6D /* AttachPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AttachPhoto.m; path = CoreData/AttachPhoto.m; sourceTree = "<group>"; };
 		84B8EAD31B0CB8D100B1C1FC /* UKUserPopoverTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UKUserPopoverTableVC.h; sourceTree = "<group>"; };
 		84B8EAD41B0CB8D100B1C1FC /* UKUserPopoverTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKUserPopoverTableVC.m; sourceTree = "<group>"; };
 		84B8EAD61B0CC29600B1C1FC /* UKUserTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UKUserTableCell.h; sourceTree = "<group>"; };
@@ -209,8 +212,10 @@
 		8430EBEF1B015A5E00DC1959 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				8430EC0A1B01FABD00DC1959 /* Trip.h */,
-				8430EC0B1B01FABD00DC1959 /* Trip.m */,
+				84ADD5B51B0FDEBE00117F6D /* AttachPhoto.h */,
+				84ADD5B61B0FDEBE00117F6D /* AttachPhoto.m */,
+				84ADD5B21B0FDEBD00117F6D /* Trip.h */,
+				84ADD5B31B0FDEBD00117F6D /* Trip.m */,
 				8430EC101B01FAF400DC1959 /* Trip+Create.h */,
 				8430EC111B01FAF400DC1959 /* Trip+Create.m */,
 				8430EC131B02253D00DC1959 /* TempTrip.h */,
@@ -552,13 +557,13 @@
 				8430EC211B03CDA400DC1959 /* UKReportTopInitialDatePopoverVC.m in Sources */,
 				845204E11AF1743F00E535FD /* UKTripViewController.m in Sources */,
 				847F4C2E1AF5543F00831F11 /* FormButton.m in Sources */,
+				84ADD5B41B0FDEBD00117F6D /* Trip.m in Sources */,
 				84ADD5B11B0FBB7500117F6D /* TripFormAttachmentVC.m in Sources */,
 				845204BF1AEECE2C00E535FD /* UKCalendarUnit.m in Sources */,
 				8430EC181B02550900DC1959 /* TripFormStartDateVC.m in Sources */,
 				8430EC271B03DEF900DC1959 /* User.m in Sources */,
 				847F4C341AF55FB400831F11 /* UKTripFormTableViewController.m in Sources */,
 				845204EE1AF3E83E00E535FD /* NSString+UKResident.m in Sources */,
-				8430EC0C1B01FABD00DC1959 /* Trip.m in Sources */,
 				845204BC1AEE63D500E535FD /* UKCalendarTableView.m in Sources */,
 				8430EC121B01FAF400DC1959 /* Trip+Create.m in Sources */,
 				8430EBF91B01630D00DC1959 /* CoreDataTableViewController.m in Sources */,
@@ -571,6 +576,7 @@
 				847F4C2B1AF553FD00831F11 /* UKTripAddFormViewController.m in Sources */,
 				847F4C311AF554A400831F11 /* UIColor+UKResident.m in Sources */,
 				8430EC151B02253D00DC1959 /* TempTrip.m in Sources */,
+				84ADD5B71B0FDEBE00117F6D /* AttachPhoto.m in Sources */,
 				845204DB1AF1179200E535FD /* UKReportCenterCVC.m in Sources */,
 				845204C31AEEE70000E535FD /* NSDate+UKResident.m in Sources */,
 				845204E41AF1747300E535FD /* UKWarningViewController.m in Sources */,

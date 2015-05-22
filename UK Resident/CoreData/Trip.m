@@ -2,7 +2,7 @@
 //  Trip.m
 //  UK Resident
 //
-//  Created by Sergey Shvedov on 12.05.15.
+//  Created by Sergey Shvedov on 23.05.15.
 //  Copyright (c) 2015 Administrator. All rights reserved.
 //
 
@@ -12,10 +12,11 @@
 
 @implementation Trip
 
+@dynamic comment;
 @dynamic destination;
 @dynamic endDate;
 @dynamic startDate;
-@dynamic comment;
 @dynamic tripsByUser;
+@dynamic attachedPhotos;
 
 @end

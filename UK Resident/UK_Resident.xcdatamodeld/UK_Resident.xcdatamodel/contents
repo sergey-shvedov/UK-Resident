@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7549" systemVersion="14D136" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="AttachPhoto" representedClassName="AttachPhoto" syncable="YES">
+        <attribute name="storePath" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="inTrip" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Trip" inverseName="attachedPhotos" inverseEntity="Trip" syncable="YES"/>
+    </entity>
     <entity name="Trip" representedClassName="Trip" syncable="YES">
         <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="destination" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="attachedPhotos" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="AttachPhoto" inverseName="inTrip" inverseEntity="AttachPhoto" syncable="YES"/>
         <relationship name="tripsByUser" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="UserWithTrip" inverseName="inTrip" inverseEntity="UserWithTrip" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES">
@@ -19,8 +24,9 @@
         <relationship name="whoTravel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="userByTrip" inverseEntity="User" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Trip" positionX="-7319" positionY="-5422" width="128" height="118"/>
+        <element name="Trip" positionX="-7335" positionY="-5443" width="128" height="133"/>
         <element name="User" positionX="-7760" positionY="-5427" width="128" height="118"/>
         <element name="UserWithTrip" positionX="-7553" positionY="-5247" width="128" height="73"/>
+        <element name="AttachPhoto" positionX="-7085" positionY="-5274" width="128" height="73"/>
     </elements>
 </model>

@@ -16,6 +16,7 @@
 @property (nonatomic, retain) NSString *destination;
 @property (nonatomic, retain) NSString *comment;
 @property (nonatomic, retain) NSSet *tripsByUser;
+@property (nonatomic, retain) NSSet *attachedPhotos;
 
 @property (nonatomic) BOOL isStartDateNeedEdit;
 @property (nonatomic) BOOL isStartDateEdited;
