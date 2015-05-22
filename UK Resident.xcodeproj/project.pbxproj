@@ -58,6 +58,7 @@
 		849601791B08E9E600CEA0E7 /* UKWarningTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849601781B08E9E600CEA0E7 /* UKWarningTableHeaderView.xib */; };
 		8496017C1B08EB3900CEA0E7 /* UKWarningTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8496017B1B08EB3900CEA0E7 /* UKWarningTableVC.m */; };
 		8496017F1B08F5BF00CEA0E7 /* UKWarningTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8496017E1B08F5BF00CEA0E7 /* UKWarningTableHeaderView.m */; };
+		84ADD5B11B0FBB7500117F6D /* TripFormAttachmentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ADD5B01B0FBB7500117F6D /* TripFormAttachmentVC.m */; };
 		84B8EAD51B0CB8D100B1C1FC /* UKUserPopoverTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B8EAD41B0CB8D100B1C1FC /* UKUserPopoverTableVC.m */; };
 		84B8EAD81B0CC29600B1C1FC /* UKUserTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B8EAD71B0CC29600B1C1FC /* UKUserTableCell.m */; };
 		84B8EADB1B0CF50D00B1C1FC /* UKUserEditVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B8EADA1B0CF50D00B1C1FC /* UKUserEditVC.m */; };
@@ -175,6 +176,8 @@
 		8496017B1B08EB3900CEA0E7 /* UKWarningTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKWarningTableVC.m; sourceTree = "<group>"; };
 		8496017D1B08F5BF00CEA0E7 /* UKWarningTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UKWarningTableHeaderView.h; sourceTree = "<group>"; };
 		8496017E1B08F5BF00CEA0E7 /* UKWarningTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKWarningTableHeaderView.m; sourceTree = "<group>"; };
+		84ADD5AF1B0FBB7500117F6D /* TripFormAttachmentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripFormAttachmentVC.h; sourceTree = "<group>"; };
+		84ADD5B01B0FBB7500117F6D /* TripFormAttachmentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripFormAttachmentVC.m; sourceTree = "<group>"; };
 		84B8EAD31B0CB8D100B1C1FC /* UKUserPopoverTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UKUserPopoverTableVC.h; sourceTree = "<group>"; };
 		84B8EAD41B0CB8D100B1C1FC /* UKUserPopoverTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKUserPopoverTableVC.m; sourceTree = "<group>"; };
 		84B8EAD61B0CC29600B1C1FC /* UKUserTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UKUserTableCell.h; sourceTree = "<group>"; };
@@ -235,6 +238,8 @@
 				8430EC1A1B02552A00DC1959 /* TripFormEndDateVC.m */,
 				8430EC1C1B02554C00DC1959 /* TripFormDestinationVC.h */,
 				8430EC1D1B02554C00DC1959 /* TripFormDestinationVC.m */,
+				84ADD5AF1B0FBB7500117F6D /* TripFormAttachmentVC.h */,
+				84ADD5B01B0FBB7500117F6D /* TripFormAttachmentVC.m */,
 				847F4C321AF55FB400831F11 /* UKTripFormTableViewController.h */,
 				847F4C331AF55FB400831F11 /* UKTripFormTableViewController.m */,
 				847F4C291AF553FD00831F11 /* UKTripAddFormViewController.h */,
@@ -547,6 +552,7 @@
 				8430EC211B03CDA400DC1959 /* UKReportTopInitialDatePopoverVC.m in Sources */,
 				845204E11AF1743F00E535FD /* UKTripViewController.m in Sources */,
 				847F4C2E1AF5543F00831F11 /* FormButton.m in Sources */,
+				84ADD5B11B0FBB7500117F6D /* TripFormAttachmentVC.m in Sources */,
 				845204BF1AEECE2C00E535FD /* UKCalendarUnit.m in Sources */,
 				8430EC181B02550900DC1959 /* TripFormStartDateVC.m in Sources */,
 				8430EC271B03DEF900DC1959 /* User.m in Sources */,

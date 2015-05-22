@@ -463,7 +463,7 @@
         <!--Вложение-->
         <scene sceneID="EW5-ca-0ab">
             <objects>
-                <viewController id="etf-QK-Apg" sceneMemberID="viewController">
+                <viewController id="etf-QK-Apg" customClass="TripFormAttachmentVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="EOr-cU-RJq"/>
                         <viewControllerLayoutGuide type="bottom" id="q9v-pz-A4D"/>
@@ -506,7 +506,11 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Вложение" id="dHb-78-TT0">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="IR0-5l-dws"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="IR0-5l-dws">
+                            <connections>
+                                <action selector="tappedAddButton:" destination="etf-QK-Apg" id="apb-Mh-9bT"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vKD-Fw-ipd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3041,15 +3045,15 @@
                                                                     <mask key="constraints">
                                                                         <exclude reference="J7G-fU-Mbz"/>
                                                                         <exclude reference="yn8-16-FNR"/>
-                                                                        <exclude reference="I32-lk-x6u"/>
-                                                                        <exclude reference="MTP-Xw-ac9"/>
+                                                                        <exclude reference="e57-F8-iut"/>
+                                                                        <exclude reference="jcW-wM-pTl"/>
+                                                                        <exclude reference="y4v-y4-ZZj"/>
                                                                         <exclude reference="L3T-9J-M7R"/>
                                                                         <exclude reference="klg-mi-VIV"/>
                                                                         <exclude reference="BIJ-hx-bf0"/>
                                                                         <exclude reference="gBG-Ux-aMR"/>
-                                                                        <exclude reference="e57-F8-iut"/>
-                                                                        <exclude reference="jcW-wM-pTl"/>
-                                                                        <exclude reference="y4v-y4-ZZj"/>
+                                                                        <exclude reference="I32-lk-x6u"/>
+                                                                        <exclude reference="MTP-Xw-ac9"/>
                                                                     </mask>
                                                                 </variation>
                                                                 <variation key="heightClass=regular-widthClass=regular">
@@ -3062,15 +3066,15 @@
                                                                     <mask key="constraints">
                                                                         <include reference="J7G-fU-Mbz"/>
                                                                         <include reference="yn8-16-FNR"/>
-                                                                        <include reference="I32-lk-x6u"/>
-                                                                        <include reference="MTP-Xw-ac9"/>
+                                                                        <include reference="e57-F8-iut"/>
+                                                                        <include reference="jcW-wM-pTl"/>
+                                                                        <include reference="y4v-y4-ZZj"/>
                                                                         <include reference="L3T-9J-M7R"/>
                                                                         <include reference="klg-mi-VIV"/>
                                                                         <include reference="BIJ-hx-bf0"/>
                                                                         <include reference="gBG-Ux-aMR"/>
-                                                                        <include reference="e57-F8-iut"/>
-                                                                        <include reference="jcW-wM-pTl"/>
-                                                                        <include reference="y4v-y4-ZZj"/>
+                                                                        <include reference="I32-lk-x6u"/>
+                                                                        <include reference="MTP-Xw-ac9"/>
                                                                     </mask>
                                                                 </variation>
                                                             </view>
