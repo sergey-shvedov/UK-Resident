@@ -180,7 +180,7 @@
 	
 	if (numberOfLigalDays >= 0)
 	{
-		NSString *firstDescription = [NSString stringWithFormat:@"На %@ максимальное количество дней,\n возможных для отсутствия — %i %@.",
+		NSString *firstDescription = [NSString stringWithFormat:@"На %@ максимальное количество дней,\nвозможных для отсутствия — %i %@.",
 									  [self.date localizedStringWithDateFormat:@"d MMMM"],
 									  (int)numberOfLigalDays,
 									  [NSString russianStringFor1:@"день" for2to4:@"дня" for5up:@"дней" withValue:numberOfLigalDays]];
