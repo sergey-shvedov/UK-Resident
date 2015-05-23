@@ -76,16 +76,19 @@
 	{
 		[self.editingTrip removeUnusedSavedPhotosBy:self.trip];
 		[self.editingTrip deleteTrip:self.trip InContext:self.managedObjectContext];
+		[self.editingTrip recheckSavedPhotosForDeletion];
 		[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
 	}
 	else if ([alertView.title isEqualToString:@"Превышение ограничения в 90 дней"] && (1 == buttonIndex))
 	{
 		[self.editingTrip insertNewTripInContext:self.managedObjectContext];
+		[self.editingTrip recheckSavedPhotosForDeletion];
 		[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
 	}
 	else if ([alertView.title isEqualToString:@"Превышение ограничения в 90 дней!"] && (1 == buttonIndex))
 	{
 		[self.editingTrip updateDaysWithTrip:self.trip inContext:self.managedObjectContext];
+		[self.editingTrip recheckSavedPhotosForDeletion];
 		[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
 	}
 	
@@ -114,6 +117,7 @@
 	else
 	{
 		[self.editingTrip insertNewTripInContext:self.managedObjectContext];
+		[self.editingTrip recheckSavedPhotosForDeletion];
 	
 //		[self updateTodayView];
 //		[self updateCalendarView];
@@ -145,6 +149,8 @@
 	else
 	{
 		[self.editingTrip updateDaysWithTrip:self.trip inContext:self.managedObjectContext];
+		[self.editingTrip recheckSavedPhotosForDeletion];
+		
 //		[self updateTodayView];
 //		[self updateCalendarView];
 		[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
@@ -180,6 +186,7 @@
 - (void)clickCancel:(id)sender
 {
 	[self.editingTrip removeUnusedSavedPhotosBy:self.trip];
+	[self.editingTrip recheckSavedPhotosForDeletion];
 	[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
 }
 

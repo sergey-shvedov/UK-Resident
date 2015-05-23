@@ -38,6 +38,9 @@
 	}
 	editingTrip.attachedPhotosPathStrings = pathStrings;
 	
+	editingTrip.addedPhotosWhileEdited = [[NSMutableSet alloc] init];
+	editingTrip.deletedPhotosWhileEdited = [[NSMutableSet alloc] init];
+	
 	editingTrip.isStartDateNeedEdit = NO;
 	editingTrip.isStartDateEdited = YES;
 	editingTrip.isEndDateNeedEdit = NO;
@@ -62,6 +65,9 @@
 	editingTrip.destination = @"Мое путешествие";
 	editingTrip.comment = @"Комментарии";
 	editingTrip.attachedPhotosPathStrings = [[NSMutableSet alloc] init];
+	
+	editingTrip.addedPhotosWhileEdited = [[NSMutableSet alloc] init];
+	editingTrip.deletedPhotosWhileEdited = [[NSMutableSet alloc] init];
 	
 //	editingTrip.usersByTrip=nil; //[NSSet setWithObject:[User mainUserInContext:context]]; // Need set with UserWithTrip in Future
 //	editingTrip.users=[NSArray arrayWithObject:[User mainUserInContext:saveContext]];
@@ -201,6 +207,18 @@
 			NSError *error;
 			[[NSFileManager defaultManager] removeItemAtPath:editPath error:&error];
 		}
+	}
+}
+
+- (void)recheckSavedPhotosForDeletion
+{
+	
+	NSMutableSet *intersection = [NSMutableSet setWithSet:self.deletedPhotosWhileEdited];
+	[intersection intersectSet:self.addedPhotosWhileEdited];
+	for (NSString *path in intersection)
+	{
+		NSError *error;
+		[[NSFileManager defaultManager] removeItemAtPath:path error:&error];
 	}
 }
 

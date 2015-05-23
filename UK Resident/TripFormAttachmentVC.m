@@ -109,6 +109,7 @@
 	else
 	{
 		result = imagePath;
+		[self.editingTrip.addedPhotosWhileEdited addObject:imagePath];
 	}
 	
 	return result;
@@ -293,6 +294,7 @@
 		if ([[segue sourceViewController] isKindOfClass:[TripFormAttachmentDetailPhotoVC class]])
 		{
 			TripFormAttachmentDetailPhotoVC *detailVC = (TripFormAttachmentDetailPhotoVC *)segue.sourceViewController;
+			[self.editingTrip.deletedPhotosWhileEdited addObject:detailVC.imagePath];
 			[self.editingTrip.attachedPhotosPathStrings removeObject:detailVC.imagePath];
 			[self updateUI];
 		}

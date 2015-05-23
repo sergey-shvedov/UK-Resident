@@ -28,6 +28,9 @@
 @property (nonatomic) BOOL isCommentEdited;
 
 @property (nonatomic) BOOL isNeedToEdit;
+@property (nonatomic, retain) NSMutableSet *addedPhotosWhileEdited;
+@property (nonatomic, retain) NSMutableSet *deletedPhotosWhileEdited;
+
 
 + (TempTrip *)editingTempTripCopyFromTrip:(Trip *)trip;
 + (TempTrip *)defaultTempTripInContext:(NSManagedObjectContext *)context;
@@ -35,5 +38,6 @@
 - (void)deleteTrip:(Trip *)aTrip InContext:(NSManagedObjectContext *)aContext; //DELETE
 - (void)updateDaysWithTrip:(Trip *)aTrip inContext:(NSManagedObjectContext *)aContext;
 - (void)removeUnusedSavedPhotosBy:(Trip *)trip;
+- (void)recheckSavedPhotosForDeletion;
 
 @end
