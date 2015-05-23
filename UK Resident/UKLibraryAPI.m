@@ -260,8 +260,6 @@
 		}
 	}
 	
-	NSLog(@"%i| Date: %@ - mainNumber: %i", (int)aMaximumOfDays, aDate, (int)mainNumber);
-	
 	return result;
 }
 
@@ -389,8 +387,6 @@
 			
 			if (investNumberOfLigalDays < numberOfTripDays)
 			{
-				NSLog(@"Warning calculation: numberOfTripDays: %i investNumberOfLigalDays: %i", (int)numberOfTripDays, (int)investNumberOfLigalDays);
-				
 				WarningTrip *warningTrip = [[WarningTrip alloc] init];
 				warningTrip.startDate = trip.startDate;
 				warningTrip.endDate = trip.endDate;
@@ -438,43 +434,48 @@
 
 - (void)logAllData
 {
-	NSFetchRequest *userRequest = [NSFetchRequest fetchRequestWithEntityName:@"User"];
-	userRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"userID" ascending:YES]];
-	NSError *error;
-	NSArray *users = [self.managedObjectContext executeFetchRequest:userRequest error:&error];
-	for (User *user in users)
+	if (0)
 	{
-		NSLog(@"=====================================================");
-		NSLog(@"User: %@ Name: %@ \nestablishedDate: %@ \nuserByTrip: %i", user.userID, user.name, user.establishedDate, (int)[user.userByTrip count]);
-	}
-	
-	NSFetchRequest *userWithTripRequest = [NSFetchRequest fetchRequestWithEntityName:@"UserWithTrip"];
-	userRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"whoTravel.userID" ascending:YES]];
-	NSError *error2;
-	NSArray *usersWithTrips = [self.managedObjectContext executeFetchRequest:userWithTripRequest error:&error2];
-	for (UserWithTrip *userWithTrip in usersWithTrips)
-	{
-		NSLog(@"+++++++++++++++++++++++++++++++++++++++++++++++++++++");
-		NSLog(@"UserWithTrip: \nwhoTravel: %@ \ninTrip:%@", userWithTrip.whoTravel.name, userWithTrip.inTrip.startDate);
-	}
-	
-	NSFetchRequest *tripRequest = [NSFetchRequest fetchRequestWithEntityName:@"Trip"];
-	userRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"startDate" ascending:NO selector:@selector(compare:)]];
-	NSError *error3;
-	NSArray *trips= [self.managedObjectContext executeFetchRequest:tripRequest error:&error3];
-	for (Trip *trip in trips)
-	{
-		NSLog(@"-----------------------------------------------------");
-		NSLog(@"Trip: %@ \nDates: %@ – %@ \ntripsByUser: %i", trip.destination, trip.startDate, trip.endDate, (int)[trip.tripsByUser count]);
-	}
-	
-	NSFetchRequest *photoRequest = [NSFetchRequest fetchRequestWithEntityName:@"AttachPhoto"];
-	NSError *error4;
-	NSArray *photos= [self.managedObjectContext executeFetchRequest:photoRequest error:&error4];
-	for (AttachPhoto *photo in photos)
-	{
-		NSLog(@"-----------------------------------------------------");
-		NSLog(@"Photo: %@ \n \nphotoByTrip: %@", photo.storePath, photo.inTrip.startDate);
+		
+		NSFetchRequest *userRequest = [NSFetchRequest fetchRequestWithEntityName:@"User"];
+		userRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"userID" ascending:YES]];
+		NSError *error;
+		NSArray *users = [self.managedObjectContext executeFetchRequest:userRequest error:&error];
+		for (User *user in users)
+		{
+			NSLog(@"=====================================================");
+			NSLog(@"User: %@ Name: %@ \nestablishedDate: %@ \nuserByTrip: %i", user.userID, user.name, user.establishedDate, (int)[user.userByTrip count]);
+		}
+		
+		NSFetchRequest *userWithTripRequest = [NSFetchRequest fetchRequestWithEntityName:@"UserWithTrip"];
+		userRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"whoTravel.userID" ascending:YES]];
+		NSError *error2;
+		NSArray *usersWithTrips = [self.managedObjectContext executeFetchRequest:userWithTripRequest error:&error2];
+		for (UserWithTrip *userWithTrip in usersWithTrips)
+		{
+			NSLog(@"+++++++++++++++++++++++++++++++++++++++++++++++++++++");
+			NSLog(@"UserWithTrip: \nwhoTravel: %@ \ninTrip:%@", userWithTrip.whoTravel.name, userWithTrip.inTrip.startDate);
+		}
+		
+		NSFetchRequest *tripRequest = [NSFetchRequest fetchRequestWithEntityName:@"Trip"];
+		userRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"startDate" ascending:NO selector:@selector(compare:)]];
+		NSError *error3;
+		NSArray *trips= [self.managedObjectContext executeFetchRequest:tripRequest error:&error3];
+		for (Trip *trip in trips)
+		{
+			NSLog(@"-----------------------------------------------------");
+			NSLog(@"Trip: %@ \nDates: %@ – %@ \ntripsByUser: %i", trip.destination, trip.startDate, trip.endDate, (int)[trip.tripsByUser count]);
+		}
+		
+		NSFetchRequest *photoRequest = [NSFetchRequest fetchRequestWithEntityName:@"AttachPhoto"];
+		NSError *error4;
+		NSArray *photos= [self.managedObjectContext executeFetchRequest:photoRequest error:&error4];
+		for (AttachPhoto *photo in photos)
+		{
+			NSLog(@"-----------------------------------------------------");
+			NSLog(@"Photo: %@ \n \nphotoByTrip: %@", photo.storePath, photo.inTrip.startDate);
+		}
+		
 	}
 }
 
