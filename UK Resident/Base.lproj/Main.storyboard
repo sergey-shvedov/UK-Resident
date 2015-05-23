@@ -519,13 +519,14 @@
                     <navigationItem key="navigationItem" title="Вложение" id="dHb-78-TT0"/>
                     <connections>
                         <outlet property="collectionView" destination="voR-dr-r1V" id="c6W-6v-ICq"/>
+                        <outlet property="emptyBackgroundImage" destination="oF5-3P-fdX" id="DFw-Ff-dN3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vKD-Fw-ipd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6130" y="2535"/>
         </scene>
-        <!--Trip Form Attachment Detail PhotoVC-->
+        <!--Title-->
         <scene sceneID="Hs4-bu-A9z">
             <objects>
                 <viewController id="n6J-Hw-QcH" customClass="TripFormAttachmentDetailPhotoVC" sceneMemberID="viewController">
@@ -552,11 +553,19 @@
                             <constraint firstAttribute="trailing" secondItem="mha-Pd-2H3" secondAttribute="trailing" id="zfk-db-AwS"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="jxc-LR-CVt">
+                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="6DK-54-jkT">
+                            <connections>
+                                <segue destination="Zri-cx-Y73" kind="unwind" identifier="Unwind deletion" unwindAction="popoverApplied:" id="HLm-cf-q13"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="scrollView" destination="mha-Pd-2H3" id="gLJ-ni-ZfL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sbv-qg-HXG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Zri-cx-Y73" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="6907" y="2535"/>
         </scene>

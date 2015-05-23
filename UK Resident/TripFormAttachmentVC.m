@@ -16,6 +16,8 @@
 @property (nonatomic, strong) UIPopoverController *popover;
 @property (nonatomic, strong) UIImagePickerController *imagePicker;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UIImageView *emptyBackgroundImage;
+
 @property (nonatomic, strong) NSArray *sortedPath;
 
 @end
@@ -75,6 +77,8 @@
 - (void)updateUI
 {
 	[self sortPath];
+	[self.emptyBackgroundImage setHidden:([self.sortedPath count] ? YES : NO)];
+
 	[self.collectionView reloadData];
 }
 
@@ -282,6 +286,18 @@
 	}
 }
 
+- (IBAction)popoverApplied:(UIStoryboardSegue *)segue
+{
+	if ([segue.identifier isEqualToString:@"Unwind deletion"])
+	{
+		if ([[segue sourceViewController] isKindOfClass:[TripFormAttachmentDetailPhotoVC class]])
+		{
+			TripFormAttachmentDetailPhotoVC *detailVC = (TripFormAttachmentDetailPhotoVC *)segue.sourceViewController;
+			[self.editingTrip.attachedPhotosPathStrings removeObject:detailVC.imagePath];
+			[self updateUI];
+		}
+	}
+}
 
 
 @end
