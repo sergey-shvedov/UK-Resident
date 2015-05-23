@@ -34,4 +34,17 @@
 	return result;
 }
 
++ (NSString *)documentsDirectory
+{
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	NSString *documentsDirectory = [paths objectAtIndex:0];
+	return documentsDirectory;
+}
+
+- (NSString *)pathToDocumentDirectory
+{
+	NSString *imagePath =[[NSString documentsDirectory] stringByAppendingPathComponent:self];
+	return imagePath;
+}
+
 @end

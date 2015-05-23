@@ -10,6 +10,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "TripFormAttachmentDetailPhotoVC.h"
 #import "TempTrip.h"
+#import "NSString+UKResident.h"
 
 @interface TripFormAttachmentVC ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIPopoverControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -56,7 +57,7 @@
 		UIImage *savedImage = nil;
 		if ([self.sortedPath count] > indexPath.row)
 		{
-			savedImage = [UIImage imageWithContentsOfFile:[self.sortedPath objectAtIndex:indexPath.row]];
+			savedImage = [self readImageWithName:[self.sortedPath objectAtIndex:indexPath.row]];
 		}
 		if (nil == savedImage) savedImage = [UIImage imageNamed:@"tripFormPhotoBackground"];
 		
@@ -95,11 +96,7 @@
 	NSString *uniqueFileName = [NSString stringWithFormat:@"%@_%@.png", prefixString, guid];
 	
 	NSData *imageData = UIImagePNGRepresentation(anImage);
-	
-	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-	NSString *documentsDirectory = [paths objectAtIndex:0];
-	
-	NSString *imagePath =[documentsDirectory stringByAppendingPathComponent:uniqueFileName];
+	NSString *imagePath =[uniqueFileName pathToDocumentDirectory];
 	
 	NSLog((@"pre writing to file"));
 	if (![imageData writeToFile:imagePath atomically:NO])
@@ -108,21 +105,18 @@
 	}
 	else
 	{
-		result = imagePath;
-		[self.editingTrip.addedPhotosWhileEdited addObject:imagePath];
+		result = uniqueFileName;
+		[self.editingTrip.addedPhotosWhileEdited addObject:uniqueFileName];
 	}
 	
 	return result;
 }
 
-//- (UIImage *)readImageFromPath:(NSString *)path
-//{
-//	UIImage *result = nil;
-//	
-//	UIImage *customImage = [UIImage imageWithContentsOfFile:path];
-//	
-//	return result;
-//}
+- (UIImage *)readImageWithName:(NSString *)name
+{
+	UIImage *customImage = [UIImage imageWithContentsOfFile:[name pathToDocumentDirectory]];
+	return customImage;
+}
 
 - (void)tappedPhotoButton:(id)sender
 {

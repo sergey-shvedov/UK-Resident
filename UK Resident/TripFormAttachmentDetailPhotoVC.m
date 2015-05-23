@@ -7,6 +7,7 @@
 //
 
 #import "TripFormAttachmentDetailPhotoVC.h"
+#import "NSString+UKResident.h"
 
 @interface TripFormAttachmentDetailPhotoVC ()<UIScrollViewDelegate>
 
@@ -24,7 +25,7 @@
 	
 	[self.scrollView addSubview:self.imageView];
 	
-	UIImage *savedImage = [UIImage imageWithContentsOfFile:self.imagePath];
+	UIImage *savedImage = [UIImage imageWithContentsOfFile:[self.imagePath pathToDocumentDirectory]];
 	if (nil == savedImage) savedImage = [UIImage imageNamed:@"tripFormPhotoBackground"];
 	self.imageView.contentMode = UIViewContentModeScaleAspectFill;
 	self.image = savedImage;

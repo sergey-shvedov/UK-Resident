@@ -12,6 +12,7 @@
 #import "AttachPhoto.h"
 #import "UKLibraryAPI.h"
 #import "NSDate+UKResident.h"
+#import "NSString+UKResident.h"
 
 @implementation TempTrip
 
@@ -162,7 +163,7 @@
 		else
 		{
 			NSError *error;
-			[[NSFileManager defaultManager] removeItemAtPath:attachPhoto.storePath error:&error];
+			[[NSFileManager defaultManager] removeItemAtPath:[attachPhoto.storePath pathToDocumentDirectory] error:&error];
 			[library.managedObjectContext deleteObject:attachPhoto];
 //TODO: Add delete rules
 		}
@@ -205,7 +206,7 @@
 		if (YES == isNewAdded)
 		{
 			NSError *error;
-			[[NSFileManager defaultManager] removeItemAtPath:editPath error:&error];
+			[[NSFileManager defaultManager] removeItemAtPath:[editPath pathToDocumentDirectory] error:&error];
 		}
 	}
 }
@@ -218,7 +219,7 @@
 	for (NSString *path in intersection)
 	{
 		NSError *error;
-		[[NSFileManager defaultManager] removeItemAtPath:path error:&error];
+		[[NSFileManager defaultManager] removeItemAtPath:[path pathToDocumentDirectory] error:&error];
 	}
 }
 
