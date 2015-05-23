@@ -122,7 +122,7 @@
 {
 	if ([sender isKindOfClass:[UIBarButtonItem class]])
 	{
-		UIBarButtonItem *item = (UIBarButtonItem *)sender;
+		//UIBarButtonItem *item = (UIBarButtonItem *)sender;
 		
 		UIImagePickerController *pickerController = [[UIImagePickerController alloc] init];
 		pickerController.delegate = self;

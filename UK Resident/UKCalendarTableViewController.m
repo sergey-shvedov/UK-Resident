@@ -37,7 +37,7 @@
 	self.calendarTableView.agent = self;
 	self.todayDate = [[NSDate date] normalization];
 	self.topYear = [self.todayDate yearComponent];
-	self.currentCenter = -105;
+	self.currentCenter = -555;
 	
 	NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
 	[center addObserver:self selector: @selector(updateUI) name: UKNotificationNeedUpdateUI object: nil];
@@ -120,7 +120,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
 
     // Return the number of rows in the section.
-    return 100;
+    return 1000;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
