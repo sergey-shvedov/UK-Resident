@@ -162,7 +162,10 @@
 	BOOL result = NO;
 	
 	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
-	if ([[library arrayWithTripsBetweenStartDate:self.editingTrip.startDate andEndDate:self.editingTrip.endDate inContext:self.managedObjectContext] count])
+	NSArray *savedTrips = [library arrayWithTripsBetweenStartDate:self.editingTrip.startDate andEndDate:self.editingTrip.endDate inContext:self.managedObjectContext];
+	NSInteger savedTripsCount = [savedTrips count];
+	if ([savedTrips containsObject:self.trip]) savedTripsCount--;
+	if (savedTripsCount > 0)
 	{
 		result = YES;
 	}
