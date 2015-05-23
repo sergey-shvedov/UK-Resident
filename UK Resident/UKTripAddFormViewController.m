@@ -74,6 +74,7 @@
 {
 	if ([alertView.title isEqualToString:@"Удаление"] && (1 == buttonIndex))
 	{
+		[self.editingTrip removeUnusedSavedPhotosBy:self.trip];
 		[self.editingTrip deleteTrip:self.trip InContext:self.managedObjectContext];
 		[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
 	}
@@ -178,7 +179,8 @@
 
 - (void)clickCancel:(id)sender
 {
-	    [self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
+	[self.editingTrip removeUnusedSavedPhotosBy:self.trip];
+	[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
 }
 
 - (void)animateAppearsButton:(UIButton *)button

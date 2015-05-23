@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "UKNotifications.h"
 #import "Trip.h"
+#import "AttachPhoto.h"
 #import "WarningTrip.h"
 #import "User+Create.h"
 #import "UserWithTrip.h"
@@ -465,6 +466,15 @@
 	{
 		NSLog(@"-----------------------------------------------------");
 		NSLog(@"Trip: %@ \nDates: %@ – %@ \ntripsByUser: %i", trip.destination, trip.startDate, trip.endDate, (int)[trip.tripsByUser count]);
+	}
+	
+	NSFetchRequest *photoRequest = [NSFetchRequest fetchRequestWithEntityName:@"AttachPhoto"];
+	NSError *error4;
+	NSArray *photos= [self.managedObjectContext executeFetchRequest:photoRequest error:&error4];
+	for (AttachPhoto *photo in photos)
+	{
+		NSLog(@"-----------------------------------------------------");
+		NSLog(@"Photo: %@ \n \nphotoByTrip: %@", photo.storePath, photo.inTrip.startDate);
 	}
 }
 

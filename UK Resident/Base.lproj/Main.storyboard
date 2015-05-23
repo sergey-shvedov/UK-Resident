@@ -472,44 +472,93 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="450"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="buR-oy-cBq">
-                                <rect key="frame" x="247" y="307" width="106" height="104"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="buR-oy-cBq" secondAttribute="height" multiplier="202:123" id="lRo-ha-kbp"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="80"/>
-                                <state key="normal" title="ОК">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="lRo-ha-kbp"/>
-                                    </mask>
-                                </variation>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tripFormPhotoBackground" translatesAutoresizingMaskIntoConstraints="NO" id="oF5-3P-fdX">
                                 <rect key="frame" x="185" y="114" width="230" height="142"/>
                             </imageView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="voR-dr-r1V">
+                                <rect key="frame" x="35" y="0.0" width="530" height="450"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ieo-vg-CRt">
+                                    <size key="itemSize" width="150" height="150"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="70" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Attach Photo Cell" id="EeG-Wy-DTs">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <segue destination="n6J-Hw-QcH" kind="show" identifier="Photo detail" id="r3M-UC-zEs"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="buR-oy-cBq" secondAttribute="centerX" id="IXo-pk-3hg"/>
+                            <constraint firstItem="voR-dr-r1V" firstAttribute="top" secondItem="7UA-Dn-t8N" secondAttribute="top" id="AD1-Fq-YkF"/>
+                            <constraint firstItem="q9v-pz-A4D" firstAttribute="top" secondItem="voR-dr-r1V" secondAttribute="bottom" id="ASj-J3-MA8"/>
+                            <constraint firstItem="voR-dr-r1V" firstAttribute="leading" secondItem="7UA-Dn-t8N" secondAttribute="leading" constant="35" id="FQt-n7-hkJ"/>
                             <constraint firstAttribute="centerX" secondItem="oF5-3P-fdX" secondAttribute="centerX" id="KjX-Ed-Fng"/>
                             <constraint firstItem="oF5-3P-fdX" firstAttribute="top" secondItem="EOr-cU-RJq" secondAttribute="bottom" constant="70" id="qLz-le-YPW"/>
-                            <constraint firstItem="buR-oy-cBq" firstAttribute="top" secondItem="EOr-cU-RJq" secondAttribute="bottom" constant="307" id="r5o-WU-PS9"/>
-                            <constraint firstAttribute="bottom" secondItem="buR-oy-cBq" secondAttribute="bottom" constant="39" id="zfy-Fu-IHl"/>
+                            <constraint firstAttribute="trailing" secondItem="voR-dr-r1V" secondAttribute="trailing" constant="35" id="qVK-ZG-nTV"/>
+                            <constraint firstItem="voR-dr-r1V" firstAttribute="top" secondItem="EOr-cU-RJq" secondAttribute="bottom" id="xQA-IU-GmF"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="r5o-WU-PS9"/>
+                                <exclude reference="xQA-IU-GmF"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Вложение" id="dHb-78-TT0"/>
+                    <connections>
+                        <outlet property="collectionView" destination="voR-dr-r1V" id="c6W-6v-ICq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vKD-Fw-ipd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6131" y="2535"/>
+            <point key="canvasLocation" x="6130" y="2535"/>
+        </scene>
+        <!--Trip Form Attachment Detail PhotoVC-->
+        <scene sceneID="Hs4-bu-A9z">
+            <objects>
+                <viewController id="n6J-Hw-QcH" customClass="TripFormAttachmentDetailPhotoVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3kf-st-D6x"/>
+                        <viewControllerLayoutGuide type="bottom" id="hbU-9s-Den"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="A4A-yX-rpP">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="450"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mha-Pd-2H3">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="450"/>
+                                <connections>
+                                    <outlet property="delegate" destination="n6J-Hw-QcH" id="Of3-SA-IhN"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hbU-9s-Den" firstAttribute="top" secondItem="mha-Pd-2H3" secondAttribute="bottom" id="6Oc-bm-FAY"/>
+                            <constraint firstItem="mha-Pd-2H3" firstAttribute="leading" secondItem="A4A-yX-rpP" secondAttribute="leading" id="LJv-6Q-EHa"/>
+                            <constraint firstItem="mha-Pd-2H3" firstAttribute="top" secondItem="A4A-yX-rpP" secondAttribute="top" id="rS8-F9-XD7"/>
+                            <constraint firstAttribute="trailing" secondItem="mha-Pd-2H3" secondAttribute="trailing" id="zfk-db-AwS"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="scrollView" destination="mha-Pd-2H3" id="gLJ-ni-ZfL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sbv-qg-HXG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6907" y="2535"/>
         </scene>
         <!--Test-->
         <scene sceneID="iBW-uX-pz1">
@@ -732,7 +781,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="etf-QK-Apg" kind="show" id="oop-Qc-3zw"/>
+                                            <segue destination="etf-QK-Apg" kind="show" identifier="Trip Attachment Form" id="oop-Qc-3zw"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>

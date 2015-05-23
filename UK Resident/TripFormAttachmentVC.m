@@ -8,11 +8,15 @@
 
 #import "TripFormAttachmentVC.h"
 #import <MobileCoreServices/MobileCoreServices.h>
+#import "TripFormAttachmentDetailPhotoVC.h"
+#import "TempTrip.h"
 
-@interface TripFormAttachmentVC ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIPopoverControllerDelegate>
+@interface TripFormAttachmentVC ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIPopoverControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (nonatomic, strong) UIPopoverController *popover;
 @property (nonatomic, strong) UIImagePickerController *imagePicker;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (nonatomic, strong) NSArray *sortedPath;
 
 @end
 
@@ -22,10 +26,98 @@
 {
     [super viewDidLoad];
 	
+	self.collectionView.delegate = self;
+	self.collectionView.dataSource = self;
+	
+	self.sortedPath = [[NSArray alloc] init];
+	[self updateUI];
+	
 	UIBarButtonItem *btnPhoto = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:self action:@selector(tappedPhotoButton:)];
 	UIBarButtonItem *btnLibrary = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(tappedLibraryButton:)];
 	[self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:btnLibrary, btnPhoto, nil]];
 }
+
+#pragma mark = UICollectionViewDelegate
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+	return [self.sortedPath count];
+}
+
+// The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+	UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Attach Photo Cell" forIndexPath:indexPath];
+	if (nil != cell)
+	{
+		[cell.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+		UIImage *savedImage = nil;
+		if ([self.sortedPath count] > indexPath.row)
+		{
+			savedImage = [UIImage imageWithContentsOfFile:[self.sortedPath objectAtIndex:indexPath.row]];
+		}
+		if (nil == savedImage) savedImage = [UIImage imageNamed:@"tripFormPhotoBackground"];
+		
+		UIImageView *imageView = [[UIImageView alloc] initWithImage:savedImage];
+		imageView.contentMode = UIViewContentModeScaleAspectFill;
+		[imageView setFrame:cell.bounds];
+		[cell addSubview:imageView];
+	}
+	
+	return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+	
+}
+
+- (void)updateUI
+{
+	[self sortPath];
+	[self.collectionView reloadData];
+}
+
+- (void)sortPath
+{
+	self.sortedPath = [self.editingTrip.attachedPhotosPathStrings allObjects];
+}
+
+- (NSString *)saveImage:(UIImage *)anImage
+{
+	NSString *result = nil;
+	NSString *prefixString = @"AttachedPhoto";
+	NSString *guid = [[NSUUID new] UUIDString];
+	NSString *uniqueFileName = [NSString stringWithFormat:@"%@_%@.png", prefixString, guid];
+	
+	NSData *imageData = UIImagePNGRepresentation(anImage);
+	
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	NSString *documentsDirectory = [paths objectAtIndex:0];
+	
+	NSString *imagePath =[documentsDirectory stringByAppendingPathComponent:uniqueFileName];
+	
+	NSLog((@"pre writing to file"));
+	if (![imageData writeToFile:imagePath atomically:NO])
+	{
+		NSLog((@"Failed to cache image data to disk"));
+	}
+	else
+	{
+		result = imagePath;
+	}
+	
+	return result;
+}
+
+//- (UIImage *)readImageFromPath:(NSString *)path
+//{
+//	UIImage *result = nil;
+//	
+//	UIImage *customImage = [UIImage imageWithContentsOfFile:path];
+//	
+//	return result;
+//}
 
 - (void)tappedPhotoButton:(id)sender
 {
@@ -124,6 +216,15 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
+	UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
+	if (nil == image) image = [info objectForKey:UIImagePickerControllerOriginalImage];
+	if (nil != image)
+	{
+		NSString *path = [self saveImage:image];
+		[self.editingTrip.attachedPhotosPathStrings addObject:path];
+		[self updateUI];
+	}
+	
 	if (picker.sourceType == UIImagePickerControllerSourceTypePhotoLibrary)
 	{
 		[self.popover dismissPopoverAnimated:YES];
@@ -133,6 +234,8 @@
 	{
 		[self dismissViewControllerAnimated:YES completion:^{}];
 	}
+	
+	
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
@@ -156,6 +259,27 @@
 - (void)resetPopover
 {
 	self.popover = nil;
+}
+
+#pragma mark - Preparing for Segue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+	if ([sender isKindOfClass:[UICollectionViewCell class]])
+	{
+		NSIndexPath *indexPath = [self.collectionView indexPathForCell:sender];
+		if ([segue.identifier isEqualToString:@"Photo detail"])
+		{
+			if ([segue.destinationViewController isKindOfClass:[TripFormAttachmentDetailPhotoVC class]])
+			{
+				TripFormAttachmentDetailPhotoVC *detailVC = (TripFormAttachmentDetailPhotoVC *)segue.destinationViewController;
+				if ([self.sortedPath count] > indexPath.row)
+				{
+					detailVC.imagePath = [self.sortedPath objectAtIndex:indexPath.row];
+				}
+			}
+		}
+	}
 }
 
 

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class TempTrip;
 
 @interface TripFormAttachmentVC : UIViewController
+
+@property (nonatomic, strong) TempTrip *editingTrip;
 
 @end

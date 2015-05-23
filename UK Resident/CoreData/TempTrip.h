@@ -16,7 +16,7 @@
 @property (nonatomic, retain) NSString *destination;
 @property (nonatomic, retain) NSString *comment;
 @property (nonatomic, retain) NSSet *tripsByUser;
-@property (nonatomic, retain) NSSet *attachedPhotos;
+@property (nonatomic, retain) NSMutableSet *attachedPhotosPathStrings;
 
 @property (nonatomic) BOOL isStartDateNeedEdit;
 @property (nonatomic) BOOL isStartDateEdited;
@@ -34,5 +34,6 @@
 - (void)insertNewTripInContext:(NSManagedObjectContext *)aContext;
 - (void)deleteTrip:(Trip *)aTrip InContext:(NSManagedObjectContext *)aContext; //DELETE
 - (void)updateDaysWithTrip:(Trip *)aTrip inContext:(NSManagedObjectContext *)aContext;
+- (void)removeUnusedSavedPhotosBy:(Trip *)trip;
 
 @end

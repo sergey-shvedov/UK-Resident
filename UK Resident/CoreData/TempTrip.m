@@ -9,6 +9,7 @@
 #import "TempTrip.h"
 #import "UserWithTrip.h"
 #import "User.h"
+#import "AttachPhoto.h"
 #import "UKLibraryAPI.h"
 #import "NSDate+UKResident.h"
 
@@ -29,6 +30,13 @@
 	editingTrip.startDate = trip.startDate;
 	editingTrip.endDate = trip.endDate;
 	editingTrip.comment = trip.comment;
+	
+	NSMutableSet *pathStrings = [[NSMutableSet alloc] init];
+	for (AttachPhoto *attachPhoto in trip.attachedPhotos)
+	{
+		[pathStrings addObject:[NSString stringWithString:attachPhoto.storePath]];
+	}
+	editingTrip.attachedPhotosPathStrings = pathStrings;
 	
 	editingTrip.isStartDateNeedEdit = NO;
 	editingTrip.isStartDateEdited = YES;
@@ -53,6 +61,7 @@
 	editingTrip.endDate = [[NSDate dateWithTimeIntervalSinceNow:60*60*24*28] normalization];
 	editingTrip.destination = @"Мое путешествие";
 	editingTrip.comment = @"Комментарии";
+	editingTrip.attachedPhotosPathStrings = [[NSMutableSet alloc] init];
 	
 //	editingTrip.usersByTrip=nil; //[NSSet setWithObject:[User mainUserInContext:context]]; // Need set with UserWithTrip in Future
 //	editingTrip.users=[NSArray arrayWithObject:[User mainUserInContext:saveContext]];
@@ -125,6 +134,40 @@
 	trip.comment = self.comment;
 	
 	UKLibraryAPI *library = [UKLibraryAPI sharedInstance];
+	
+	NSMutableSet *currentPaths = [[NSMutableSet alloc] initWithSet:self.attachedPhotosPathStrings];
+	for (AttachPhoto *attachPhoto in trip.attachedPhotos)
+	{
+		BOOL isStillStored = NO;
+		NSString *storedPath;
+		for (NSString *editPath in currentPaths)
+		{
+			if ([attachPhoto.storePath isEqualToString:editPath])
+			{
+				isStillStored = YES;
+				storedPath = editPath;
+				break;
+			}
+		}
+		if (YES == isStillStored)
+		{
+			[currentPaths removeObject:storedPath];
+		}
+		else
+		{
+			NSError *error;
+			[[NSFileManager defaultManager] removeItemAtPath:attachPhoto.storePath error:&error];
+			[library.managedObjectContext deleteObject:attachPhoto];
+//TODO: Add delete rules
+		}
+	}
+	for (NSString *addPath in currentPaths)
+	{
+		AttachPhoto *attachPhoto = [NSEntityDescription insertNewObjectForEntityForName:@"AttachPhoto" inManagedObjectContext:library.managedObjectContext];
+		attachPhoto.storePath = addPath;
+		[trip addAttachedPhotosObject:attachPhoto];
+	}
+	
 	[library saveContext];
 }
 
@@ -138,6 +181,27 @@
 {
 	[self updateTrip:aTrip];
 	[[UKLibraryAPI sharedInstance] saveContext];
+}
+
+- (void)removeUnusedSavedPhotosBy:(Trip *)trip
+{
+	for (NSString *editPath in self.attachedPhotosPathStrings)
+	{
+		BOOL isNewAdded = YES;
+		for (AttachPhoto *attachPhoto in trip.attachedPhotos)
+		{
+			if ([attachPhoto.storePath isEqualToString:editPath])
+			{
+				isNewAdded = NO;
+				break;
+			}
+		}
+		if (YES == isNewAdded)
+		{
+			NSError *error;
+			[[NSFileManager defaultManager] removeItemAtPath:editPath error:&error];
+		}
+	}
 }
 
 

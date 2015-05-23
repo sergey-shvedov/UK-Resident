@@ -10,6 +10,7 @@
 #import "TripFormStartDateVC.h"
 #import "TripFormEndDateVC.h"
 #import "TripFormDestinationVC.h"
+#import "TripFormAttachmentVC.h"
 #import "NSDate+UKResident.h"
 #import "UIColor+UKResident.h"
 
@@ -163,6 +164,15 @@
 		{
 			TripFormDestinationVC *tfodVC = (TripFormDestinationVC *)segue.destinationViewController;
 			tfodVC.editingTrip = self.editingTrip;
+			[self.delegate dismissButtons];
+		}
+	}
+	else if ([segue.identifier isEqualToString:@"Trip Attachment Form"])
+	{
+		if ([segue.destinationViewController isKindOfClass:[TripFormAttachmentVC class]])
+		{
+			TripFormAttachmentVC *tfaVC = (TripFormAttachmentVC *)segue.destinationViewController;
+			tfaVC.editingTrip = self.editingTrip;
 			[self.delegate dismissButtons];
 		}
 	}
