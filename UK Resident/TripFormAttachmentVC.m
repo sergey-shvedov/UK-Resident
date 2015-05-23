@@ -54,17 +54,50 @@
 	if (nil != cell)
 	{
 		[cell.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-		UIImage *savedImage = nil;
-		if ([self.sortedPath count] > indexPath.row)
-		{
-			savedImage = [self readImageWithName:[self.sortedPath objectAtIndex:indexPath.row]];
-		}
-		if (nil == savedImage) savedImage = [UIImage imageNamed:@"photoPlaceholder"];
+		UIImage *savedImage = [UIImage imageNamed:@"photoPlaceholder"];
 		
 		UIImageView *imageView = [[UIImageView alloc] initWithImage:savedImage];
 		imageView.contentMode = UIViewContentModeScaleAspectFill;
 		[imageView setFrame:cell.bounds];
 		[cell addSubview:imageView];
+		
+		UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+		[cell addSubview:spinner];
+		spinner.center = CGPointMake(cell.bounds.size.width / 2, cell.bounds.size.height / 2);
+		[spinner startAnimating];
+		
+		TripFormAttachmentVC* __weak weakSelf = self;
+		UIImageView* __weak weakImageView = imageView;
+		UIActivityIndicatorView* __weak weakSpinner = spinner;
+		dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+			TripFormAttachmentVC* strongSelf = weakSelf;
+			UIImage *downloadedImage;
+			if (strongSelf)
+			{
+				if ([strongSelf.sortedPath count] > indexPath.row)
+				{
+					downloadedImage = [strongSelf readImageWithName:[strongSelf.sortedPath objectAtIndex:indexPath.row]];
+				}
+			}
+			
+			dispatch_async(dispatch_get_main_queue(), ^{
+				TripFormAttachmentVC* strongSelf2 = weakSelf;
+				UIActivityIndicatorView* strongSpinner = weakSpinner;
+				if (strongSelf2)
+				{
+					UIImageView *strongImageView = weakImageView;
+					if (strongImageView && downloadedImage)
+					{
+						[strongImageView setImage:downloadedImage];
+						if (strongSpinner)
+						{
+							[strongSpinner stopAnimating];
+						}
+					}
+					
+				}
+			});
+		});
 	}
 	
 	return cell;
