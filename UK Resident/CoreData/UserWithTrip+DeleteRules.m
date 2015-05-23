@@ -8,6 +8,8 @@
 
 #import "UserWithTrip+DeleteRules.h"
 #import "Trip.h"
+#import "AttachPhoto.h"
+#import "NSString+UKResident.h"
 
 
 @implementation UserWithTrip (DeleteRules)
@@ -17,6 +19,11 @@
 	Trip *trip = self.inTrip;
 	if (1 == [trip.tripsByUser count])
 	{
+		for (AttachPhoto *attachPhoto in trip.attachedPhotos)
+		{
+			NSError *error;
+			[[NSFileManager defaultManager] removeItemAtPath:[attachPhoto.storePath pathToDocumentDirectory] error:&error];
+		}
 		[self.managedObjectContext deleteObject:trip];
 	}
 }
