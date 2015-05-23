@@ -59,7 +59,7 @@
 		{
 			savedImage = [self readImageWithName:[self.sortedPath objectAtIndex:indexPath.row]];
 		}
-		if (nil == savedImage) savedImage = [UIImage imageNamed:@"tripFormPhotoBackground"];
+		if (nil == savedImage) savedImage = [UIImage imageNamed:@"photoPlaceholder"];
 		
 		UIImageView *imageView = [[UIImageView alloc] initWithImage:savedImage];
 		imageView.contentMode = UIViewContentModeScaleAspectFill;

@@ -13,6 +13,7 @@
 #import "TripFormAttachmentVC.h"
 #import "NSDate+UKResident.h"
 #import "UIColor+UKResident.h"
+#import "NSString+UKResident.h"
 
 @interface UKTripFormTableViewController ()
 
@@ -134,6 +135,15 @@
 	}
 
 	// TODO: Attachment
+	NSString *attachText = @"Нет";
+	NSInteger photosCount = [self.editingTrip.attachedPhotosPathStrings count];
+	if (photosCount > 0)
+	{
+		attachText = [NSString stringWithFormat:@"%i %@", (int)photosCount, [NSString russianStringFor1:@"файл" for2to4:@"файла" for5up:@"файлов" withValue:photosCount]];
+	}
+	self.attachmentFormCell.detailTextLabel.text = attachText;
+	self.attachmentFormCell.detailTextLabel.textColor = photosCount ? [UIColor colorEdited] : [UIColor colorNotYetEdit];
+	self.attachmentFormCell.accessoryView=[[UIImageView alloc] initWithImage: self.disclosureGrey];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

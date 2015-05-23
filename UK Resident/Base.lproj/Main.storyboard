@@ -526,7 +526,7 @@
             </objects>
             <point key="canvasLocation" x="6130" y="2535"/>
         </scene>
-        <!--Title-->
+        <!--Trip Form Attachment Detail PhotoVC-->
         <scene sceneID="Hs4-bu-A9z">
             <objects>
                 <viewController id="n6J-Hw-QcH" customClass="TripFormAttachmentDetailPhotoVC" sceneMemberID="viewController">
@@ -553,7 +553,7 @@
                             <constraint firstAttribute="trailing" secondItem="mha-Pd-2H3" secondAttribute="trailing" id="zfk-db-AwS"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="jxc-LR-CVt">
+                    <navigationItem key="navigationItem" id="jxc-LR-CVt">
                         <barButtonItem key="rightBarButtonItem" systemItem="trash" id="6DK-54-jkT">
                             <connections>
                                 <segue destination="Zri-cx-Y73" kind="unwind" identifier="Unwind deletion" unwindAction="popoverApplied:" id="HLm-cf-q13"/>

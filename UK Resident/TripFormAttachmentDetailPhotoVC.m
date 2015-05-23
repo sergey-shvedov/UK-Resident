@@ -26,7 +26,7 @@
 	[self.scrollView addSubview:self.imageView];
 	
 	UIImage *savedImage = [UIImage imageWithContentsOfFile:[self.imagePath pathToDocumentDirectory]];
-	if (nil == savedImage) savedImage = [UIImage imageNamed:@"tripFormPhotoBackground"];
+	if (nil == savedImage) savedImage = [UIImage imageNamed:@"photoPlaceholder"];
 	self.imageView.contentMode = UIViewContentModeScaleAspectFill;
 	self.image = savedImage;
 }
