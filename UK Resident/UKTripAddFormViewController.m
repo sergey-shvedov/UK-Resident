@@ -26,9 +26,13 @@
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
-	//self.isCreating = YES;
 	[self createButtonCancel];
 	[self createButtonOk];
+	if (YES == self.isCreating)
+	{
+		[self.deleteButton setHidden:YES];
+		self.deleteButton = nil;
+	}
 }
 
 - (void)createButtonOk
