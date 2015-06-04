@@ -38,8 +38,8 @@
 
 - (IBAction)okButton:(id)sender
 {
-	[self.navigationController popViewControllerAnimated:YES];
-
+	[self.destinationTextField endEditing:YES];
+	
 	if ([self.selectedText length])
 	{
 		self.editingTrip.destination = self.selectedText;
@@ -52,6 +52,8 @@
 		self.editingTrip.isCommentEdited = YES;
 		self.editingTrip.isCommentNeedEdit = NO;
 	}
+	
+	[self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - UITextFieldDelegate
