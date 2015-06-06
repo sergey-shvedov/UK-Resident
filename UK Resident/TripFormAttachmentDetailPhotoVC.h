@@ -6,8 +6,17 @@
 //  Copyright (c) 2015 Administrator. All rights reserved.
 //
 
+/*!
+	@header TripFormAttachmentDetailPhotoVC.h
+	@abstract Declares interface for TripFormAttachmentDetailPhotoVC.
+	@copyright 2015 Sergey Shvedov
+*/
+
 #import <UIKit/UIKit.h>
 
+/*!
+	@abstract The class provides the functionality to present required image.
+*/
 @interface TripFormAttachmentDetailPhotoVC : UIViewController
 
 @property (nonatomic, strong) NSString *imagePath;

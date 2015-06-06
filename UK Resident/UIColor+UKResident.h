@@ -6,8 +6,17 @@
 //  Copyright (c) 2015 Administrator. All rights reserved.
 //
 
+/*!
+	@header UIColor+UKResident.h
+	@abstract Declares interface for UIColor+UKResident.
+	@copyright 2015 Sergey Shvedov
+*/
+
 #import <UIKit/UIKit.h>
 
+/*!
+	@abstract The category provides the functionality to fast access to some colors.
+*/
 @interface UIColor (UKResident)
 
 + (UIColor *)colorNeedEdit;

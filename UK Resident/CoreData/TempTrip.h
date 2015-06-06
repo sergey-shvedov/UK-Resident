@@ -6,9 +6,18 @@
 //  Copyright (c) 2015 Administrator. All rights reserved.
 //
 
+/*!
+	@header TempTrip.h
+	@abstract Declares interface for TempTrip.
+	@copyright 2015 Sergey Shvedov
+*/
+
 #import <Foundation/Foundation.h>
 #import "Trip.h"
 
+/*!
+	@abstract The class provides the functionality to create and edit a TempTrip object.
+*/
 @interface TempTrip : NSObject
 
 @property (nonatomic, retain) NSDate *startDate;

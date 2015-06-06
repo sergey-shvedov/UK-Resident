@@ -6,8 +6,17 @@
 //  Copyright (c) 2015 Administrator. All rights reserved.
 //
 
+/*!
+	@header UKWarningNavigationController.h
+	@abstract Declares interface for UKWarningNavigationController.
+	@copyright 2015 Sergey Shvedov
+*/
+
 #import <UIKit/UIKit.h>
 
+/*!
+	@abstract The class provides the functionality to update the badge value for the tabBarItem.
+*/
 @interface UKWarningNavigationController : UINavigationController
 
 @end

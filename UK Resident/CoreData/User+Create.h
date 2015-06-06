@@ -6,8 +6,17 @@
 //  Copyright (c) 2015 Administrator. All rights reserved.
 //
 
+/*!
+	@header User+Create.h
+	@abstract Declares interface for User+Create.
+	@copyright 2015 Sergey Shvedov
+*/
+
 #import "User.h"
 
+/*!
+	@abstract The category provides the functionality to create and edit a User object.
+*/
 @interface User (Create)
 
 + (User *)firstUserInContext:(NSManagedObjectContext *)context;

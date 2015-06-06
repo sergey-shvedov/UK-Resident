@@ -417,10 +417,10 @@
 				84B8EADA1B0CF50D00B1C1FC /* UKUserEditVC.m */,
 				84B8EAD31B0CB8D100B1C1FC /* UKUserPopoverTableVC.h */,
 				84B8EAD41B0CB8D100B1C1FC /* UKUserPopoverTableVC.m */,
-				845204CD1AF03CA800E535FD /* UKMasterViewController.h */,
-				845204CE1AF03CA800E535FD /* UKMasterViewController.m */,
 				845204B41AECFD4900E535FD /* UKCalendarTableViewController.h */,
 				845204B51AECFD4900E535FD /* UKCalendarTableViewController.m */,
+				845204CD1AF03CA800E535FD /* UKMasterViewController.h */,
+				845204CE1AF03CA800E535FD /* UKMasterViewController.m */,
 			);
 			name = CALENDAR;
 			sourceTree = "<group>";

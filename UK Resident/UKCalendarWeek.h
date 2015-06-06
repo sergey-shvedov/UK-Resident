@@ -6,8 +6,17 @@
 //  Copyright (c) 2015 Administrator. All rights reserved.
 //
 
+/*!
+	@header UKCalendarWeek.h
+	@abstract Declares interface for UKCalendarWeek objects.
+	@copyright 2015 Sergey Shvedov
+*/
+
 #import <Foundation/Foundation.h>
 
+/*!
+	@abstract The class introduces properties which allow to receive required data for a calendar cell.
+*/
 @interface UKCalendarWeek : NSObject
 
 @property (nonatomic, strong) NSArray *days;

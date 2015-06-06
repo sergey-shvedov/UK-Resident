@@ -6,6 +6,12 @@
 //  Copyright (c) 2015 Administrator. All rights reserved.
 //
 
+/*!
+	@header NSUserDefaults+AccessoryMethods.h
+	@abstract Declares interface for NSUserDefaults+AccessoryMethods.
+	@copyright 2015 Sergey Shvedov
+ */
+
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSInteger, UKRecentCheckType)
@@ -20,6 +26,9 @@ typedef NS_ENUM(NSInteger, UKRecentBoundaryDatesStatus)
 	kUKRecentBoundaryDatesStatusCount,
 };
 
+/*!
+	@abstract The category provides the functionality to access and store user defaults.
+*/
 @interface NSUserDefaults (AccessoryMethods)
 
 @property (nonatomic, assign) BOOL isLaunchedOnce;

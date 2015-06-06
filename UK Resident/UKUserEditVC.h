@@ -6,8 +6,17 @@
 //  Copyright (c) 2015 Administrator. All rights reserved.
 //
 
+/*!
+	@header UKUserEditVC.h
+	@abstract Declares interface for UKUserEditVC.
+	@copyright 2015 Sergey Shvedov
+*/
+
 #import <UIKit/UIKit.h>
 
+/*!
+	@abstract The class provides the functionality to edit a user element.
+*/
 @interface UKUserEditVC : UIViewController
 
 @property (nonatomic, strong) NSString *name;

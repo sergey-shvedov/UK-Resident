@@ -6,6 +6,12 @@
 //  Copyright (c) 2015 Administrator. All rights reserved.
 //
 
+/*!
+	@header UKReportCenterMainView.h
+	@abstract Declares interface for UKReportCenterMainView.
+	@copyright 2015 Sergey Shvedov
+*/
+
 #import <UIKit/UIKit.h>
 
 @class UKReportCenterMainView;
@@ -16,6 +22,9 @@
 
 @end
 
+/*!
+	@abstract The class provides the functionality to inform their delegate about a layout event.
+*/
 @interface UKReportCenterMainView : UIView
 
 @property (nonatomic, weak) id<UKReportCenterMainViewDelegate> delegate;

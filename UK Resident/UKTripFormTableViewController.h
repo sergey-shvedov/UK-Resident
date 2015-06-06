@@ -6,6 +6,12 @@
 //  Copyright (c) 2015 Administrator. All rights reserved.
 //
 
+/*!
+	@header UKTripFormTableViewController.h
+	@abstract Declares interface for UKTripFormTableViewController.
+	@copyright 2015 Sergey Shvedov
+*/
+
 #import <UIKit/UIKit.h>
 #import "Trip.h"
 #import "TempTrip.h"
@@ -18,6 +24,9 @@
 
 @end
 
+/*!
+	@abstract The class provides the functionality to operate with table elements of a trip card.
+*/
 @interface UKTripFormTableViewController : UITableViewController
 
 @property (nonatomic, weak) id<UKTripFormTVCDelegate> delegate;

@@ -6,11 +6,21 @@
 //  Copyright (c) 2015 Administrator. All rights reserved.
 //
 
+/*!
+	@header UKLibraryAPI.h
+	@abstract Declares interface for UKLibraryAPI.
+	@copyright 2015 Sergey Shvedov
+*/
+
 #import <Foundation/Foundation.h>
 #import "AppDelegate.h"
 
 @class User;
 @class Trip;
+
+/*!
+	@abstract The class provides the functionality to produce basic data for the application.
+*/
 
 @interface UKLibraryAPI : NSObject
 
