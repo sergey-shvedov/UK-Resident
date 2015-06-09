@@ -739,7 +739,7 @@
 				INFOPLIST_FILE = "UK Resident/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "UK Resident";
-				PROVISIONING_PROFILE = "424b8f22-6ff4-4e6c-b22f-3121e0caab7b";
+				PROVISIONING_PROFILE = "abe137df-2647-4ad0-95b1-e5af6f5bfb26";
 			};
 			name = Debug;
 		};
@@ -752,7 +752,7 @@
 				INFOPLIST_FILE = "UK Resident/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "UK Resident";
-				PROVISIONING_PROFILE = "424b8f22-6ff4-4e6c-b22f-3121e0caab7b";
+				PROVISIONING_PROFILE = "abe137df-2647-4ad0-95b1-e5af6f5bfb26";
 			};
 			name = Release;
 		};
